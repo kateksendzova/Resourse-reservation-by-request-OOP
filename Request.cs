@@ -6,21 +6,30 @@ using System.Threading.Tasks;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
+	public enum TypeOfWork
+	{
+        IndependentWork = 1,
+		LaboratoryWork = 2,
+		DiplomaThesis = 3,
+        ScientificExperiment = 4
+    }
     internal class Request
 	{
 		private int idRequest;
 		private Resourse resourse;
+		private Person person;
 		private TimeInterval interval;
-		private string typeOfWork;
+		private TypeOfWork typeOfWork;
 		public DateTime creationTime;
         private DateTime dayOfReservation;
         public Request()
         {
         }
-        public Request(int _idRequest, Resourse _resourse, TimeInterval _interval, string _typeOfWork, DateTime _dayOfReservation)
+        public Request(int _idRequest, Resourse _resourse, Person _person, TimeInterval _interval, TypeOfWork _typeOfWork, DateTime _dayOfReservation)
 		{
 			idRequest = _idRequest;
             resourse=_resourse;
+			person = _person;
 			interval=_interval;
 			typeOfWork = _typeOfWork;
 			creationTime = DateTime.Now;
@@ -37,12 +46,17 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 			get { return resourse; }
 			set { resourse = value; }
 		}
+		public Person Person
+		{
+			get { return person; }
+			set { person = value; }
+		}
 		public TimeInterval Interval
 		{
 			get { return interval; }
 			set { interval = value; }
 		}
-		public string TypeOfWork
+		public TypeOfWork TypeOfWork
 		{ 
 			get { return typeOfWork; }
 			set { typeOfWork = value; }

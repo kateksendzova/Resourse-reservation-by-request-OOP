@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
+    public enum UserRole
+    {
+        Student = 1,
+        Assistant = 2,
+        Professor = 3
+    }
     internal class Person
     {
         private int idPerson;
         private string name;
-        private string role;
-
-        public Person(int _idPerson, string _name, string _role)
+        private UserRole role;
+        public Person(int _idPerson, string _name, UserRole _role)
         {
             idPerson = _idPerson;
             name = _name;
@@ -31,7 +36,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             set { name = value; }
         }
 
-        public string Role
+        public UserRole Role
         {
             get { return role; }
             set { role = value; }
