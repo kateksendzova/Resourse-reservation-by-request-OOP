@@ -8,27 +8,30 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 {
     internal class Request
 	{
+		private int idRequest;
 		private Resourse resourse;
 		private TimeInterval interval;
 		private string typeOfWork;
 		public DateTime creationTime;
-        private string nameOfPerson;
-        private string role;
         private DateTime dayOfReservation;
         public Request()
         {
         }
-        public Request(Resourse _resourse, TimeInterval _interval, string _typeOfWork, string _name, string _role, DateTime _dayOfReservation)
+        public Request(int _idRequest, Resourse _resourse, TimeInterval _interval, string _typeOfWork, DateTime _dayOfReservation)
 		{
+			idRequest = _idRequest;
             resourse=_resourse;
 			interval=_interval;
 			typeOfWork = _typeOfWork;
 			creationTime = DateTime.Now;
-			nameOfPerson = _name;
-			role = _role;
 			dayOfReservation = _dayOfReservation;
         }
 
+		public int IdRequest
+		{
+			get { return idRequest; }
+			set { idRequest = value; }
+		}
 		public Resourse Resourse 
 		{ 
 			get { return resourse; }
@@ -49,17 +52,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             get { return creationTime; }
             set { creationTime = value; }
         }
-        public string NameOfPerson
-        {
-            get { return nameOfPerson; }
-            set { nameOfPerson = value; }
-        }
-        public string Role
-        {
-            get { return role; }
-            set { role = value; }
-        }
-
 		public DateTime DayOfReservation
 		{
 			get { return dayOfReservation; }

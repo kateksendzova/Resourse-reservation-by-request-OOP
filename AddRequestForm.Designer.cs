@@ -89,7 +89,6 @@
             comboBox_ResourseList.Name = "comboBox_ResourseList";
             comboBox_ResourseList.Size = new Size(238, 28);
             comboBox_ResourseList.TabIndex = 2;
-            comboBox_ResourseList.SelectedIndexChanged += comboBox_ResourseList_SelectedIndexChanged;
             // 
             // label_infoDay
             // 
@@ -109,7 +108,6 @@
             TimePickerStartManual.ShowUpDown = true;
             TimePickerStartManual.Size = new Size(91, 27);
             TimePickerStartManual.TabIndex = 5;
-            TimePickerStartManual.ValueChanged += TimePickerStart_ValueChanged;
             // 
             // label_infoTimeStartManual
             // 
@@ -126,7 +124,6 @@
             monthCalendar.MinDate = new DateTime(2026, 9, 27, 0, 0, 0, 0);
             monthCalendar.Name = "monthCalendar";
             monthCalendar.TabIndex = 7;
-            monthCalendar.DateChanged += monthCalendar_DateChanged;
             // 
             // button_AddRequest
             // 
@@ -137,7 +134,6 @@
             button_AddRequest.TabIndex = 11;
             button_AddRequest.Text = "Додати запит";
             button_AddRequest.UseVisualStyleBackColor = false;
-            button_AddRequest.Click += button_AddRequest_Click;
             // 
             // dataGridView_Schedule
             // 
@@ -150,7 +146,6 @@
             dataGridView_Schedule.RowHeadersWidth = 51;
             dataGridView_Schedule.Size = new Size(754, 515);
             dataGridView_Schedule.TabIndex = 12;
-            dataGridView_Schedule.CellContentClick += dataGridView_Schedule_CellContentClick;
             // 
             // colTime
             // 
@@ -198,7 +193,6 @@
             comboBox_Priority.Name = "comboBox_Priority";
             comboBox_Priority.Size = new Size(238, 28);
             comboBox_Priority.TabIndex = 14;
-            comboBox_Priority.SelectedIndexChanged += comboBox_Priority_SelectedIndexChanged;
             // 
             // richTextBox_request
             // 
@@ -245,7 +239,6 @@
             dateTimePicker_TimeOfWork.Size = new Size(103, 27);
             dateTimePicker_TimeOfWork.TabIndex = 22;
             dateTimePicker_TimeOfWork.Value = new DateTime(2026, 9, 26, 0, 0, 0, 0);
-            dateTimePicker_TimeOfWork.ValueChanged += dateTimePicker_TimeOfWork_ValueChanged;
             // 
             // button_ClearAll
             // 
@@ -256,7 +249,6 @@
             button_ClearAll.TabIndex = 25;
             button_ClearAll.Text = "Очистити";
             button_ClearAll.UseVisualStyleBackColor = false;
-            button_ClearAll.Click += button_ClearAll_Click;
             // 
             // dateTimePicker_Schedule
             // 
@@ -265,7 +257,6 @@
             dateTimePicker_Schedule.Name = "dateTimePicker_Schedule";
             dateTimePicker_Schedule.Size = new Size(754, 27);
             dateTimePicker_Schedule.TabIndex = 9;
-            dateTimePicker_Schedule.ValueChanged += dateTimePicker_Schedule_ValueChanged;
             // 
             // button_ByComing
             // 
@@ -276,7 +267,6 @@
             button_ByComing.TabIndex = 26;
             button_ByComing.Text = "За надходженням";
             button_ByComing.UseVisualStyleBackColor = false;
-            button_ByComing.Click += button_ByComing_Click;
             // 
             // button_LikeSchedule
             // 
@@ -287,7 +277,6 @@
             button_LikeSchedule.TabIndex = 27;
             button_LikeSchedule.Text = "Розклад";
             button_LikeSchedule.UseVisualStyleBackColor = false;
-            button_LikeSchedule.Click += button_LikeSchedule_Click;
             // 
             // dataGridView_ByComing
             // 
@@ -340,7 +329,6 @@
             button_MySchedule.TabIndex = 29;
             button_MySchedule.Text = "Мій розклад";
             button_MySchedule.UseVisualStyleBackColor = false;
-            button_MySchedule.Click += button_MySchedule_Click;
             // 
             // AddRequestForm
             // 
@@ -371,7 +359,6 @@
             Controls.Add(label_infoSystemName);
             Name = "AddRequestForm";
             Text = "Form1";
-            FormClosed += Form1_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridView_Schedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ByComing).EndInit();
             ResumeLayout(false);
