@@ -10,14 +10,12 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
     {
         private int id;
         private string name;
-        private bool isAvailable;
 
         public Resourse() { }
-        public Resourse(int _id, string _name, bool _isAvailable)
+        public Resourse(int _id, string _name)
         {
             id = _id;
             name = _name;
-            isAvailable = _isAvailable;
         }
 
 
@@ -31,13 +29,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             get { return  name; }
             set { name = value; }
-        }
-
-        public bool ISAVAILABLE
-        {
-            get { return isAvailable; }
-            set { isAvailable = value; }
-        }
-    
+        }   
     }
 }

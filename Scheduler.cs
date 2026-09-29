@@ -10,77 +10,22 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
     {
         private Schedule schedule;
 
-        public Scheduler(Schedule _schedule)
+        public Scheduler() 
         {
-            this.schedule = _schedule;
+            schedule = new Schedule();
+            schedule.InitializeDataBase();
         }
 
-        public Conflictcs CheckConflict(Request newRequest)
+        public List<Request> GetRequests()
         {
-            foreach (var existing in schedule.GetAllRequest()
-                .Where(r=>r.DayOfReservation == newRequest.DayOfReservation))
-            {
-                if (existing.Resourse.ID == newRequest.Resourse.ID)
-                {
-                    if (existing.Interval.Start < newRequest.Interval.End && newRequest.Interval.Start < existing.Interval.End)
-                    {
-                        return new Conflictcs(existing, newRequest);
-                    }
-                }
-            }
-
-            return null;
+            return schedule.GetAllRequest();
         }
 
-        public TimeInterval FindAvailableSpot(int resursedId, DateTime data, TimeSpan duration)
+        public List<Resourse> GetResourses() 
         {
-            TimeSpan startWorkDay = new TimeSpan(8, 0, 0);
-            TimeSpan endWorkDay = new TimeSpan(19, 0, 0);
-
-            var resourceRequest = schedule.GetAllRequest()
-                .Where(r => r.Resourse.ID == resursedId && r.DayOfReservation.Date == data.Date)
-                .OrderBy(r => r.Interval.Start)
-                .ToList();
-
-            TimeSpan currentTimePoint = startWorkDay;
-
-            foreach (var resource in resourceRequest)
-            {
-                if(resource.Interval.Start - currentTimePoint >= duration)
-                {
-                    return new TimeInterval(currentTimePoint, currentTimePoint + duration);
-                }
-
-                if(resource.Interval.End > currentTimePoint)
-                {
-                    currentTimePoint= resource.Interval.End;
-                }
-            }
-
-            if (endWorkDay - currentTimePoint >= duration)
-            {
-                return new TimeInterval(currentTimePoint, currentTimePoint + duration);
-            }
-
-            return null;
+            return schedule.GetAllResourse();
         }
 
-        public (TimeInterval Interval, DateTime FoundDate)? FindNextAvailableSpotRecursive(int resourceId, DateTime startDate, TimeSpan duration, int maxDaysToCheck = 30)
-        {
-            for (int i = 0; i < maxDaysToCheck; i++)
-            {
-                DateTime currentCheckDate = startDate.AddDays(i);
 
-                TimeInterval spot = FindAvailableSpot(resourceId, currentCheckDate, duration);
-
-                if (spot != null)
-                {
-                    return (spot, currentCheckDate);
-                }
-            }
-
-
-             return null;
-        }
     }
 }

@@ -15,5 +15,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             InitializeComponent();
         }
+
+
     }
 }

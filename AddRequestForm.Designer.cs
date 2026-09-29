@@ -32,7 +32,7 @@
             label_infoChooseResource = new Label();
             comboBox_ResourseList = new ComboBox();
             label_infoDay = new Label();
-            TimePickerStartManual = new DateTimePicker();
+            TimePicker_StartOfWork = new DateTimePicker();
             label_infoTimeStartManual = new Label();
             monthCalendar = new MonthCalendar();
             button_AddRequest = new Button();
@@ -46,9 +46,7 @@
             comboBox_Priority = new ComboBox();
             richTextBox_request = new RichTextBox();
             label_infoReqRichText = new Label();
-            checkBox_ManualChoose = new CheckBox();
             label_infoInterval = new Label();
-            dateTimePicker_TimeOfWork = new DateTimePicker();
             button_ClearAll = new Button();
             dateTimePicker_Schedule = new DateTimePicker();
             button_ByComing = new Button();
@@ -60,6 +58,7 @@
             Col_PIB = new DataGridViewTextBoxColumn();
             Col_Resourse = new DataGridViewTextBoxColumn();
             button_MySchedule = new Button();
+            dateTimePicker_Interval = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Schedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ByComing).BeginInit();
             SuspendLayout();
@@ -99,20 +98,20 @@
             label_infoDay.TabIndex = 3;
             label_infoDay.Text = "Оберіть день";
             // 
-            // TimePickerStartManual
+            // TimePicker_StartOfWork
             // 
-            TimePickerStartManual.CustomFormat = "HH:mm";
-            TimePickerStartManual.Format = DateTimePickerFormat.Custom;
-            TimePickerStartManual.Location = new Point(489, 243);
-            TimePickerStartManual.Name = "TimePickerStartManual";
-            TimePickerStartManual.ShowUpDown = true;
-            TimePickerStartManual.Size = new Size(91, 27);
-            TimePickerStartManual.TabIndex = 5;
+            TimePicker_StartOfWork.CustomFormat = "HH:mm";
+            TimePicker_StartOfWork.Format = DateTimePickerFormat.Custom;
+            TimePicker_StartOfWork.Location = new Point(489, 83);
+            TimePicker_StartOfWork.Name = "TimePicker_StartOfWork";
+            TimePicker_StartOfWork.ShowUpDown = true;
+            TimePicker_StartOfWork.Size = new Size(91, 27);
+            TimePicker_StartOfWork.TabIndex = 5;
             // 
             // label_infoTimeStartManual
             // 
             label_infoTimeStartManual.AutoSize = true;
-            label_infoTimeStartManual.Location = new Point(485, 218);
+            label_infoTimeStartManual.Location = new Point(485, 58);
             label_infoTimeStartManual.Name = "label_infoTimeStartManual";
             label_infoTimeStartManual.Size = new Size(149, 20);
             label_infoTimeStartManual.TabIndex = 6;
@@ -211,34 +210,14 @@
             label_infoReqRichText.TabIndex = 16;
             label_infoReqRichText.Text = "Ваш запит на обладнання. Перевірте його та додайте";
             // 
-            // checkBox_ManualChoose
-            // 
-            checkBox_ManualChoose.AutoSize = true;
-            checkBox_ManualChoose.Location = new Point(485, 178);
-            checkBox_ManualChoose.Name = "checkBox_ManualChoose";
-            checkBox_ManualChoose.Size = new Size(227, 24);
-            checkBox_ManualChoose.TabIndex = 19;
-            checkBox_ManualChoose.Text = "Вибрати час початку вручну";
-            checkBox_ManualChoose.UseVisualStyleBackColor = true;
-            // 
             // label_infoInterval
             // 
             label_infoInterval.AutoSize = true;
-            label_infoInterval.Location = new Point(518, 58);
+            label_infoInterval.Location = new Point(489, 136);
             label_infoInterval.Name = "label_infoInterval";
             label_infoInterval.Size = new Size(142, 20);
             label_infoInterval.TabIndex = 21;
             label_infoInterval.Text = "Введіть час роботи";
-            // 
-            // dateTimePicker_TimeOfWork
-            // 
-            dateTimePicker_TimeOfWork.CustomFormat = "HH:mm";
-            dateTimePicker_TimeOfWork.Format = DateTimePickerFormat.Custom;
-            dateTimePicker_TimeOfWork.Location = new Point(541, 81);
-            dateTimePicker_TimeOfWork.Name = "dateTimePicker_TimeOfWork";
-            dateTimePicker_TimeOfWork.Size = new Size(103, 27);
-            dateTimePicker_TimeOfWork.TabIndex = 22;
-            dateTimePicker_TimeOfWork.Value = new DateTime(2026, 9, 26, 0, 0, 0, 0);
             // 
             // button_ClearAll
             // 
@@ -330,19 +309,29 @@
             button_MySchedule.Text = "Мій розклад";
             button_MySchedule.UseVisualStyleBackColor = false;
             // 
+            // dateTimePicker_Interval
+            // 
+            dateTimePicker_Interval.CustomFormat = "HH:mm";
+            dateTimePicker_Interval.Format = DateTimePickerFormat.Custom;
+            dateTimePicker_Interval.Location = new Point(489, 159);
+            dateTimePicker_Interval.Name = "dateTimePicker_Interval";
+            dateTimePicker_Interval.ShowUpDown = true;
+            dateTimePicker_Interval.Size = new Size(91, 27);
+            dateTimePicker_Interval.TabIndex = 30;
+            dateTimePicker_Interval.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
             // AddRequestForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1475, 579);
+            Controls.Add(dateTimePicker_Interval);
             Controls.Add(button_MySchedule);
             Controls.Add(dataGridView_ByComing);
             Controls.Add(button_LikeSchedule);
             Controls.Add(button_ByComing);
             Controls.Add(button_ClearAll);
-            Controls.Add(dateTimePicker_TimeOfWork);
             Controls.Add(label_infoInterval);
-            Controls.Add(checkBox_ManualChoose);
             Controls.Add(label_infoReqRichText);
             Controls.Add(richTextBox_request);
             Controls.Add(comboBox_Priority);
@@ -352,7 +341,7 @@
             Controls.Add(dateTimePicker_Schedule);
             Controls.Add(monthCalendar);
             Controls.Add(label_infoTimeStartManual);
-            Controls.Add(TimePickerStartManual);
+            Controls.Add(TimePicker_StartOfWork);
             Controls.Add(label_infoDay);
             Controls.Add(comboBox_ResourseList);
             Controls.Add(label_infoChooseResource);
@@ -371,7 +360,7 @@
         private Label label_infoChooseResource;
         private ComboBox comboBox_ResourseList;
         private Label label_infoDay;
-        private DateTimePicker TimePickerStartManual;
+        private DateTimePicker TimePicker_StartOfWork;
         private Label label_infoTimeStartManual;
         private MonthCalendar monthCalendar;
         private Button button_AddRequest;
@@ -382,9 +371,7 @@
         private ComboBox comboBox_Priority;
         private RichTextBox richTextBox_request;
         private Label label_infoReqRichText;
-        private CheckBox checkBox_ManualChoose;
         private Label label_infoInterval;
-        private DateTimePicker dateTimePicker_TimeOfWork;
         private DataGridViewTextBoxColumn ColNameOfPerson;
         private DataGridViewTextBoxColumn ColRole;
         private DataGridViewTextBoxColumn ColTypeOfWork;
@@ -399,5 +386,6 @@
         private DataGridViewTextBoxColumn Col_PIB;
         private DataGridViewTextBoxColumn Col_Resourse;
         private Button button_MySchedule;
+        private DateTimePicker dateTimePicker_Interval;
     }
 }
