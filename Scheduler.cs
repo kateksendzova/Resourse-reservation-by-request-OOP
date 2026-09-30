@@ -26,6 +26,35 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             return schedule.GetAllResourse();
         }
 
+        public Person GetOrCreatePerson(string name, UserRole role)
+        {
+            return schedule.GetOrCreatePerson(name, role);
+        }
+
+        public List<Request> GetRequestsByDate(DateTime date)
+        {
+            return schedule.GetAllRequest()
+                .Where(r => r.DayOfReservation.Date == date.Date)
+                .OrderBy(r => r.Interval.Start)
+                .ToList();
+        }
+
+        public List<Request> GetRequestsByArrival()
+        {
+            return schedule.GetAllRequest()
+                .OrderBy(r => r.CreationTime)
+                .ToList();
+        }
+
+        public List<Request> GetRequestsByPerson(string name, UserRole role)
+        {
+            return schedule.GetAllRequest()
+                .Where(r => r.Person.Name == name && r.Person.Role == role)
+                .OrderBy(r => r.DayOfReservation)
+                .ThenBy(r => r.Interval.Start)
+                .ToList();
+        }
+
         public Conflictcs CheckForConflictcs(Request newRequest)
         {
             var allRequest = schedule.GetAllRequest();

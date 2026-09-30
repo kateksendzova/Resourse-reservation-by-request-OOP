@@ -80,7 +80,6 @@
             comboBox_Resourse.Name = "comboBox_Resourse";
             comboBox_Resourse.Size = new Size(236, 28);
             comboBox_Resourse.TabIndex = 1;
-            comboBox_Resourse.SelectedIndexChanged += comboBox_Resourse_SelectedIndexChanged;
             // 
             // comboBox_TypeOfWorkDelete
             // 
@@ -89,7 +88,6 @@
             comboBox_TypeOfWorkDelete.Name = "comboBox_TypeOfWorkDelete";
             comboBox_TypeOfWorkDelete.Size = new Size(236, 28);
             comboBox_TypeOfWorkDelete.TabIndex = 2;
-            comboBox_TypeOfWorkDelete.SelectedIndexChanged += comboBox_TypeOfWorkDelete_SelectedIndexChanged;
             // 
             // monthCalendar_DeleteReq
             // 
@@ -97,7 +95,6 @@
             monthCalendar_DeleteReq.MinDate = new DateTime(2026, 9, 27, 0, 0, 0, 0);
             monthCalendar_DeleteReq.Name = "monthCalendar_DeleteReq";
             monthCalendar_DeleteReq.TabIndex = 3;
-            monthCalendar_DeleteReq.DateChanged += monthCalendar_DeleteReq_DateChanged;
             // 
             // dateTimePicker_StartDelete
             // 
@@ -116,7 +113,6 @@
             dateTimePicker_EndDelete.Name = "dateTimePicker_EndDelete";
             dateTimePicker_EndDelete.Size = new Size(60, 27);
             dateTimePicker_EndDelete.TabIndex = 5;
-            dateTimePicker_EndDelete.ValueChanged += dateTimePicker_EndDelete_ValueChanged;
             // 
             // label_infoDeleteRes
             // 
@@ -200,7 +196,6 @@
             button_DeleteReq.TabIndex = 14;
             button_DeleteReq.Text = "Видалити запит";
             button_DeleteReq.UseVisualStyleBackColor = false;
-            button_DeleteReq.Click += button_DeleteReq_Click;
             // 
             // button_ClearDel
             // 
@@ -212,7 +207,6 @@
             button_ClearDel.TabIndex = 15;
             button_ClearDel.Text = "Очистити";
             button_ClearDel.UseVisualStyleBackColor = false;
-            button_ClearDel.Click += button_ClearDel_Click;
             // 
             // button_ScheduleDel
             // 
@@ -224,7 +218,6 @@
             button_ScheduleDel.TabIndex = 16;
             button_ScheduleDel.Text = "Розклад";
             button_ScheduleDel.UseVisualStyleBackColor = false;
-            button_ScheduleDel.Click += button_ScheduleDel_Click;
             // 
             // button_ByComingDel
             // 
@@ -236,7 +229,6 @@
             button_ByComingDel.TabIndex = 17;
             button_ByComingDel.Text = "За надходженням";
             button_ByComingDel.UseVisualStyleBackColor = false;
-            button_ByComingDel.Click += button_ByComingDel_Click;
             // 
             // dataGridView1
             // 
@@ -340,7 +332,6 @@
             button_MyScheduleDel.TabIndex = 21;
             button_MyScheduleDel.Text = "Мій розклад";
             button_MyScheduleDel.UseVisualStyleBackColor = false;
-            button_MyScheduleDel.Click += button_MyScheduleDel_Click;
             // 
             // DeleteRequestForm
             // 
@@ -371,7 +362,6 @@
             Controls.Add(label_infoDeleteReq);
             Name = "DeleteRequestForm";
             Text = "DeleteRequestForm";
-            Load += DeleteRequestForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ScheduleForDel).EndInit();
             ResumeLayout(false);

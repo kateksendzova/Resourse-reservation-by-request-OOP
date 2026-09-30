@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
@@ -36,6 +37,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 			dayOfReservation = _dayOfReservation;
         }
 
+		[Key]
 		public int IdRequest
 		{
 			get { return idRequest; }

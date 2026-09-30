@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
@@ -18,7 +19,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             name = _name;
         }
 
-
+        [Key]
         public int ID
         {
             get { return id; }

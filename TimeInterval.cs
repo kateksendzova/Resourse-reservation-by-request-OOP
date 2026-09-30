@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
+    [Owned]
     internal class TimeInterval
     {
+        [NotMapped]
         public TimeSpan Start { get; set; }
+
+        [NotMapped]
         public TimeSpan End { get; set; }
 
         public string StartString

@@ -133,6 +133,7 @@
             button_AddRequest.TabIndex = 11;
             button_AddRequest.Text = "Додати запит";
             button_AddRequest.UseVisualStyleBackColor = false;
+            button_AddRequest.Click += button_AddRequest_Click;
             // 
             // dataGridView_Schedule
             // 
@@ -318,7 +319,6 @@
             dateTimePicker_Interval.ShowUpDown = true;
             dateTimePicker_Interval.Size = new Size(91, 27);
             dateTimePicker_Interval.TabIndex = 30;
-            dateTimePicker_Interval.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // AddRequestForm
             // 
@@ -348,6 +348,7 @@
             Controls.Add(label_infoSystemName);
             Name = "AddRequestForm";
             Text = "Form1";
+            Load += AddRequestForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_Schedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ByComing).EndInit();
             ResumeLayout(false);

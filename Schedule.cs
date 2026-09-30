@@ -48,7 +48,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 return context.Requests
                     .Include(r => r.Person)
                     .Include(r => r.Resourse)
-                    .Include(r => r.Interval)
                     .ToList();
             }
         }
@@ -61,11 +60,30 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
         }
 
+        public Person GetOrCreatePerson(string name, UserRole role)
+        {
+            using (var context = new AppDbContext())
+            {
+                var person = context.Persons.FirstOrDefault(p => p.Name == name && p.Role == role);
+
+                if (person == null)
+                {
+                    person = new Person(0, name, role);
+                    context.Persons.Add(person);
+                    context.SaveChanges();
+                }
+
+                return person;
+            }
+        }
+
         public void AddRequestToBD(Request newRequest)
         {
             using (var context = new AppDbContext())
             {
                 context.Resourses.Attach(newRequest.Resourse);
+                context.Persons.Attach(newRequest.Person);
+
                 context.Requests.Add(newRequest);
                 context.SaveChanges();
             }
