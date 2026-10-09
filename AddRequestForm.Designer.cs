@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddRequestForm));
             label_infoSystemName = new Label();
             label_infoChooseResource = new Label();
-            comboBox_ResourseList = new ComboBox();
             label_infoDay = new Label();
             TimePicker_StartOfWork = new DateTimePicker();
             label_infoTimeStartManual = new Label();
@@ -59,47 +59,59 @@
             Col_Resourse = new DataGridViewTextBoxColumn();
             button_MySchedule = new Button();
             dateTimePicker_Interval = new DateTimePicker();
+            panel_Menu = new Panel();
+            pictureBox_PanelSchedule = new PictureBox();
+            button_PanelSchedule = new Button();
+            pictureBox_AvatarAssistant = new PictureBox();
+            pictureBox_AvatarProfesor = new PictureBox();
+            pictureBox_AvatarStudent = new PictureBox();
+            pictureBox_PanelMySchedule = new PictureBox();
+            pictureBox_PanelMakeReq = new PictureBox();
+            pictureBox_Logo = new PictureBox();
+            label_RoleName = new Label();
+            button2 = new Button();
+            button_PanelMySchedule = new Button();
+            button_PanelMane = new Button();
+            listBox_Resources = new ListBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Schedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ByComing).BeginInit();
+            panel_Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarAssistant).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarProfesor).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarStudent).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMakeReq).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).BeginInit();
             SuspendLayout();
             // 
             // label_infoSystemName
             // 
             label_infoSystemName.AutoSize = true;
-            label_infoSystemName.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(251, 5);
+            label_infoSystemName.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label_infoSystemName.Location = new Point(995, 9);
             label_infoSystemName.Name = "label_infoSystemName";
-            label_infoSystemName.Size = new Size(261, 19);
+            label_infoSystemName.Size = new Size(283, 22);
             label_infoSystemName.TabIndex = 0;
             label_infoSystemName.Text = "Додати запит на обладнання";
             // 
             // label_infoChooseResource
             // 
             label_infoChooseResource.AutoSize = true;
-            label_infoChooseResource.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoChooseResource.Location = new Point(64, 56);
+            label_infoChooseResource.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoChooseResource.Location = new Point(562, 77);
             label_infoChooseResource.Name = "label_infoChooseResource";
-            label_infoChooseResource.Size = new Size(163, 20);
+            label_infoChooseResource.Size = new Size(185, 21);
             label_infoChooseResource.TabIndex = 1;
             label_infoChooseResource.Text = "Оберіть обладнання";
-            // 
-            // comboBox_ResourseList
-            // 
-            comboBox_ResourseList.BackColor = Color.LightCyan;
-            comboBox_ResourseList.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            comboBox_ResourseList.FormattingEnabled = true;
-            comboBox_ResourseList.Location = new Point(22, 79);
-            comboBox_ResourseList.Name = "comboBox_ResourseList";
-            comboBox_ResourseList.Size = new Size(238, 28);
-            comboBox_ResourseList.TabIndex = 2;
             // 
             // label_infoDay
             // 
             label_infoDay.AutoSize = true;
-            label_infoDay.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoDay.Location = new Point(326, 56);
+            label_infoDay.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoDay.Location = new Point(484, 387);
             label_infoDay.Name = "label_infoDay";
-            label_infoDay.Size = new Size(107, 20);
+            label_infoDay.Size = new Size(121, 21);
             label_infoDay.TabIndex = 3;
             label_infoDay.Text = "Оберіть день";
             // 
@@ -107,29 +119,29 @@
             // 
             TimePicker_StartOfWork.CalendarMonthBackground = Color.LightCyan;
             TimePicker_StartOfWork.CustomFormat = "HH:mm";
-            TimePicker_StartOfWork.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            TimePicker_StartOfWork.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             TimePicker_StartOfWork.Format = DateTimePickerFormat.Custom;
-            TimePicker_StartOfWork.Location = new Point(499, 83);
+            TimePicker_StartOfWork.Location = new Point(765, 410);
             TimePicker_StartOfWork.Name = "TimePicker_StartOfWork";
             TimePicker_StartOfWork.ShowUpDown = true;
-            TimePicker_StartOfWork.Size = new Size(91, 26);
+            TimePicker_StartOfWork.Size = new Size(91, 28);
             TimePicker_StartOfWork.TabIndex = 5;
             // 
             // label_infoTimeStartManual
             // 
             label_infoTimeStartManual.AutoSize = true;
-            label_infoTimeStartManual.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoTimeStartManual.Location = new Point(495, 58);
+            label_infoTimeStartManual.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoTimeStartManual.Location = new Point(752, 387);
             label_infoTimeStartManual.Name = "label_infoTimeStartManual";
-            label_infoTimeStartManual.Size = new Size(161, 20);
+            label_infoTimeStartManual.Size = new Size(183, 21);
             label_infoTimeStartManual.TabIndex = 6;
             label_infoTimeStartManual.Text = "Оберіть час початку";
             // 
             // monthCalendar
             // 
             monthCalendar.BackColor = Color.LightCyan;
-            monthCalendar.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            monthCalendar.Location = new Point(284, 79);
+            monthCalendar.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            monthCalendar.Location = new Point(448, 411);
             monthCalendar.MinDate = new DateTime(2026, 9, 27, 0, 0, 0, 0);
             monthCalendar.Name = "monthCalendar";
             monthCalendar.TabIndex = 7;
@@ -137,11 +149,11 @@
             // button_AddRequest
             // 
             button_AddRequest.BackColor = Color.Teal;
-            button_AddRequest.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button_AddRequest.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_AddRequest.ForeColor = Color.AliceBlue;
-            button_AddRequest.Location = new Point(615, 523);
+            button_AddRequest.Location = new Point(1695, 649);
             button_AddRequest.Name = "button_AddRequest";
-            button_AddRequest.Size = new Size(94, 50);
+            button_AddRequest.Size = new Size(148, 58);
             button_AddRequest.TabIndex = 11;
             button_AddRequest.Text = "Додати запит";
             button_AddRequest.UseVisualStyleBackColor = false;
@@ -154,10 +166,10 @@
             dataGridView_Schedule.BackgroundColor = Color.LightCyan;
             dataGridView_Schedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Schedule.Columns.AddRange(new DataGridViewColumn[] { colTime, colResource, ColNameOfPerson, ColRole, ColTypeOfWork });
-            dataGridView_Schedule.Location = new Point(739, 87);
+            dataGridView_Schedule.Location = new Point(48, 430);
             dataGridView_Schedule.Name = "dataGridView_Schedule";
             dataGridView_Schedule.RowHeadersWidth = 51;
-            dataGridView_Schedule.Size = new Size(754, 486);
+            dataGridView_Schedule.Size = new Size(215, 486);
             dataGridView_Schedule.TabIndex = 12;
             // 
             // colTime
@@ -193,60 +205,60 @@
             // label_infoPriority
             // 
             label_infoPriority.AutoSize = true;
-            label_infoPriority.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoPriority.Location = new Point(103, 155);
+            label_infoPriority.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoPriority.Location = new Point(1044, 77);
             label_infoPriority.Name = "label_infoPriority";
-            label_infoPriority.Size = new Size(91, 20);
+            label_infoPriority.Size = new Size(105, 21);
             label_infoPriority.TabIndex = 13;
             label_infoPriority.Text = "Тип роботи";
             // 
             // comboBox_Priority
             // 
             comboBox_Priority.BackColor = Color.LightCyan;
-            comboBox_Priority.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            comboBox_Priority.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             comboBox_Priority.FormattingEnabled = true;
-            comboBox_Priority.Location = new Point(22, 178);
+            comboBox_Priority.Location = new Point(947, 102);
             comboBox_Priority.Name = "comboBox_Priority";
-            comboBox_Priority.Size = new Size(238, 28);
+            comboBox_Priority.Size = new Size(293, 29);
             comboBox_Priority.TabIndex = 14;
             // 
             // richTextBox_request
             // 
             richTextBox_request.BackColor = Color.LightCyan;
-            richTextBox_request.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            richTextBox_request.Location = new Point(22, 332);
+            richTextBox_request.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            richTextBox_request.Location = new Point(1344, 133);
             richTextBox_request.Name = "richTextBox_request";
-            richTextBox_request.Size = new Size(687, 185);
+            richTextBox_request.Size = new Size(499, 491);
             richTextBox_request.TabIndex = 15;
             richTextBox_request.Text = "";
             // 
             // label_infoReqRichText
             // 
             label_infoReqRichText.AutoSize = true;
-            label_infoReqRichText.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 204);
-            label_infoReqRichText.Location = new Point(22, 312);
+            label_infoReqRichText.Font = new Font("Century Gothic", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 204);
+            label_infoReqRichText.Location = new Point(1356, 109);
             label_infoReqRichText.Name = "label_infoReqRichText";
-            label_infoReqRichText.Size = new Size(413, 18);
+            label_infoReqRichText.Size = new Size(475, 21);
             label_infoReqRichText.TabIndex = 16;
             label_infoReqRichText.Text = "Ваш запит на обладнання. Перевірте його та додайте";
             // 
             // label_infoInterval
             // 
             label_infoInterval.AutoSize = true;
-            label_infoInterval.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoInterval.Location = new Point(499, 136);
+            label_infoInterval.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoInterval.Location = new Point(752, 464);
             label_infoInterval.Name = "label_infoInterval";
-            label_infoInterval.Size = new Size(150, 20);
+            label_infoInterval.Size = new Size(170, 21);
             label_infoInterval.TabIndex = 21;
             label_infoInterval.Text = "Введіть час роботи";
             // 
             // button_ClearAll
             // 
             button_ClearAll.BackColor = Color.AliceBlue;
-            button_ClearAll.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button_ClearAll.Location = new Point(515, 523);
+            button_ClearAll.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            button_ClearAll.Location = new Point(1746, 895);
             button_ClearAll.Name = "button_ClearAll";
-            button_ClearAll.Size = new Size(94, 50);
+            button_ClearAll.Size = new Size(129, 58);
             button_ClearAll.TabIndex = 25;
             button_ClearAll.Text = "Очистити";
             button_ClearAll.UseVisualStyleBackColor = false;
@@ -255,16 +267,16 @@
             // 
             dateTimePicker_Schedule.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_Schedule.Format = DateTimePickerFormat.Short;
-            dateTimePicker_Schedule.Location = new Point(739, 59);
+            dateTimePicker_Schedule.Location = new Point(28, 494);
             dateTimePicker_Schedule.Name = "dateTimePicker_Schedule";
-            dateTimePicker_Schedule.Size = new Size(754, 26);
+            dateTimePicker_Schedule.Size = new Size(315, 26);
             dateTimePicker_Schedule.TabIndex = 9;
             // 
             // button_ByComing
             // 
             button_ByComing.BackColor = Color.AliceBlue;
             button_ByComing.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button_ByComing.Location = new Point(1117, 1);
+            button_ByComing.Location = new Point(28, 513);
             button_ByComing.Name = "button_ByComing";
             button_ByComing.Size = new Size(376, 29);
             button_ByComing.TabIndex = 26;
@@ -275,7 +287,7 @@
             // 
             button_LikeSchedule.BackColor = Color.AliceBlue;
             button_LikeSchedule.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button_LikeSchedule.Location = new Point(739, 1);
+            button_LikeSchedule.Location = new Point(48, 548);
             button_LikeSchedule.Name = "button_LikeSchedule";
             button_LikeSchedule.Size = new Size(379, 29);
             button_LikeSchedule.TabIndex = 27;
@@ -289,10 +301,10 @@
             dataGridView_ByComing.BackgroundColor = Color.LightCyan;
             dataGridView_ByComing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_ByComing.Columns.AddRange(new DataGridViewColumn[] { Col_TimeOfComing, Col_DayOdReserv, Col_Interval, Col_PIB, Col_Resourse });
-            dataGridView_ByComing.Location = new Point(739, 59);
+            dataGridView_ByComing.Location = new Point(50, 384);
             dataGridView_ByComing.Name = "dataGridView_ByComing";
             dataGridView_ByComing.RowHeadersWidth = 51;
-            dataGridView_ByComing.Size = new Size(754, 514);
+            dataGridView_ByComing.Size = new Size(175, 514);
             dataGridView_ByComing.TabIndex = 28;
             // 
             // Col_TimeOfComing
@@ -329,9 +341,9 @@
             // 
             button_MySchedule.BackColor = Color.AliceBlue;
             button_MySchedule.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button_MySchedule.Location = new Point(739, 29);
+            button_MySchedule.Location = new Point(21, 491);
             button_MySchedule.Name = "button_MySchedule";
-            button_MySchedule.Size = new Size(754, 29);
+            button_MySchedule.Size = new Size(245, 29);
             button_MySchedule.TabIndex = 29;
             button_MySchedule.Text = "Мій розклад";
             button_MySchedule.UseVisualStyleBackColor = false;
@@ -340,24 +352,203 @@
             // 
             dateTimePicker_Interval.CalendarMonthBackground = Color.LightCyan;
             dateTimePicker_Interval.CustomFormat = "HH:mm";
-            dateTimePicker_Interval.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_Interval.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_Interval.Format = DateTimePickerFormat.Custom;
-            dateTimePicker_Interval.Location = new Point(499, 159);
+            dateTimePicker_Interval.Location = new Point(765, 488);
             dateTimePicker_Interval.Name = "dateTimePicker_Interval";
             dateTimePicker_Interval.ShowUpDown = true;
-            dateTimePicker_Interval.Size = new Size(91, 26);
+            dateTimePicker_Interval.Size = new Size(91, 28);
             dateTimePicker_Interval.TabIndex = 30;
+            // 
+            // panel_Menu
+            // 
+            panel_Menu.BackColor = Color.DarkCyan;
+            panel_Menu.Controls.Add(pictureBox_PanelSchedule);
+            panel_Menu.Controls.Add(button_PanelSchedule);
+            panel_Menu.Controls.Add(button_LikeSchedule);
+            panel_Menu.Controls.Add(dataGridView_ByComing);
+            panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
+            panel_Menu.Controls.Add(pictureBox_AvatarProfesor);
+            panel_Menu.Controls.Add(pictureBox_AvatarStudent);
+            panel_Menu.Controls.Add(pictureBox_PanelMySchedule);
+            panel_Menu.Controls.Add(pictureBox_PanelMakeReq);
+            panel_Menu.Controls.Add(pictureBox_Logo);
+            panel_Menu.Controls.Add(label_RoleName);
+            panel_Menu.Controls.Add(dataGridView_Schedule);
+            panel_Menu.Controls.Add(dateTimePicker_Schedule);
+            panel_Menu.Controls.Add(button2);
+            panel_Menu.Controls.Add(button_PanelMySchedule);
+            panel_Menu.Controls.Add(button_PanelMane);
+            panel_Menu.Dock = DockStyle.Left;
+            panel_Menu.Location = new Point(0, 0);
+            panel_Menu.Name = "panel_Menu";
+            panel_Menu.Size = new Size(323, 1033);
+            panel_Menu.TabIndex = 31;
+            // 
+            // pictureBox_PanelSchedule
+            // 
+            pictureBox_PanelSchedule.Image = (Image)resources.GetObject("pictureBox_PanelSchedule.Image");
+            pictureBox_PanelSchedule.InitialImage = (Image)resources.GetObject("pictureBox_PanelSchedule.InitialImage");
+            pictureBox_PanelSchedule.Location = new Point(49, 258);
+            pictureBox_PanelSchedule.Name = "pictureBox_PanelSchedule";
+            pictureBox_PanelSchedule.Size = new Size(39, 34);
+            pictureBox_PanelSchedule.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_PanelSchedule.TabIndex = 39;
+            pictureBox_PanelSchedule.TabStop = false;
+            // 
+            // button_PanelSchedule
+            // 
+            button_PanelSchedule.FlatAppearance.BorderSize = 0;
+            button_PanelSchedule.FlatStyle = FlatStyle.Flat;
+            button_PanelSchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button_PanelSchedule.ForeColor = Color.AliceBlue;
+            button_PanelSchedule.Location = new Point(87, 259);
+            button_PanelSchedule.Name = "button_PanelSchedule";
+            button_PanelSchedule.Size = new Size(181, 33);
+            button_PanelSchedule.TabIndex = 38;
+            button_PanelSchedule.Text = "Загальний розклад";
+            button_PanelSchedule.TextAlign = ContentAlignment.MiddleRight;
+            button_PanelSchedule.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox_AvatarAssistant
+            // 
+            pictureBox_AvatarAssistant.Image = (Image)resources.GetObject("pictureBox_AvatarAssistant.Image");
+            pictureBox_AvatarAssistant.InitialImage = (Image)resources.GetObject("pictureBox_AvatarAssistant.InitialImage");
+            pictureBox_AvatarAssistant.Location = new Point(14, 760);
+            pictureBox_AvatarAssistant.Name = "pictureBox_AvatarAssistant";
+            pictureBox_AvatarAssistant.Size = new Size(46, 49);
+            pictureBox_AvatarAssistant.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_AvatarAssistant.TabIndex = 37;
+            pictureBox_AvatarAssistant.TabStop = false;
+            // 
+            // pictureBox_AvatarProfesor
+            // 
+            pictureBox_AvatarProfesor.Image = (Image)resources.GetObject("pictureBox_AvatarProfesor.Image");
+            pictureBox_AvatarProfesor.InitialImage = (Image)resources.GetObject("pictureBox_AvatarProfesor.InitialImage");
+            pictureBox_AvatarProfesor.Location = new Point(14, 834);
+            pictureBox_AvatarProfesor.Name = "pictureBox_AvatarProfesor";
+            pictureBox_AvatarProfesor.Size = new Size(46, 49);
+            pictureBox_AvatarProfesor.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_AvatarProfesor.TabIndex = 36;
+            pictureBox_AvatarProfesor.TabStop = false;
+            // 
+            // pictureBox_AvatarStudent
+            // 
+            pictureBox_AvatarStudent.Image = (Image)resources.GetObject("pictureBox_AvatarStudent.Image");
+            pictureBox_AvatarStudent.InitialImage = (Image)resources.GetObject("pictureBox_AvatarStudent.InitialImage");
+            pictureBox_AvatarStudent.Location = new Point(14, 904);
+            pictureBox_AvatarStudent.Name = "pictureBox_AvatarStudent";
+            pictureBox_AvatarStudent.Size = new Size(46, 49);
+            pictureBox_AvatarStudent.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_AvatarStudent.TabIndex = 35;
+            pictureBox_AvatarStudent.TabStop = false;
+            // 
+            // pictureBox_PanelMySchedule
+            // 
+            pictureBox_PanelMySchedule.Image = (Image)resources.GetObject("pictureBox_PanelMySchedule.Image");
+            pictureBox_PanelMySchedule.InitialImage = (Image)resources.GetObject("pictureBox_PanelMySchedule.InitialImage");
+            pictureBox_PanelMySchedule.Location = new Point(49, 191);
+            pictureBox_PanelMySchedule.Name = "pictureBox_PanelMySchedule";
+            pictureBox_PanelMySchedule.Size = new Size(42, 41);
+            pictureBox_PanelMySchedule.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_PanelMySchedule.TabIndex = 34;
+            pictureBox_PanelMySchedule.TabStop = false;
+            // 
+            // pictureBox_PanelMakeReq
+            // 
+            pictureBox_PanelMakeReq.Image = (Image)resources.GetObject("pictureBox_PanelMakeReq.Image");
+            pictureBox_PanelMakeReq.InitialImage = (Image)resources.GetObject("pictureBox_PanelMakeReq.InitialImage");
+            pictureBox_PanelMakeReq.Location = new Point(47, 126);
+            pictureBox_PanelMakeReq.Name = "pictureBox_PanelMakeReq";
+            pictureBox_PanelMakeReq.Size = new Size(42, 41);
+            pictureBox_PanelMakeReq.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_PanelMakeReq.TabIndex = 33;
+            pictureBox_PanelMakeReq.TabStop = false;
+            // 
+            // pictureBox_Logo
+            // 
+            pictureBox_Logo.Image = (Image)resources.GetObject("pictureBox_Logo.Image");
+            pictureBox_Logo.InitialImage = (Image)resources.GetObject("pictureBox_Logo.InitialImage");
+            pictureBox_Logo.Location = new Point(42, 63);
+            pictureBox_Logo.Name = "pictureBox_Logo";
+            pictureBox_Logo.Size = new Size(46, 49);
+            pictureBox_Logo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_Logo.TabIndex = 32;
+            pictureBox_Logo.TabStop = false;
+            // 
+            // label_RoleName
+            // 
+            label_RoleName.AutoSize = true;
+            label_RoleName.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_RoleName.ForeColor = Color.AliceBlue;
+            label_RoleName.Location = new Point(62, 919);
+            label_RoleName.Name = "label_RoleName";
+            label_RoleName.Size = new Size(37, 20);
+            label_RoleName.TabIndex = 4;
+            label_RoleName.Text = "Ім'я";
+            // 
+            // button2
+            // 
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button2.ForeColor = Color.AliceBlue;
+            button2.Location = new Point(94, 130);
+            button2.Name = "button2";
+            button2.Size = new Size(152, 33);
+            button2.TabIndex = 3;
+            button2.Text = "Створити запит";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button_PanelMySchedule
+            // 
+            button_PanelMySchedule.FlatAppearance.BorderSize = 0;
+            button_PanelMySchedule.FlatStyle = FlatStyle.Flat;
+            button_PanelMySchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button_PanelMySchedule.ForeColor = Color.AliceBlue;
+            button_PanelMySchedule.Location = new Point(88, 195);
+            button_PanelMySchedule.Name = "button_PanelMySchedule";
+            button_PanelMySchedule.Size = new Size(128, 33);
+            button_PanelMySchedule.TabIndex = 2;
+            button_PanelMySchedule.Text = "Мій розклад";
+            button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
+            button_PanelMySchedule.UseVisualStyleBackColor = true;
+            // 
+            // button_PanelMane
+            // 
+            button_PanelMane.FlatAppearance.BorderSize = 0;
+            button_PanelMane.FlatStyle = FlatStyle.Flat;
+            button_PanelMane.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button_PanelMane.ForeColor = Color.AliceBlue;
+            button_PanelMane.Location = new Point(92, 71);
+            button_PanelMane.Name = "button_PanelMane";
+            button_PanelMane.Size = new Size(87, 33);
+            button_PanelMane.TabIndex = 1;
+            button_PanelMane.Text = "Головна";
+            button_PanelMane.TextAlign = ContentAlignment.MiddleRight;
+            button_PanelMane.UseVisualStyleBackColor = true;
+            // 
+            // listBox_Resources
+            // 
+            listBox_Resources.BackColor = Color.LightCyan;
+            listBox_Resources.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            listBox_Resources.FormattingEnabled = true;
+            listBox_Resources.ItemHeight = 21;
+            listBox_Resources.Location = new Point(448, 102);
+            listBox_Resources.Name = "listBox_Resources";
+            listBox_Resources.Size = new Size(408, 277);
+            listBox_Resources.TabIndex = 32;
             // 
             // AddRequestForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
-            ClientSize = new Size(1508, 588);
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(listBox_Resources);
             Controls.Add(dateTimePicker_Interval);
             Controls.Add(button_MySchedule);
-            Controls.Add(dataGridView_ByComing);
-            Controls.Add(button_LikeSchedule);
             Controls.Add(button_ByComing);
             Controls.Add(button_ClearAll);
             Controls.Add(label_infoInterval);
@@ -365,21 +556,29 @@
             Controls.Add(richTextBox_request);
             Controls.Add(comboBox_Priority);
             Controls.Add(label_infoPriority);
-            Controls.Add(dataGridView_Schedule);
             Controls.Add(button_AddRequest);
-            Controls.Add(dateTimePicker_Schedule);
             Controls.Add(monthCalendar);
             Controls.Add(label_infoTimeStartManual);
             Controls.Add(TimePicker_StartOfWork);
             Controls.Add(label_infoDay);
-            Controls.Add(comboBox_ResourseList);
             Controls.Add(label_infoChooseResource);
             Controls.Add(label_infoSystemName);
+            Controls.Add(panel_Menu);
             Name = "AddRequestForm";
-            Text = "AddRequest";
+            Text = "Створити запит";
+            WindowState = FormWindowState.Maximized;
             Load += AddRequestForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_Schedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ByComing).EndInit();
+            panel_Menu.ResumeLayout(false);
+            panel_Menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarAssistant).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarProfesor).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarStudent).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMakeReq).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -388,7 +587,6 @@
 
         private Label label_infoSystemName;
         private Label label_infoChooseResource;
-        private ComboBox comboBox_ResourseList;
         private Label label_infoDay;
         private DateTimePicker TimePicker_StartOfWork;
         private Label label_infoTimeStartManual;
@@ -417,5 +615,19 @@
         private DataGridViewTextBoxColumn Col_Resourse;
         private Button button_MySchedule;
         private DateTimePicker dateTimePicker_Interval;
+        private Panel panel_Menu;
+        private Button button_PanelMane;
+        private Button button2;
+        private Button button_PanelMySchedule;
+        private Label label_RoleName;
+        private PictureBox pictureBox_Logo;
+        private PictureBox pictureBox_PanelMakeReq;
+        private PictureBox pictureBox_PanelMySchedule;
+        private PictureBox pictureBox_AvatarStudent;
+        private PictureBox pictureBox_AvatarAssistant;
+        private PictureBox pictureBox_AvatarProfesor;
+        private Button button_PanelSchedule;
+        private PictureBox pictureBox_PanelSchedule;
+        private ListBox listBox_Resources;
     }
 }

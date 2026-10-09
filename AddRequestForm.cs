@@ -34,7 +34,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void AddRequestForm_Load(object sender, EventArgs e)
         {
-            LoadResourcesToComboBox();
+            LoadResourcesToListBox();
             LoadTypeOfWorkToComboBox();
 
             monthCalendar.MaxSelectionCount = 1;
@@ -45,7 +45,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             ResetInputs();
 
-            comboBox_ResourseList.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
+            listBox_Resources.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
             comboBox_Priority.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
             monthCalendar.DateChanged += (s, args) => UpdateRequestPreview();
             TimePicker_StartOfWork.ValueChanged += (s, args) => UpdateRequestPreview();
@@ -55,13 +55,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             ShowScheduleView();
         }
 
-        private void LoadResourcesToComboBox()
+        private void LoadResourcesToListBox()
         {
             List<Resourse> resources = scheduler.GetResourses();
 
-            comboBox_ResourseList.DataSource = resources;
-            comboBox_ResourseList.DisplayMember = "NAME";
-            comboBox_ResourseList.ValueMember = "ID";
+            listBox_Resources.DataSource = resources;
+            listBox_Resources.DisplayMember = "NAME";
+            listBox_Resources.ValueMember = "ID";
         }
 
         private void LoadTypeOfWorkToComboBox()
@@ -134,8 +134,8 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void ResetInputs()
         {
-            if (comboBox_ResourseList.Items.Count > 0)
-                comboBox_ResourseList.SelectedIndex = 0;
+            if (listBox_Resources.Items.Count > 0)
+                listBox_Resources.SelectedIndex = 0;
 
             if (comboBox_Priority.Items.Count > 0)
                 comboBox_Priority.SelectedIndex = 0;
@@ -147,7 +147,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void UpdateRequestPreview()
         {
-            var resourse = comboBox_ResourseList.SelectedItem as Resourse;
+            var resourse = listBox_Resources.SelectedItem as Resourse;
             if (resourse == null || comboBox_Priority.SelectedItem == null)
             {
                 richTextBox_request.Clear();
@@ -161,13 +161,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             TimeSpan end = start + duration;
 
             var sb = new StringBuilder();
-            sb.AppendLine($"Користувач: {currentName}");
-            sb.AppendLine($"Роль: {RoleToText(currentRole)}");
-            sb.AppendLine($"Обладнання: {resourse.NAME}");
-            sb.AppendLine($"Дата: {date:dd.MM.yyyy}");
-            sb.AppendLine($"Час: {start:hh\\:mm} - {end:hh\\:mm}");
-            sb.AppendLine($"Тривалість: {(int)duration.TotalHours} год {duration.Minutes} хв");
-            sb.AppendLine($"Тип роботи: {TypeOfWorkToText(type)}");
+            sb.AppendLine($"Користувач: {currentName}\n");
+            sb.AppendLine($"Роль: {RoleToText(currentRole)}\n");
+            sb.AppendLine($"Обладнання: {resourse.NAME} \n");
+            sb.AppendLine($"Дата: {date:dd.MM.yyyy} \n");
+            sb.AppendLine($"Час: {start:hh\\:mm} - {end:hh\\:mm}\n");
+            sb.AppendLine($"Тривалість: {(int)duration.TotalHours} год {duration.Minutes} хв\n");
+            sb.AppendLine($"Тип роботи: {TypeOfWorkToText(type)} \n");
 
             richTextBox_request.Text = sb.ToString();
         }
@@ -189,7 +189,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void button_AddRequest_Click(object sender, EventArgs e)
         {
-            var resourse = comboBox_ResourseList.SelectedItem as Resourse;
+            var resourse = listBox_Resources.SelectedItem as Resourse;
             if (resourse == null || comboBox_Priority.SelectedItem == null)
             {
                 MessageBox.Show("Оберіть обладнання та тип роботи.", "Попередження",
