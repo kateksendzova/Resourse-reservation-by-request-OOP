@@ -376,7 +376,7 @@
             Controls.Add(label_infoChooseResource);
             Controls.Add(label_infoSystemName);
             Name = "AddRequestForm";
-            Text = "Form1";
+            Text = "AddRequest";
             Load += AddRequestForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_Schedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ByComing).EndInit();
