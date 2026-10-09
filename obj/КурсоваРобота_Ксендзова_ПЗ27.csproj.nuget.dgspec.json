@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\useful files\\university\\2 курс\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj": {}
+    "D:\\useful files\\university\\2_curs\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj": {}
   },
   "projects": {
-    "D:\\useful files\\university\\2 курс\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj": {
+    "D:\\useful files\\university\\2_curs\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\useful files\\university\\2 курс\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj",
+        "projectUniqueName": "D:\\useful files\\university\\2_curs\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj",
         "projectName": "КурсоваРобота_Ксендзова_ПЗ27",
-        "projectPath": "D:\\useful files\\university\\2 курс\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj",
+        "projectPath": "D:\\useful files\\university\\2_curs\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "D:\\useful files\\university\\2 курс\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\obj\\",
+        "outputPath": "D:\\useful files\\university\\2_curs\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

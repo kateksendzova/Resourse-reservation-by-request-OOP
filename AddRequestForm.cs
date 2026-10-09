@@ -29,6 +29,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             button_ByComing.Click += button_ByComing_Click;
             button_MySchedule.Click += button_MySchedule_Click;
             dateTimePicker_Schedule.ValueChanged += (s, e) => LoadScheduleForDate();
+            this.FormClosed += (s, e) => Application.Exit();
         }
 
         private void AddRequestForm_Load(object sender, EventArgs e)

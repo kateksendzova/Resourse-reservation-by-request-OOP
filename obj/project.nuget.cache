@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OAf3PRaw/JA=",
+  "dgSpecHash": "BbXtF3FJdVM=",
   "success": true,
-  "projectFilePath": "D:\\useful files\\university\\2 курс\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj",
+  "projectFilePath": "D:\\useful files\\university\\2_curs\\1_term\\OOP_Курсова\\КурсоваРобота_Ксендзова_ПЗ27\\КурсоваРобота_Ксендзова_ПЗ27.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

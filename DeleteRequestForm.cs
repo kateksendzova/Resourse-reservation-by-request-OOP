@@ -16,5 +16,10 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             InitializeComponent();
         }
+
+        private void button_DeleteReq_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

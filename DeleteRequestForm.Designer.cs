@@ -190,18 +190,19 @@
             // 
             button_DeleteReq.BackColor = Color.FromArgb(192, 255, 192);
             button_DeleteReq.ForeColor = SystemColors.ActiveCaptionText;
-            button_DeleteReq.Location = new Point(376, 544);
+            button_DeleteReq.Location = new Point(515, 544);
             button_DeleteReq.Name = "button_DeleteReq";
             button_DeleteReq.Size = new Size(134, 40);
             button_DeleteReq.TabIndex = 14;
             button_DeleteReq.Text = "Видалити запит";
             button_DeleteReq.UseVisualStyleBackColor = false;
+            button_DeleteReq.Click += button_DeleteReq_Click;
             // 
             // button_ClearDel
             // 
             button_ClearDel.BackColor = Color.FromArgb(255, 192, 192);
             button_ClearDel.ForeColor = Color.Black;
-            button_ClearDel.Location = new Point(516, 544);
+            button_ClearDel.Location = new Point(375, 544);
             button_ClearDel.Name = "button_ClearDel";
             button_ClearDel.Size = new Size(134, 40);
             button_ClearDel.TabIndex = 15;
