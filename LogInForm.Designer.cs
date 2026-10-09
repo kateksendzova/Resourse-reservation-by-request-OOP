@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label_infoReservSystemLogIn = new Label();
-            label_infoLogIn = new Label();
             label_infoSurname = new Label();
             label_infoRole = new Label();
             label_infoName = new Label();
@@ -39,7 +38,6 @@
             textBox_Name = new TextBox();
             textBox_FatherName = new TextBox();
             button_LogIn = new Button();
-            button_LogInToDeleteReq = new Button();
             SuspendLayout();
             // 
             // label_infoReservSystemLogIn
@@ -52,21 +50,11 @@
             label_infoReservSystemLogIn.TabIndex = 0;
             label_infoReservSystemLogIn.Text = "Система бронювання лабораторії";
             // 
-            // label_infoLogIn
-            // 
-            label_infoLogIn.AutoSize = true;
-            label_infoLogIn.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoLogIn.Location = new Point(275, 83);
-            label_infoLogIn.Name = "label_infoLogIn";
-            label_infoLogIn.Size = new Size(53, 20);
-            label_infoLogIn.TabIndex = 1;
-            label_infoLogIn.Text = "Увійти";
-            // 
             // label_infoSurname
             // 
             label_infoSurname.AutoSize = true;
             label_infoSurname.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoSurname.Location = new Point(130, 166);
+            label_infoSurname.Location = new Point(130, 160);
             label_infoSurname.Name = "label_infoSurname";
             label_infoSurname.Size = new Size(79, 20);
             label_infoSurname.TabIndex = 2;
@@ -77,7 +65,7 @@
             // 
             label_infoRole.AutoSize = true;
             label_infoRole.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoRole.Location = new Point(165, 121);
+            label_infoRole.Location = new Point(165, 115);
             label_infoRole.Name = "label_infoRole";
             label_infoRole.Size = new Size(43, 20);
             label_infoRole.TabIndex = 3;
@@ -87,7 +75,7 @@
             // 
             label_infoName.AutoSize = true;
             label_infoName.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoName.Location = new Point(172, 218);
+            label_infoName.Location = new Point(172, 212);
             label_infoName.Name = "label_infoName";
             label_infoName.Size = new Size(37, 20);
             label_infoName.TabIndex = 5;
@@ -97,7 +85,7 @@
             // 
             label_infoFatherName.AutoSize = true;
             label_infoFatherName.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoFatherName.Location = new Point(113, 271);
+            label_infoFatherName.Location = new Point(113, 265);
             label_infoFatherName.Name = "label_infoFatherName";
             label_infoFatherName.Size = new Size(95, 20);
             label_infoFatherName.TabIndex = 4;
@@ -107,7 +95,7 @@
             // 
             comboBox_Role.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             comboBox_Role.FormattingEnabled = true;
-            comboBox_Role.Location = new Point(210, 117);
+            comboBox_Role.Location = new Point(210, 111);
             comboBox_Role.Name = "comboBox_Role";
             comboBox_Role.Size = new Size(185, 28);
             comboBox_Role.TabIndex = 6;
@@ -116,7 +104,7 @@
             // textBox_Surname
             // 
             textBox_Surname.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBox_Surname.Location = new Point(210, 162);
+            textBox_Surname.Location = new Point(210, 156);
             textBox_Surname.Name = "textBox_Surname";
             textBox_Surname.Size = new Size(185, 26);
             textBox_Surname.TabIndex = 7;
@@ -124,7 +112,7 @@
             // textBox_Name
             // 
             textBox_Name.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBox_Name.Location = new Point(210, 214);
+            textBox_Name.Location = new Point(210, 208);
             textBox_Name.Name = "textBox_Name";
             textBox_Name.Size = new Size(185, 26);
             textBox_Name.TabIndex = 8;
@@ -132,7 +120,7 @@
             // textBox_FatherName
             // 
             textBox_FatherName.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBox_FatherName.Location = new Point(210, 267);
+            textBox_FatherName.Location = new Point(210, 261);
             textBox_FatherName.Name = "textBox_FatherName";
             textBox_FatherName.Size = new Size(185, 26);
             textBox_FatherName.TabIndex = 9;
@@ -142,26 +130,13 @@
             button_LogIn.BackColor = Color.LightCyan;
             button_LogIn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_LogIn.ForeColor = Color.DarkSlateGray;
-            button_LogIn.Location = new Point(151, 334);
+            button_LogIn.Location = new Point(232, 320);
             button_LogIn.Name = "button_LogIn";
             button_LogIn.Size = new Size(131, 49);
             button_LogIn.TabIndex = 10;
-            button_LogIn.Text = "Увійти, щоб забронювати";
+            button_LogIn.Text = "Увійти";
             button_LogIn.UseVisualStyleBackColor = false;
             button_LogIn.Click += button_LogIn_Click;
-            // 
-            // button_LogInToDeleteReq
-            // 
-            button_LogInToDeleteReq.BackColor = Color.LightCyan;
-            button_LogInToDeleteReq.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            button_LogInToDeleteReq.ForeColor = Color.DarkSlateGray;
-            button_LogInToDeleteReq.Location = new Point(299, 334);
-            button_LogInToDeleteReq.Name = "button_LogInToDeleteReq";
-            button_LogInToDeleteReq.Size = new Size(131, 49);
-            button_LogInToDeleteReq.TabIndex = 11;
-            button_LogInToDeleteReq.Text = "Увійти, щоб видалити";
-            button_LogInToDeleteReq.UseVisualStyleBackColor = false;
-            button_LogInToDeleteReq.Click += button_LogInToDeleteReq_Click;
             // 
             // LogInForm
             // 
@@ -169,7 +144,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(594, 442);
-            Controls.Add(button_LogInToDeleteReq);
             Controls.Add(button_LogIn);
             Controls.Add(textBox_FatherName);
             Controls.Add(textBox_Name);
@@ -179,7 +153,6 @@
             Controls.Add(label_infoFatherName);
             Controls.Add(label_infoRole);
             Controls.Add(label_infoSurname);
-            Controls.Add(label_infoLogIn);
             Controls.Add(label_infoReservSystemLogIn);
             Name = "LogInForm";
             Text = "LogInForm";
@@ -190,7 +163,6 @@
         #endregion
 
         private Label label_infoReservSystemLogIn;
-        private Label label_infoLogIn;
         private Label label_infoSurname;
         private Label label_infoRole;
         private Label label_infoName;
@@ -200,6 +172,5 @@
         private TextBox textBox_Name;
         private TextBox textBox_FatherName;
         private Button button_LogIn;
-        private Button button_LogInToDeleteReq;
     }
 }

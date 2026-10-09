@@ -46,6 +46,8 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             dateTimePicker_Interval.ValueChanged += (s, args) => UpdateRequestPreview();
 
             UpdateRequestPreview();
+
+            LoadNameAndRole();
         }
 
         private void LoadResourcesToListBox()
@@ -88,6 +90,30 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 "Аспірант" => UserRole.Assistant,
                 _ => UserRole.Student
             };
+        }
+
+        private void LoadNameAndRole()
+        {
+            label_RoleName.Text = currentName;
+
+            if(currentRole == UserRole.Student)
+            {
+                pictureBox_AvatarStudent.Visible = true;
+                pictureBox_AvatarAssistant.Visible = false;
+                pictureBox_AvatarProfesor.Visible = false;
+            }
+            else if (currentRole == UserRole.Assistant)
+            {
+                pictureBox_AvatarStudent.Visible = false;
+                pictureBox_AvatarAssistant.Visible = true;
+                pictureBox_AvatarProfesor.Visible = false;
+            }
+            else if (currentRole == UserRole.Professor)
+            {
+                pictureBox_AvatarStudent.Visible = false;
+                pictureBox_AvatarAssistant.Visible = false;
+                pictureBox_AvatarProfesor.Visible = true;
+            }
         }
 
         private static string RoleToText(UserRole role)
@@ -147,11 +173,11 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             var sb = new StringBuilder();
             sb.AppendLine($"Користувач: {currentName}\n");
-            sb.AppendLine($"Роль: {RoleToText(currentRole)}\n");
-            sb.AppendLine($"Обладнання: {resourse.NAME} \n");
+            sb.AppendLine($"Роль: {RoleToText(currentRole)}\n\n");
+            sb.AppendLine($"Обладнання: {resourse.NAME} \n\n");
             sb.AppendLine($"Дата: {date:dd.MM.yyyy} \n");
             sb.AppendLine($"Час: {start:hh\\:mm} - {end:hh\\:mm}\n");
-            sb.AppendLine($"Тривалість: {(int)duration.TotalHours} год {duration.Minutes} хв\n");
+            sb.AppendLine($"Тривалість: {(int)duration.TotalHours} год {duration.Minutes} хв\n\n");
             sb.AppendLine($"Тип роботи: {TypeOfWorkToText(type)} \n");
 
             richTextBox_request.Text = sb.ToString();
