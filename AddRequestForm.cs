@@ -16,8 +16,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private string currentName;
         private UserRole currentRole;
 
-        private Action refreshCurrentView;
-
         public AddRequestForm(string userInfo)
         {
             InitializeComponent();
@@ -25,34 +23,29 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             ParseUserInfo(userInfo);
 
             button_ClearAll.Click += button_ClearAll_Click;
-            button_LikeSchedule.Click += button_LikeSchedule_Click;
-            button_ByComing.Click += button_ByComing_Click;
-            button_MySchedule.Click += button_MySchedule_Click;
-            dateTimePicker_Schedule.ValueChanged += (s, e) => LoadScheduleForDate();
+            button_AddRequest.Click += button_AddRequest_Click;
+
+
             this.FormClosed += (s, e) => Application.Exit();
         }
 
         private void AddRequestForm_Load(object sender, EventArgs e)
         {
             LoadResourcesToListBox();
-            LoadTypeOfWorkToComboBox();
+            LoadTypeOfWorkToListBox();
 
             monthCalendar.MaxSelectionCount = 1;
             monthCalendar.MinDate = DateTime.Today;
 
-            SetupGrid(dataGridView_Schedule);
-            SetupGrid(dataGridView_ByComing);
-
             ResetInputs();
 
             listBox_Resources.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
-            comboBox_Priority.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
+            listBox_Priority.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
             monthCalendar.DateChanged += (s, args) => UpdateRequestPreview();
             TimePicker_StartOfWork.ValueChanged += (s, args) => UpdateRequestPreview();
             dateTimePicker_Interval.ValueChanged += (s, args) => UpdateRequestPreview();
 
             UpdateRequestPreview();
-            ShowScheduleView();
         }
 
         private void LoadResourcesToListBox()
@@ -64,9 +57,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             listBox_Resources.ValueMember = "ID";
         }
 
-        private void LoadTypeOfWorkToComboBox()
+        private void LoadTypeOfWorkToListBox()
         {
-            comboBox_Priority.Format += (s, e) =>
+            listBox_Priority.Format += (s, e) =>
             {
                 if (e.ListItem is TypeOfWork type)
                 {
@@ -74,15 +67,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 }
             };
 
-            comboBox_Priority.DataSource = Enum.GetValues(typeof(TypeOfWork));
-        }
-
-        private void SetupGrid(DataGridView grid)
-        {
-            grid.ReadOnly = true;
-            grid.AllowUserToAddRows = false;
-            grid.AllowUserToDeleteRows = false;
-            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            listBox_Priority.DataSource = Enum.GetValues(typeof(TypeOfWork));
         }
 
         private void ParseUserInfo(string userInfo)
@@ -137,8 +122,8 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             if (listBox_Resources.Items.Count > 0)
                 listBox_Resources.SelectedIndex = 0;
 
-            if (comboBox_Priority.Items.Count > 0)
-                comboBox_Priority.SelectedIndex = 0;
+            if (listBox_Priority.Items.Count > 0)
+                listBox_Priority.SelectedIndex = 0;
 
             monthCalendar.SetDate(DateTime.Today);
             TimePicker_StartOfWork.Value = DateTime.Today.AddHours(8);
@@ -148,13 +133,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void UpdateRequestPreview()
         {
             var resourse = listBox_Resources.SelectedItem as Resourse;
-            if (resourse == null || comboBox_Priority.SelectedItem == null)
+            if (resourse == null || listBox_Priority.SelectedItem == null)
             {
                 richTextBox_request.Clear();
                 return;
             }
 
-            var type = (TypeOfWork)comboBox_Priority.SelectedItem;
+            TypeOfWork type = (TypeOfWork)listBox_Priority.SelectedItem;
             DateTime date = monthCalendar.SelectionStart.Date;
             TimeSpan start = GetTime(TimePicker_StartOfWork);
             TimeSpan duration = GetTime(dateTimePicker_Interval);
@@ -186,18 +171,17 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             return null;
         }
 
-
         private void button_AddRequest_Click(object sender, EventArgs e)
         {
             var resourse = listBox_Resources.SelectedItem as Resourse;
-            if (resourse == null || comboBox_Priority.SelectedItem == null)
+            if (resourse == null || listBox_Priority.SelectedItem == null)
             {
                 MessageBox.Show("Оберіть обладнання та тип роботи.", "Попередження",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var type = (TypeOfWork)comboBox_Priority.SelectedItem;
+            TypeOfWork type = (TypeOfWork)listBox_Priority.SelectedItem;
             DateTime date = monthCalendar.SelectionStart.Date;
             TimeSpan start = GetTime(TimePicker_StartOfWork);
             TimeSpan duration = GetTime(dateTimePicker_Interval);
@@ -217,7 +201,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 if (result.IsAvailable)
                 {
                     MessageBox.Show(result.Message, "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    refreshCurrentView?.Invoke();
                 }
                 else
                 {
@@ -235,87 +218,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             ResetInputs();
             richTextBox_request.Clear();
-        }
-
-        private void button_LikeSchedule_Click(object sender, EventArgs e)
-        {
-            ShowScheduleView();
-        }
-
-        private void button_ByComing_Click(object sender, EventArgs e)
-        {
-            SetView(true);
-            refreshCurrentView = LoadByComing;
-            LoadByComing();
-        }
-
-        private void button_MySchedule_Click(object sender, EventArgs e)
-        {
-            SetView(true);
-            refreshCurrentView = LoadMySchedule;
-            LoadMySchedule();
-        }
-
-        private void SetView(bool byComing)
-        {
-            dataGridView_ByComing.Visible = byComing;
-            dataGridView_Schedule.Visible = !byComing;
-            dateTimePicker_Schedule.Visible = !byComing;
-        }
-
-        private void ShowScheduleView()
-        {
-            SetView(false);
-            refreshCurrentView = LoadScheduleForDate;
-            LoadScheduleForDate();
-        }
-
-        private void LoadScheduleForDate()
-        {
-            dataGridView_Schedule.Rows.Clear();
-
-            var requests = scheduler.GetRequestsByDate(dateTimePicker_Schedule.Value);
-            foreach (var r in requests)
-            {
-                dataGridView_Schedule.Rows.Add(
-                    $"{r.Interval.Start:hh\\:mm} - {r.Interval.End:hh\\:mm}",
-                    r.Resourse.NAME,
-                    r.Person.Name,
-                    RoleToText(r.Person.Role),
-                    TypeOfWorkToText(r.TypeOfWork));
-            }
-        }
-
-        private void LoadByComing()
-        {
-            FillByComingGrid(scheduler.GetRequestsByArrival());
-        }
-
-        private void LoadMySchedule()
-        {
-            var myRequests = scheduler.GetRequestsByPerson(currentName, currentRole);
-            FillByComingGrid(myRequests);
-
-            if (myRequests.Count == 0)
-            {
-                MessageBox.Show("У вас ще немає запитів.", "Мій розклад",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void FillByComingGrid(IEnumerable<Request> requests)
-        {
-            dataGridView_ByComing.Rows.Clear();
-
-            foreach (var r in requests)
-            {
-                dataGridView_ByComing.Rows.Add(
-                    r.CreationTime.ToString("dd.MM.yyyy HH:mm:ss"),
-                    r.DayOfReservation.ToString("dd.MM.yyyy"),
-                    $"{r.Interval.Start:hh\\:mm} - {r.Interval.End:hh\\:mm}",
-                    r.Person.Name,
-                    r.Resourse.NAME);
-            }
         }
     }
 }
