@@ -253,3 +253,4 @@ D:\useful files\university\2_curs\1_term\OOP_Курсова\КурсоваРоб
 D:\useful files\university\2_curs\1_term\OOP_Курсова\КурсоваРобота_Ксендзова_ПЗ27\obj\Debug\net8.0-windows\КурсоваРобота_Ксендзова_ПЗ27.genruntimeconfig.cache
 D:\useful files\university\2_curs\1_term\OOP_Курсова\КурсоваРобота_Ксендзова_ПЗ27\obj\Debug\net8.0-windows\ref\КурсоваРобота_Ксендзова_ПЗ27.dll
 D:\useful files\university\2_curs\1_term\OOP_Курсова\КурсоваРобота_Ксендзова_ПЗ27\obj\Debug\net8.0-windows\КурсоваРобота_Ксендзова_ПЗ27.Properties.Resources.resources
+D:\useful files\university\2_curs\1_term\OOP_Курсова\КурсоваРобота_Ксендзова_ПЗ27\obj\Debug\net8.0-windows\КурсоваРобота_Ксендзова_ПЗ27.MainForm_FirstWindow.resources

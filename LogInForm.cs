@@ -44,7 +44,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             string fullUserIdentifier = $"{surname} {name} {fatherName} ({role})";
 
-            AddRequestForm mainForm = new AddRequestForm(fullUserIdentifier);
+            MainForm_FirstWindow mainForm = new MainForm_FirstWindow(fullUserIdentifier);
 
             mainForm.Show();
             this.Hide();
