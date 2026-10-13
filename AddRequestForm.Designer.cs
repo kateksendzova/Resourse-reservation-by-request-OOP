@@ -254,6 +254,7 @@
             button1.Text = "Видалити запит";
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // pictureBox_PanelSchedule
             // 
@@ -398,6 +399,7 @@
             button_PanelMane.Text = "Головна";
             button_PanelMane.TextAlign = ContentAlignment.MiddleRight;
             button_PanelMane.UseVisualStyleBackColor = true;
+            button_PanelMane.Click += button_PanelMane_Click;
             // 
             // listBox_Resources
             // 

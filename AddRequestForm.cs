@@ -96,7 +96,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             label_RoleName.Text = currentName;
 
-            if(currentRole == UserRole.Student)
+            if (currentRole == UserRole.Student)
             {
                 pictureBox_AvatarStudent.Visible = true;
                 pictureBox_AvatarAssistant.Visible = false;
@@ -244,6 +244,20 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             ResetInputs();
             richTextBox_request.Clear();
+        }
+
+        private void button_PanelMane_Click(object sender, EventArgs e)
+        {
+            MainForm_FirstWindow mainForm = new MainForm_FirstWindow(currentUserInfo);
+            mainForm.ShowDialog();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DeleteRequestForm delete = new DeleteRequestForm(currentUserInfo);
+            delete.Show();
+            this.Hide();
         }
     }
 }

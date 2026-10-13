@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm_FirstWindow));
             panel_Menu = new Panel();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
+            button_DelReq = new Button();
             pictureBox_PanelSchedule = new PictureBox();
             button_PanelSchedule = new Button();
             pictureBox_AvatarAssistant = new PictureBox();
@@ -68,7 +68,7 @@
             // 
             panel_Menu.BackColor = Color.DarkCyan;
             panel_Menu.Controls.Add(pictureBox1);
-            panel_Menu.Controls.Add(button1);
+            panel_Menu.Controls.Add(button_DelReq);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
             panel_Menu.Controls.Add(button_PanelSchedule);
             panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
@@ -98,19 +98,20 @@
             pictureBox1.TabIndex = 41;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // button_DelReq
             // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            button1.ForeColor = Color.AliceBlue;
-            button1.Location = new Point(63, 321);
-            button1.Name = "button1";
-            button1.Size = new Size(168, 33);
-            button1.TabIndex = 40;
-            button1.Text = "Видалити запит";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = true;
+            button_DelReq.FlatAppearance.BorderSize = 0;
+            button_DelReq.FlatStyle = FlatStyle.Flat;
+            button_DelReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button_DelReq.ForeColor = Color.AliceBlue;
+            button_DelReq.Location = new Point(63, 321);
+            button_DelReq.Name = "button_DelReq";
+            button_DelReq.Size = new Size(168, 33);
+            button_DelReq.TabIndex = 40;
+            button_DelReq.Text = "Видалити запит";
+            button_DelReq.TextAlign = ContentAlignment.MiddleRight;
+            button_DelReq.UseVisualStyleBackColor = true;
+            button_DelReq.Click += button1_Click;
             // 
             // pictureBox_PanelSchedule
             // 
@@ -396,7 +397,7 @@
 
         private Panel panel_Menu;
         private PictureBox pictureBox1;
-        private Button button1;
+        private Button button_DelReq;
         private PictureBox pictureBox_PanelSchedule;
         private Button button_PanelSchedule;
         private PictureBox pictureBox_AvatarAssistant;

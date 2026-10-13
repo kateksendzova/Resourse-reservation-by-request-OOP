@@ -106,5 +106,12 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             mainForm.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DeleteRequestForm deleteForm = new DeleteRequestForm(currentUserInfo);
+            deleteForm.Show();
+            this.Hide();
+        }
     }
 }
