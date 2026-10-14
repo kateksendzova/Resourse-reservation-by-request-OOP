@@ -137,6 +137,7 @@
             button_PanelSchedule.Text = "Загальний розклад";
             button_PanelSchedule.TextAlign = ContentAlignment.MiddleRight;
             button_PanelSchedule.UseVisualStyleBackColor = true;
+            button_PanelSchedule.Click += button_PanelSchedule_Click;
             // 
             // pictureBox_AvatarAssistant
             // 
@@ -243,6 +244,7 @@
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
             button_PanelMySchedule.UseVisualStyleBackColor = true;
+            button_PanelMySchedule.Click += button_PanelMySchedule_Click;
             // 
             // button_PanelMane
             // 

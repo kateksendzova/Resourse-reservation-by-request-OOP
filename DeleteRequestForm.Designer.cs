@@ -49,12 +49,14 @@
             button_MakeReq = new Button();
             button_PanelMySchedule = new Button();
             button_PanelMain = new Button();
-            dataGridView1 = new DataGridView();
+            label1 = new Label();
+            dateTimePicker_DeleteReq = new DateTimePicker();
+            dataGridView_DelReq = new DataGridView();
             ColumnTime = new DataGridViewTextBoxColumn();
             ColumnRes = new DataGridViewTextBoxColumn();
             ColumnType = new DataGridViewTextBoxColumn();
-            label1 = new Label();
-            dateTimePicker_DeleteReq = new DateTimePicker();
+            button_DeleteReq = new Button();
+            button2 = new Button();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
@@ -64,16 +66,16 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMakeReq).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_DelReq).BeginInit();
             SuspendLayout();
             // 
             // button_ClearAll
             // 
             button_ClearAll.BackColor = Color.AliceBlue;
             button_ClearAll.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button_ClearAll.Location = new Point(1731, 895);
+            button_ClearAll.Location = new Point(1947, 895);
             button_ClearAll.Name = "button_ClearAll";
-            button_ClearAll.Size = new Size(129, 58);
+            button_ClearAll.Size = new Size(145, 58);
             button_ClearAll.TabIndex = 45;
             button_ClearAll.Text = "Очистити";
             button_ClearAll.UseVisualStyleBackColor = false;
@@ -83,7 +85,7 @@
             // 
             label_infoReqRichText.AutoSize = true;
             label_infoReqRichText.Font = new Font("Century Gothic", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 204);
-            label_infoReqRichText.Location = new Point(1375, 142);
+            label_infoReqRichText.Location = new Point(1334, 142);
             label_infoReqRichText.Name = "label_infoReqRichText";
             label_infoReqRichText.Size = new Size(472, 21);
             label_infoReqRichText.TabIndex = 43;
@@ -93,7 +95,7 @@
             // 
             richTextBox_request.BackColor = Color.LightCyan;
             richTextBox_request.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            richTextBox_request.Location = new Point(1361, 170);
+            richTextBox_request.Location = new Point(1319, 170);
             richTextBox_request.Name = "richTextBox_request";
             richTextBox_request.Size = new Size(499, 603);
             richTextBox_request.TabIndex = 42;
@@ -104,9 +106,9 @@
             button_DeleteRequest.BackColor = Color.Teal;
             button_DeleteRequest.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_DeleteRequest.ForeColor = Color.AliceBlue;
-            button_DeleteRequest.Location = new Point(1706, 805);
+            button_DeleteRequest.Location = new Point(1919, 805);
             button_DeleteRequest.Name = "button_DeleteRequest";
-            button_DeleteRequest.Size = new Size(154, 58);
+            button_DeleteRequest.Size = new Size(173, 58);
             button_DeleteRequest.TabIndex = 40;
             button_DeleteRequest.Text = "Видалити запит";
             button_DeleteRequest.UseVisualStyleBackColor = false;
@@ -115,7 +117,7 @@
             // 
             label_infoSystemName.AutoSize = true;
             label_infoSystemName.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(1016, 18);
+            label_infoSystemName.Location = new Point(1020, 32);
             label_infoSystemName.Name = "label_infoSystemName";
             label_infoSystemName.Size = new Size(299, 22);
             label_infoSystemName.TabIndex = 34;
@@ -299,6 +301,7 @@
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
             button_PanelMySchedule.UseVisualStyleBackColor = true;
+            button_PanelMySchedule.Click += button_PanelMySchedule_Click;
             // 
             // button_PanelMain
             // 
@@ -315,16 +318,36 @@
             button_PanelMain.UseVisualStyleBackColor = true;
             button_PanelMain.Click += button_PanelMain_Click;
             // 
-            // dataGridView1
+            // label1
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColumnTime, ColumnRes, ColumnType });
-            dataGridView1.Location = new Point(544, 203);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(674, 570);
-            dataGridView1.TabIndex = 48;
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.Location = new Point(671, 142);
+            label1.Name = "label1";
+            label1.Size = new Size(317, 21);
+            label1.TabIndex = 49;
+            label1.Text = "Оберіть запит, який хочете видалити";
+            // 
+            // dateTimePicker_DeleteReq
+            // 
+            dateTimePicker_DeleteReq.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_DeleteReq.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_DeleteReq.Format = DateTimePickerFormat.Short;
+            dateTimePicker_DeleteReq.Location = new Point(502, 170);
+            dateTimePicker_DeleteReq.Name = "dateTimePicker_DeleteReq";
+            dateTimePicker_DeleteReq.Size = new Size(654, 26);
+            dateTimePicker_DeleteReq.TabIndex = 50;
+            // 
+            // dataGridView_DelReq
+            // 
+            dataGridView_DelReq.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView_DelReq.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView_DelReq.Columns.AddRange(new DataGridViewColumn[] { ColumnTime, ColumnRes, ColumnType });
+            dataGridView_DelReq.Location = new Point(502, 203);
+            dataGridView_DelReq.Name = "dataGridView_DelReq";
+            dataGridView_DelReq.RowHeadersWidth = 51;
+            dataGridView_DelReq.Size = new Size(654, 570);
+            dataGridView_DelReq.TabIndex = 55;
             // 
             // ColumnTime
             // 
@@ -344,40 +367,47 @@
             ColumnType.MinimumWidth = 6;
             ColumnType.Name = "ColumnType";
             // 
-            // label1
+            // button_DeleteReq
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 204);
-            label1.Location = new Point(726, 142);
-            label1.Name = "label1";
-            label1.Size = new Size(318, 21);
-            label1.TabIndex = 49;
-            label1.Text = "Оберіть запит, який хочете видалити";
+            button_DeleteReq.BackColor = Color.Teal;
+            button_DeleteReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button_DeleteReq.ForeColor = Color.AliceBlue;
+            button_DeleteReq.Location = new Point(1689, 805);
+            button_DeleteReq.Name = "button_DeleteReq";
+            button_DeleteReq.Size = new Size(129, 58);
+            button_DeleteReq.TabIndex = 56;
+            button_DeleteReq.Text = "Видалити";
+            button_DeleteReq.UseVisualStyleBackColor = false;
             // 
-            // dateTimePicker_DeleteReq
+            // button2
             // 
-            dateTimePicker_DeleteReq.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dateTimePicker_DeleteReq.Format = DateTimePickerFormat.Short;
-            dateTimePicker_DeleteReq.Location = new Point(544, 170);
-            dateTimePicker_DeleteReq.Name = "dateTimePicker_DeleteReq";
-            dateTimePicker_DeleteReq.Size = new Size(674, 27);
-            dateTimePicker_DeleteReq.TabIndex = 50;
+            button2.BackColor = Color.AliceBlue;
+            button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            button2.Location = new Point(1689, 895);
+            button2.Name = "button2";
+            button2.Size = new Size(129, 49);
+            button2.TabIndex = 57;
+            button2.Text = "Очистити";
+            button2.UseVisualStyleBackColor = false;
             // 
             // DeleteRequestForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
-            ClientSize = new Size(1902, 1033);
+            ClientSize = new Size(1924, 1033);
+            Controls.Add(button2);
+            Controls.Add(button_DeleteReq);
+            Controls.Add(dataGridView_DelReq);
             Controls.Add(dateTimePicker_DeleteReq);
             Controls.Add(label1);
-            Controls.Add(dataGridView1);
             Controls.Add(button_ClearAll);
             Controls.Add(label_infoReqRichText);
             Controls.Add(richTextBox_request);
             Controls.Add(button_DeleteRequest);
             Controls.Add(label_infoSystemName);
             Controls.Add(panel_Menu);
+            Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "DeleteRequestForm";
             Text = "Видалити запит";
             WindowState = FormWindowState.Maximized;
@@ -392,7 +422,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMakeReq).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_DelReq).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -429,11 +459,13 @@
         private Button button_MakeReq;
         private Button button_PanelMySchedule;
         private Button button_PanelMain;
-        private DataGridView dataGridView1;
+        private Label label1;
+        private DateTimePicker dateTimePicker_DeleteReq;
+        private DataGridView dataGridView_DelReq;
         private DataGridViewTextBoxColumn ColumnTime;
         private DataGridViewTextBoxColumn ColumnRes;
         private DataGridViewTextBoxColumn ColumnType;
-        private Label label1;
-        private DateTimePicker dateTimePicker_DeleteReq;
+        private Button button_DeleteReq;
+        private Button button2;
     }
 }

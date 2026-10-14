@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using КурсоваРобота_Ксендзова_ПЗ27.Properties;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
@@ -243,7 +245,8 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void button_ClearAll_Click(object sender, EventArgs e)
         {
             ResetInputs();
-            richTextBox_request.Clear();
+
+            UpdateRequestPreview();
         }
 
         private void button_PanelMane_Click(object sender, EventArgs e)
@@ -257,6 +260,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             DeleteRequestForm delete = new DeleteRequestForm(currentUserInfo);
             delete.Show();
+            this.Hide();
+        }
+
+        private void button_PanelMySchedule_Click(object sender, EventArgs e)
+        {
+            MySchedule_Form mySchedule_Form = new MySchedule_Form(currentUserInfo);
+            mySchedule_Form.Show();
             this.Hide();
         }
     }

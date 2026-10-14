@@ -25,6 +25,8 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             InitializeComponent();
             currentUserInfo = userInfo;
             ParseUserInfo(userInfo);
+
+            this.FormClosed += (s, e) => Application.Exit();
         }
 
         private void ParseUserInfo(string userInfo)
@@ -93,13 +95,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void UpdateRequestPreview()
         {
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (dataGridView_DelReq.SelectedRows.Count == 0)
             {
                 richTextBox_request.Clear();
                 return;
             }
 
-            var selectedRow = dataGridView1.SelectedRows[0];
+            var selectedRow = dataGridView_DelReq.SelectedRows[0];
 
             string timeRange = selectedRow.Cells["ColumnTime"].Value?.ToString() ?? "";
             string resourceName = selectedRow.Cells["ColumnRes"].Value?.ToString() ?? "";
@@ -134,6 +136,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             MainForm_FirstWindow main = new MainForm_FirstWindow(currentUserInfo);
             main.Show();
+            this.Hide();
+        }
+
+        private void button_PanelMySchedule_Click(object sender, EventArgs e)
+        {
+            MySchedule_Form mySchedule_Form = new MySchedule_Form(currentUserInfo);
+            mySchedule_Form.Show();
             this.Hide();
         }
     }

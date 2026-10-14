@@ -74,7 +74,7 @@
             // 
             label_infoSystemName.AutoSize = true;
             label_infoSystemName.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(995, 18);
+            label_infoSystemName.Location = new Point(995, 32);
             label_infoSystemName.Name = "label_infoSystemName";
             label_infoSystemName.Size = new Size(283, 22);
             label_infoSystemName.TabIndex = 0;
@@ -84,7 +84,7 @@
             // 
             label_infoChooseResource.AutoSize = true;
             label_infoChooseResource.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoChooseResource.Location = new Point(632, 100);
+            label_infoChooseResource.Location = new Point(606, 145);
             label_infoChooseResource.Name = "label_infoChooseResource";
             label_infoChooseResource.Size = new Size(185, 21);
             label_infoChooseResource.TabIndex = 1;
@@ -94,7 +94,7 @@
             // 
             label_infoDay.AutoSize = true;
             label_infoDay.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoDay.Location = new Point(1106, 101);
+            label_infoDay.Location = new Point(1078, 146);
             label_infoDay.Name = "label_infoDay";
             label_infoDay.Size = new Size(121, 21);
             label_infoDay.TabIndex = 3;
@@ -106,7 +106,7 @@
             TimePicker_StartOfWork.CustomFormat = "HH:mm";
             TimePicker_StartOfWork.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             TimePicker_StartOfWork.Format = DateTimePickerFormat.Custom;
-            TimePicker_StartOfWork.Location = new Point(1083, 417);
+            TimePicker_StartOfWork.Location = new Point(1055, 462);
             TimePicker_StartOfWork.Name = "TimePicker_StartOfWork";
             TimePicker_StartOfWork.ShowUpDown = true;
             TimePicker_StartOfWork.Size = new Size(91, 28);
@@ -116,7 +116,7 @@
             // 
             label_infoTimeStartManual.AutoSize = true;
             label_infoTimeStartManual.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoTimeStartManual.Location = new Point(1070, 394);
+            label_infoTimeStartManual.Location = new Point(1042, 439);
             label_infoTimeStartManual.Name = "label_infoTimeStartManual";
             label_infoTimeStartManual.Size = new Size(183, 21);
             label_infoTimeStartManual.TabIndex = 6;
@@ -126,7 +126,7 @@
             // 
             monthCalendar.BackColor = Color.LightCyan;
             monthCalendar.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            monthCalendar.Location = new Point(1070, 125);
+            monthCalendar.Location = new Point(1042, 170);
             monthCalendar.MinDate = new DateTime(2026, 9, 27, 0, 0, 0, 0);
             monthCalendar.Name = "monthCalendar";
             monthCalendar.TabIndex = 7;
@@ -136,7 +136,7 @@
             button_AddRequest.BackColor = Color.Teal;
             button_AddRequest.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_AddRequest.ForeColor = Color.AliceBlue;
-            button_AddRequest.Location = new Point(1712, 805);
+            button_AddRequest.Location = new Point(1686, 804);
             button_AddRequest.Name = "button_AddRequest";
             button_AddRequest.Size = new Size(148, 58);
             button_AddRequest.TabIndex = 11;
@@ -148,7 +148,7 @@
             // 
             label_infoPriority.AutoSize = true;
             label_infoPriority.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoPriority.Location = new Point(568, 601);
+            label_infoPriority.Location = new Point(541, 639);
             label_infoPriority.Name = "label_infoPriority";
             label_infoPriority.Size = new Size(105, 21);
             label_infoPriority.TabIndex = 13;
@@ -158,7 +158,7 @@
             // 
             richTextBox_request.BackColor = Color.LightCyan;
             richTextBox_request.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            richTextBox_request.Location = new Point(1361, 170);
+            richTextBox_request.Location = new Point(1335, 170);
             richTextBox_request.Name = "richTextBox_request";
             richTextBox_request.Size = new Size(499, 603);
             richTextBox_request.TabIndex = 15;
@@ -168,7 +168,7 @@
             // 
             label_infoReqRichText.AutoSize = true;
             label_infoReqRichText.Font = new Font("Century Gothic", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 204);
-            label_infoReqRichText.Location = new Point(1373, 142);
+            label_infoReqRichText.Location = new Point(1347, 142);
             label_infoReqRichText.Name = "label_infoReqRichText";
             label_infoReqRichText.Size = new Size(475, 21);
             label_infoReqRichText.TabIndex = 16;
@@ -178,7 +178,7 @@
             // 
             label_infoInterval.AutoSize = true;
             label_infoInterval.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoInterval.Location = new Point(1070, 475);
+            label_infoInterval.Location = new Point(1042, 520);
             label_infoInterval.Name = "label_infoInterval";
             label_infoInterval.Size = new Size(170, 21);
             label_infoInterval.TabIndex = 21;
@@ -188,9 +188,9 @@
             // 
             button_ClearAll.BackColor = Color.AliceBlue;
             button_ClearAll.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button_ClearAll.Location = new Point(1731, 895);
+            button_ClearAll.Location = new Point(1705, 894);
             button_ClearAll.Name = "button_ClearAll";
-            button_ClearAll.Size = new Size(129, 58);
+            button_ClearAll.Size = new Size(129, 49);
             button_ClearAll.TabIndex = 25;
             button_ClearAll.Text = "Очистити";
             button_ClearAll.UseVisualStyleBackColor = false;
@@ -201,7 +201,7 @@
             dateTimePicker_Interval.CustomFormat = "HH:mm";
             dateTimePicker_Interval.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_Interval.Format = DateTimePickerFormat.Custom;
-            dateTimePicker_Interval.Location = new Point(1083, 499);
+            dateTimePicker_Interval.Location = new Point(1055, 544);
             dateTimePicker_Interval.Name = "dateTimePicker_Interval";
             dateTimePicker_Interval.ShowUpDown = true;
             dateTimePicker_Interval.Size = new Size(91, 28);
@@ -385,6 +385,7 @@
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
             button_PanelMySchedule.UseVisualStyleBackColor = true;
+            button_PanelMySchedule.Click += button_PanelMySchedule_Click;
             // 
             // button_PanelMane
             // 
@@ -407,7 +408,7 @@
             listBox_Resources.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             listBox_Resources.FormattingEnabled = true;
             listBox_Resources.ItemHeight = 21;
-            listBox_Resources.Location = new Point(482, 125);
+            listBox_Resources.Location = new Point(456, 170);
             listBox_Resources.Name = "listBox_Resources";
             listBox_Resources.Size = new Size(487, 445);
             listBox_Resources.TabIndex = 32;
@@ -418,7 +419,7 @@
             listBox_Priority.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             listBox_Priority.FormattingEnabled = true;
             listBox_Priority.ItemHeight = 21;
-            listBox_Priority.Location = new Point(482, 626);
+            listBox_Priority.Location = new Point(456, 664);
             listBox_Priority.Name = "listBox_Priority";
             listBox_Priority.Size = new Size(279, 109);
             listBox_Priority.TabIndex = 33;
