@@ -119,6 +119,7 @@
             button_PanelDelReq.Text = "Видалити запит";
             button_PanelDelReq.TextAlign = ContentAlignment.MiddleRight;
             button_PanelDelReq.UseVisualStyleBackColor = true;
+            button_PanelDelReq.Click += button_PanelDelReq_Click;
             // 
             // pictureBox_LogoSchedule
             // 
@@ -235,6 +236,7 @@
             button_PanelAddReq.Text = "Створити запит";
             button_PanelAddReq.TextAlign = ContentAlignment.MiddleRight;
             button_PanelAddReq.UseVisualStyleBackColor = true;
+            button_PanelAddReq.Click += button_PanelAddReq_Click;
             // 
             // button_PanelMySchedule
             // 
@@ -249,6 +251,7 @@
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
             button_PanelMySchedule.UseVisualStyleBackColor = true;
+            button_PanelMySchedule.Click += button_PanelMySchedule_Click;
             // 
             // button_PanelMainForm
             // 

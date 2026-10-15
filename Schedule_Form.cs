@@ -74,7 +74,10 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
         }
 
-
+        private void Schedule_Form_Load(object sender, EventArgs e)
+        {
+            LoadNameAndRole();
+        }
 
         private void button_PanelMainForm_Click(object sender, EventArgs e)
         {
@@ -83,9 +86,25 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             this.Hide();
         }
 
-        private void Schedule_Form_Load(object sender, EventArgs e)
+        private void button_PanelAddReq_Click(object sender, EventArgs e)
         {
-            LoadNameAndRole();
+            AddRequestForm addRequestForm = new AddRequestForm(currentUserInfo);
+            addRequestForm.Show();
+            this.Hide();
+        }
+
+        private void button_PanelMySchedule_Click(object sender, EventArgs e)
+        {
+            MySchedule_Form schedule_Form = new MySchedule_Form(currentUserInfo);
+            schedule_Form.Show();
+            this.Hide();
+        }
+
+        private void button_PanelDelReq_Click(object sender, EventArgs e)
+        {
+            DeleteRequestForm deleteRequestForm = new DeleteRequestForm(currentUserInfo);
+            deleteRequestForm.Show();
+            this.Hide();
         }
     }
 }

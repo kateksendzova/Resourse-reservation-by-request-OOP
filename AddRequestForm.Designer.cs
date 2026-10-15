@@ -280,6 +280,7 @@
             button_PanelSchedule.Text = "Загальний розклад";
             button_PanelSchedule.TextAlign = ContentAlignment.MiddleRight;
             button_PanelSchedule.UseVisualStyleBackColor = true;
+            button_PanelSchedule.Click += button_PanelSchedule_Click;
             // 
             // pictureBox_AvatarAssistant
             // 

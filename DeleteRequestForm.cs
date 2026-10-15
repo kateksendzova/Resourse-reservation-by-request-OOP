@@ -145,5 +145,12 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             mySchedule_Form.Show();
             this.Hide();
         }
+
+        private void button_PanelSchedule_Click(object sender, EventArgs e)
+        {
+            Schedule_Form schedule_Form = new Schedule_Form(currentUserInfo);
+            schedule_Form.Show();
+            this.Hide();
+        }
     }
 }

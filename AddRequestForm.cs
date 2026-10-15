@@ -188,58 +188,20 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private string ValidateInput(DateTime date, TimeSpan start, TimeSpan duration)
         {
             if (duration <= TimeSpan.Zero)
-                return "Тривалість роботи має бути більшою за 00:00.";
+                return "Тривалість роботи має бути більшою за 00:00";
 
             if (start < WorkDayStart || start + duration > WorkDayEnd)
-                return "Лабораторія працює з 08:00 до 19:00. Оберіть час у цих межах.";
+                return "Лабораторія працює з 08:00 до 19:00. Оберіть час у цих межах";
 
             if (date == DateTime.Today && start < DateTime.Now.TimeOfDay)
-                return "Цей час на сьогодні вже минув.";
+                return "Цей час на сьогодні вже минув";
 
             return null;
         }
 
         private void button_AddRequest_Click(object sender, EventArgs e)
         {
-            var resourse = listBox_Resources.SelectedItem as Resourse;
-            if (resourse == null || listBox_Priority.SelectedItem == null)
-            {
-                MessageBox.Show("Оберіть обладнання та тип роботи.", "Попередження",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            TypeOfWork type = (TypeOfWork)listBox_Priority.SelectedItem;
-            DateTime date = monthCalendar.SelectionStart.Date;
-            TimeSpan start = GetTime(TimePicker_StartOfWork);
-            TimeSpan duration = GetTime(dateTimePicker_Interval);
-
-            string error = ValidateInput(date, start, duration);
-            if (error != null)
-            {
-                MessageBox.Show(error, "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                Person person = scheduler.GetOrCreatePerson(currentName, currentRole);
-                var result = scheduler.TryAddRequest(resourse, person, date, start, duration, type);
-
-                if (result.IsAvailable)
-                {
-                    MessageBox.Show(result.Message, "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show(result.Message, "Накладка по часу", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Помилка при роботі з базою даних:\n" + ex.Message, "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void button_ClearAll_Click(object sender, EventArgs e)
@@ -267,6 +229,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             MySchedule_Form mySchedule_Form = new MySchedule_Form(currentUserInfo);
             mySchedule_Form.Show();
+            this.Hide();
+        }
+
+        private void button_PanelSchedule_Click(object sender, EventArgs e)
+        {
+            Schedule_Form schedule_Form = new Schedule_Form(currentUserInfo);
+            schedule_Form.Show();
             this.Hide();
         }
     }
