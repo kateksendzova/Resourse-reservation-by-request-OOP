@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,10 +35,32 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         public List<Request> GetRequestsByDate(DateTime date)
         {
-            return schedule.GetAllRequest()
-                .Where(r => r.DayOfReservation.Date == date.Date)
-                .OrderBy(r => r.Interval.Start)
-                .ToList();
+            List<Request> allRequest = schedule.GetAllRequest();
+
+            List<Request> sortedRequest = new List<Request>();
+
+            foreach (Request request in allRequest)
+            {
+                if(request.DayOfReservation.Date == date)
+                {
+                    sortedRequest.Add(request);
+                }
+            }
+
+            for(int i = 0; i < sortedRequest.Count - 1; i++)
+            {
+                for(int j=i+1; j < sortedRequest.Count; j++)
+                {
+                    if (sortedRequest[j].Interval.Start < sortedRequest[i].Interval.Start)
+                    {
+                        Request temp = sortedRequest[i];
+                        sortedRequest[i] = sortedRequest[j];
+                        sortedRequest[j] = temp;
+                    }
+                }
+            }
+
+            return sortedRequest;
         }
 
         public List<Request> GetRequestsByArrival()
@@ -57,9 +81,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         public Conflictcs CheckForConflictcs(Request newRequest)
         {
-            var allRequest = schedule.GetAllRequest();
+            List<Request> allRequest = schedule.GetAllRequest();
 
-            foreach (var request in allRequest)
+            foreach (Request request in allRequest)
             {
                 if (newRequest.Resourse.ID == request.Resourse.ID && newRequest.DayOfReservation == request.DayOfReservation)
                 {
@@ -78,14 +102,14 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             TimeSpan workDayStart = new TimeSpan(8, 0, 0);
             TimeSpan workDayEnd = new TimeSpan(19, 0, 0);
 
-            var allRequest = schedule.GetAllRequest()
+            List<Request> allRequest = schedule.GetAllRequest()
                 .Where(r => r.Resourse.ID == resId && r.DayOfReservation == date.Date)
                 .OrderBy(r => r.Interval.Start)
                 .ToList();
 
             TimeSpan currentTime = workDayStart;
 
-            foreach (var request in allRequest)
+            foreach (Request request in allRequest)
             {
                 if (request.Interval.Start - currentTime >= interval)
                 {
@@ -135,11 +159,11 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         public (bool IsAvailable, string Message) TryAddRequest(Resourse resourse, Person person, DateTime reservDate, TimeSpan startTime, TimeSpan interval, TypeOfWork typeOfWork)
         {
             TimeSpan endTime = startTime + interval;
-            var newInterval = new TimeInterval(startTime, endTime);
+            TimeInterval newInterval = new TimeInterval(startTime, endTime);
 
-            var newRequest = new Request(0, resourse, person, newInterval, typeOfWork, reservDate);
+            Request newRequest = new Request(0, resourse, person, newInterval, typeOfWork, reservDate);
 
-            var conflicts = CheckForConflictcs(newRequest);
+            Conflictcs conflicts = CheckForConflictcs(newRequest);
 
             if(conflicts != null)
             {
@@ -150,11 +174,11 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     string altTimeStr = $"{alternativeTime.Value.interval.Start:hh\\:mm} - {alternativeTime.Value.interval.End:hh\\:mm}";
                     string altDateStr = alternativeTime.Value.date.ToShortDateString();
 
-                    return (false, $"Цей час зайнятий! Найближчий вільний час для обладнання '{resourse.NAME}': {altDateStr} з {altTimeStr}.");
+                    return (false, $"Цей час зайнятий! Найближчий вільний час для обладнання '{resourse.NAME}': {altDateStr} з {altTimeStr}");
                 }
                 else
                 {
-                    return (false, "Цей час зайнятий, і на найближчі дні вільних вікон немає.");
+                    return (false, "Цей час зайнятий, і на найближчі дні вільних вікон немає");
                 }
             }
 

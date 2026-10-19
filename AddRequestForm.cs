@@ -24,10 +24,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             currentUserInfo = userInfo;
             ParseUserInfo(userInfo);
 
-            button_ClearAll.Click += button_ClearAll_Click;
-            button_AddRequest.Click += button_AddRequest_Click;
-
-
             this.FormClosed += (s, e) => Application.Exit();
         }
 
@@ -43,12 +39,26 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             listBox_Resources.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
             listBox_Priority.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
-            monthCalendar.DateChanged += (s, args) => UpdateRequestPreview();
+
+            monthCalendar.DateChanged += (s, args) =>
+            {
+                if (monthCalendar.SelectionStart.Date == DateTime.Today)
+                {
+                    int targetHour = Math.Max(8, DateTime.Now.Hour);
+                    TimePicker_StartOfWork.Value = DateTime.Today.AddHours(targetHour);
+                }
+                else
+                {
+                    TimePicker_StartOfWork.Value = DateTime.Today.AddHours(8);
+                }
+
+                UpdateRequestPreview();
+            };
+
             TimePicker_StartOfWork.ValueChanged += (s, args) => UpdateRequestPreview();
             dateTimePicker_Interval.ValueChanged += (s, args) => UpdateRequestPreview();
 
             UpdateRequestPreview();
-
             LoadNameAndRole();
         }
 
@@ -154,7 +164,18 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 listBox_Priority.SelectedIndex = 0;
 
             monthCalendar.SetDate(DateTime.Today);
-            TimePicker_StartOfWork.Value = DateTime.Today.AddHours(8);
+
+
+            if (monthCalendar.SelectionStart.Date == DateTime.Today)
+            {
+                int targetHour = Math.Max(8, DateTime.Now.Hour);
+                TimePicker_StartOfWork.Value = DateTime.Today.AddHours(targetHour);
+            }
+            else
+            {
+                TimePicker_StartOfWork.Value = DateTime.Today.AddHours(8);
+            }
+
             dateTimePicker_Interval.Value = DateTime.Today.AddHours(1);
         }
 
@@ -201,7 +222,43 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void button_AddRequest_Click(object sender, EventArgs e)
         {
-           
+            if (listBox_Resources.SelectedItem is not Resourse resource)
+            {
+                MessageBox.Show("Будь ласка, оберіть обладнання зі списку!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DateTime reservDay = monthCalendar.SelectionStart.Date;
+            TimeSpan startTime = GetTime(TimePicker_StartOfWork);
+            TimeSpan interval = GetTime(dateTimePicker_Interval);
+
+            if (listBox_Priority.SelectedItem == null)
+            {
+                MessageBox.Show("Оберіть тип роботи!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            TypeOfWork typeOfWork = (TypeOfWork)listBox_Priority.SelectedItem;
+
+            string validationError = ValidateInput(reservDay, startTime, interval);
+            if (validationError != null)
+            {
+                MessageBox.Show(validationError, "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Person person = scheduler.GetOrCreatePerson(currentName, currentRole);
+
+            var result = scheduler.TryAddRequest(resource, person, reservDay, startTime, interval, typeOfWork);
+
+            if (result.IsAvailable)
+            {
+                MessageBox.Show(result.Message, "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetInputs();
+            }
+            else
+            {
+                MessageBox.Show(result.Message, "Помилка бронювання", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void button_ClearAll_Click(object sender, EventArgs e)
