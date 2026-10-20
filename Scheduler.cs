@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using КурсоваРобота_Ксендзова_ПЗ27.Properties;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
@@ -143,6 +145,15 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
 
             return null;
+        }
+
+        public bool IsResourceAvailableForAtLeastOneHour(int resourceId, DateTime date)
+        {
+            TimeSpan requiredInterval = TimeSpan.FromHours(1);
+            
+            TimeInterval freeSlot = GetTimeInterval(resourceId, date, requiredInterval);
+            
+            return freeSlot != null;
         }
 
         public List<Request> GetListOfRequestSortedByPriority()

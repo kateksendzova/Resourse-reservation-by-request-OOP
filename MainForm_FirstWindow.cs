@@ -31,16 +31,29 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void MainForm_FirstWindow_Load(object sender, EventArgs e)
         {
             LoadNameAndRole();
-            LoadResourcesToListBox();
+
+            roundedButton_All.Click += roundedButton_All_Click;
+            roundedButton_Available.Click += roundedButton_Available_Click;
+            roundedButton_All.IsSelected = true;
+            roundedButton_Available.IsSelected = false;
+
+            LoadResources("All");
         }
 
-        private void LoadResourcesToListBox()
-        {
-            List<Resourse> resources = scheduler.GetResourses();
 
-            listBox_Resources.DataSource = resources;
-            listBox_Resources.DisplayMember = "NAME";
-            listBox_Resources.ValueMember = "ID";
+
+        private void roundedButton_All_Click(object sender, EventArgs e)
+        {
+            roundedButton_All.IsSelected = true;
+            roundedButton_Available.IsSelected = false;
+            LoadResources("All");
+        }
+
+        private void roundedButton_Available_Click(object sender, EventArgs e)
+        {
+            roundedButton_Available.IsSelected = true;
+            roundedButton_All.IsSelected = false;
+            LoadResources("Available");
         }
 
         private void ParseUserInfo(string userInfo)
@@ -76,8 +89,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void LoadNameAndRole()
         {
             label_PanelRoleName.Text = currentName;
-            label_infoName.Text = currentName;
-            label_Role.Text = RoleToText(currentRole);
 
             if (currentRole == UserRole.Student)
             {
@@ -96,6 +107,82 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 pictureBox_AvatarStudent.Visible = false;
                 pictureBox_AvatarAssistant.Visible = false;
                 pictureBox_AvatarProfesor.Visible = true;
+            }
+        }
+
+        private RoundedPanel CreateEquipmentCard(string title, string statusText, bool isAvailable)
+        {
+            RoundedPanel card = new RoundedPanel
+            {
+                Size = new Size(380, 130),
+                BackColor = Color.White,
+                BorderColor = Color.LightGray,
+                CornerRadius = 12,
+                Margin = new Padding(10)
+            };
+
+            Label lblTitle = new Label
+            {
+                Text = title,
+                Font = new Font("Century Gothic", 10.5F, FontStyle.Bold),
+                ForeColor = Color.DarkSlateGray,
+                Location = new Point(20, 15),
+                AutoSize = true
+            };
+
+            Label lblStatus = new Label
+            {
+                Text = statusText,
+                Font = new Font("Century Gothic", 9F, FontStyle.Regular),
+                ForeColor = isAvailable ? Color.ForestGreen : Color.DarkOrange,
+                Location = new Point(20, 45),
+                AutoSize = true
+            };
+
+            RoundedButton btnBook = new RoundedButton
+            {
+                Text = "Забронювати",
+                Size = new Size(130, 32),
+                Location = new Point(20, 80),
+                BorderRadius = 15,
+                BorderSize = 1,
+                BorderColor = Color.DarkCyan,
+                BackColor = Color.AliceBlue,
+                ForeColor = Color.DarkCyan,
+                Font = new Font("Century Gothic", 9F, FontStyle.Bold)
+            };
+
+            btnBook.Click += (s, e) =>
+            {
+                MessageBox.Show($"Ви вибрали бронювання: {title}");
+            };
+
+            card.Controls.Add(lblTitle);
+            card.Controls.Add(lblStatus);
+            card.Controls.Add(btnBook);
+
+            return card;
+        }
+
+        private void LoadResources(string filterType)
+        {
+            flowLayoutPanel_Resources.Controls.Clear();
+            List<Resourse> allResources = scheduler.GetResourses();
+
+            IEnumerable<Resourse> filteredList = allResources;
+
+            if (filterType == "Available")
+            {
+                filteredList = allResources.Where(r => scheduler.IsResourceAvailableForAtLeastOneHour(r.ID, DateTime.Today));
+            }
+
+            foreach (var res in filteredList)
+            {
+                bool isAvail = scheduler.IsResourceAvailableForAtLeastOneHour(res.ID, DateTime.Today);
+                string statusText = isAvail ? "Вільно зараз" : "Зайнято";
+
+                var card = CreateEquipmentCard(res.NAME, statusText, isAvail);
+                flowLayoutPanel_Resources.Controls.Add(card);
             }
         }
 
@@ -127,5 +214,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             schedule_Form.Show();
             this.Hide();
         }
+
     }
 }
