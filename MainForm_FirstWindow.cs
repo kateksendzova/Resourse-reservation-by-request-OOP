@@ -17,6 +17,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private UserRole currentRole;
 
         private Scheduler scheduler = new Scheduler();
+        private const string PlaceholderText = "Пошук обладнання на сьогодні";
 
 
         public MainForm_FirstWindow(string userInfo)
@@ -37,7 +38,48 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             roundedButton_All.IsSelected = true;
             roundedButton_Available.IsSelected = false;
 
-            LoadResources("All");
+            SetupSearchBox();
+
+            LoadResources("All", "");
+        }
+
+        private void SetupSearchBox()
+        {
+            if (string.IsNullOrWhiteSpace(textBox_Search.Text) || textBox_Search.Text == PlaceholderText)
+            {
+                textBox_Search.Text = PlaceholderText;
+                textBox_Search.ForeColor = SystemColors.ControlDark;
+            }
+
+            textBox_Search.Enter += (s, e) =>
+            {
+                if (textBox_Search.Text == PlaceholderText)
+                {
+                    textBox_Search.Text = "";
+                    textBox_Search.ForeColor = Color.Black;
+                }
+            };
+
+            textBox_Search.Leave += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(textBox_Search.Text))
+                {
+                    textBox_Search.Text = PlaceholderText;
+                    textBox_Search.ForeColor = SystemColors.ControlDark;
+                    string currentFilter = roundedButton_Available.IsSelected ? "Available" : "All";
+                    LoadResources(currentFilter, "");
+                }
+            };
+
+            textBox_Search.TextChanged += (s, e) =>
+            {
+                if (textBox_Search.Text != PlaceholderText)
+                {
+                    string searchText = textBox_Search.Text.Trim();
+                    string currentFilter = roundedButton_Available.IsSelected ? "Available" : "All";
+                    LoadResources(currentFilter, searchText);
+                }
+            };
         }
 
 
@@ -110,7 +152,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
         }
 
-        private RoundedPanel CreateEquipmentCard(string title, string statusText, bool isAvailable)
+        private RoundedPanel CreateEquipmentCard(int resourceID, string title, string statusText, bool isAvailable)
         {
             RoundedPanel card = new RoundedPanel
             {
@@ -154,7 +196,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             btnBook.Click += (s, e) =>
             {
-                MessageBox.Show($"Ви вибрали бронювання: {title}");
+                AddRequestForm addRequestForm = new AddRequestForm(currentUserInfo, resourceID);
+                addRequestForm.Show();
+                this.Hide();
             };
 
             card.Controls.Add(lblTitle);
@@ -164,7 +208,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             return card;
         }
 
-        private void LoadResources(string filterType)
+        private void LoadResources(string filterType, string searchQuery = "")
         {
             flowLayoutPanel_Resources.Controls.Clear();
             List<Resourse> allResources = scheduler.GetResourses();
@@ -173,7 +217,12 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             if (filterType == "Available")
             {
-                filteredList = allResources.Where(r => scheduler.IsResourceAvailableForAtLeastOneHour(r.ID, DateTime.Today));
+                filteredList = filteredList.Where(r => scheduler.IsResourceAvailableForAtLeastOneHour(r.ID, DateTime.Today));
+            }
+
+            if (!string.IsNullOrWhiteSpace(searchQuery))
+            {
+                filteredList = filteredList.Where(r => r.NAME.IndexOf(searchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
             foreach (var res in filteredList)
@@ -181,7 +230,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 bool isAvail = scheduler.IsResourceAvailableForAtLeastOneHour(res.ID, DateTime.Today);
                 string statusText = isAvail ? "Вільно зараз" : "Зайнято";
 
-                var card = CreateEquipmentCard(res.NAME, statusText, isAvail);
+                var card = CreateEquipmentCard(res.ID, res.NAME, statusText, isAvail);
                 flowLayoutPanel_Resources.Controls.Add(card);
             }
         }

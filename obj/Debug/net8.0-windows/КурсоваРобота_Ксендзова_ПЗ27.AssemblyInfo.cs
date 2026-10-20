@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("КурсоваРобота_Ксендзова_ПЗ27")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fec4a7be789c8cb0d9c7f5adbbff977e0ddc6660")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+416c350c1cb596628cb586de4fd075625fc18377")]
 [assembly: System.Reflection.AssemblyProductAttribute("КурсоваРобота_Ксендзова_ПЗ27")]
 [assembly: System.Reflection.AssemblyTitleAttribute("КурсоваРобота_Ксендзова_ПЗ27")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

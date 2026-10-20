@@ -18,6 +18,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private string currentName;
         private UserRole currentRole;
 
+        private int selectedResourceID = 0;
         public AddRequestForm(string userInfo)
         {
             InitializeComponent();
@@ -25,6 +26,12 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             ParseUserInfo(userInfo);
 
             this.FormClosed += (s, e) => Application.Exit();
+        }
+
+        public AddRequestForm(string userInfo, int resourceID) : this(userInfo)
+        {
+            selectedResourceID = resourceID;
+
         }
 
         private void AddRequestForm_Load(object sender, EventArgs e)
