@@ -1,24 +1,33 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using КурсоваРобота_Ксендзова_ПЗ27.Properties;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
     public partial class AddRequestForm : Form
     {
-        private static readonly TimeSpan WorkDayStart = new TimeSpan(8, 0, 0);
-        private static readonly TimeSpan WorkDayEnd = new TimeSpan(19, 0, 0);
+        private const int WorkStartHour = 8;
+        private const int WorkEndHour = 19;
 
-        private Scheduler scheduler = new Scheduler();
-        private string currentUserInfo;
+        private readonly string currentUserInfo;
         private string currentName;
         private UserRole currentRole;
 
-        private int selectedResourceID = 0;
+        private readonly Scheduler scheduler = new Scheduler();
+        private readonly ToolTip toolTip = new ToolTip();
+
+        private FlowLayoutPanel flowLayout_SelectResources;
+        private FlowLayoutPanel flowLayout_TypeOfWork;
+
+        private int? selectedResID = null;
+        private string selectedResName = "";
+        private TypeOfWork selectedTypeOfWork = TypeOfWork.IndependentWork;
+
+        private Font summaryCaptionFont;
+        private Font summaryValueFont;
+
         public AddRequestForm(string userInfo)
         {
             InitializeComponent();
@@ -30,66 +39,212 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         public AddRequestForm(string userInfo, int resourceID) : this(userInfo)
         {
-            selectedResourceID = resourceID;
-
+            selectedResID = resourceID;
         }
+
 
         private void AddRequestForm_Load(object sender, EventArgs e)
         {
-            LoadResourcesToListBox();
-            LoadTypeOfWorkToListBox();
+            LoadNameAndRole();
+
+            summaryCaptionFont = new Font("Century Gothic", 9F, FontStyle.Regular);
+            summaryValueFont = new Font("Century Gothic", 10.5F, FontStyle.Bold);
+
+            richTextBox_YourRequest.ReadOnly = true;
+            richTextBox_YourRequest.TabStop = false;
+            richTextBox_YourRequest.BackColor = Color.White;
+            richTextBox_YourRequest.Cursor = Cursors.Default;
 
             monthCalendar.MaxSelectionCount = 1;
             monthCalendar.MinDate = DateTime.Today;
+            SetDefaultTime();
 
-            ResetInputs();
+            SetupResourceSelectionPanel();
+            SetupTypeOfWorkPanel();
+            LoadSelectableResources("");
 
-            listBox_Resources.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
-            listBox_Priority.SelectedIndexChanged += (s, args) => UpdateRequestPreview();
-
-            monthCalendar.DateChanged += (s, args) =>
+            if (selectedResID.HasValue)
             {
-                if (monthCalendar.SelectionStart.Date == DateTime.Today)
-                {
-                    int targetHour = Math.Max(8, DateTime.Now.Hour);
-                    TimePicker_StartOfWork.Value = DateTime.Today.AddHours(targetHour);
-                }
-                else
-                {
-                    TimePicker_StartOfWork.Value = DateTime.Today.AddHours(8);
-                }
+                var res = scheduler.GetResourses().FirstOrDefault(r => r.ID == selectedResID.Value);
+                if (res != null) selectedResName = res.NAME;
+            }
 
-                UpdateRequestPreview();
+            monthCalendar.DateChanged += (s, ev) => UpdateSummaryText();
+            TimePicker_StartOfWork.ValueChanged += (s, ev) => UpdateSummaryText();
+            dateTimePicker_Interval.ValueChanged += (s, ev) => UpdateSummaryText();
+            button_ClearAll.Click += button_ClearAll_Click;
+
+            UpdateSummaryText();
+        }
+
+        private void SetDefaultTime()
+        {
+            TimePicker_StartOfWork.Value = DateTime.Today.AddHours(8);
+
+            dateTimePicker_Interval.Value = DateTime.Today.AddHours(1);
+        }
+
+
+
+        private FlowLayoutPanel CreateFlowPanel(Control parent, int top, bool scroll)
+        {
+            return new FlowLayoutPanel
+            {
+                Location = new Point(25, top),
+                Size = new Size(parent.Width - 50, parent.Height - top - 24),
+                BackColor = Color.White,
+                AutoScroll = scroll,
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false
+            };
+        }
+
+        private void SetupResourceSelectionPanel()
+        {
+            textBox_SearchRes.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            textBox_SearchRes.PlaceholderText = "Пошук обладнання";
+            textBox_SearchRes.TextChanged += (s, e) => LoadSelectableResources(textBox_SearchRes.Text.Trim());
+
+            flowLayout_SelectResources = CreateFlowPanel(roundedPanel_Resources, textBox_SearchRes.Bottom + 12, true);
+            roundedPanel_Resources.Controls.Add(flowLayout_SelectResources);
+        }
+
+        private void LoadSelectableResources(string searchQuery)
+        {
+            flowLayout_SelectResources.SuspendLayout();
+            flowLayout_SelectResources.Controls.Clear();
+
+            IEnumerable<Resourse> filtered = scheduler.GetResourses();
+            if (!string.IsNullOrWhiteSpace(searchQuery))
+            {
+                filtered = filtered.Where(r => r.NAME.IndexOf(searchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+
+            int btnWidth = flowLayout_SelectResources.ClientSize.Width - SystemInformation.VerticalScrollBarWidth - 6;
+            RoundedButton selectedButton = null;
+
+            foreach (var res in filtered)
+            {
+                var btnRes = new RoundedButton
+                {
+                    Text = res.NAME,
+                    Size = new Size(btnWidth, 40),
+                    BorderRadius = 12,
+                    BorderSize = 1,
+                    BorderColor = Color.DarkCyan,
+                    Font = new Font("Century Gothic", 9.5F, FontStyle.Bold),
+                    Tag = res.ID,
+                    IsSelected = (selectedResID == res.ID)
+                };
+                toolTip.SetToolTip(btnRes, res.NAME);
+
+                btnRes.Click += (s, e) =>
+                {
+                    selectedResID = res.ID;
+                    selectedResName = res.NAME;
+                    HighlightSelected(flowLayout_SelectResources, res.ID);
+                    UpdateSummaryText();
+                };
+
+                flowLayout_SelectResources.Controls.Add(btnRes);
+                if (btnRes.IsSelected) selectedButton = btnRes;
+            }
+
+            flowLayout_SelectResources.ResumeLayout();
+            if (selectedButton != null) flowLayout_SelectResources.ScrollControlIntoView(selectedButton);
+        }
+
+        private void HighlightSelected(FlowLayoutPanel flow, object selectedTag)
+        {
+            foreach (Control ctrl in flow.Controls)
+            {
+                if (ctrl is RoundedButton rb)
+                    rb.IsSelected = Equals(rb.Tag, selectedTag);
+            }
+        }
+
+
+        private void SetupTypeOfWorkPanel()
+        {
+            flowLayout_TypeOfWork = CreateFlowPanel(roundedPanel_TypeOfWork, label1.Bottom + 12, false);
+            roundedPanel_TypeOfWork.Controls.Add(flowLayout_TypeOfWork);
+
+            var workTypes = new (string Text, TypeOfWork Type)[]
+            {
+                ("Самостійна робота", TypeOfWork.IndependentWork),
+                ("Лабораторна", TypeOfWork.LaboratoryWork),
+                ("Дипломна", TypeOfWork.DiplomaThesis),
+                ("Експеримент", TypeOfWork.ScientificExperiment)
             };
 
-            TimePicker_StartOfWork.ValueChanged += (s, args) => UpdateRequestPreview();
-            dateTimePicker_Interval.ValueChanged += (s, args) => UpdateRequestPreview();
+            int btnWidth = flowLayout_TypeOfWork.ClientSize.Width - 6;
 
-            UpdateRequestPreview();
-            LoadNameAndRole();
-        }
-
-        private void LoadResourcesToListBox()
-        {
-            List<Resourse> resources = scheduler.GetResourses();
-
-            listBox_Resources.DataSource = resources;
-            listBox_Resources.DisplayMember = "NAME";
-            listBox_Resources.ValueMember = "ID";
-        }
-
-        private void LoadTypeOfWorkToListBox()
-        {
-            listBox_Priority.Format += (s, e) =>
+            foreach (var item in workTypes)
             {
-                if (e.ListItem is TypeOfWork type)
+                var btnWork = new RoundedButton
                 {
-                    e.Value = TypeOfWorkToText(type);
-                }
-            };
+                    Text = item.Text,
+                    Size = new Size(btnWidth, 32),
+                    BorderRadius = 10,
+                    BorderSize = 1,
+                    BorderColor = Color.DarkCyan,
+                    Font = new Font("Century Gothic", 9F, FontStyle.Bold),
+                    Tag = item.Type,
+                    IsSelected = (selectedTypeOfWork == item.Type)
+                };
 
-            listBox_Priority.DataSource = Enum.GetValues(typeof(TypeOfWork));
+                btnWork.Click += (s, e) =>
+                {
+                    selectedTypeOfWork = item.Type;
+                    HighlightSelected(flowLayout_TypeOfWork, item.Type);
+                    UpdateSummaryText();
+                };
+
+                flowLayout_TypeOfWork.Controls.Add(btnWork);
+            }
         }
+
+        private static string GetWorkTypeName(TypeOfWork type) => type switch
+        {
+            TypeOfWork.LaboratoryWork => "Лабораторна",
+            TypeOfWork.DiplomaThesis => "Дипломна",
+            TypeOfWork.ScientificExperiment => "Експеримент",
+            _ => "Самостійна робота"
+        };
+
+        private void AppendField(string caption, string value, bool isPlaceholder = false)
+        {
+            var box = richTextBox_YourRequest;
+
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+            box.SelectionFont = summaryCaptionFont;
+            box.SelectionColor = Color.DimGray;
+            box.AppendText(caption + "\n");
+
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+            box.SelectionFont = summaryValueFont;
+            box.SelectionColor = isPlaceholder ? Color.Gray : Color.Black;
+            box.AppendText(value + "\n\n");
+        }
+
+        private void UpdateSummaryText()
+        {
+            TimeSpan start = TimePicker_StartOfWork.Value.TimeOfDay;
+            TimeSpan interval = dateTimePicker_Interval.Value.TimeOfDay;
+            TimeSpan end = start + interval;
+
+            richTextBox_YourRequest.Clear();
+
+            bool hasRes = !string.IsNullOrEmpty(selectedResName);
+            AppendField("Обладнання", hasRes ? selectedResName : "Не обрано", !hasRes);
+            AppendField("Дата", monthCalendar.SelectionStart.ToString("dd.MM.yyyy"));
+            AppendField("Час", $"{start:hh\\:mm} – {end:hh\\:mm}");
+            AppendField("Тривалість", $"{(int)interval.TotalHours} год {interval.Minutes} хв");
+            AppendField("Тип роботи", GetWorkTypeName(selectedTypeOfWork));
+        }
+
 
         private void ParseUserInfo(string userInfo)
         {
@@ -115,191 +270,121 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             label_RoleName.Text = currentName;
 
-            if (currentRole == UserRole.Student)
-            {
-                pictureBox_AvatarStudent.Visible = true;
-                pictureBox_AvatarAssistant.Visible = false;
-                pictureBox_AvatarProfesor.Visible = false;
-            }
-            else if (currentRole == UserRole.Assistant)
-            {
-                pictureBox_AvatarStudent.Visible = false;
-                pictureBox_AvatarAssistant.Visible = true;
-                pictureBox_AvatarProfesor.Visible = false;
-            }
-            else if (currentRole == UserRole.Professor)
-            {
-                pictureBox_AvatarStudent.Visible = false;
-                pictureBox_AvatarAssistant.Visible = false;
-                pictureBox_AvatarProfesor.Visible = true;
-            }
+            pictureBox_AvatarStudent.Visible = (currentRole == UserRole.Student);
+            pictureBox_AvatarAssistant.Visible = (currentRole == UserRole.Assistant);
+            pictureBox_AvatarProfesor.Visible = (currentRole == UserRole.Professor);
         }
 
-        private static string RoleToText(UserRole role)
-        {
-            return role switch
-            {
-                UserRole.Professor => "Викладач",
-                UserRole.Assistant => "Аспірант",
-                _ => "Студент"
-            };
-        }
-
-        private static string TypeOfWorkToText(TypeOfWork type)
-        {
-            return type switch
-            {
-                TypeOfWork.IndependentWork => "Самостійна робота",
-                TypeOfWork.LaboratoryWork => "Лабораторна робота",
-                TypeOfWork.DiplomaThesis => "Дипломна робота",
-                TypeOfWork.ScientificExperiment => "Науковий експеримент",
-                _ => type.ToString()
-            };
-        }
-
-        private static TimeSpan GetTime(DateTimePicker picker)
-        {
-            return new TimeSpan(picker.Value.Hour, picker.Value.Minute, 0);
-        }
-
-        private void ResetInputs()
-        {
-            if (listBox_Resources.Items.Count > 0)
-                listBox_Resources.SelectedIndex = 0;
-
-            if (listBox_Priority.Items.Count > 0)
-                listBox_Priority.SelectedIndex = 0;
-
-            monthCalendar.SetDate(DateTime.Today);
-
-
-            if (monthCalendar.SelectionStart.Date == DateTime.Today)
-            {
-                int targetHour = Math.Max(8, DateTime.Now.Hour);
-                TimePicker_StartOfWork.Value = DateTime.Today.AddHours(targetHour);
-            }
-            else
-            {
-                TimePicker_StartOfWork.Value = DateTime.Today.AddHours(8);
-            }
-
-            dateTimePicker_Interval.Value = DateTime.Today.AddHours(1);
-        }
-
-        private void UpdateRequestPreview()
-        {
-            var resourse = listBox_Resources.SelectedItem as Resourse;
-            if (resourse == null || listBox_Priority.SelectedItem == null)
-            {
-                richTextBox_request.Clear();
-                return;
-            }
-
-            TypeOfWork type = (TypeOfWork)listBox_Priority.SelectedItem;
-            DateTime date = monthCalendar.SelectionStart.Date;
-            TimeSpan start = GetTime(TimePicker_StartOfWork);
-            TimeSpan duration = GetTime(dateTimePicker_Interval);
-            TimeSpan end = start + duration;
-
-            var sb = new StringBuilder();
-            sb.AppendLine($"Користувач: {currentName}\n");
-            sb.AppendLine($"Роль: {RoleToText(currentRole)}\n\n");
-            sb.AppendLine($"Обладнання: {resourse.NAME} \n\n");
-            sb.AppendLine($"Дата: {date:dd.MM.yyyy} \n");
-            sb.AppendLine($"Час: {start:hh\\:mm} - {end:hh\\:mm}\n");
-            sb.AppendLine($"Тривалість: {(int)duration.TotalHours} год {duration.Minutes} хв\n\n");
-            sb.AppendLine($"Тип роботи: {TypeOfWorkToText(type)} \n");
-
-            richTextBox_request.Text = sb.ToString();
-        }
-
-        private string ValidateInput(DateTime date, TimeSpan start, TimeSpan duration)
-        {
-            if (duration <= TimeSpan.Zero)
-                return "Тривалість роботи має бути більшою за 00:00";
-
-            if (start < WorkDayStart || start + duration > WorkDayEnd)
-                return "Лабораторія працює з 08:00 до 19:00. Оберіть час у цих межах";
-
-            if (date == DateTime.Today && start < DateTime.Now.TimeOfDay)
-                return "Цей час на сьогодні вже минув";
-
-            return null;
-        }
 
         private void button_AddRequest_Click(object sender, EventArgs e)
         {
-            if (listBox_Resources.SelectedItem is not Resourse resource)
+            if (!selectedResID.HasValue)
             {
-                MessageBox.Show("Будь ласка, оберіть обладнання зі списку!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Будь ласка, оберіть обладнання!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DateTime reservDay = monthCalendar.SelectionStart.Date;
-            TimeSpan startTime = GetTime(TimePicker_StartOfWork);
-            TimeSpan interval = GetTime(dateTimePicker_Interval);
+            DateTime reservDate = monthCalendar.SelectionStart.Date;
+            TimeSpan startTime = TimePicker_StartOfWork.Value.TimeOfDay;
+            TimeSpan interval = dateTimePicker_Interval.Value.TimeOfDay;
 
-            if (listBox_Priority.SelectedItem == null)
+            if (interval <= TimeSpan.Zero)
             {
-                MessageBox.Show("Оберіть тип роботи!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            TypeOfWork typeOfWork = (TypeOfWork)listBox_Priority.SelectedItem;
-
-            string validationError = ValidateInput(reservDay, startTime, interval);
-            if (validationError != null)
-            {
-                MessageBox.Show(validationError, "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Тривалість має бути більшою за 0.", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Person person = scheduler.GetOrCreatePerson(currentName, currentRole);
-
-            var result = scheduler.TryAddRequest(resource, person, reservDay, startTime, interval, typeOfWork);
-
-            if (result.IsAvailable)
+            if (startTime < TimeSpan.FromHours(WorkStartHour) || startTime + interval > TimeSpan.FromHours(WorkEndHour))
             {
-                MessageBox.Show(result.Message, "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ResetInputs();
+                MessageBox.Show($"Лабораторія працює з {WorkStartHour:00}:00 до {WorkEndHour:00}:00. Змініть час початку або тривалість.",
+                    "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            if (reservDate == DateTime.Today && startTime < DateTime.Now.TimeOfDay)
             {
-                MessageBox.Show(result.Message, "Помилка бронювання", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Цей час сьогодні вже минув.", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Person person = scheduler.GetOrCreatePerson(currentName, currentRole);
+
+                Resourse resource = scheduler.GetResourses().FirstOrDefault(r => r.ID == selectedResID.Value);
+                if (resource == null)
+                {
+                    MessageBox.Show("Помилка: обране обладнання не знайдено в базі!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var result = scheduler.TryAddRequest(resource, person, reservDate, startTime, interval, selectedTypeOfWork);
+
+                if (result.IsAvailable)
+                {
+                    MessageBox.Show(result.Message, "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    selectedResID = null;
+                    selectedResName = "";
+                    selectedTypeOfWork = TypeOfWork.IndependentWork;
+
+                    textBox_SearchRes.Clear();
+                    LoadSelectableResources("");
+                    HighlightSelected(flowLayout_TypeOfWork, selectedTypeOfWork);
+
+                    monthCalendar.SetDate(DateTime.Today);
+                    SetDefaultTime();
+
+                    UpdateSummaryText();
+                }
+                else
+                {
+                    MessageBox.Show(result.Message, "Конфлікт розкладу", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка при збереженні запиту: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void button_ClearAll_Click(object sender, EventArgs e)
         {
-            ResetInputs();
+            selectedResID = null;
+            selectedResName = "";
+            selectedTypeOfWork = TypeOfWork.IndependentWork;
 
-            UpdateRequestPreview();
+            textBox_SearchRes.Clear();
+            LoadSelectableResources("");
+            HighlightSelected(flowLayout_TypeOfWork, selectedTypeOfWork);
+
+            monthCalendar.SetDate(DateTime.Today);
+            SetDefaultTime();
+
+            UpdateSummaryText();
         }
 
         private void button_PanelMane_Click(object sender, EventArgs e)
         {
-            MainForm_FirstWindow mainForm = new MainForm_FirstWindow(currentUserInfo);
-            mainForm.ShowDialog();
-            this.Hide();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DeleteRequestForm delete = new DeleteRequestForm(currentUserInfo);
-            delete.Show();
+            new MainForm_FirstWindow(currentUserInfo).Show();
             this.Hide();
         }
 
         private void button_PanelMySchedule_Click(object sender, EventArgs e)
         {
-            MySchedule_Form mySchedule_Form = new MySchedule_Form(currentUserInfo);
-            mySchedule_Form.Show();
+            new MySchedule_Form(currentUserInfo).Show();
             this.Hide();
         }
 
         private void button_PanelSchedule_Click(object sender, EventArgs e)
         {
-            Schedule_Form schedule_Form = new Schedule_Form(currentUserInfo);
-            schedule_Form.Show();
+            new Schedule_Form(currentUserInfo).Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new DeleteRequestForm(currentUserInfo).Show();
             this.Hide();
         }
     }

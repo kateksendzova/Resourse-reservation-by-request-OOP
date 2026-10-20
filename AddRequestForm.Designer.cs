@@ -56,14 +56,14 @@
             button_PanelMane = new Button();
             pictureBox2 = new PictureBox();
             roundedPanel_Resources = new RoundedPanel();
-            roundedPanel_Calendar = new RoundedPanel();
             textBox_SearchRes = new TextBox();
+            roundedPanel_Calendar = new RoundedPanel();
             label_infoCalendar = new Label();
             roundedPanel_TypeOfWork = new RoundedPanel();
             label1 = new Label();
             roundedPanel_YourRequest = new RoundedPanel();
-            label_infoYourRequest = new Label();
             richTextBox_YourRequest = new RichTextBox();
+            label_infoYourRequest = new Label();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
@@ -228,9 +228,9 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button1.ForeColor = Color.AliceBlue;
-            button1.Location = new Point(99, 321);
+            button1.Location = new Point(102, 320);
             button1.Name = "button1";
-            button1.Size = new Size(186, 33);
+            button1.Size = new Size(152, 33);
             button1.TabIndex = 40;
             button1.Text = "Видалити запит";
             button1.TextAlign = ContentAlignment.MiddleRight;
@@ -254,9 +254,9 @@
             button_PanelSchedule.FlatStyle = FlatStyle.Flat;
             button_PanelSchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelSchedule.ForeColor = Color.AliceBlue;
-            button_PanelSchedule.Location = new Point(94, 259);
+            button_PanelSchedule.Location = new Point(102, 258);
             button_PanelSchedule.Name = "button_PanelSchedule";
-            button_PanelSchedule.Size = new Size(220, 33);
+            button_PanelSchedule.Size = new Size(178, 33);
             button_PanelSchedule.TabIndex = 38;
             button_PanelSchedule.Text = "Загальний розклад";
             button_PanelSchedule.TextAlign = ContentAlignment.MiddleRight;
@@ -346,9 +346,9 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button2.ForeColor = Color.AliceBlue;
-            button2.Location = new Point(94, 130);
+            button2.Location = new Point(102, 126);
             button2.Name = "button2";
-            button2.Size = new Size(190, 33);
+            button2.Size = new Size(160, 33);
             button2.TabIndex = 3;
             button2.Text = "Створити запит";
             button2.TextAlign = ContentAlignment.MiddleRight;
@@ -360,9 +360,9 @@
             button_PanelMySchedule.FlatStyle = FlatStyle.Flat;
             button_PanelMySchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMySchedule.ForeColor = Color.AliceBlue;
-            button_PanelMySchedule.Location = new Point(100, 196);
+            button_PanelMySchedule.Location = new Point(102, 194);
             button_PanelMySchedule.Name = "button_PanelMySchedule";
-            button_PanelMySchedule.Size = new Size(151, 33);
+            button_PanelMySchedule.Size = new Size(127, 33);
             button_PanelMySchedule.TabIndex = 2;
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
@@ -375,9 +375,9 @@
             button_PanelMane.FlatStyle = FlatStyle.Flat;
             button_PanelMane.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMane.ForeColor = Color.AliceBlue;
-            button_PanelMane.Location = new Point(94, 71);
+            button_PanelMane.Location = new Point(102, 67);
             button_PanelMane.Name = "button_PanelMane";
-            button_PanelMane.Size = new Size(119, 33);
+            button_PanelMane.Size = new Size(89, 33);
             button_PanelMane.TabIndex = 1;
             button_PanelMane.Text = "Головна";
             button_PanelMane.TextAlign = ContentAlignment.MiddleRight;
@@ -402,10 +402,17 @@
             roundedPanel_Resources.Controls.Add(textBox_SearchRes);
             roundedPanel_Resources.Controls.Add(label_infoRes);
             roundedPanel_Resources.CornerRadius = 12;
-            roundedPanel_Resources.Location = new Point(569, 191);
+            roundedPanel_Resources.Location = new Point(553, 126);
             roundedPanel_Resources.Name = "roundedPanel_Resources";
             roundedPanel_Resources.Size = new Size(427, 752);
             roundedPanel_Resources.TabIndex = 44;
+            // 
+            // textBox_SearchRes
+            // 
+            textBox_SearchRes.Location = new Point(32, 67);
+            textBox_SearchRes.Name = "textBox_SearchRes";
+            textBox_SearchRes.Size = new Size(363, 26);
+            textBox_SearchRes.TabIndex = 4;
             // 
             // roundedPanel_Calendar
             // 
@@ -418,17 +425,10 @@
             roundedPanel_Calendar.Controls.Add(dateTimePicker_Interval);
             roundedPanel_Calendar.Controls.Add(label_infoInterval);
             roundedPanel_Calendar.CornerRadius = 12;
-            roundedPanel_Calendar.Location = new Point(1040, 191);
+            roundedPanel_Calendar.Location = new Point(1020, 126);
             roundedPanel_Calendar.Name = "roundedPanel_Calendar";
             roundedPanel_Calendar.Size = new Size(344, 474);
             roundedPanel_Calendar.TabIndex = 45;
-            // 
-            // textBox_SearchRes
-            // 
-            textBox_SearchRes.Location = new Point(32, 67);
-            textBox_SearchRes.Name = "textBox_SearchRes";
-            textBox_SearchRes.Size = new Size(363, 26);
-            textBox_SearchRes.TabIndex = 4;
             // 
             // label_infoCalendar
             // 
@@ -446,7 +446,7 @@
             roundedPanel_TypeOfWork.BorderColor = Color.LightGray;
             roundedPanel_TypeOfWork.Controls.Add(label1);
             roundedPanel_TypeOfWork.CornerRadius = 12;
-            roundedPanel_TypeOfWork.Location = new Point(1040, 705);
+            roundedPanel_TypeOfWork.Location = new Point(1020, 640);
             roundedPanel_TypeOfWork.Name = "roundedPanel_TypeOfWork";
             roundedPanel_TypeOfWork.Size = new Size(344, 238);
             roundedPanel_TypeOfWork.TabIndex = 45;
@@ -470,10 +470,19 @@
             roundedPanel_YourRequest.Controls.Add(button_AddRequest);
             roundedPanel_YourRequest.Controls.Add(button_ClearAll);
             roundedPanel_YourRequest.CornerRadius = 12;
-            roundedPanel_YourRequest.Location = new Point(1426, 191);
+            roundedPanel_YourRequest.Location = new Point(1425, 126);
             roundedPanel_YourRequest.Name = "roundedPanel_YourRequest";
             roundedPanel_YourRequest.Size = new Size(427, 752);
             roundedPanel_YourRequest.TabIndex = 45;
+            // 
+            // richTextBox_YourRequest
+            // 
+            richTextBox_YourRequest.BorderStyle = BorderStyle.None;
+            richTextBox_YourRequest.Location = new Point(18, 67);
+            richTextBox_YourRequest.Name = "richTextBox_YourRequest";
+            richTextBox_YourRequest.Size = new Size(389, 497);
+            richTextBox_YourRequest.TabIndex = 26;
+            richTextBox_YourRequest.Text = "";
             // 
             // label_infoYourRequest
             // 
@@ -484,15 +493,6 @@
             label_infoYourRequest.Size = new Size(99, 21);
             label_infoYourRequest.TabIndex = 3;
             label_infoYourRequest.Text = "Ваш запит";
-            // 
-            // richTextBox_YourRequest
-            // 
-            richTextBox_YourRequest.BorderStyle = BorderStyle.None;
-            richTextBox_YourRequest.Location = new Point(18, 67);
-            richTextBox_YourRequest.Name = "richTextBox_YourRequest";
-            richTextBox_YourRequest.Size = new Size(389, 497);
-            richTextBox_YourRequest.TabIndex = 26;
-            richTextBox_YourRequest.Text = "";
             // 
             // AddRequestForm
             // 
