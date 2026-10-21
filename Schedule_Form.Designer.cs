@@ -44,21 +44,26 @@
             button_PanelAddReq = new Button();
             button_PanelMySchedule = new Button();
             button_PanelMainForm = new Button();
-            dateTimePicker_DeleteReq = new DateTimePicker();
-            label1 = new Label();
-            dataGridView_MySchedule = new DataGridView();
+            dataGridView_ScheduleTimeOfBooking = new DataGridView();
             ColumnTime = new DataGridViewTextBoxColumn();
             ColumnName = new DataGridViewTextBoxColumn();
             ColumnRes = new DataGridViewTextBoxColumn();
             ColumnType = new DataGridViewTextBoxColumn();
-            label2 = new Label();
-            dataGridView_ByComing = new DataGridView();
+            dataGridView_ScheduleByComing = new DataGridView();
             ColumnComingDate = new DataGridViewTextBoxColumn();
             ColumnReservedDate = new DataGridViewTextBoxColumn();
             ColumnPIB = new DataGridViewTextBoxColumn();
             ColumnResource = new DataGridViewTextBoxColumn();
             ColumnTypeOfWork = new DataGridViewTextBoxColumn();
-            label_infoSystemName = new Label();
+            roundedPanel_ScheduleTimeOfBooking = new RoundedPanel();
+            dateTimePicker_ScheduleTimeOfBooking = new DateTimePicker();
+            pictureBox2 = new PictureBox();
+            label3 = new Label();
+            label4 = new Label();
+            roundedPanel_ByComing = new RoundedPanel();
+            dateTimePicker_ScheduleByComing = new DateTimePicker();
+            roundedButton_TimeOfBooking = new RoundedButton();
+            roundedButton_ByTimeOfComing = new RoundedButton();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoDel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoSchedule).BeginInit();
@@ -68,15 +73,18 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoMySchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoMakeReq).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_MySchedule).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_ByComing).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_ScheduleTimeOfBooking).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_ScheduleByComing).BeginInit();
+            roundedPanel_ScheduleTimeOfBooking.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            roundedPanel_ByComing.SuspendLayout();
             SuspendLayout();
             // 
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.DarkCyan;
-            panel_Menu.Controls.Add(pictureBox_LogoDel);
             panel_Menu.Controls.Add(button_PanelDelReq);
+            panel_Menu.Controls.Add(pictureBox_LogoDel);
             panel_Menu.Controls.Add(pictureBox_LogoSchedule);
             panel_Menu.Controls.Add(button2);
             panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
@@ -99,9 +107,9 @@
             // 
             pictureBox_LogoDel.Image = (Image)resources.GetObject("pictureBox_LogoDel.Image");
             pictureBox_LogoDel.InitialImage = (Image)resources.GetObject("pictureBox_LogoDel.InitialImage");
-            pictureBox_LogoDel.Location = new Point(32, 317);
+            pictureBox_LogoDel.Location = new Point(44, 317);
             pictureBox_LogoDel.Name = "pictureBox_LogoDel";
-            pictureBox_LogoDel.Size = new Size(50, 41);
+            pictureBox_LogoDel.Size = new Size(63, 41);
             pictureBox_LogoDel.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_LogoDel.TabIndex = 41;
             pictureBox_LogoDel.TabStop = false;
@@ -112,9 +120,9 @@
             button_PanelDelReq.FlatStyle = FlatStyle.Flat;
             button_PanelDelReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelDelReq.ForeColor = Color.AliceBlue;
-            button_PanelDelReq.Location = new Point(63, 321);
+            button_PanelDelReq.Location = new Point(92, 320);
             button_PanelDelReq.Name = "button_PanelDelReq";
-            button_PanelDelReq.Size = new Size(168, 33);
+            button_PanelDelReq.Size = new Size(152, 33);
             button_PanelDelReq.TabIndex = 40;
             button_PanelDelReq.Text = "Видалити запит";
             button_PanelDelReq.TextAlign = ContentAlignment.MiddleRight;
@@ -125,9 +133,9 @@
             // 
             pictureBox_LogoSchedule.Image = (Image)resources.GetObject("pictureBox_LogoSchedule.Image");
             pictureBox_LogoSchedule.InitialImage = (Image)resources.GetObject("pictureBox_LogoSchedule.InitialImage");
-            pictureBox_LogoSchedule.Location = new Point(37, 258);
+            pictureBox_LogoSchedule.Location = new Point(47, 258);
             pictureBox_LogoSchedule.Name = "pictureBox_LogoSchedule";
-            pictureBox_LogoSchedule.Size = new Size(39, 34);
+            pictureBox_LogoSchedule.Size = new Size(50, 34);
             pictureBox_LogoSchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_LogoSchedule.TabIndex = 39;
             pictureBox_LogoSchedule.TabStop = false;
@@ -138,9 +146,9 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button2.ForeColor = Color.AliceBlue;
-            button2.Location = new Point(75, 259);
+            button2.Location = new Point(96, 258);
             button2.Name = "button2";
-            button2.Size = new Size(181, 33);
+            button2.Size = new Size(178, 33);
             button2.TabIndex = 38;
             button2.Text = "Загальний розклад";
             button2.TextAlign = ContentAlignment.MiddleRight;
@@ -183,9 +191,9 @@
             // 
             pictureBox_LogoMySchedule.Image = (Image)resources.GetObject("pictureBox_LogoMySchedule.Image");
             pictureBox_LogoMySchedule.InitialImage = (Image)resources.GetObject("pictureBox_LogoMySchedule.InitialImage");
-            pictureBox_LogoMySchedule.Location = new Point(37, 191);
+            pictureBox_LogoMySchedule.Location = new Point(47, 191);
             pictureBox_LogoMySchedule.Name = "pictureBox_LogoMySchedule";
-            pictureBox_LogoMySchedule.Size = new Size(42, 41);
+            pictureBox_LogoMySchedule.Size = new Size(53, 41);
             pictureBox_LogoMySchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_LogoMySchedule.TabIndex = 34;
             pictureBox_LogoMySchedule.TabStop = false;
@@ -194,9 +202,9 @@
             // 
             pictureBox_LogoMakeReq.Image = (Image)resources.GetObject("pictureBox_LogoMakeReq.Image");
             pictureBox_LogoMakeReq.InitialImage = (Image)resources.GetObject("pictureBox_LogoMakeReq.InitialImage");
-            pictureBox_LogoMakeReq.Location = new Point(35, 126);
+            pictureBox_LogoMakeReq.Location = new Point(44, 126);
             pictureBox_LogoMakeReq.Name = "pictureBox_LogoMakeReq";
-            pictureBox_LogoMakeReq.Size = new Size(42, 41);
+            pictureBox_LogoMakeReq.Size = new Size(53, 41);
             pictureBox_LogoMakeReq.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_LogoMakeReq.TabIndex = 33;
             pictureBox_LogoMakeReq.TabStop = false;
@@ -205,9 +213,9 @@
             // 
             pictureBox_Logo.Image = (Image)resources.GetObject("pictureBox_Logo.Image");
             pictureBox_Logo.InitialImage = (Image)resources.GetObject("pictureBox_Logo.InitialImage");
-            pictureBox_Logo.Location = new Point(30, 63);
+            pictureBox_Logo.Location = new Point(43, 63);
             pictureBox_Logo.Name = "pictureBox_Logo";
-            pictureBox_Logo.Size = new Size(46, 49);
+            pictureBox_Logo.Size = new Size(58, 49);
             pictureBox_Logo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_Logo.TabIndex = 32;
             pictureBox_Logo.TabStop = false;
@@ -229,9 +237,9 @@
             button_PanelAddReq.FlatStyle = FlatStyle.Flat;
             button_PanelAddReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelAddReq.ForeColor = Color.AliceBlue;
-            button_PanelAddReq.Location = new Point(82, 130);
+            button_PanelAddReq.Location = new Point(91, 131);
             button_PanelAddReq.Name = "button_PanelAddReq";
-            button_PanelAddReq.Size = new Size(152, 33);
+            button_PanelAddReq.Size = new Size(158, 33);
             button_PanelAddReq.TabIndex = 3;
             button_PanelAddReq.Text = "Створити запит";
             button_PanelAddReq.TextAlign = ContentAlignment.MiddleRight;
@@ -244,9 +252,9 @@
             button_PanelMySchedule.FlatStyle = FlatStyle.Flat;
             button_PanelMySchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMySchedule.ForeColor = Color.AliceBlue;
-            button_PanelMySchedule.Location = new Point(76, 195);
+            button_PanelMySchedule.Location = new Point(96, 195);
             button_PanelMySchedule.Name = "button_PanelMySchedule";
-            button_PanelMySchedule.Size = new Size(128, 33);
+            button_PanelMySchedule.Size = new Size(123, 33);
             button_PanelMySchedule.TabIndex = 2;
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
@@ -259,44 +267,25 @@
             button_PanelMainForm.FlatStyle = FlatStyle.Flat;
             button_PanelMainForm.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMainForm.ForeColor = Color.AliceBlue;
-            button_PanelMainForm.Location = new Point(80, 71);
+            button_PanelMainForm.Location = new Point(96, 74);
             button_PanelMainForm.Name = "button_PanelMainForm";
-            button_PanelMainForm.Size = new Size(87, 33);
+            button_PanelMainForm.Size = new Size(89, 33);
             button_PanelMainForm.TabIndex = 1;
             button_PanelMainForm.Text = "Головна";
             button_PanelMainForm.TextAlign = ContentAlignment.MiddleRight;
             button_PanelMainForm.UseVisualStyleBackColor = true;
             button_PanelMainForm.Click += button_PanelMainForm_Click;
             // 
-            // dateTimePicker_DeleteReq
+            // dataGridView_ScheduleTimeOfBooking
             // 
-            dateTimePicker_DeleteReq.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dateTimePicker_DeleteReq.Format = DateTimePickerFormat.Short;
-            dateTimePicker_DeleteReq.Location = new Point(445, 171);
-            dateTimePicker_DeleteReq.Name = "dateTimePicker_DeleteReq";
-            dateTimePicker_DeleteReq.Size = new Size(674, 26);
-            dateTimePicker_DeleteReq.TabIndex = 59;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(669, 147);
-            label1.Name = "label1";
-            label1.Size = new Size(216, 21);
-            label1.TabIndex = 58;
-            label1.Text = "Розклад на обрану дату";
-            // 
-            // dataGridView_MySchedule
-            // 
-            dataGridView_MySchedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView_MySchedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_MySchedule.Columns.AddRange(new DataGridViewColumn[] { ColumnTime, ColumnName, ColumnRes, ColumnType });
-            dataGridView_MySchedule.Location = new Point(445, 203);
-            dataGridView_MySchedule.Name = "dataGridView_MySchedule";
-            dataGridView_MySchedule.RowHeadersWidth = 51;
-            dataGridView_MySchedule.Size = new Size(674, 570);
-            dataGridView_MySchedule.TabIndex = 57;
+            dataGridView_ScheduleTimeOfBooking.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView_ScheduleTimeOfBooking.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView_ScheduleTimeOfBooking.Columns.AddRange(new DataGridViewColumn[] { ColumnTime, ColumnName, ColumnRes, ColumnType });
+            dataGridView_ScheduleTimeOfBooking.Location = new Point(22, 98);
+            dataGridView_ScheduleTimeOfBooking.Name = "dataGridView_ScheduleTimeOfBooking";
+            dataGridView_ScheduleTimeOfBooking.RowHeadersWidth = 51;
+            dataGridView_ScheduleTimeOfBooking.Size = new Size(1129, 638);
+            dataGridView_ScheduleTimeOfBooking.TabIndex = 57;
             // 
             // ColumnTime
             // 
@@ -322,26 +311,16 @@
             ColumnType.MinimumWidth = 6;
             ColumnType.Name = "ColumnType";
             // 
-            // label2
+            // dataGridView_ScheduleByComing
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(1396, 147);
-            label2.Name = "label2";
-            label2.Size = new Size(297, 21);
-            label2.TabIndex = 61;
-            label2.Text = "Розклад за надходженням запитів";
-            // 
-            // dataGridView_ByComing
-            // 
-            dataGridView_ByComing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView_ByComing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_ByComing.Columns.AddRange(new DataGridViewColumn[] { ColumnComingDate, ColumnReservedDate, ColumnPIB, ColumnResource, ColumnTypeOfWork });
-            dataGridView_ByComing.Location = new Point(1198, 171);
-            dataGridView_ByComing.Name = "dataGridView_ByComing";
-            dataGridView_ByComing.RowHeadersWidth = 51;
-            dataGridView_ByComing.Size = new Size(674, 602);
-            dataGridView_ByComing.TabIndex = 60;
+            dataGridView_ScheduleByComing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView_ScheduleByComing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView_ScheduleByComing.Columns.AddRange(new DataGridViewColumn[] { ColumnComingDate, ColumnReservedDate, ColumnPIB, ColumnResource, ColumnTypeOfWork });
+            dataGridView_ScheduleByComing.Location = new Point(22, 98);
+            dataGridView_ScheduleByComing.Name = "dataGridView_ScheduleByComing";
+            dataGridView_ScheduleByComing.RowHeadersWidth = 51;
+            dataGridView_ScheduleByComing.Size = new Size(1129, 638);
+            dataGridView_ScheduleByComing.TabIndex = 60;
             // 
             // ColumnComingDate
             // 
@@ -373,15 +352,118 @@
             ColumnTypeOfWork.MinimumWidth = 6;
             ColumnTypeOfWork.Name = "ColumnTypeOfWork";
             // 
-            // label_infoSystemName
+            // roundedPanel_ScheduleTimeOfBooking
             // 
-            label_infoSystemName.AutoSize = true;
-            label_infoSystemName.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(1107, 32);
-            label_infoSystemName.Name = "label_infoSystemName";
-            label_infoSystemName.Size = new Size(184, 22);
-            label_infoSystemName.TabIndex = 62;
-            label_infoSystemName.Text = "Загальний розклад";
+            roundedPanel_ScheduleTimeOfBooking.AutoScroll = true;
+            roundedPanel_ScheduleTimeOfBooking.BackColor = Color.White;
+            roundedPanel_ScheduleTimeOfBooking.BorderColor = Color.LightGray;
+            roundedPanel_ScheduleTimeOfBooking.Controls.Add(dateTimePicker_ScheduleTimeOfBooking);
+            roundedPanel_ScheduleTimeOfBooking.Controls.Add(dataGridView_ScheduleTimeOfBooking);
+            roundedPanel_ScheduleTimeOfBooking.CornerRadius = 12;
+            roundedPanel_ScheduleTimeOfBooking.Location = new Point(558, 207);
+            roundedPanel_ScheduleTimeOfBooking.Name = "roundedPanel_ScheduleTimeOfBooking";
+            roundedPanel_ScheduleTimeOfBooking.Size = new Size(1176, 752);
+            roundedPanel_ScheduleTimeOfBooking.TabIndex = 63;
+            // 
+            // dateTimePicker_ScheduleTimeOfBooking
+            // 
+            dateTimePicker_ScheduleTimeOfBooking.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_ScheduleTimeOfBooking.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_ScheduleTimeOfBooking.Format = DateTimePickerFormat.Short;
+            dateTimePicker_ScheduleTimeOfBooking.Location = new Point(93, 45);
+            dateTimePicker_ScheduleTimeOfBooking.Name = "dateTimePicker_ScheduleTimeOfBooking";
+            dateTimePicker_ScheduleTimeOfBooking.Size = new Size(528, 28);
+            dateTimePicker_ScheduleTimeOfBooking.TabIndex = 50;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
+            pictureBox2.Location = new Point(558, 23);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(57, 49);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 66;
+            pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label3.Location = new Point(612, 67);
+            label3.Name = "label3";
+            label3.Size = new Size(345, 20);
+            label3.TabIndex = 65;
+            label3.Text = "Усі бронювання лабораторії на обрану дату";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label4.Location = new Point(610, 34);
+            label4.Name = "label4";
+            label4.Size = new Size(231, 27);
+            label4.TabIndex = 64;
+            label4.Text = "Загальний розклад";
+            // 
+            // roundedPanel_ByComing
+            // 
+            roundedPanel_ByComing.AutoScroll = true;
+            roundedPanel_ByComing.BackColor = Color.White;
+            roundedPanel_ByComing.BorderColor = Color.LightGray;
+            roundedPanel_ByComing.Controls.Add(dateTimePicker_ScheduleByComing);
+            roundedPanel_ByComing.Controls.Add(dataGridView_ScheduleByComing);
+            roundedPanel_ByComing.CornerRadius = 12;
+            roundedPanel_ByComing.Location = new Point(558, 207);
+            roundedPanel_ByComing.Name = "roundedPanel_ByComing";
+            roundedPanel_ByComing.Size = new Size(1176, 752);
+            roundedPanel_ByComing.TabIndex = 64;
+            // 
+            // dateTimePicker_ScheduleByComing
+            // 
+            dateTimePicker_ScheduleByComing.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_ScheduleByComing.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_ScheduleByComing.Format = DateTimePickerFormat.Short;
+            dateTimePicker_ScheduleByComing.Location = new Point(93, 45);
+            dateTimePicker_ScheduleByComing.Name = "dateTimePicker_ScheduleByComing";
+            dateTimePicker_ScheduleByComing.Size = new Size(528, 28);
+            dateTimePicker_ScheduleByComing.TabIndex = 50;
+            // 
+            // roundedButton_TimeOfBooking
+            // 
+            roundedButton_TimeOfBooking.BackColor = Color.AliceBlue;
+            roundedButton_TimeOfBooking.BorderColor = Color.DarkCyan;
+            roundedButton_TimeOfBooking.BorderRadius = 30;
+            roundedButton_TimeOfBooking.BorderSize = 1;
+            roundedButton_TimeOfBooking.FlatAppearance.BorderSize = 0;
+            roundedButton_TimeOfBooking.FlatStyle = FlatStyle.Flat;
+            roundedButton_TimeOfBooking.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
+            roundedButton_TimeOfBooking.ForeColor = Color.DarkCyan;
+            roundedButton_TimeOfBooking.IsSelected = false;
+            roundedButton_TimeOfBooking.Location = new Point(558, 125);
+            roundedButton_TimeOfBooking.Name = "roundedButton_TimeOfBooking";
+            roundedButton_TimeOfBooking.Size = new Size(243, 39);
+            roundedButton_TimeOfBooking.TabIndex = 67;
+            roundedButton_TimeOfBooking.Text = "За часом бронювання";
+            roundedButton_TimeOfBooking.UseVisualStyleBackColor = false;
+            // 
+            // roundedButton_ByTimeOfComing
+            // 
+            roundedButton_ByTimeOfComing.BackColor = Color.AliceBlue;
+            roundedButton_ByTimeOfComing.BorderColor = Color.DarkCyan;
+            roundedButton_ByTimeOfComing.BorderRadius = 30;
+            roundedButton_ByTimeOfComing.BorderSize = 1;
+            roundedButton_ByTimeOfComing.FlatAppearance.BorderSize = 0;
+            roundedButton_ByTimeOfComing.FlatStyle = FlatStyle.Flat;
+            roundedButton_ByTimeOfComing.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
+            roundedButton_ByTimeOfComing.ForeColor = Color.DarkCyan;
+            roundedButton_ByTimeOfComing.IsSelected = false;
+            roundedButton_ByTimeOfComing.Location = new Point(842, 126);
+            roundedButton_ByTimeOfComing.Name = "roundedButton_ByTimeOfComing";
+            roundedButton_ByTimeOfComing.Size = new Size(243, 39);
+            roundedButton_ByTimeOfComing.TabIndex = 68;
+            roundedButton_ByTimeOfComing.Text = "За часом надходження";
+            roundedButton_ByTimeOfComing.UseVisualStyleBackColor = false;
             // 
             // Schedule_Form
             // 
@@ -389,13 +471,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
-            Controls.Add(label_infoSystemName);
-            Controls.Add(label2);
-            Controls.Add(dataGridView_ByComing);
-            Controls.Add(dateTimePicker_DeleteReq);
-            Controls.Add(label1);
-            Controls.Add(dataGridView_MySchedule);
+            Controls.Add(roundedButton_ByTimeOfComing);
+            Controls.Add(roundedButton_TimeOfBooking);
+            Controls.Add(pictureBox2);
+            Controls.Add(label3);
+            Controls.Add(label4);
             Controls.Add(panel_Menu);
+            Controls.Add(roundedPanel_ByComing);
+            Controls.Add(roundedPanel_ScheduleTimeOfBooking);
             Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "Schedule_Form";
             Text = "Загальний розклад";
@@ -411,8 +494,11 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoMySchedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoMakeReq).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_MySchedule).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_ByComing).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_ScheduleTimeOfBooking).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_ScheduleByComing).EndInit();
+            roundedPanel_ScheduleTimeOfBooking.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            roundedPanel_ByComing.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -434,20 +520,26 @@
         private Button button_PanelAddReq;
         private Button button_PanelMySchedule;
         private Button button_PanelMainForm;
-        private DateTimePicker dateTimePicker_DeleteReq;
-        private Label label1;
-        private DataGridView dataGridView_MySchedule;
+        private DataGridView dataGridView_ScheduleTimeOfBooking;
         private DataGridViewTextBoxColumn ColumnTime;
         private DataGridViewTextBoxColumn ColumnName;
         private DataGridViewTextBoxColumn ColumnRes;
         private DataGridViewTextBoxColumn ColumnType;
         private Label label2;
-        private DataGridView dataGridView_ByComing;
+        private DataGridView dataGridView_ScheduleByComing;
         private DataGridViewTextBoxColumn ColumnComingDate;
         private DataGridViewTextBoxColumn ColumnReservedDate;
         private DataGridViewTextBoxColumn ColumnPIB;
         private DataGridViewTextBoxColumn ColumnResource;
         private DataGridViewTextBoxColumn ColumnTypeOfWork;
-        private Label label_infoSystemName;
+        private RoundedPanel roundedPanel_ScheduleTimeOfBooking;
+        private DateTimePicker dateTimePicker_ScheduleTimeOfBooking;
+        private PictureBox pictureBox2;
+        private Label label3;
+        private Label label4;
+        private RoundedPanel roundedPanel_ByComing;
+        private DateTimePicker dateTimePicker_ScheduleByComing;
+        private RoundedButton roundedButton_TimeOfBooking;
+        private RoundedButton roundedButton_ByTimeOfComing;
     }
 }

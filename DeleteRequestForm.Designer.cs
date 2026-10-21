@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteRequestForm));
             button_ClearAll = new Button();
-            label_infoReqRichText = new Label();
-            richTextBox_request = new RichTextBox();
             button_DeleteRequest = new Button();
             label_infoSystemName = new Label();
             panel_Menu = new Panel();
@@ -51,12 +49,13 @@
             button_PanelMain = new Button();
             label1 = new Label();
             dateTimePicker_DeleteReq = new DateTimePicker();
-            dataGridView_DelReq = new DataGridView();
-            ColumnTime = new DataGridViewTextBoxColumn();
-            ColumnRes = new DataGridViewTextBoxColumn();
-            ColumnType = new DataGridViewTextBoxColumn();
             button_DeleteReq = new Button();
             button2 = new Button();
+            pictureBox2 = new PictureBox();
+            roundedPanel_RequestsForDel = new RoundedPanel();
+            roundedPanel_ShowRequest = new RoundedPanel();
+            label_infoForDeleting = new Label();
+            richTextBox_YourRequest = new RichTextBox();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
@@ -66,7 +65,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMakeReq).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_DelReq).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            roundedPanel_RequestsForDel.SuspendLayout();
+            roundedPanel_ShowRequest.SuspendLayout();
             SuspendLayout();
             // 
             // button_ClearAll
@@ -80,26 +81,6 @@
             button_ClearAll.Text = "Очистити";
             button_ClearAll.UseVisualStyleBackColor = false;
             button_ClearAll.Click += button_ClearAll_Click;
-            // 
-            // label_infoReqRichText
-            // 
-            label_infoReqRichText.AutoSize = true;
-            label_infoReqRichText.Font = new Font("Century Gothic", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 204);
-            label_infoReqRichText.Location = new Point(1334, 142);
-            label_infoReqRichText.Name = "label_infoReqRichText";
-            label_infoReqRichText.Size = new Size(472, 21);
-            label_infoReqRichText.TabIndex = 43;
-            label_infoReqRichText.Text = "Ваш запит на обладнання. Перевірте його та видаліть";
-            // 
-            // richTextBox_request
-            // 
-            richTextBox_request.BackColor = Color.LightCyan;
-            richTextBox_request.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            richTextBox_request.Location = new Point(1319, 170);
-            richTextBox_request.Name = "richTextBox_request";
-            richTextBox_request.Size = new Size(499, 603);
-            richTextBox_request.TabIndex = 42;
-            richTextBox_request.Text = "";
             // 
             // button_DeleteRequest
             // 
@@ -116,18 +97,18 @@
             // label_infoSystemName
             // 
             label_infoSystemName.AutoSize = true;
-            label_infoSystemName.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(1020, 32);
+            label_infoSystemName.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label_infoSystemName.Location = new Point(610, 34);
             label_infoSystemName.Name = "label_infoSystemName";
-            label_infoSystemName.Size = new Size(299, 22);
+            label_infoSystemName.Size = new Size(193, 27);
             label_infoSystemName.TabIndex = 34;
-            label_infoSystemName.Text = "Видалити запит на обладнання";
+            label_infoSystemName.Text = "Видалити запит";
             // 
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.DarkCyan;
-            panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(button1);
+            panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
             panel_Menu.Controls.Add(button_PanelSchedule);
             panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
@@ -150,9 +131,9 @@
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(32, 317);
+            pictureBox1.Location = new Point(44, 317);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(50, 41);
+            pictureBox1.Size = new Size(63, 41);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 41;
             pictureBox1.TabStop = false;
@@ -163,9 +144,9 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button1.ForeColor = Color.AliceBlue;
-            button1.Location = new Point(63, 321);
+            button1.Location = new Point(92, 320);
             button1.Name = "button1";
-            button1.Size = new Size(168, 33);
+            button1.Size = new Size(152, 33);
             button1.TabIndex = 40;
             button1.Text = "Видалити запит";
             button1.TextAlign = ContentAlignment.MiddleRight;
@@ -175,9 +156,9 @@
             // 
             pictureBox_PanelSchedule.Image = (Image)resources.GetObject("pictureBox_PanelSchedule.Image");
             pictureBox_PanelSchedule.InitialImage = (Image)resources.GetObject("pictureBox_PanelSchedule.InitialImage");
-            pictureBox_PanelSchedule.Location = new Point(37, 258);
+            pictureBox_PanelSchedule.Location = new Point(47, 258);
             pictureBox_PanelSchedule.Name = "pictureBox_PanelSchedule";
-            pictureBox_PanelSchedule.Size = new Size(39, 34);
+            pictureBox_PanelSchedule.Size = new Size(50, 34);
             pictureBox_PanelSchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelSchedule.TabIndex = 39;
             pictureBox_PanelSchedule.TabStop = false;
@@ -188,9 +169,9 @@
             button_PanelSchedule.FlatStyle = FlatStyle.Flat;
             button_PanelSchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelSchedule.ForeColor = Color.AliceBlue;
-            button_PanelSchedule.Location = new Point(75, 259);
+            button_PanelSchedule.Location = new Point(96, 258);
             button_PanelSchedule.Name = "button_PanelSchedule";
-            button_PanelSchedule.Size = new Size(181, 33);
+            button_PanelSchedule.Size = new Size(178, 33);
             button_PanelSchedule.TabIndex = 38;
             button_PanelSchedule.Text = "Загальний розклад";
             button_PanelSchedule.TextAlign = ContentAlignment.MiddleRight;
@@ -234,9 +215,9 @@
             // 
             pictureBox_PanelMySchedule.Image = (Image)resources.GetObject("pictureBox_PanelMySchedule.Image");
             pictureBox_PanelMySchedule.InitialImage = (Image)resources.GetObject("pictureBox_PanelMySchedule.InitialImage");
-            pictureBox_PanelMySchedule.Location = new Point(37, 191);
+            pictureBox_PanelMySchedule.Location = new Point(47, 191);
             pictureBox_PanelMySchedule.Name = "pictureBox_PanelMySchedule";
-            pictureBox_PanelMySchedule.Size = new Size(42, 41);
+            pictureBox_PanelMySchedule.Size = new Size(53, 41);
             pictureBox_PanelMySchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMySchedule.TabIndex = 34;
             pictureBox_PanelMySchedule.TabStop = false;
@@ -245,9 +226,9 @@
             // 
             pictureBox_PanelMakeReq.Image = (Image)resources.GetObject("pictureBox_PanelMakeReq.Image");
             pictureBox_PanelMakeReq.InitialImage = (Image)resources.GetObject("pictureBox_PanelMakeReq.InitialImage");
-            pictureBox_PanelMakeReq.Location = new Point(35, 126);
+            pictureBox_PanelMakeReq.Location = new Point(44, 126);
             pictureBox_PanelMakeReq.Name = "pictureBox_PanelMakeReq";
-            pictureBox_PanelMakeReq.Size = new Size(42, 41);
+            pictureBox_PanelMakeReq.Size = new Size(53, 41);
             pictureBox_PanelMakeReq.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMakeReq.TabIndex = 33;
             pictureBox_PanelMakeReq.TabStop = false;
@@ -256,9 +237,9 @@
             // 
             pictureBox_Logo.Image = (Image)resources.GetObject("pictureBox_Logo.Image");
             pictureBox_Logo.InitialImage = (Image)resources.GetObject("pictureBox_Logo.InitialImage");
-            pictureBox_Logo.Location = new Point(30, 63);
+            pictureBox_Logo.Location = new Point(43, 63);
             pictureBox_Logo.Name = "pictureBox_Logo";
-            pictureBox_Logo.Size = new Size(46, 49);
+            pictureBox_Logo.Size = new Size(58, 49);
             pictureBox_Logo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_Logo.TabIndex = 32;
             pictureBox_Logo.TabStop = false;
@@ -280,9 +261,9 @@
             button_MakeReq.FlatStyle = FlatStyle.Flat;
             button_MakeReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_MakeReq.ForeColor = Color.AliceBlue;
-            button_MakeReq.Location = new Point(82, 130);
+            button_MakeReq.Location = new Point(91, 131);
             button_MakeReq.Name = "button_MakeReq";
-            button_MakeReq.Size = new Size(152, 33);
+            button_MakeReq.Size = new Size(158, 33);
             button_MakeReq.TabIndex = 3;
             button_MakeReq.Text = "Створити запит";
             button_MakeReq.TextAlign = ContentAlignment.MiddleRight;
@@ -295,9 +276,9 @@
             button_PanelMySchedule.FlatStyle = FlatStyle.Flat;
             button_PanelMySchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMySchedule.ForeColor = Color.AliceBlue;
-            button_PanelMySchedule.Location = new Point(76, 195);
+            button_PanelMySchedule.Location = new Point(96, 195);
             button_PanelMySchedule.Name = "button_PanelMySchedule";
-            button_PanelMySchedule.Size = new Size(128, 33);
+            button_PanelMySchedule.Size = new Size(123, 33);
             button_PanelMySchedule.TabIndex = 2;
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
@@ -310,9 +291,9 @@
             button_PanelMain.FlatStyle = FlatStyle.Flat;
             button_PanelMain.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMain.ForeColor = Color.AliceBlue;
-            button_PanelMain.Location = new Point(80, 71);
+            button_PanelMain.Location = new Point(96, 74);
             button_PanelMain.Name = "button_PanelMain";
-            button_PanelMain.Size = new Size(87, 33);
+            button_PanelMain.Size = new Size(89, 33);
             button_PanelMain.TabIndex = 1;
             button_PanelMain.Text = "Головна";
             button_PanelMain.TextAlign = ContentAlignment.MiddleRight;
@@ -322,60 +303,31 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(671, 142);
+            label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.Location = new Point(612, 67);
             label1.Name = "label1";
-            label1.Size = new Size(317, 21);
+            label1.Size = new Size(422, 20);
             label1.TabIndex = 49;
-            label1.Text = "Оберіть запит, який хочете видалити";
+            label1.Text = "Оберіть дату, тоді бронювання, яке більше не потрібне";
             // 
             // dateTimePicker_DeleteReq
             // 
             dateTimePicker_DeleteReq.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dateTimePicker_DeleteReq.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_DeleteReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_DeleteReq.Format = DateTimePickerFormat.Short;
-            dateTimePicker_DeleteReq.Location = new Point(502, 170);
+            dateTimePicker_DeleteReq.Location = new Point(41, 54);
             dateTimePicker_DeleteReq.Name = "dateTimePicker_DeleteReq";
-            dateTimePicker_DeleteReq.Size = new Size(654, 26);
+            dateTimePicker_DeleteReq.Size = new Size(528, 28);
             dateTimePicker_DeleteReq.TabIndex = 50;
-            // 
-            // dataGridView_DelReq
-            // 
-            dataGridView_DelReq.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView_DelReq.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_DelReq.Columns.AddRange(new DataGridViewColumn[] { ColumnTime, ColumnRes, ColumnType });
-            dataGridView_DelReq.Location = new Point(502, 203);
-            dataGridView_DelReq.Name = "dataGridView_DelReq";
-            dataGridView_DelReq.RowHeadersWidth = 51;
-            dataGridView_DelReq.Size = new Size(654, 570);
-            dataGridView_DelReq.TabIndex = 55;
-            // 
-            // ColumnTime
-            // 
-            ColumnTime.HeaderText = "Час бронювання";
-            ColumnTime.MinimumWidth = 6;
-            ColumnTime.Name = "ColumnTime";
-            // 
-            // ColumnRes
-            // 
-            ColumnRes.HeaderText = "Обладнання";
-            ColumnRes.MinimumWidth = 6;
-            ColumnRes.Name = "ColumnRes";
-            // 
-            // ColumnType
-            // 
-            ColumnType.HeaderText = "Тип роботи";
-            ColumnType.MinimumWidth = 6;
-            ColumnType.Name = "ColumnType";
             // 
             // button_DeleteReq
             // 
             button_DeleteReq.BackColor = Color.Teal;
             button_DeleteReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_DeleteReq.ForeColor = Color.AliceBlue;
-            button_DeleteReq.Location = new Point(1689, 805);
+            button_DeleteReq.Location = new Point(63, 583);
             button_DeleteReq.Name = "button_DeleteReq";
-            button_DeleteReq.Size = new Size(129, 58);
+            button_DeleteReq.Size = new Size(440, 58);
             button_DeleteReq.TabIndex = 56;
             button_DeleteReq.Text = "Видалити";
             button_DeleteReq.UseVisualStyleBackColor = false;
@@ -384,12 +336,68 @@
             // 
             button2.BackColor = Color.AliceBlue;
             button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button2.Location = new Point(1689, 895);
+            button2.Location = new Point(63, 660);
             button2.Name = "button2";
-            button2.Size = new Size(129, 49);
+            button2.Size = new Size(440, 49);
             button2.TabIndex = 57;
             button2.Text = "Очистити";
             button2.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
+            pictureBox2.Location = new Point(558, 23);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(57, 49);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 58;
+            pictureBox2.TabStop = false;
+            // 
+            // roundedPanel_RequestsForDel
+            // 
+            roundedPanel_RequestsForDel.AutoScroll = true;
+            roundedPanel_RequestsForDel.BackColor = Color.White;
+            roundedPanel_RequestsForDel.BorderColor = Color.LightGray;
+            roundedPanel_RequestsForDel.Controls.Add(dateTimePicker_DeleteReq);
+            roundedPanel_RequestsForDel.CornerRadius = 12;
+            roundedPanel_RequestsForDel.Location = new Point(558, 126);
+            roundedPanel_RequestsForDel.Name = "roundedPanel_RequestsForDel";
+            roundedPanel_RequestsForDel.Size = new Size(610, 752);
+            roundedPanel_RequestsForDel.TabIndex = 59;
+            // 
+            // roundedPanel_ShowRequest
+            // 
+            roundedPanel_ShowRequest.BackColor = Color.White;
+            roundedPanel_ShowRequest.BorderColor = Color.LightGray;
+            roundedPanel_ShowRequest.Controls.Add(richTextBox_YourRequest);
+            roundedPanel_ShowRequest.Controls.Add(label_infoForDeleting);
+            roundedPanel_ShowRequest.Controls.Add(button_DeleteReq);
+            roundedPanel_ShowRequest.Controls.Add(button2);
+            roundedPanel_ShowRequest.CornerRadius = 12;
+            roundedPanel_ShowRequest.Location = new Point(1235, 131);
+            roundedPanel_ShowRequest.Name = "roundedPanel_ShowRequest";
+            roundedPanel_ShowRequest.Size = new Size(566, 752);
+            roundedPanel_ShowRequest.TabIndex = 60;
+            // 
+            // label_infoForDeleting
+            // 
+            label_infoForDeleting.AutoSize = true;
+            label_infoForDeleting.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label_infoForDeleting.Location = new Point(54, 56);
+            label_infoForDeleting.Name = "label_infoForDeleting";
+            label_infoForDeleting.Size = new Size(204, 19);
+            label_infoForDeleting.TabIndex = 61;
+            label_infoForDeleting.Text = "Підтвердіть видалення";
+            // 
+            // richTextBox_YourRequest
+            // 
+            richTextBox_YourRequest.BorderStyle = BorderStyle.None;
+            richTextBox_YourRequest.Location = new Point(54, 95);
+            richTextBox_YourRequest.Name = "richTextBox_YourRequest";
+            richTextBox_YourRequest.Size = new Size(464, 434);
+            richTextBox_YourRequest.TabIndex = 62;
+            richTextBox_YourRequest.Text = "";
             // 
             // DeleteRequestForm
             // 
@@ -397,14 +405,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
-            Controls.Add(button2);
-            Controls.Add(button_DeleteReq);
-            Controls.Add(dataGridView_DelReq);
-            Controls.Add(dateTimePicker_DeleteReq);
+            Controls.Add(roundedPanel_ShowRequest);
+            Controls.Add(roundedPanel_RequestsForDel);
+            Controls.Add(pictureBox2);
             Controls.Add(label1);
             Controls.Add(button_ClearAll);
-            Controls.Add(label_infoReqRichText);
-            Controls.Add(richTextBox_request);
             Controls.Add(button_DeleteRequest);
             Controls.Add(label_infoSystemName);
             Controls.Add(panel_Menu);
@@ -423,7 +428,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMakeReq).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_DelReq).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            roundedPanel_RequestsForDel.ResumeLayout(false);
+            roundedPanel_ShowRequest.ResumeLayout(false);
+            roundedPanel_ShowRequest.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -462,11 +470,12 @@
         private Button button_PanelMain;
         private Label label1;
         private DateTimePicker dateTimePicker_DeleteReq;
-        private DataGridView dataGridView_DelReq;
-        private DataGridViewTextBoxColumn ColumnTime;
-        private DataGridViewTextBoxColumn ColumnRes;
-        private DataGridViewTextBoxColumn ColumnType;
         private Button button_DeleteReq;
         private Button button2;
+        private PictureBox pictureBox2;
+        private RoundedPanel roundedPanel_RequestsForDel;
+        private RoundedPanel roundedPanel_ShowRequest;
+        private Label label_infoForDeleting;
+        private RichTextBox richTextBox_YourRequest;
     }
 }

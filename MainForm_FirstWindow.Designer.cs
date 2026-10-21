@@ -68,8 +68,8 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.DarkCyan;
-            panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(button_DelReq);
+            panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
             panel_Menu.Controls.Add(button_PanelSchedule);
             panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
@@ -85,16 +85,16 @@
             panel_Menu.Dock = DockStyle.Left;
             panel_Menu.Location = new Point(0, 0);
             panel_Menu.Name = "panel_Menu";
-            panel_Menu.Size = new Size(430, 1033);
+            panel_Menu.Size = new Size(382, 1033);
             panel_Menu.TabIndex = 32;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(36, 317);
+            pictureBox1.Location = new Point(44, 317);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(56, 41);
+            pictureBox1.Size = new Size(63, 41);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 41;
             pictureBox1.TabStop = false;
@@ -105,9 +105,9 @@
             button_DelReq.FlatStyle = FlatStyle.Flat;
             button_DelReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_DelReq.ForeColor = Color.AliceBlue;
-            button_DelReq.Location = new Point(88, 321);
+            button_DelReq.Location = new Point(92, 320);
             button_DelReq.Name = "button_DelReq";
-            button_DelReq.Size = new Size(165, 33);
+            button_DelReq.Size = new Size(152, 33);
             button_DelReq.TabIndex = 40;
             button_DelReq.Text = "Видалити запит";
             button_DelReq.TextAlign = ContentAlignment.MiddleRight;
@@ -118,9 +118,9 @@
             // 
             pictureBox_PanelSchedule.Image = (Image)resources.GetObject("pictureBox_PanelSchedule.Image");
             pictureBox_PanelSchedule.InitialImage = (Image)resources.GetObject("pictureBox_PanelSchedule.InitialImage");
-            pictureBox_PanelSchedule.Location = new Point(42, 258);
+            pictureBox_PanelSchedule.Location = new Point(47, 258);
             pictureBox_PanelSchedule.Name = "pictureBox_PanelSchedule";
-            pictureBox_PanelSchedule.Size = new Size(44, 34);
+            pictureBox_PanelSchedule.Size = new Size(50, 34);
             pictureBox_PanelSchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelSchedule.TabIndex = 39;
             pictureBox_PanelSchedule.TabStop = false;
@@ -131,9 +131,9 @@
             button_PanelSchedule.FlatStyle = FlatStyle.Flat;
             button_PanelSchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelSchedule.ForeColor = Color.AliceBlue;
-            button_PanelSchedule.Location = new Point(84, 259);
+            button_PanelSchedule.Location = new Point(96, 258);
             button_PanelSchedule.Name = "button_PanelSchedule";
-            button_PanelSchedule.Size = new Size(196, 33);
+            button_PanelSchedule.Size = new Size(178, 33);
             button_PanelSchedule.TabIndex = 38;
             button_PanelSchedule.Text = "Загальний розклад";
             button_PanelSchedule.TextAlign = ContentAlignment.MiddleRight;
@@ -177,9 +177,9 @@
             // 
             pictureBox_PanelMySchedule.Image = (Image)resources.GetObject("pictureBox_PanelMySchedule.Image");
             pictureBox_PanelMySchedule.InitialImage = (Image)resources.GetObject("pictureBox_PanelMySchedule.InitialImage");
-            pictureBox_PanelMySchedule.Location = new Point(42, 191);
+            pictureBox_PanelMySchedule.Location = new Point(47, 191);
             pictureBox_PanelMySchedule.Name = "pictureBox_PanelMySchedule";
-            pictureBox_PanelMySchedule.Size = new Size(47, 41);
+            pictureBox_PanelMySchedule.Size = new Size(53, 41);
             pictureBox_PanelMySchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMySchedule.TabIndex = 34;
             pictureBox_PanelMySchedule.TabStop = false;
@@ -188,9 +188,9 @@
             // 
             pictureBox_PanelMakeReq.Image = (Image)resources.GetObject("pictureBox_PanelMakeReq.Image");
             pictureBox_PanelMakeReq.InitialImage = (Image)resources.GetObject("pictureBox_PanelMakeReq.InitialImage");
-            pictureBox_PanelMakeReq.Location = new Point(39, 126);
+            pictureBox_PanelMakeReq.Location = new Point(44, 126);
             pictureBox_PanelMakeReq.Name = "pictureBox_PanelMakeReq";
-            pictureBox_PanelMakeReq.Size = new Size(47, 41);
+            pictureBox_PanelMakeReq.Size = new Size(53, 41);
             pictureBox_PanelMakeReq.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMakeReq.TabIndex = 33;
             pictureBox_PanelMakeReq.TabStop = false;
@@ -199,9 +199,9 @@
             // 
             pictureBox_Logo.Image = (Image)resources.GetObject("pictureBox_Logo.Image");
             pictureBox_Logo.InitialImage = (Image)resources.GetObject("pictureBox_Logo.InitialImage");
-            pictureBox_Logo.Location = new Point(34, 63);
+            pictureBox_Logo.Location = new Point(43, 63);
             pictureBox_Logo.Name = "pictureBox_Logo";
-            pictureBox_Logo.Size = new Size(52, 49);
+            pictureBox_Logo.Size = new Size(58, 49);
             pictureBox_Logo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_Logo.TabIndex = 32;
             pictureBox_Logo.TabStop = false;
@@ -223,9 +223,9 @@
             button_MakeRequest.FlatStyle = FlatStyle.Flat;
             button_MakeRequest.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_MakeRequest.ForeColor = Color.AliceBlue;
-            button_MakeRequest.Location = new Point(84, 130);
+            button_MakeRequest.Location = new Point(91, 131);
             button_MakeRequest.Name = "button_MakeRequest";
-            button_MakeRequest.Size = new Size(169, 33);
+            button_MakeRequest.Size = new Size(158, 33);
             button_MakeRequest.TabIndex = 3;
             button_MakeRequest.Text = "Створити запит";
             button_MakeRequest.TextAlign = ContentAlignment.MiddleRight;
@@ -238,9 +238,9 @@
             button_PanelMySchedule.FlatStyle = FlatStyle.Flat;
             button_PanelMySchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMySchedule.ForeColor = Color.AliceBlue;
-            button_PanelMySchedule.Location = new Point(89, 196);
+            button_PanelMySchedule.Location = new Point(96, 195);
             button_PanelMySchedule.Name = "button_PanelMySchedule";
-            button_PanelMySchedule.Size = new Size(134, 33);
+            button_PanelMySchedule.Size = new Size(123, 33);
             button_PanelMySchedule.TabIndex = 2;
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
@@ -253,9 +253,9 @@
             button_PanelMane.FlatStyle = FlatStyle.Flat;
             button_PanelMane.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMane.ForeColor = Color.AliceBlue;
-            button_PanelMane.Location = new Point(84, 71);
+            button_PanelMane.Location = new Point(96, 74);
             button_PanelMane.Name = "button_PanelMane";
-            button_PanelMane.Size = new Size(106, 33);
+            button_PanelMane.Size = new Size(89, 33);
             button_PanelMane.TabIndex = 1;
             button_PanelMane.Text = "Головна";
             button_PanelMane.TextAlign = ContentAlignment.MiddleRight;

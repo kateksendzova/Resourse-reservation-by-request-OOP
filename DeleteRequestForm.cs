@@ -95,7 +95,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void UpdateRequestPreview()
         {
-            if (dataGridView_DelReq.SelectedRows.Count == 0)
+            /*if (dataGridView_DelReq.SelectedRows.Count == 0)
             {
                 richTextBox_request.Clear();
                 return;
@@ -116,7 +116,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             sb.AppendLine($"Час: {timeRange}\n\n");
             sb.AppendLine($"Тип роботи: {workType}\n");
 
-            richTextBox_request.Text = sb.ToString();
+            richTextBox_request.Text = sb.ToString();*/
         }
 
         private void DeleteRequestForm_Load(object sender, EventArgs e)

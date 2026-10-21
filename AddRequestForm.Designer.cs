@@ -40,8 +40,8 @@
             button_ClearAll = new Button();
             dateTimePicker_Interval = new DateTimePicker();
             panel_Menu = new Panel();
-            pictureBox1 = new PictureBox();
             button1 = new Button();
+            pictureBox1 = new PictureBox();
             pictureBox_PanelSchedule = new PictureBox();
             button_PanelSchedule = new Button();
             pictureBox_AvatarAssistant = new PictureBox();
@@ -84,7 +84,7 @@
             // 
             label_infoSystemName.AutoSize = true;
             label_infoSystemName.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(686, 34);
+            label_infoSystemName.Location = new Point(610, 34);
             label_infoSystemName.Name = "label_infoSystemName";
             label_infoSystemName.Size = new Size(337, 27);
             label_infoSystemName.TabIndex = 0;
@@ -94,7 +94,7 @@
             // 
             label_infoChooseResource.AutoSize = true;
             label_infoChooseResource.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoChooseResource.Location = new Point(688, 67);
+            label_infoChooseResource.Location = new Point(610, 63);
             label_infoChooseResource.Name = "label_infoChooseResource";
             label_infoChooseResource.Size = new Size(292, 20);
             label_infoChooseResource.TabIndex = 1;
@@ -147,9 +147,9 @@
             button_AddRequest.BackColor = Color.Teal;
             button_AddRequest.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_AddRequest.ForeColor = Color.AliceBlue;
-            button_AddRequest.Location = new Point(43, 582);
+            button_AddRequest.Location = new Point(63, 583);
             button_AddRequest.Name = "button_AddRequest";
-            button_AddRequest.Size = new Size(345, 58);
+            button_AddRequest.Size = new Size(361, 58);
             button_AddRequest.TabIndex = 11;
             button_AddRequest.Text = "Додати запит";
             button_AddRequest.UseVisualStyleBackColor = false;
@@ -169,9 +169,9 @@
             // 
             button_ClearAll.BackColor = Color.AliceBlue;
             button_ClearAll.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button_ClearAll.Location = new Point(43, 659);
+            button_ClearAll.Location = new Point(63, 660);
             button_ClearAll.Name = "button_ClearAll";
-            button_ClearAll.Size = new Size(345, 49);
+            button_ClearAll.Size = new Size(361, 49);
             button_ClearAll.TabIndex = 25;
             button_ClearAll.Text = "Очистити";
             button_ClearAll.UseVisualStyleBackColor = false;
@@ -191,8 +191,8 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.DarkCyan;
-            panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(button1);
+            panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
             panel_Menu.Controls.Add(button_PanelSchedule);
             panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
@@ -208,19 +208,8 @@
             panel_Menu.Dock = DockStyle.Left;
             panel_Menu.Location = new Point(0, 0);
             panel_Menu.Name = "panel_Menu";
-            panel_Menu.Size = new Size(430, 1033);
+            panel_Menu.Size = new Size(382, 1033);
             panel_Menu.TabIndex = 31;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(40, 317);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(63, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 41;
-            pictureBox1.TabStop = false;
             // 
             // button1
             // 
@@ -228,7 +217,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button1.ForeColor = Color.AliceBlue;
-            button1.Location = new Point(102, 320);
+            button1.Location = new Point(92, 320);
             button1.Name = "button1";
             button1.Size = new Size(152, 33);
             button1.TabIndex = 40;
@@ -236,6 +225,17 @@
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(44, 317);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(63, 41);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 41;
+            pictureBox1.TabStop = false;
             // 
             // pictureBox_PanelSchedule
             // 
@@ -254,7 +254,7 @@
             button_PanelSchedule.FlatStyle = FlatStyle.Flat;
             button_PanelSchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelSchedule.ForeColor = Color.AliceBlue;
-            button_PanelSchedule.Location = new Point(102, 258);
+            button_PanelSchedule.Location = new Point(96, 258);
             button_PanelSchedule.Name = "button_PanelSchedule";
             button_PanelSchedule.Size = new Size(178, 33);
             button_PanelSchedule.TabIndex = 38;
@@ -322,7 +322,7 @@
             // 
             pictureBox_Logo.Image = (Image)resources.GetObject("pictureBox_Logo.Image");
             pictureBox_Logo.InitialImage = (Image)resources.GetObject("pictureBox_Logo.InitialImage");
-            pictureBox_Logo.Location = new Point(38, 63);
+            pictureBox_Logo.Location = new Point(43, 63);
             pictureBox_Logo.Name = "pictureBox_Logo";
             pictureBox_Logo.Size = new Size(58, 49);
             pictureBox_Logo.SizeMode = PictureBoxSizeMode.Zoom;
@@ -346,9 +346,9 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button2.ForeColor = Color.AliceBlue;
-            button2.Location = new Point(102, 126);
+            button2.Location = new Point(91, 131);
             button2.Name = "button2";
-            button2.Size = new Size(160, 33);
+            button2.Size = new Size(158, 33);
             button2.TabIndex = 3;
             button2.Text = "Створити запит";
             button2.TextAlign = ContentAlignment.MiddleRight;
@@ -360,9 +360,9 @@
             button_PanelMySchedule.FlatStyle = FlatStyle.Flat;
             button_PanelMySchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMySchedule.ForeColor = Color.AliceBlue;
-            button_PanelMySchedule.Location = new Point(102, 194);
+            button_PanelMySchedule.Location = new Point(96, 195);
             button_PanelMySchedule.Name = "button_PanelMySchedule";
-            button_PanelMySchedule.Size = new Size(127, 33);
+            button_PanelMySchedule.Size = new Size(123, 33);
             button_PanelMySchedule.TabIndex = 2;
             button_PanelMySchedule.Text = "Мій розклад";
             button_PanelMySchedule.TextAlign = ContentAlignment.MiddleRight;
@@ -375,7 +375,7 @@
             button_PanelMane.FlatStyle = FlatStyle.Flat;
             button_PanelMane.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_PanelMane.ForeColor = Color.AliceBlue;
-            button_PanelMane.Location = new Point(102, 67);
+            button_PanelMane.Location = new Point(96, 74);
             button_PanelMane.Name = "button_PanelMane";
             button_PanelMane.Size = new Size(89, 33);
             button_PanelMane.TabIndex = 1;
@@ -388,9 +388,9 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(628, 23);
+            pictureBox2.Location = new Point(558, 23);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(64, 49);
+            pictureBox2.Size = new Size(57, 49);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 42;
             pictureBox2.TabStop = false;
@@ -402,7 +402,7 @@
             roundedPanel_Resources.Controls.Add(textBox_SearchRes);
             roundedPanel_Resources.Controls.Add(label_infoRes);
             roundedPanel_Resources.CornerRadius = 12;
-            roundedPanel_Resources.Location = new Point(553, 126);
+            roundedPanel_Resources.Location = new Point(486, 126);
             roundedPanel_Resources.Name = "roundedPanel_Resources";
             roundedPanel_Resources.Size = new Size(427, 752);
             roundedPanel_Resources.TabIndex = 44;
@@ -425,7 +425,7 @@
             roundedPanel_Calendar.Controls.Add(dateTimePicker_Interval);
             roundedPanel_Calendar.Controls.Add(label_infoInterval);
             roundedPanel_Calendar.CornerRadius = 12;
-            roundedPanel_Calendar.Location = new Point(1020, 126);
+            roundedPanel_Calendar.Location = new Point(953, 126);
             roundedPanel_Calendar.Name = "roundedPanel_Calendar";
             roundedPanel_Calendar.Size = new Size(344, 474);
             roundedPanel_Calendar.TabIndex = 45;
@@ -446,7 +446,7 @@
             roundedPanel_TypeOfWork.BorderColor = Color.LightGray;
             roundedPanel_TypeOfWork.Controls.Add(label1);
             roundedPanel_TypeOfWork.CornerRadius = 12;
-            roundedPanel_TypeOfWork.Location = new Point(1020, 640);
+            roundedPanel_TypeOfWork.Location = new Point(953, 640);
             roundedPanel_TypeOfWork.Name = "roundedPanel_TypeOfWork";
             roundedPanel_TypeOfWork.Size = new Size(344, 238);
             roundedPanel_TypeOfWork.TabIndex = 45;
@@ -470,9 +470,9 @@
             roundedPanel_YourRequest.Controls.Add(button_AddRequest);
             roundedPanel_YourRequest.Controls.Add(button_ClearAll);
             roundedPanel_YourRequest.CornerRadius = 12;
-            roundedPanel_YourRequest.Location = new Point(1425, 126);
+            roundedPanel_YourRequest.Location = new Point(1334, 126);
             roundedPanel_YourRequest.Name = "roundedPanel_YourRequest";
-            roundedPanel_YourRequest.Size = new Size(427, 752);
+            roundedPanel_YourRequest.Size = new Size(474, 752);
             roundedPanel_YourRequest.TabIndex = 45;
             // 
             // richTextBox_YourRequest
@@ -480,7 +480,7 @@
             richTextBox_YourRequest.BorderStyle = BorderStyle.None;
             richTextBox_YourRequest.Location = new Point(18, 67);
             richTextBox_YourRequest.Name = "richTextBox_YourRequest";
-            richTextBox_YourRequest.Size = new Size(389, 497);
+            richTextBox_YourRequest.Size = new Size(434, 497);
             richTextBox_YourRequest.TabIndex = 26;
             richTextBox_YourRequest.Text = "";
             // 
@@ -500,13 +500,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
+            Controls.Add(label_infoSystemName);
             Controls.Add(roundedPanel_YourRequest);
             Controls.Add(roundedPanel_TypeOfWork);
             Controls.Add(roundedPanel_Calendar);
             Controls.Add(roundedPanel_Resources);
             Controls.Add(pictureBox2);
             Controls.Add(label_infoChooseResource);
-            Controls.Add(label_infoSystemName);
             Controls.Add(panel_Menu);
             Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "AddRequestForm";

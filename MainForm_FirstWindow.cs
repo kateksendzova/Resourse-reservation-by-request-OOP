@@ -183,15 +183,17 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             RoundedButton btnBook = new RoundedButton
             {
-                Text = "Забронювати",
+                Text = statusText,
                 Size = new Size(130, 32),
                 Location = new Point(20, 80),
                 BorderRadius = 15,
                 BorderSize = 1,
-                BorderColor = Color.DarkCyan,
-                BackColor = Color.AliceBlue,
-                ForeColor = Color.DarkCyan,
-                Font = new Font("Century Gothic", 9F, FontStyle.Bold)
+                
+                BorderColor = isAvailable ? Color.DarkCyan : Color.Gray,
+                BackColor = isAvailable ? Color.AliceBlue : Color.WhiteSmoke,
+                ForeColor = isAvailable ? Color.DarkCyan : Color.Gray,
+                Font = new Font("Century Gothic", 9F, FontStyle.Bold),
+                Enabled = isAvailable
             };
 
             btnBook.Click += (s, e) =>
@@ -228,7 +230,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             foreach (var res in filteredList)
             {
                 bool isAvail = scheduler.IsResourceAvailableForAtLeastOneHour(res.ID, DateTime.Today);
-                string statusText = isAvail ? "Вільно зараз" : "Зайнято";
+                string statusText = isAvail ? "Вільно" : "Зайнято";
 
                 var card = CreateEquipmentCard(res.ID, res.NAME, statusText, isAvail);
                 flowLayoutPanel_Resources.Controls.Add(card);
