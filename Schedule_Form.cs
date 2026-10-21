@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
     public partial class Schedule_Form : Form
     {
-        private static readonly TimeSpan WorkDayStart = new TimeSpan(8, 0, 0);
-        private static readonly TimeSpan WorkDayEnd = new TimeSpan(19, 0, 0);
-
-        private Scheduler scheduler = new Scheduler();
-        private string currentUserInfo;
+        private readonly Scheduler scheduler = new Scheduler();
+        private readonly string currentUserInfo;
         private string currentName;
         private UserRole currentRole;
+
+        private bool showingByBookingTime = true;
+        private Label emptyHintBooking;
+        private Label emptyHintComing;
+        private Font ownRowFont;
 
         public Schedule_Form(string userInfo)
         {
@@ -26,9 +24,215 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             currentUserInfo = userInfo;
             ParseUserInfo(userInfo);
 
-
             this.FormClosed += (s, e) => Application.Exit();
         }
+
+        // ───────────────────────── Load ─────────────────────────
+
+        private void Schedule_Form_Load(object sender, EventArgs e)
+        {
+            LoadNameAndRole();
+
+            ownRowFont = new Font("Century Gothic", 9.5F, FontStyle.Bold);
+
+            StyleGrid(dataGridView_ScheduleTimeOfBooking);
+            StyleGrid(dataGridView_ScheduleByComing);
+
+            emptyHintBooking = CreateEmptyHint(roundedPanel_ScheduleTimeOfBooking, dataGridView_ScheduleTimeOfBooking,
+                "На цю дату бронювань немає");
+            emptyHintComing = CreateEmptyHint(roundedPanel_ByComing, dataGridView_ScheduleByComing,
+                "Для обраного обладнання на цю дату бронювань немає");
+
+            foreach (var picker in new[] { dateTimePicker_ScheduleTimeOfBooking, dateTimePicker_ScheduleByComing })
+            {
+                picker.Value = DateTime.Today;
+                picker.ValueChanged += (s, ev) => LoadActiveSchedule();
+            }
+
+            // Заповнюємо випадаючий список обладнанням для другого режиму
+            LoadResourceComboBox();
+            comboBox_Resource.SelectedIndexChanged += (s, ev) => LoadActiveSchedule();
+
+            roundedButton_TimeOfBooking.Click += (s, ev) => ShowView(true);
+            roundedButton_Resource.Click += (s, ev) => ShowView(false);
+
+            ShowView(true);
+
+            // оновлюємо дані при кожному показі форми
+            this.VisibleChanged += (s, ev) => { if (this.Visible) LoadActiveSchedule(); };
+        }
+
+        // ───────────────────────── Заповнення ComboBox обладнанням ─────────────────────────
+
+        private void LoadResourceComboBox()
+        {
+            comboBox_Resource.Items.Clear();
+            List<Resourse> resources = scheduler.GetResourses();
+
+            comboBox_Resource.DisplayMember = "NAME";
+            comboBox_Resource.ValueMember = "ID";
+            comboBox_Resource.DataSource = resources;
+
+            if (comboBox_Resource.Items.Count > 0)
+                comboBox_Resource.SelectedIndex = 0;
+        }
+
+        // ───────────────────────── Перемикання виглядів ─────────────────────────
+
+        private void ShowView(bool byBookingTime)
+        {
+            showingByBookingTime = byBookingTime;
+
+            roundedButton_TimeOfBooking.IsSelected = byBookingTime;
+            roundedButton_Resource.IsSelected = !byBookingTime;
+
+            roundedPanel_ScheduleTimeOfBooking.Visible = byBookingTime;
+            roundedPanel_ByComing.Visible = !byBookingTime;
+
+            LoadActiveSchedule();
+        }
+
+        private void LoadActiveSchedule()
+        {
+            if (showingByBookingTime) FillByBookingTime();
+            else FillByResource();
+        }
+
+        // ───────────────────────── Заповнення таблиць ─────────────────────────
+
+        // Режим 1: За часом бронювання (на обрану дату)
+        private void FillByBookingTime()
+        {
+            var grid = dataGridView_ScheduleTimeOfBooking;
+            grid.Rows.Clear();
+
+            DateTime date = dateTimePicker_ScheduleTimeOfBooking.Value.Date;
+
+            foreach (Request r in scheduler.GetRequestsByDate(date))
+            {
+                int i = grid.Rows.Add(
+                    FormatInterval(r.Interval),
+                    r.Person.Name,
+                    r.Resourse.NAME,
+                    GetWorkTypeName(r.TypeOfWork));
+
+                MarkOwnRow(grid.Rows[i], r);
+            }
+
+            emptyHintBooking.Visible = grid.Rows.Count == 0;
+        }
+
+        // Режим 2: Для конкретного обладнання на обрану дату
+        private void FillByResource()
+        {
+            var grid = dataGridView_ScheduleByComing;
+            grid.Rows.Clear();
+
+            if (comboBox_Resource.SelectedItem is not Resourse selectedResource)
+            {
+                emptyHintComing.Visible = true;
+                return;
+            }
+
+            DateTime date = dateTimePicker_ScheduleByComing.Value.Date;
+
+            // Фільтруємо запити за обраним обладнанням та датою
+            var requests = scheduler.GetRequestsByDate(date)
+                .Where(r => r.Resourse.ID == selectedResource.ID)
+                .ToList();
+
+            foreach (Request r in requests)
+            {
+                int i = grid.Rows.Add(
+                    FormatInterval(r.Interval),
+                    r.Person.Name,
+                    GetWorkTypeName(r.TypeOfWork));
+
+                MarkOwnRow(grid.Rows[i], r);
+            }
+
+            emptyHintComing.Visible = grid.Rows.Count == 0;
+        }
+
+        private static string FormatInterval(TimeInterval interval)
+        {
+            return $"{interval.Start:hh\\:mm} – {interval.End:hh\\:mm}";
+        }
+
+        private static string GetWorkTypeName(TypeOfWork type) => type switch
+        {
+            TypeOfWork.LaboratoryWork => "Лабораторна",
+            TypeOfWork.DiplomaThesis => "Дипломна",
+            TypeOfWork.ScientificExperiment => "Експеримент",
+            _ => "Самостійна робота"
+        };
+
+        // Свої бронювання виділяємо кольором і жирним
+        private void MarkOwnRow(DataGridViewRow row, Request r)
+        {
+            if (r.Person.Name == currentName && r.Person.Role == currentRole)
+            {
+                row.DefaultCellStyle.BackColor = Color.LightCyan;
+                row.DefaultCellStyle.Font = ownRowFont;
+            }
+        }
+
+        // ───────────────────────── Вигляд таблиць ─────────────────────────
+
+        private void StyleGrid(DataGridView grid)
+        {
+            grid.ReadOnly = true;
+            grid.AllowUserToAddRows = false;
+            grid.AllowUserToDeleteRows = false;
+            grid.AllowUserToResizeRows = false;
+            grid.RowHeadersVisible = false;
+            grid.MultiSelect = false;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            grid.BackgroundColor = Color.White;
+            grid.BorderStyle = BorderStyle.None;
+            grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            grid.GridColor = Color.Gainsboro;
+
+            grid.EnableHeadersVisualStyles = false;
+            grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grid.ColumnHeadersHeight = 42;
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkCyan;
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            grid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.DarkCyan;
+            grid.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
+            grid.ColumnHeadersDefaultCellStyle.Padding = new Padding(8, 0, 0, 0);
+
+            grid.RowTemplate.Height = 38;
+            grid.DefaultCellStyle.Font = new Font("Century Gothic", 9.5F);
+            grid.DefaultCellStyle.Padding = new Padding(8, 0, 0, 0);
+            grid.DefaultCellStyle.SelectionBackColor = Color.PaleTurquoise;
+            grid.DefaultCellStyle.SelectionForeColor = Color.Black;
+            grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(246, 251, 251);
+
+            foreach (DataGridViewColumn col in grid.Columns)
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
+
+        private Label CreateEmptyHint(Control panel, DataGridView grid, string text)
+        {
+            var hint = new Label
+            {
+                Text = text,
+                Font = new Font("Century Gothic", 10.5F),
+                ForeColor = Color.Gray,
+                BackColor = Color.White,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Bounds = new Rectangle(grid.Left, grid.Top + grid.ColumnHeadersHeight + 20, grid.Width, 40),
+                Visible = false
+            };
+            panel.Controls.Add(hint);
+            hint.BringToFront();
+            return hint;
+        }
+
+        // ───────────────────────── Користувач і навігація ─────────────────────────
 
         private void ParseUserInfo(string userInfo)
         {
@@ -54,56 +258,32 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             label_RoleNameSch.Text = currentName;
 
-            if (currentRole == UserRole.Student)
-            {
-                pictureBox_AvatarStudent.Visible = true;
-                pictureBox_AvatarAssistant.Visible = false;
-                pictureBox_AvatarProfesor.Visible = false;
-            }
-            else if (currentRole == UserRole.Assistant)
-            {
-                pictureBox_AvatarStudent.Visible = false;
-                pictureBox_AvatarAssistant.Visible = true;
-                pictureBox_AvatarProfesor.Visible = false;
-            }
-            else if (currentRole == UserRole.Professor)
-            {
-                pictureBox_AvatarStudent.Visible = false;
-                pictureBox_AvatarAssistant.Visible = false;
-                pictureBox_AvatarProfesor.Visible = true;
-            }
-        }
-
-        private void Schedule_Form_Load(object sender, EventArgs e)
-        {
-            LoadNameAndRole();
+            pictureBox_AvatarStudent.Visible = (currentRole == UserRole.Student);
+            pictureBox_AvatarAssistant.Visible = (currentRole == UserRole.Assistant);
+            pictureBox_AvatarProfesor.Visible = (currentRole == UserRole.Professor);
         }
 
         private void button_PanelMainForm_Click(object sender, EventArgs e)
         {
-            MainForm_FirstWindow mainForm_First = new MainForm_FirstWindow(currentUserInfo);
-            mainForm_First.Show();
+            new MainForm_FirstWindow(currentUserInfo).Show();
             this.Hide();
         }
 
         private void button_PanelAddReq_Click(object sender, EventArgs e)
         {
-            AddRequestForm addRequestForm = new AddRequestForm(currentUserInfo);
-            addRequestForm.Show();
+            new AddRequestForm(currentUserInfo).Show();
             this.Hide();
         }
 
         private void button_PanelMySchedule_Click(object sender, EventArgs e)
         {
-            MySchedule_Form schedule_Form = new MySchedule_Form(currentUserInfo);
-            schedule_Form.Show();
+            new MySchedule_Form(currentUserInfo).Show();
             this.Hide();
         }
 
         private void button_PanelDelReq_Click(object sender, EventArgs e)
         {
-            DeleteRequestForm deleteRequestForm = new DeleteRequestForm(currentUserInfo);
-            deleteRequestForm.Show();
+            new DeleteRequestForm(currentUserInfo).Show();
             this.Hide();
         }
     }

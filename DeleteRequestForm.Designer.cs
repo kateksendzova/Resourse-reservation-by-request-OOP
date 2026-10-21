@@ -319,6 +319,7 @@
             dateTimePicker_DeleteReq.Name = "dateTimePicker_DeleteReq";
             dateTimePicker_DeleteReq.Size = new Size(528, 28);
             dateTimePicker_DeleteReq.TabIndex = 50;
+            dateTimePicker_DeleteReq.MinDate = DateTime.Today;
             // 
             // button_DeleteReq
             // 

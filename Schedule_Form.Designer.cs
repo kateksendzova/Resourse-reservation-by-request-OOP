@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Schedule_Form));
             panel_Menu = new Panel();
-            pictureBox_LogoDel = new PictureBox();
             button_PanelDelReq = new Button();
+            pictureBox_LogoDel = new PictureBox();
             pictureBox_LogoSchedule = new PictureBox();
             button2 = new Button();
             pictureBox_AvatarAssistant = new PictureBox();
@@ -50,11 +50,6 @@
             ColumnRes = new DataGridViewTextBoxColumn();
             ColumnType = new DataGridViewTextBoxColumn();
             dataGridView_ScheduleByComing = new DataGridView();
-            ColumnComingDate = new DataGridViewTextBoxColumn();
-            ColumnReservedDate = new DataGridViewTextBoxColumn();
-            ColumnPIB = new DataGridViewTextBoxColumn();
-            ColumnResource = new DataGridViewTextBoxColumn();
-            ColumnTypeOfWork = new DataGridViewTextBoxColumn();
             roundedPanel_ScheduleTimeOfBooking = new RoundedPanel();
             dateTimePicker_ScheduleTimeOfBooking = new DateTimePicker();
             pictureBox2 = new PictureBox();
@@ -63,7 +58,11 @@
             roundedPanel_ByComing = new RoundedPanel();
             dateTimePicker_ScheduleByComing = new DateTimePicker();
             roundedButton_TimeOfBooking = new RoundedButton();
-            roundedButton_ByTimeOfComing = new RoundedButton();
+            roundedButton_Resource = new RoundedButton();
+            comboBox_Resource = new ComboBox();
+            ColumnReservedDate = new DataGridViewTextBoxColumn();
+            ColumnPIB = new DataGridViewTextBoxColumn();
+            ColumnTypeOfWork = new DataGridViewTextBoxColumn();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoDel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoSchedule).BeginInit();
@@ -103,17 +102,6 @@
             panel_Menu.Size = new Size(382, 1033);
             panel_Menu.TabIndex = 55;
             // 
-            // pictureBox_LogoDel
-            // 
-            pictureBox_LogoDel.Image = (Image)resources.GetObject("pictureBox_LogoDel.Image");
-            pictureBox_LogoDel.InitialImage = (Image)resources.GetObject("pictureBox_LogoDel.InitialImage");
-            pictureBox_LogoDel.Location = new Point(44, 317);
-            pictureBox_LogoDel.Name = "pictureBox_LogoDel";
-            pictureBox_LogoDel.Size = new Size(63, 41);
-            pictureBox_LogoDel.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox_LogoDel.TabIndex = 41;
-            pictureBox_LogoDel.TabStop = false;
-            // 
             // button_PanelDelReq
             // 
             button_PanelDelReq.FlatAppearance.BorderSize = 0;
@@ -128,6 +116,17 @@
             button_PanelDelReq.TextAlign = ContentAlignment.MiddleRight;
             button_PanelDelReq.UseVisualStyleBackColor = true;
             button_PanelDelReq.Click += button_PanelDelReq_Click;
+            // 
+            // pictureBox_LogoDel
+            // 
+            pictureBox_LogoDel.Image = (Image)resources.GetObject("pictureBox_LogoDel.Image");
+            pictureBox_LogoDel.InitialImage = (Image)resources.GetObject("pictureBox_LogoDel.InitialImage");
+            pictureBox_LogoDel.Location = new Point(44, 317);
+            pictureBox_LogoDel.Name = "pictureBox_LogoDel";
+            pictureBox_LogoDel.Size = new Size(63, 41);
+            pictureBox_LogoDel.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_LogoDel.TabIndex = 41;
+            pictureBox_LogoDel.TabStop = false;
             // 
             // pictureBox_LogoSchedule
             // 
@@ -315,42 +314,12 @@
             // 
             dataGridView_ScheduleByComing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView_ScheduleByComing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_ScheduleByComing.Columns.AddRange(new DataGridViewColumn[] { ColumnComingDate, ColumnReservedDate, ColumnPIB, ColumnResource, ColumnTypeOfWork });
+            dataGridView_ScheduleByComing.Columns.AddRange(new DataGridViewColumn[] { ColumnReservedDate, ColumnPIB, ColumnTypeOfWork });
             dataGridView_ScheduleByComing.Location = new Point(22, 98);
             dataGridView_ScheduleByComing.Name = "dataGridView_ScheduleByComing";
             dataGridView_ScheduleByComing.RowHeadersWidth = 51;
             dataGridView_ScheduleByComing.Size = new Size(1129, 638);
             dataGridView_ScheduleByComing.TabIndex = 60;
-            // 
-            // ColumnComingDate
-            // 
-            ColumnComingDate.HeaderText = "Час надходження";
-            ColumnComingDate.MinimumWidth = 6;
-            ColumnComingDate.Name = "ColumnComingDate";
-            // 
-            // ColumnReservedDate
-            // 
-            ColumnReservedDate.HeaderText = "Заброньовано на";
-            ColumnReservedDate.MinimumWidth = 6;
-            ColumnReservedDate.Name = "ColumnReservedDate";
-            // 
-            // ColumnPIB
-            // 
-            ColumnPIB.HeaderText = "ПІБ";
-            ColumnPIB.MinimumWidth = 6;
-            ColumnPIB.Name = "ColumnPIB";
-            // 
-            // ColumnResource
-            // 
-            ColumnResource.HeaderText = "Обладнання";
-            ColumnResource.MinimumWidth = 6;
-            ColumnResource.Name = "ColumnResource";
-            // 
-            // ColumnTypeOfWork
-            // 
-            ColumnTypeOfWork.HeaderText = "Тип роботи";
-            ColumnTypeOfWork.MinimumWidth = 6;
-            ColumnTypeOfWork.Name = "ColumnTypeOfWork";
             // 
             // roundedPanel_ScheduleTimeOfBooking
             // 
@@ -371,6 +340,7 @@
             dateTimePicker_ScheduleTimeOfBooking.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_ScheduleTimeOfBooking.Format = DateTimePickerFormat.Short;
             dateTimePicker_ScheduleTimeOfBooking.Location = new Point(93, 45);
+            dateTimePicker_ScheduleTimeOfBooking.MinDate = new DateTime(2026, 10, 21, 0, 0, 0, 0);
             dateTimePicker_ScheduleTimeOfBooking.Name = "dateTimePicker_ScheduleTimeOfBooking";
             dateTimePicker_ScheduleTimeOfBooking.Size = new Size(528, 28);
             dateTimePicker_ScheduleTimeOfBooking.TabIndex = 50;
@@ -411,6 +381,7 @@
             roundedPanel_ByComing.AutoScroll = true;
             roundedPanel_ByComing.BackColor = Color.White;
             roundedPanel_ByComing.BorderColor = Color.LightGray;
+            roundedPanel_ByComing.Controls.Add(comboBox_Resource);
             roundedPanel_ByComing.Controls.Add(dateTimePicker_ScheduleByComing);
             roundedPanel_ByComing.Controls.Add(dataGridView_ScheduleByComing);
             roundedPanel_ByComing.CornerRadius = 12;
@@ -424,9 +395,10 @@
             dateTimePicker_ScheduleByComing.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_ScheduleByComing.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_ScheduleByComing.Format = DateTimePickerFormat.Short;
-            dateTimePicker_ScheduleByComing.Location = new Point(93, 45);
+            dateTimePicker_ScheduleByComing.Location = new Point(22, 45);
+            dateTimePicker_ScheduleByComing.MinDate = new DateTime(2026, 10, 21, 0, 0, 0, 0);
             dateTimePicker_ScheduleByComing.Name = "dateTimePicker_ScheduleByComing";
-            dateTimePicker_ScheduleByComing.Size = new Size(528, 28);
+            dateTimePicker_ScheduleByComing.Size = new Size(439, 28);
             dateTimePicker_ScheduleByComing.TabIndex = 50;
             // 
             // roundedButton_TimeOfBooking
@@ -447,23 +419,49 @@
             roundedButton_TimeOfBooking.Text = "За часом бронювання";
             roundedButton_TimeOfBooking.UseVisualStyleBackColor = false;
             // 
-            // roundedButton_ByTimeOfComing
+            // roundedButton_Resource
             // 
-            roundedButton_ByTimeOfComing.BackColor = Color.AliceBlue;
-            roundedButton_ByTimeOfComing.BorderColor = Color.DarkCyan;
-            roundedButton_ByTimeOfComing.BorderRadius = 30;
-            roundedButton_ByTimeOfComing.BorderSize = 1;
-            roundedButton_ByTimeOfComing.FlatAppearance.BorderSize = 0;
-            roundedButton_ByTimeOfComing.FlatStyle = FlatStyle.Flat;
-            roundedButton_ByTimeOfComing.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
-            roundedButton_ByTimeOfComing.ForeColor = Color.DarkCyan;
-            roundedButton_ByTimeOfComing.IsSelected = false;
-            roundedButton_ByTimeOfComing.Location = new Point(842, 126);
-            roundedButton_ByTimeOfComing.Name = "roundedButton_ByTimeOfComing";
-            roundedButton_ByTimeOfComing.Size = new Size(243, 39);
-            roundedButton_ByTimeOfComing.TabIndex = 68;
-            roundedButton_ByTimeOfComing.Text = "За часом надходження";
-            roundedButton_ByTimeOfComing.UseVisualStyleBackColor = false;
+            roundedButton_Resource.BackColor = Color.AliceBlue;
+            roundedButton_Resource.BorderColor = Color.DarkCyan;
+            roundedButton_Resource.BorderRadius = 30;
+            roundedButton_Resource.BorderSize = 1;
+            roundedButton_Resource.FlatAppearance.BorderSize = 0;
+            roundedButton_Resource.FlatStyle = FlatStyle.Flat;
+            roundedButton_Resource.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
+            roundedButton_Resource.ForeColor = Color.DarkCyan;
+            roundedButton_Resource.IsSelected = false;
+            roundedButton_Resource.Location = new Point(842, 126);
+            roundedButton_Resource.Name = "roundedButton_Resource";
+            roundedButton_Resource.Size = new Size(243, 39);
+            roundedButton_Resource.TabIndex = 68;
+            roundedButton_Resource.Text = "Для обладнання";
+            roundedButton_Resource.UseVisualStyleBackColor = false;
+            // 
+            // comboBox_Resource
+            // 
+            comboBox_Resource.FormattingEnabled = true;
+            comboBox_Resource.Location = new Point(502, 45);
+            comboBox_Resource.Name = "comboBox_Resource";
+            comboBox_Resource.Size = new Size(649, 28);
+            comboBox_Resource.TabIndex = 69;
+            // 
+            // ColumnReservedDate
+            // 
+            ColumnReservedDate.HeaderText = "Заброньовано на";
+            ColumnReservedDate.MinimumWidth = 6;
+            ColumnReservedDate.Name = "ColumnReservedDate";
+            // 
+            // ColumnPIB
+            // 
+            ColumnPIB.HeaderText = "ПІБ";
+            ColumnPIB.MinimumWidth = 6;
+            ColumnPIB.Name = "ColumnPIB";
+            // 
+            // ColumnTypeOfWork
+            // 
+            ColumnTypeOfWork.HeaderText = "Тип роботи";
+            ColumnTypeOfWork.MinimumWidth = 6;
+            ColumnTypeOfWork.Name = "ColumnTypeOfWork";
             // 
             // Schedule_Form
             // 
@@ -471,7 +469,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
-            Controls.Add(roundedButton_ByTimeOfComing);
+            Controls.Add(roundedButton_Resource);
             Controls.Add(roundedButton_TimeOfBooking);
             Controls.Add(pictureBox2);
             Controls.Add(label3);
@@ -527,11 +525,6 @@
         private DataGridViewTextBoxColumn ColumnType;
         private Label label2;
         private DataGridView dataGridView_ScheduleByComing;
-        private DataGridViewTextBoxColumn ColumnComingDate;
-        private DataGridViewTextBoxColumn ColumnReservedDate;
-        private DataGridViewTextBoxColumn ColumnPIB;
-        private DataGridViewTextBoxColumn ColumnResource;
-        private DataGridViewTextBoxColumn ColumnTypeOfWork;
         private RoundedPanel roundedPanel_ScheduleTimeOfBooking;
         private DateTimePicker dateTimePicker_ScheduleTimeOfBooking;
         private PictureBox pictureBox2;
@@ -540,6 +533,10 @@
         private RoundedPanel roundedPanel_ByComing;
         private DateTimePicker dateTimePicker_ScheduleByComing;
         private RoundedButton roundedButton_TimeOfBooking;
-        private RoundedButton roundedButton_ByTimeOfComing;
+        private RoundedButton roundedButton_Resource;
+        private DataGridViewTextBoxColumn ColumnReservedDate;
+        private DataGridViewTextBoxColumn ColumnPIB;
+        private DataGridViewTextBoxColumn ColumnTypeOfWork;
+        private ComboBox comboBox_Resource;
     }
 }
