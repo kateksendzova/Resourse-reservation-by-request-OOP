@@ -40,6 +40,7 @@
             button_PanelMySchedule = new Button();
             button_PanelMain = new Button();
             panel_Menu = new Panel();
+            label_infoRole = new Label();
             pictureBox_AvatarAssistant = new PictureBox();
             pictureBox_AvatarProfesor = new PictureBox();
             pictureBox_AvatarStudent = new PictureBox();
@@ -48,9 +49,12 @@
             label_infoSystemName = new Label();
             pictureBox2 = new PictureBox();
             roundedPanel_MySchedule = new RoundedPanel();
+            dateTimePicker_MySchedule = new DateTimePicker();
             roundedPanel_ShowRequest = new RoundedPanel();
             richTextBox_YourRequest = new RichTextBox();
             label_infoMoreInfo = new Label();
+            roundedPanel_NextBooking = new RoundedPanel();
+            roundedPanel_CountOfMineRequest = new RoundedPanel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).BeginInit();
@@ -197,6 +201,7 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.DarkCyan;
+            panel_Menu.Controls.Add(label_infoRole);
             panel_Menu.Controls.Add(button_DelReq);
             panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
@@ -216,6 +221,17 @@
             panel_Menu.Name = "panel_Menu";
             panel_Menu.Size = new Size(382, 1033);
             panel_Menu.TabIndex = 48;
+            // 
+            // label_infoRole
+            // 
+            label_infoRole.AutoSize = true;
+            label_infoRole.Font = new Font("Century Gothic", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoRole.ForeColor = Color.AliceBlue;
+            label_infoRole.Location = new Point(78, 909);
+            label_infoRole.Name = "label_infoRole";
+            label_infoRole.Size = new Size(38, 17);
+            label_infoRole.TabIndex = 44;
+            label_infoRole.Text = "Роль";
             // 
             // pictureBox_AvatarAssistant
             // 
@@ -253,11 +269,11 @@
             // label_RoleNameMySch
             // 
             label_RoleNameMySch.AutoSize = true;
-            label_RoleNameMySch.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_RoleNameMySch.Font = new Font("Century Gothic", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
             label_RoleNameMySch.ForeColor = Color.AliceBlue;
             label_RoleNameMySch.Location = new Point(78, 879);
             label_RoleNameMySch.Name = "label_RoleNameMySch";
-            label_RoleNameMySch.Size = new Size(37, 20);
+            label_RoleNameMySch.Size = new Size(35, 18);
             label_RoleNameMySch.TabIndex = 4;
             label_RoleNameMySch.Text = "Ім'я";
             // 
@@ -291,18 +307,29 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 59;
             pictureBox2.TabStop = false;
-
             // 
             // roundedPanel_MySchedule
             // 
             roundedPanel_MySchedule.AutoScroll = true;
             roundedPanel_MySchedule.BackColor = Color.White;
             roundedPanel_MySchedule.BorderColor = Color.LightGray;
+            roundedPanel_MySchedule.Controls.Add(dateTimePicker_MySchedule);
             roundedPanel_MySchedule.CornerRadius = 12;
-            roundedPanel_MySchedule.Location = new Point(558, 126);
+            roundedPanel_MySchedule.Location = new Point(558, 280);
             roundedPanel_MySchedule.Name = "roundedPanel_MySchedule";
-            roundedPanel_MySchedule.Size = new Size(610, 752);
+            roundedPanel_MySchedule.Size = new Size(610, 617);
             roundedPanel_MySchedule.TabIndex = 60;
+            // 
+            // dateTimePicker_MySchedule
+            // 
+            dateTimePicker_MySchedule.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_MySchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dateTimePicker_MySchedule.Format = DateTimePickerFormat.Short;
+            dateTimePicker_MySchedule.Location = new Point(91, 19);
+            dateTimePicker_MySchedule.MinDate = new DateTime(2026, 10, 21, 0, 0, 0, 0);
+            dateTimePicker_MySchedule.Name = "dateTimePicker_MySchedule";
+            dateTimePicker_MySchedule.Size = new Size(439, 28);
+            dateTimePicker_MySchedule.TabIndex = 51;
             // 
             // roundedPanel_ShowRequest
             // 
@@ -311,9 +338,9 @@
             roundedPanel_ShowRequest.Controls.Add(richTextBox_YourRequest);
             roundedPanel_ShowRequest.Controls.Add(label_infoMoreInfo);
             roundedPanel_ShowRequest.CornerRadius = 12;
-            roundedPanel_ShowRequest.Location = new Point(1235, 126);
+            roundedPanel_ShowRequest.Location = new Point(1235, 280);
             roundedPanel_ShowRequest.Name = "roundedPanel_ShowRequest";
-            roundedPanel_ShowRequest.Size = new Size(566, 752);
+            roundedPanel_ShowRequest.Size = new Size(566, 617);
             roundedPanel_ShowRequest.TabIndex = 61;
             // 
             // richTextBox_YourRequest
@@ -335,12 +362,34 @@
             label_infoMoreInfo.TabIndex = 61;
             label_infoMoreInfo.Text = "Деталі";
             // 
+            // roundedPanel_NextBooking
+            // 
+            roundedPanel_NextBooking.BackColor = Color.White;
+            roundedPanel_NextBooking.BorderColor = Color.LightGray;
+            roundedPanel_NextBooking.CornerRadius = 12;
+            roundedPanel_NextBooking.Location = new Point(560, 120);
+            roundedPanel_NextBooking.Name = "roundedPanel_NextBooking";
+            roundedPanel_NextBooking.Size = new Size(446, 140);
+            roundedPanel_NextBooking.TabIndex = 62;
+            // 
+            // roundedPanel_CountOfMineRequest
+            // 
+            roundedPanel_CountOfMineRequest.BackColor = Color.White;
+            roundedPanel_CountOfMineRequest.BorderColor = Color.LightGray;
+            roundedPanel_CountOfMineRequest.CornerRadius = 12;
+            roundedPanel_CountOfMineRequest.Location = new Point(1105, 120);
+            roundedPanel_CountOfMineRequest.Name = "roundedPanel_CountOfMineRequest";
+            roundedPanel_CountOfMineRequest.Size = new Size(448, 140);
+            roundedPanel_CountOfMineRequest.TabIndex = 63;
+            // 
             // MySchedule_Form
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
+            Controls.Add(roundedPanel_CountOfMineRequest);
+            Controls.Add(roundedPanel_NextBooking);
             Controls.Add(roundedPanel_ShowRequest);
             Controls.Add(roundedPanel_MySchedule);
             Controls.Add(pictureBox2);
@@ -397,5 +446,9 @@
         private RoundedPanel roundedPanel_ShowRequest;
         private RichTextBox richTextBox_YourRequest;
         private Label label_infoMoreInfo;
+        private Label label_infoRole;
+        private DateTimePicker dateTimePicker_MySchedule;
+        private RoundedPanel roundedPanel_NextBooking;
+        private RoundedPanel roundedPanel_CountOfMineRequest;
     }
 }

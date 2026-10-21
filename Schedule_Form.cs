@@ -27,7 +27,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             this.FormClosed += (s, e) => Application.Exit();
         }
 
-        // ───────────────────────── Load ─────────────────────────
 
         private void Schedule_Form_Load(object sender, EventArgs e)
         {
@@ -49,7 +48,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 picker.ValueChanged += (s, ev) => LoadActiveSchedule();
             }
 
-            // Заповнюємо випадаючий список обладнанням для другого режиму
             LoadResourceComboBox();
             comboBox_Resource.SelectedIndexChanged += (s, ev) => LoadActiveSchedule();
 
@@ -58,11 +56,10 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             ShowView(true);
 
-            // оновлюємо дані при кожному показі форми
             this.VisibleChanged += (s, ev) => { if (this.Visible) LoadActiveSchedule(); };
         }
 
-        // ───────────────────────── Заповнення ComboBox обладнанням ─────────────────────────
+
 
         private void LoadResourceComboBox()
         {
@@ -77,7 +74,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 comboBox_Resource.SelectedIndex = 0;
         }
 
-        // ───────────────────────── Перемикання виглядів ─────────────────────────
 
         private void ShowView(bool byBookingTime)
         {
@@ -98,9 +94,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             else FillByResource();
         }
 
-        // ───────────────────────── Заповнення таблиць ─────────────────────────
 
-        // Режим 1: За часом бронювання (на обрану дату)
         private void FillByBookingTime()
         {
             var grid = dataGridView_ScheduleTimeOfBooking;
@@ -116,13 +110,11 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     r.Resourse.NAME,
                     GetWorkTypeName(r.TypeOfWork));
 
-                MarkOwnRow(grid.Rows[i], r);
             }
 
             emptyHintBooking.Visible = grid.Rows.Count == 0;
         }
 
-        // Режим 2: Для конкретного обладнання на обрану дату
         private void FillByResource()
         {
             var grid = dataGridView_ScheduleByComing;
@@ -136,7 +128,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             DateTime date = dateTimePicker_ScheduleByComing.Value.Date;
 
-            // Фільтруємо запити за обраним обладнанням та датою
             var requests = scheduler.GetRequestsByDate(date)
                 .Where(r => r.Resourse.ID == selectedResource.ID)
                 .ToList();
@@ -147,8 +138,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     FormatInterval(r.Interval),
                     r.Person.Name,
                     GetWorkTypeName(r.TypeOfWork));
-
-                MarkOwnRow(grid.Rows[i], r);
             }
 
             emptyHintComing.Visible = grid.Rows.Count == 0;
@@ -167,17 +156,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             _ => "Самостійна робота"
         };
 
-        // Свої бронювання виділяємо кольором і жирним
-        private void MarkOwnRow(DataGridViewRow row, Request r)
-        {
-            if (r.Person.Name == currentName && r.Person.Role == currentRole)
-            {
-                row.DefaultCellStyle.BackColor = Color.LightCyan;
-                row.DefaultCellStyle.Font = ownRowFont;
-            }
-        }
 
-        // ───────────────────────── Вигляд таблиць ─────────────────────────
 
         private void StyleGrid(DataGridView grid)
         {
@@ -232,7 +211,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             return hint;
         }
 
-        // ───────────────────────── Користувач і навігація ─────────────────────────
 
         private void ParseUserInfo(string userInfo)
         {
@@ -257,10 +235,32 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void LoadNameAndRole()
         {
             label_RoleNameSch.Text = currentName;
+            label_infoRole.Text = currentRole switch
+            {
+                UserRole.Professor => "Викладач",
+                UserRole.Assistant => "Аспірант",
+                _ => "Студент"
+            };
 
-            pictureBox_AvatarStudent.Visible = (currentRole == UserRole.Student);
-            pictureBox_AvatarAssistant.Visible = (currentRole == UserRole.Assistant);
-            pictureBox_AvatarProfesor.Visible = (currentRole == UserRole.Professor);
+
+            if (currentRole == UserRole.Student)
+            {
+                pictureBox_AvatarStudent.Visible = true;
+                pictureBox_AvatarAssistant.Visible = false;
+                pictureBox_AvatarProfesor.Visible = false;
+            }
+            else if (currentRole == UserRole.Assistant)
+            {
+                pictureBox_AvatarStudent.Visible = false;
+                pictureBox_AvatarAssistant.Visible = true;
+                pictureBox_AvatarProfesor.Visible = false;
+            }
+            else if (currentRole == UserRole.Professor)
+            {
+                pictureBox_AvatarStudent.Visible = false;
+                pictureBox_AvatarAssistant.Visible = false;
+                pictureBox_AvatarProfesor.Visible = true;
+            }
         }
 
         private void button_PanelMainForm_Click(object sender, EventArgs e)

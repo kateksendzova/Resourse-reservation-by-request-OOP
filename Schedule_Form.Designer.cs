@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Schedule_Form));
             panel_Menu = new Panel();
+            label_infoRole = new Label();
             button_PanelDelReq = new Button();
             pictureBox_LogoDel = new PictureBox();
             pictureBox_LogoSchedule = new PictureBox();
@@ -50,19 +51,19 @@
             ColumnRes = new DataGridViewTextBoxColumn();
             ColumnType = new DataGridViewTextBoxColumn();
             dataGridView_ScheduleByComing = new DataGridView();
+            ColumnReservedDate = new DataGridViewTextBoxColumn();
+            ColumnPIB = new DataGridViewTextBoxColumn();
+            ColumnTypeOfWork = new DataGridViewTextBoxColumn();
             roundedPanel_ScheduleTimeOfBooking = new RoundedPanel();
             dateTimePicker_ScheduleTimeOfBooking = new DateTimePicker();
             pictureBox2 = new PictureBox();
             label3 = new Label();
             label4 = new Label();
             roundedPanel_ByComing = new RoundedPanel();
+            comboBox_Resource = new ComboBox();
             dateTimePicker_ScheduleByComing = new DateTimePicker();
             roundedButton_TimeOfBooking = new RoundedButton();
             roundedButton_Resource = new RoundedButton();
-            comboBox_Resource = new ComboBox();
-            ColumnReservedDate = new DataGridViewTextBoxColumn();
-            ColumnPIB = new DataGridViewTextBoxColumn();
-            ColumnTypeOfWork = new DataGridViewTextBoxColumn();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoDel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoSchedule).BeginInit();
@@ -82,6 +83,7 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.DarkCyan;
+            panel_Menu.Controls.Add(label_infoRole);
             panel_Menu.Controls.Add(button_PanelDelReq);
             panel_Menu.Controls.Add(pictureBox_LogoDel);
             panel_Menu.Controls.Add(pictureBox_LogoSchedule);
@@ -101,6 +103,17 @@
             panel_Menu.Name = "panel_Menu";
             panel_Menu.Size = new Size(382, 1033);
             panel_Menu.TabIndex = 55;
+            // 
+            // label_infoRole
+            // 
+            label_infoRole.AutoSize = true;
+            label_infoRole.Font = new Font("Century Gothic", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoRole.ForeColor = Color.AliceBlue;
+            label_infoRole.Location = new Point(78, 909);
+            label_infoRole.Name = "label_infoRole";
+            label_infoRole.Size = new Size(38, 17);
+            label_infoRole.TabIndex = 42;
+            label_infoRole.Text = "Роль";
             // 
             // button_PanelDelReq
             // 
@@ -222,11 +235,11 @@
             // label_RoleNameSch
             // 
             label_RoleNameSch.AutoSize = true;
-            label_RoleNameSch.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_RoleNameSch.Font = new Font("Century Gothic", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
             label_RoleNameSch.ForeColor = Color.AliceBlue;
             label_RoleNameSch.Location = new Point(78, 879);
             label_RoleNameSch.Name = "label_RoleNameSch";
-            label_RoleNameSch.Size = new Size(37, 20);
+            label_RoleNameSch.Size = new Size(35, 18);
             label_RoleNameSch.TabIndex = 4;
             label_RoleNameSch.Text = "Ім'я";
             // 
@@ -321,6 +334,24 @@
             dataGridView_ScheduleByComing.Size = new Size(1129, 638);
             dataGridView_ScheduleByComing.TabIndex = 60;
             // 
+            // ColumnReservedDate
+            // 
+            ColumnReservedDate.HeaderText = "Заброньовано на";
+            ColumnReservedDate.MinimumWidth = 6;
+            ColumnReservedDate.Name = "ColumnReservedDate";
+            // 
+            // ColumnPIB
+            // 
+            ColumnPIB.HeaderText = "ПІБ";
+            ColumnPIB.MinimumWidth = 6;
+            ColumnPIB.Name = "ColumnPIB";
+            // 
+            // ColumnTypeOfWork
+            // 
+            ColumnTypeOfWork.HeaderText = "Тип роботи";
+            ColumnTypeOfWork.MinimumWidth = 6;
+            ColumnTypeOfWork.Name = "ColumnTypeOfWork";
+            // 
             // roundedPanel_ScheduleTimeOfBooking
             // 
             roundedPanel_ScheduleTimeOfBooking.AutoScroll = true;
@@ -390,6 +421,14 @@
             roundedPanel_ByComing.Size = new Size(1176, 752);
             roundedPanel_ByComing.TabIndex = 64;
             // 
+            // comboBox_Resource
+            // 
+            comboBox_Resource.FormattingEnabled = true;
+            comboBox_Resource.Location = new Point(502, 45);
+            comboBox_Resource.Name = "comboBox_Resource";
+            comboBox_Resource.Size = new Size(649, 28);
+            comboBox_Resource.TabIndex = 69;
+            // 
             // dateTimePicker_ScheduleByComing
             // 
             dateTimePicker_ScheduleByComing.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
@@ -436,32 +475,6 @@
             roundedButton_Resource.TabIndex = 68;
             roundedButton_Resource.Text = "Для обладнання";
             roundedButton_Resource.UseVisualStyleBackColor = false;
-            // 
-            // comboBox_Resource
-            // 
-            comboBox_Resource.FormattingEnabled = true;
-            comboBox_Resource.Location = new Point(502, 45);
-            comboBox_Resource.Name = "comboBox_Resource";
-            comboBox_Resource.Size = new Size(649, 28);
-            comboBox_Resource.TabIndex = 69;
-            // 
-            // ColumnReservedDate
-            // 
-            ColumnReservedDate.HeaderText = "Заброньовано на";
-            ColumnReservedDate.MinimumWidth = 6;
-            ColumnReservedDate.Name = "ColumnReservedDate";
-            // 
-            // ColumnPIB
-            // 
-            ColumnPIB.HeaderText = "ПІБ";
-            ColumnPIB.MinimumWidth = 6;
-            ColumnPIB.Name = "ColumnPIB";
-            // 
-            // ColumnTypeOfWork
-            // 
-            ColumnTypeOfWork.HeaderText = "Тип роботи";
-            ColumnTypeOfWork.MinimumWidth = 6;
-            ColumnTypeOfWork.Name = "ColumnTypeOfWork";
             // 
             // Schedule_Form
             // 
@@ -538,5 +551,6 @@
         private DataGridViewTextBoxColumn ColumnPIB;
         private DataGridViewTextBoxColumn ColumnTypeOfWork;
         private ComboBox comboBox_Resource;
+        private Label label_infoRole;
     }
 }

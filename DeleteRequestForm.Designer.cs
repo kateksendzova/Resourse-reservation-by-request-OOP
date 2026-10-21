@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteRequestForm));
-            button_ClearAll = new Button();
             button_DeleteRequest = new Button();
             label_infoSystemName = new Label();
             panel_Menu = new Panel();
-            pictureBox1 = new PictureBox();
+            label_infoRole = new Label();
             button1 = new Button();
+            pictureBox1 = new PictureBox();
             pictureBox_PanelSchedule = new PictureBox();
             button_PanelSchedule = new Button();
             pictureBox_AvatarAssistant = new PictureBox();
@@ -50,12 +50,11 @@
             label1 = new Label();
             dateTimePicker_DeleteReq = new DateTimePicker();
             button_DeleteReq = new Button();
-            button2 = new Button();
             pictureBox2 = new PictureBox();
             roundedPanel_RequestsForDel = new RoundedPanel();
             roundedPanel_ShowRequest = new RoundedPanel();
-            label_infoForDeleting = new Label();
             richTextBox_YourRequest = new RichTextBox();
+            label_infoForDeleting = new Label();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
@@ -69,18 +68,6 @@
             roundedPanel_RequestsForDel.SuspendLayout();
             roundedPanel_ShowRequest.SuspendLayout();
             SuspendLayout();
-            // 
-            // button_ClearAll
-            // 
-            button_ClearAll.BackColor = Color.AliceBlue;
-            button_ClearAll.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button_ClearAll.Location = new Point(1947, 895);
-            button_ClearAll.Name = "button_ClearAll";
-            button_ClearAll.Size = new Size(145, 58);
-            button_ClearAll.TabIndex = 45;
-            button_ClearAll.Text = "Очистити";
-            button_ClearAll.UseVisualStyleBackColor = false;
-            button_ClearAll.Click += button_ClearAll_Click;
             // 
             // button_DeleteRequest
             // 
@@ -107,6 +94,7 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.DarkCyan;
+            panel_Menu.Controls.Add(label_infoRole);
             panel_Menu.Controls.Add(button1);
             panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
@@ -127,16 +115,16 @@
             panel_Menu.Size = new Size(382, 1033);
             panel_Menu.TabIndex = 47;
             // 
-            // pictureBox1
+            // label_infoRole
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(44, 317);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(63, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 41;
-            pictureBox1.TabStop = false;
+            label_infoRole.AutoSize = true;
+            label_infoRole.Font = new Font("Century Gothic", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoRole.ForeColor = Color.AliceBlue;
+            label_infoRole.Location = new Point(78, 909);
+            label_infoRole.Name = "label_infoRole";
+            label_infoRole.Size = new Size(38, 17);
+            label_infoRole.TabIndex = 43;
+            label_infoRole.Text = "Роль";
             // 
             // button1
             // 
@@ -151,6 +139,17 @@
             button1.Text = "Видалити запит";
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(44, 317);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(63, 41);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 41;
+            pictureBox1.TabStop = false;
             // 
             // pictureBox_PanelSchedule
             // 
@@ -247,11 +246,11 @@
             // label_RoleNameDel
             // 
             label_RoleNameDel.AutoSize = true;
-            label_RoleNameDel.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_RoleNameDel.Font = new Font("Century Gothic", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
             label_RoleNameDel.ForeColor = Color.AliceBlue;
             label_RoleNameDel.Location = new Point(78, 879);
             label_RoleNameDel.Name = "label_RoleNameDel";
-            label_RoleNameDel.Size = new Size(37, 20);
+            label_RoleNameDel.Size = new Size(35, 18);
             label_RoleNameDel.TabIndex = 4;
             label_RoleNameDel.Text = "Ім'я";
             // 
@@ -315,34 +314,23 @@
             dateTimePicker_DeleteReq.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_DeleteReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_DeleteReq.Format = DateTimePickerFormat.Short;
-            dateTimePicker_DeleteReq.Location = new Point(41, 54);
+            dateTimePicker_DeleteReq.Location = new Point(59, 54);
+            dateTimePicker_DeleteReq.MinDate = new DateTime(2026, 10, 21, 0, 0, 0, 0);
             dateTimePicker_DeleteReq.Name = "dateTimePicker_DeleteReq";
-            dateTimePicker_DeleteReq.Size = new Size(528, 28);
+            dateTimePicker_DeleteReq.Size = new Size(486, 28);
             dateTimePicker_DeleteReq.TabIndex = 50;
-            dateTimePicker_DeleteReq.MinDate = DateTime.Today;
             // 
             // button_DeleteReq
             // 
-            button_DeleteReq.BackColor = Color.Teal;
+            button_DeleteReq.BackColor = Color.IndianRed;
             button_DeleteReq.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             button_DeleteReq.ForeColor = Color.AliceBlue;
-            button_DeleteReq.Location = new Point(63, 583);
+            button_DeleteReq.Location = new Point(69, 652);
             button_DeleteReq.Name = "button_DeleteReq";
             button_DeleteReq.Size = new Size(440, 58);
             button_DeleteReq.TabIndex = 56;
             button_DeleteReq.Text = "Видалити";
             button_DeleteReq.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.AliceBlue;
-            button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button2.Location = new Point(63, 660);
-            button2.Name = "button2";
-            button2.Size = new Size(440, 49);
-            button2.TabIndex = 57;
-            button2.Text = "Очистити";
-            button2.UseVisualStyleBackColor = false;
             // 
             // pictureBox2
             // 
@@ -374,12 +362,20 @@
             roundedPanel_ShowRequest.Controls.Add(richTextBox_YourRequest);
             roundedPanel_ShowRequest.Controls.Add(label_infoForDeleting);
             roundedPanel_ShowRequest.Controls.Add(button_DeleteReq);
-            roundedPanel_ShowRequest.Controls.Add(button2);
             roundedPanel_ShowRequest.CornerRadius = 12;
             roundedPanel_ShowRequest.Location = new Point(1235, 131);
             roundedPanel_ShowRequest.Name = "roundedPanel_ShowRequest";
             roundedPanel_ShowRequest.Size = new Size(566, 752);
             roundedPanel_ShowRequest.TabIndex = 60;
+            // 
+            // richTextBox_YourRequest
+            // 
+            richTextBox_YourRequest.BorderStyle = BorderStyle.None;
+            richTextBox_YourRequest.Location = new Point(54, 95);
+            richTextBox_YourRequest.Name = "richTextBox_YourRequest";
+            richTextBox_YourRequest.Size = new Size(464, 434);
+            richTextBox_YourRequest.TabIndex = 62;
+            richTextBox_YourRequest.Text = "";
             // 
             // label_infoForDeleting
             // 
@@ -391,15 +387,6 @@
             label_infoForDeleting.TabIndex = 61;
             label_infoForDeleting.Text = "Підтвердіть видалення";
             // 
-            // richTextBox_YourRequest
-            // 
-            richTextBox_YourRequest.BorderStyle = BorderStyle.None;
-            richTextBox_YourRequest.Location = new Point(54, 95);
-            richTextBox_YourRequest.Name = "richTextBox_YourRequest";
-            richTextBox_YourRequest.Size = new Size(464, 434);
-            richTextBox_YourRequest.TabIndex = 62;
-            richTextBox_YourRequest.Text = "";
-            // 
             // DeleteRequestForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -410,7 +397,6 @@
             Controls.Add(roundedPanel_RequestsForDel);
             Controls.Add(pictureBox2);
             Controls.Add(label1);
-            Controls.Add(button_ClearAll);
             Controls.Add(button_DeleteRequest);
             Controls.Add(label_infoSystemName);
             Controls.Add(panel_Menu);
@@ -442,7 +428,6 @@
         private ListBox listBox_Priority;
         private ListBox listBox_Resources;
         private DateTimePicker dateTimePicker_Interval;
-        private Button button_ClearAll;
         private Label label_infoInterval;
         private Label label_infoReqRichText;
         private RichTextBox richTextBox_request;
@@ -472,11 +457,11 @@
         private Label label1;
         private DateTimePicker dateTimePicker_DeleteReq;
         private Button button_DeleteReq;
-        private Button button2;
         private PictureBox pictureBox2;
         private RoundedPanel roundedPanel_RequestsForDel;
         private RoundedPanel roundedPanel_ShowRequest;
         private Label label_infoForDeleting;
         private RichTextBox richTextBox_YourRequest;
+        private Label label_infoRole;
     }
 }

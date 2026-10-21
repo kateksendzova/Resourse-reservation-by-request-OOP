@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm_FirstWindow));
             panel_Menu = new Panel();
-            pictureBox1 = new PictureBox();
             button_DelReq = new Button();
+            pictureBox1 = new PictureBox();
             pictureBox_PanelSchedule = new PictureBox();
             button_PanelSchedule = new Button();
             pictureBox_AvatarAssistant = new PictureBox();
@@ -52,6 +52,7 @@
             flowLayoutPanel_Resources = new FlowLayoutPanel();
             label3 = new Label();
             pictureBox2 = new PictureBox();
+            label_infoRole = new Label();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
@@ -68,6 +69,7 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.DarkCyan;
+            panel_Menu.Controls.Add(label_infoRole);
             panel_Menu.Controls.Add(button_DelReq);
             panel_Menu.Controls.Add(pictureBox1);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
@@ -88,17 +90,6 @@
             panel_Menu.Size = new Size(382, 1033);
             panel_Menu.TabIndex = 32;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(44, 317);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(63, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 41;
-            pictureBox1.TabStop = false;
-            // 
             // button_DelReq
             // 
             button_DelReq.FlatAppearance.BorderSize = 0;
@@ -113,6 +104,17 @@
             button_DelReq.TextAlign = ContentAlignment.MiddleRight;
             button_DelReq.UseVisualStyleBackColor = true;
             button_DelReq.Click += button1_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(44, 317);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(63, 41);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 41;
+            pictureBox1.TabStop = false;
             // 
             // pictureBox_PanelSchedule
             // 
@@ -144,9 +146,9 @@
             // 
             pictureBox_AvatarAssistant.Image = (Image)resources.GetObject("pictureBox_AvatarAssistant.Image");
             pictureBox_AvatarAssistant.InitialImage = (Image)resources.GetObject("pictureBox_AvatarAssistant.InitialImage");
-            pictureBox_AvatarAssistant.Location = new Point(34, 864);
+            pictureBox_AvatarAssistant.Location = new Point(30, 864);
             pictureBox_AvatarAssistant.Name = "pictureBox_AvatarAssistant";
-            pictureBox_AvatarAssistant.Size = new Size(52, 49);
+            pictureBox_AvatarAssistant.Size = new Size(46, 49);
             pictureBox_AvatarAssistant.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_AvatarAssistant.TabIndex = 37;
             pictureBox_AvatarAssistant.TabStop = false;
@@ -155,9 +157,9 @@
             // 
             pictureBox_AvatarProfesor.Image = (Image)resources.GetObject("pictureBox_AvatarProfesor.Image");
             pictureBox_AvatarProfesor.InitialImage = (Image)resources.GetObject("pictureBox_AvatarProfesor.InitialImage");
-            pictureBox_AvatarProfesor.Location = new Point(34, 864);
+            pictureBox_AvatarProfesor.Location = new Point(30, 864);
             pictureBox_AvatarProfesor.Name = "pictureBox_AvatarProfesor";
-            pictureBox_AvatarProfesor.Size = new Size(52, 49);
+            pictureBox_AvatarProfesor.Size = new Size(46, 49);
             pictureBox_AvatarProfesor.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_AvatarProfesor.TabIndex = 36;
             pictureBox_AvatarProfesor.TabStop = false;
@@ -166,9 +168,9 @@
             // 
             pictureBox_AvatarStudent.Image = (Image)resources.GetObject("pictureBox_AvatarStudent.Image");
             pictureBox_AvatarStudent.InitialImage = (Image)resources.GetObject("pictureBox_AvatarStudent.InitialImage");
-            pictureBox_AvatarStudent.Location = new Point(34, 864);
+            pictureBox_AvatarStudent.Location = new Point(30, 864);
             pictureBox_AvatarStudent.Name = "pictureBox_AvatarStudent";
-            pictureBox_AvatarStudent.Size = new Size(52, 49);
+            pictureBox_AvatarStudent.Size = new Size(46, 49);
             pictureBox_AvatarStudent.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_AvatarStudent.TabIndex = 35;
             pictureBox_AvatarStudent.TabStop = false;
@@ -209,11 +211,11 @@
             // label_PanelRoleName
             // 
             label_PanelRoleName.AutoSize = true;
-            label_PanelRoleName.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_PanelRoleName.Font = new Font("Century Gothic", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
             label_PanelRoleName.ForeColor = Color.AliceBlue;
-            label_PanelRoleName.Location = new Point(88, 879);
+            label_PanelRoleName.Location = new Point(78, 879);
             label_PanelRoleName.Name = "label_PanelRoleName";
-            label_PanelRoleName.Size = new Size(37, 20);
+            label_PanelRoleName.Size = new Size(35, 18);
             label_PanelRoleName.TabIndex = 4;
             label_PanelRoleName.Text = "Ім'я";
             // 
@@ -356,6 +358,17 @@
             pictureBox2.TabIndex = 42;
             pictureBox2.TabStop = false;
             // 
+            // label_infoRole
+            // 
+            label_infoRole.AutoSize = true;
+            label_infoRole.Font = new Font("Century Gothic", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoRole.ForeColor = Color.AliceBlue;
+            label_infoRole.Location = new Point(78, 909);
+            label_infoRole.Name = "label_infoRole";
+            label_infoRole.Size = new Size(38, 17);
+            label_infoRole.TabIndex = 43;
+            label_infoRole.Text = "Роль";
+            // 
             // MainForm_FirstWindow
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -417,5 +430,6 @@
         private FlowLayoutPanel flowLayoutPanel_Resources;
         private Label label3;
         private PictureBox pictureBox2;
+        private Label label_infoRole;
     }
 }

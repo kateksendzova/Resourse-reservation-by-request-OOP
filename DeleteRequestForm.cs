@@ -52,7 +52,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             dateTimePicker_DeleteReq.ValueChanged += (s, e) => LoadRequestsForDate(dateTimePicker_DeleteReq.Value.Date);
 
             button_DeleteReq.Click += button_DeleteReq_Click;
-            button2.Click += button_ClearAll_Click;
 
             LoadRequestsForDate(dateTimePicker_DeleteReq.Value.Date);
             UpdateRequestPreview();
@@ -81,10 +80,32 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void LoadNameAndRole()
         {
             label_RoleNameDel.Text = currentName;
+            label_infoRole.Text = currentRole switch
+            {
+                UserRole.Professor => "Викладач",
+                UserRole.Assistant => "Аспірант",
+                _ => "Студент"
+            };
 
-            pictureBox_AvatarStudent.Visible = (currentRole == UserRole.Student);
-            pictureBox_AvatarAssistant.Visible = (currentRole == UserRole.Assistant);
-            pictureBox_AvatarProfesor.Visible = (currentRole == UserRole.Professor);
+
+            if (currentRole == UserRole.Student)
+            {
+                pictureBox_AvatarStudent.Visible = true;
+                pictureBox_AvatarAssistant.Visible = false;
+                pictureBox_AvatarProfesor.Visible = false;
+            }
+            else if (currentRole == UserRole.Assistant)
+            {
+                pictureBox_AvatarStudent.Visible = false;
+                pictureBox_AvatarAssistant.Visible = true;
+                pictureBox_AvatarProfesor.Visible = false;
+            }
+            else if (currentRole == UserRole.Professor)
+            {
+                pictureBox_AvatarStudent.Visible = false;
+                pictureBox_AvatarAssistant.Visible = false;
+                pictureBox_AvatarProfesor.Visible = true;
+            }
         }
 
         private static string GetWorkTypeName(TypeOfWork type) => type switch
@@ -233,7 +254,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             AppendField("Дата", r.DayOfReservation.ToString("dd.MM.yyyy"));
             AppendField("Час", $"{r.Interval.Start:hh\\:mm} – {r.Interval.End:hh\\:mm}");
             AppendField("Тип роботи", GetWorkTypeName(r.TypeOfWork));
-            AppendField("Користувач", $"{r.Person.Name} ({r.Person.Role})");
         }
 
         private void button_DeleteReq_Click(object sender, EventArgs e)
@@ -271,13 +291,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
         }
 
-        private void button_ClearAll_Click(object sender, EventArgs e)
-        {
-            selectedRequestID = null;
-            selectedRequestObject = null;
-            UpdateRequestPreview();
-            LoadRequestsForDate(dateTimePicker_DeleteReq.Value.Date);
-        }
 
         private void button_PanelMain_Click(object sender, EventArgs e)
         {

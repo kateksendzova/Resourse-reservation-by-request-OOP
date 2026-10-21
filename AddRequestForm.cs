@@ -269,10 +269,32 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void LoadNameAndRole()
         {
             label_RoleName.Text = currentName;
+            label_infoRole.Text = currentRole switch
+            {
+                UserRole.Professor => "Викладач",
+                UserRole.Assistant => "Аспірант",
+                _ => "Студент"
+            };
 
-            pictureBox_AvatarStudent.Visible = (currentRole == UserRole.Student);
-            pictureBox_AvatarAssistant.Visible = (currentRole == UserRole.Assistant);
-            pictureBox_AvatarProfesor.Visible = (currentRole == UserRole.Professor);
+
+            if (currentRole == UserRole.Student)
+            {
+                pictureBox_AvatarStudent.Visible = true;
+                pictureBox_AvatarAssistant.Visible = false;
+                pictureBox_AvatarProfesor.Visible = false;
+            }
+            else if (currentRole == UserRole.Assistant)
+            {
+                pictureBox_AvatarStudent.Visible = false;
+                pictureBox_AvatarAssistant.Visible = true;
+                pictureBox_AvatarProfesor.Visible = false;
+            }
+            else if (currentRole == UserRole.Professor)
+            {
+                pictureBox_AvatarStudent.Visible = false;
+                pictureBox_AvatarAssistant.Visible = false;
+                pictureBox_AvatarProfesor.Visible = true;
+            }
         }
 
 
@@ -310,6 +332,20 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             try
             {
                 Person person = scheduler.GetOrCreatePerson(currentName, currentRole);
+
+                if(scheduler.CheckForPersonConflict(person, reservDate, startTime, interval) != null)
+                {
+                    var information = MessageBox.Show(
+                        "У вас уже є активна бронь у цей час! Бажаєте все одно додати новий запит?",
+                        "Конфлікт бронювання",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (information == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
 
                 Resourse resource = scheduler.GetResourses().FirstOrDefault(r => r.ID == selectedResID.Value);
                 if (resource == null)

@@ -36,9 +36,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             string name = textBox_Name.Text.Trim();
             string fatherName = textBox_FatherName.Text.Trim();
 
-            if (string.IsNullOrEmpty(surname) || string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(surname) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(fatherName))
             {
-                MessageBox.Show("Будь ласка, введіть прізвище та ім'я!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Будь ласка, введіть прізвище, ім'я та по - батькові!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

@@ -197,6 +197,27 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             return (true, "Запит успішно додано до розкладу!");
         }
 
+        public Request CheckForPersonConflict(Person person, DateTime reservDate, TimeSpan startTime, TimeSpan interval)
+        {
+            TimeSpan endTime = startTime + interval;
+            TimeInterval newInterval = new TimeInterval(startTime, endTime);
+
+            List<Request> requestsUser = GetRequestsByPerson(person.Name, person.Role);
+
+            foreach (Request request in requestsUser) 
+            {
+                if(request.DayOfReservation.Date == reservDate.Date)
+                {
+                    if(request.Interval.Start < newInterval.End && newInterval.Start < request.Interval.End)
+                    {
+                        return request;
+                    }
+                }
+            }
+
+            return null;
+        }
+
         public void DeleteRequest(int reqId)
         {
             schedule.DeleteRequestFromBD(reqId);

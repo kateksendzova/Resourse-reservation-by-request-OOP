@@ -132,6 +132,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             label_PanelRoleName.Text = currentName;
 
+            label_infoRole.Text = currentRole switch
+            {
+                UserRole.Professor => "Викладач",
+                UserRole.Assistant => "Аспірант",
+                _ => "Студент"
+            };
+
             if (currentRole == UserRole.Student)
             {
                 pictureBox_AvatarStudent.Visible = true;
