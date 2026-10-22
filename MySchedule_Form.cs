@@ -32,6 +32,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             ParseUserInfo(userInfo);
 
             this.FormClosed += (s, e) => Application.Exit();
+            this.Resize += MySchedule_Form_Resize;
         }
 
         private void MySchedule_Form_Load(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             richTextBox_YourRequest.BackColor = Color.White;
             richTextBox_YourRequest.Cursor = Cursors.Default;
 
-            
+
             if (dateTimePicker_MySchedule != null)
             {
                 dateTimePicker_MySchedule.Format = DateTimePickerFormat.Short;
@@ -62,10 +63,116 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             LoadMyRequestsForDate(initialDate);
             UpdateSelectedRequestPreview();
 
-            this.VisibleChanged += (s, ev) => {
+            this.VisibleChanged += (s, ev) =>
+            {
                 if (this.Visible && dateTimePicker_MySchedule != null)
                     LoadMyRequestsForDate(dateTimePicker_MySchedule.Value.Date);
             };
+
+            this.MinimumSize = new Size(1244, 795);
+        }
+
+        private void MySchedule_Form_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized) return;
+
+            bool isCompactMode = this.ClientSize.Width < 1400;
+
+            if (isCompactMode)
+            {
+                panel_Menu.Width = 100;
+
+                if (button_PanelMain != null) button_PanelMain.Visible = false;
+                if (button_MakeReq != null) button_MakeReq.Visible = false;
+                if (button_PanelMySchedule != null) button_PanelMySchedule.Visible = false;
+                if (button_PanelSchedule != null) button_PanelSchedule.Visible = false;
+                if (button_DelReq != null) button_DelReq.Visible = false;
+
+                if (pictureBox_AvatarAssistant != null) pictureBox_AvatarAssistant.Visible = false;
+                if (pictureBox_AvatarProfesor != null) pictureBox_AvatarProfesor.Visible = false;
+                if (pictureBox_AvatarStudent != null) pictureBox_AvatarStudent.Visible = false;
+                if (label_RoleNameMySch != null) label_RoleNameMySch.Visible = false;
+                if (label_infoRole != null) label_infoRole.Visible = false;
+
+                if (pictureBox_Logo != null) pictureBox_Logo.Left = (100 - pictureBox_Logo.Width) / 2;
+                if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = (100 - pictureBox_PanelMakeReq.Width) / 2;
+                if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = (100 - pictureBox_PanelMySchedule.Width) / 2;
+                if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = (100 - pictureBox_PanelSchedule.Width) / 2;
+                if (pictureBox1 != null) pictureBox1.Left = (100 - pictureBox1.Width) / 2;
+            }
+            else
+            {
+                panel_Menu.Width = 382;
+
+                if (button_PanelMain != null) button_PanelMain.Visible = true;
+                if (button_MakeReq != null) button_MakeReq.Visible = true;
+                if (button_PanelMySchedule != null) button_PanelMySchedule.Visible = true;
+                if (button_PanelSchedule != null) button_PanelSchedule.Visible = true;
+                if (button_DelReq != null) button_DelReq.Visible = true;
+                if (label_RoleNameMySch != null) label_RoleNameMySch.Visible = true;
+                if (label_infoRole != null) label_infoRole.Visible = true;
+
+                if (pictureBox_AvatarStudent != null) pictureBox_AvatarStudent.Visible = (currentRole == UserRole.Student);
+                if (pictureBox_AvatarAssistant != null) pictureBox_AvatarAssistant.Visible = (currentRole == UserRole.Assistant);
+                if (pictureBox_AvatarProfesor != null) pictureBox_AvatarProfesor.Visible = (currentRole == UserRole.Professor);
+
+                if (pictureBox_Logo != null) pictureBox_Logo.Left = 43;
+                if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = 44;
+                if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = 47;
+                if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = 47;
+                if (pictureBox1 != null) pictureBox1.Left = 44;
+            }
+
+            if (panel_AllElements != null)
+            {
+                if (isCompactMode)
+                {
+                    panel_AllElements.Left = 10;
+                    panel_AllElements.Width = this.ClientSize.Width - panel_AllElements.Left - 15;
+                }
+                else
+                {
+                    panel_AllElements.Left = 384;
+                    panel_AllElements.Width = this.ClientSize.Width - panel_AllElements.Left - 15;
+                }
+
+                int availableWidth = panel_AllElements.Width - 30;
+                int halfWidth = availableWidth / 2;
+
+                if (roundedPanel_NextBooking != null)
+                {
+                    roundedPanel_NextBooking.Width = halfWidth - 8;
+                }
+                if (roundedPanel_CountOfMineRequest != null)
+                {
+                    roundedPanel_CountOfMineRequest.Width = halfWidth - 8;
+                    roundedPanel_CountOfMineRequest.Left = roundedPanel_NextBooking.Right + 15;
+                }
+
+                int leftPanelWidth = (int)(availableWidth * 0.52);
+                int rightPanelWidth = availableWidth - leftPanelWidth - 15;
+
+                if (roundedPanel_MySchedule != null)
+                {
+                    roundedPanel_MySchedule.Width = leftPanelWidth;
+
+                    if (flowLayout_MyRequests != null)
+                    {
+                        flowLayout_MyRequests.Width = roundedPanel_MySchedule.Width - 40;
+                    }
+                }
+
+                if (roundedPanel_ShowRequest != null)
+                {
+                    roundedPanel_ShowRequest.Width = rightPanelWidth;
+                    roundedPanel_ShowRequest.Left = roundedPanel_MySchedule.Right + 15;
+
+                    if (richTextBox_YourRequest != null)
+                    {
+                        richTextBox_YourRequest.Width = roundedPanel_ShowRequest.Width - 80;
+                    }
+                }
+            }
         }
 
         private void ParseUserInfo(string userInfo)
@@ -348,6 +455,31 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             new Schedule_Form(currentUserInfo).Show();
             this.Hide();
+        }
+
+        private void pictureBox_Logo_Click(object sender, EventArgs e)
+        {
+            button_PanelMain_Click(sender, e);
+        }
+
+        private void pictureBox_PanelMakeReq_Click(object sender, EventArgs e)
+        {
+            button_MakeReq_Click(sender, e);
+        }
+
+        private void pictureBox_PanelMySchedule_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox_PanelSchedule_Click(object sender, EventArgs e)
+        {
+            button_PanelSchedule_Click(sender, e);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
         }
     }
 }
