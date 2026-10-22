@@ -22,6 +22,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             comboBox_Role.Items.Add("Аспірант");
 
             comboBox_Role.SelectedIndex = 1;
+
+            this.Resize += LogInForm_Resize;
+            button_LogIn.Click += button_LogIn_Click;
         }
 
         private void button_LogIn_Click(object sender, EventArgs e)
@@ -55,8 +58,25 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             textBox_Surname.TextChanged += (s, e) => CheckField(textBox_Surname.Text, label_infoRightSurname, "Прізвище", "Наприклад: Петренко");
             textBox_Name.TextChanged += (s, e) => CheckField(textBox_Name.Text, label_infoRightName, "Ім'я", "Наприклад: Іван");
             textBox_FatherName.TextChanged += (s, e) => CheckField(textBox_FatherName.Text, label_infoRightAfterFather, "По-батькові", "Наприклад: Петрович");
+
+            this.MinimumSize = new Size(500, 500);
+            CenterContentPanel();
+            ValidateFormState();
         }
 
+        private void LogInForm_Resize(object sender, EventArgs e)
+        {
+            CenterContentPanel();
+        }
+
+        private void CenterContentPanel()
+        { 
+            if (panel_Content != null)
+            {
+                panel_Content.Left = (this.ClientSize.Width - panel_Content.Width) / 2;
+                panel_Content.Top = (this.ClientSize.Height - panel_Content.Height) / 2;
+            }
+        }
         private void ResetLabelHint(Label label, string hintText)
         {
             label.Text = hintText;
@@ -94,17 +114,28 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 }
             }
 
-            errorLabel.Text = " ";
-            errorLabel.ForeColor = Color.AliceBlue;
+            errorLabel.Text = "";
             ValidateFormState();
+            return true;
+        }
+
+        private bool IsFieldValid(string text)
+        {
+            text = text.Trim();
+            if (string.IsNullOrEmpty(text) || text.Length < 2) return false;
+
+            foreach (char c in text)
+            {
+                if (!char.IsLetter(c) && c != '-' && c != '\'' && c != '’') return false;
+            }
             return true;
         }
 
         private void ValidateFormState()
         {
-            bool isSurnameOk = label_infoRightSurname.ForeColor == Color.AliceBlue;
-            bool isNameOk = label_infoRightName.ForeColor == Color.AliceBlue;
-            bool isFatherOk = label_infoRightAfterFather.ForeColor == Color.AliceBlue;
+            bool isSurnameOk = IsFieldValid(textBox_Surname.Text);
+            bool isNameOk = IsFieldValid(textBox_Name.Text);
+            bool isFatherOk = IsFieldValid(textBox_FatherName.Text);
 
             button_LogIn.Enabled = isSurnameOk && isNameOk && isFatherOk;
         }
