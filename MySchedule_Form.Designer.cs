@@ -288,7 +288,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(229, 67);
+            label1.Location = new Point(59, 67);
             label1.Name = "label1";
             label1.Size = new Size(276, 20);
             label1.TabIndex = 55;
@@ -298,7 +298,7 @@
             // 
             label_infoSystemName.AutoSize = true;
             label_infoSystemName.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(227, 34);
+            label_infoSystemName.Location = new Point(59, 34);
             label_infoSystemName.Name = "label_infoSystemName";
             label_infoSystemName.Size = new Size(154, 27);
             label_infoSystemName.TabIndex = 51;
@@ -308,7 +308,7 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(175, 23);
+            pictureBox2.Location = new Point(4, 23);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(57, 49);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -322,7 +322,7 @@
             roundedPanel_MySchedule.BorderColor = Color.LightGray;
             roundedPanel_MySchedule.Controls.Add(dateTimePicker_MySchedule);
             roundedPanel_MySchedule.CornerRadius = 12;
-            roundedPanel_MySchedule.Location = new Point(175, 320);
+            roundedPanel_MySchedule.Location = new Point(4, 320);
             roundedPanel_MySchedule.Name = "roundedPanel_MySchedule";
             roundedPanel_MySchedule.Size = new Size(610, 617);
             roundedPanel_MySchedule.TabIndex = 60;
@@ -345,7 +345,7 @@
             roundedPanel_ShowRequest.Controls.Add(richTextBox_YourRequest);
             roundedPanel_ShowRequest.Controls.Add(label_infoMoreInfo);
             roundedPanel_ShowRequest.CornerRadius = 12;
-            roundedPanel_ShowRequest.Location = new Point(853, 320);
+            roundedPanel_ShowRequest.Location = new Point(671, 317);
             roundedPanel_ShowRequest.Name = "roundedPanel_ShowRequest";
             roundedPanel_ShowRequest.Size = new Size(566, 617);
             roundedPanel_ShowRequest.TabIndex = 61;
@@ -374,7 +374,7 @@
             roundedPanel_NextBooking.BackColor = Color.White;
             roundedPanel_NextBooking.BorderColor = Color.LightGray;
             roundedPanel_NextBooking.CornerRadius = 12;
-            roundedPanel_NextBooking.Location = new Point(175, 131);
+            roundedPanel_NextBooking.Location = new Point(4, 131);
             roundedPanel_NextBooking.Name = "roundedPanel_NextBooking";
             roundedPanel_NextBooking.Size = new Size(446, 140);
             roundedPanel_NextBooking.TabIndex = 62;
@@ -384,7 +384,7 @@
             roundedPanel_CountOfMineRequest.BackColor = Color.White;
             roundedPanel_CountOfMineRequest.BorderColor = Color.LightGray;
             roundedPanel_CountOfMineRequest.CornerRadius = 12;
-            roundedPanel_CountOfMineRequest.Location = new Point(730, 131);
+            roundedPanel_CountOfMineRequest.Location = new Point(563, 131);
             roundedPanel_CountOfMineRequest.Name = "roundedPanel_CountOfMineRequest";
             roundedPanel_CountOfMineRequest.Size = new Size(448, 140);
             roundedPanel_CountOfMineRequest.TabIndex = 63;
@@ -399,9 +399,9 @@
             panel_AllElements.Controls.Add(label_infoSystemName);
             panel_AllElements.Controls.Add(roundedPanel_ShowRequest);
             panel_AllElements.Controls.Add(roundedPanel_NextBooking);
-            panel_AllElements.Location = new Point(384, 0);
+            panel_AllElements.Location = new Point(560, 0);
             panel_AllElements.Name = "panel_AllElements";
-            panel_AllElements.Size = new Size(1539, 1033);
+            panel_AllElements.Size = new Size(1273, 963);
             panel_AllElements.TabIndex = 64;
             // 
             // MySchedule_Form

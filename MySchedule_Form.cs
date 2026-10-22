@@ -76,7 +76,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             if (this.WindowState == FormWindowState.Minimized) return;
 
-            bool isCompactMode = this.ClientSize.Width < 1400;
+            bool isCompactMode = this.ClientSize.Width < 1900;
 
             if (isCompactMode)
             {
@@ -127,30 +127,40 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             {
                 if (isCompactMode)
                 {
-                    panel_AllElements.Left = 10;
+                    // У компактному режимі панель йде одразу за вузьким меню (100 + 15 = 115) 
+                    // і динамічно звужується за розміром вікна
+                    panel_AllElements.Left = 115;
                     panel_AllElements.Width = this.ClientSize.Width - panel_AllElements.Left - 15;
+                    panel_AllElements.Height = this.ClientSize.Height - 40;
                 }
                 else
                 {
-                    panel_AllElements.Left = 384;
-                    panel_AllElements.Width = this.ClientSize.Width - panel_AllElements.Left - 15;
+                    // На великому екрані стає чітко на твою координату 560
+                    panel_AllElements.Left = 560;
+                    panel_AllElements.Width = 1273; // Твій бажаний розмір для великого екрана
+                    panel_AllElements.Height = 963;
                 }
 
-                int availableWidth = panel_AllElements.Width - 30;
-                int halfWidth = availableWidth / 2;
+                // Пропорційне зменшення/масштабування внутрішніх елементів під поточну ширину panel_AllElements
+                int innerWidth = panel_AllElements.Width - 40;
+                int spacing = 20;
+
+                // --- 1. ВЕРХНІ ПЛАШКИ ---
+                int topPanelWidth = (innerWidth - spacing) / 2;
 
                 if (roundedPanel_NextBooking != null)
                 {
-                    roundedPanel_NextBooking.Width = halfWidth - 8;
+                    roundedPanel_NextBooking.Width = topPanelWidth;
                 }
                 if (roundedPanel_CountOfMineRequest != null)
                 {
-                    roundedPanel_CountOfMineRequest.Width = halfWidth - 8;
-                    roundedPanel_CountOfMineRequest.Left = roundedPanel_NextBooking.Right + 15;
+                    roundedPanel_CountOfMineRequest.Width = topPanelWidth;
+                    roundedPanel_CountOfMineRequest.Left = roundedPanel_NextBooking.Right + spacing;
                 }
 
-                int leftPanelWidth = (int)(availableWidth * 0.52);
-                int rightPanelWidth = availableWidth - leftPanelWidth - 15;
+                // --- 2. НИЖНІ ПАНЕЛІ ---
+                int leftPanelWidth = (int)((innerWidth - spacing) * 0.52);
+                int rightPanelWidth = (innerWidth - spacing) - leftPanelWidth;
 
                 if (roundedPanel_MySchedule != null)
                 {
@@ -158,18 +168,18 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
                     if (flowLayout_MyRequests != null)
                     {
-                        flowLayout_MyRequests.Width = roundedPanel_MySchedule.Width - 40;
+                        flowLayout_MyRequests.Width = roundedPanel_MySchedule.Width - 50;
                     }
                 }
 
                 if (roundedPanel_ShowRequest != null)
                 {
                     roundedPanel_ShowRequest.Width = rightPanelWidth;
-                    roundedPanel_ShowRequest.Left = roundedPanel_MySchedule.Right + 15;
+                    roundedPanel_ShowRequest.Left = roundedPanel_MySchedule.Right + spacing;
 
                     if (richTextBox_YourRequest != null)
                     {
-                        richTextBox_YourRequest.Width = roundedPanel_ShowRequest.Width - 80;
+                        richTextBox_YourRequest.Width = roundedPanel_ShowRequest.Width - 100;
                     }
                 }
             }
