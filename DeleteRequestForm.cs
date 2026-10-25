@@ -31,6 +31,138 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             ParseUserInfo(userInfo);
 
             this.FormClosed += (s, e) => Application.Exit();
+            this.Resize += DeleteRequestForm_Resize;
+        }
+
+        private void DeleteRequestForm_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized) return;
+
+            bool isCompactMode = this.ClientSize.Width < 1900;
+
+            if (isCompactMode)
+            {
+                panel_Menu.Width = 100;
+
+                if (button_PanelMain != null) button_PanelMain.Visible = false;
+                if (button_MakeReq != null) button_MakeReq.Visible = false;
+                if (button_PanelMySchedule != null) button_PanelMySchedule.Visible = false;
+                if (button_PanelSchedule != null) button_PanelSchedule.Visible = false;
+                if (button1 != null) button1.Visible = false;
+
+                if (pictureBox_AvatarAssistant != null) pictureBox_AvatarAssistant.Visible = false;
+                if (pictureBox_AvatarProfesor != null) pictureBox_AvatarProfesor.Visible = false;
+                if (pictureBox_AvatarStudent != null) pictureBox_AvatarStudent.Visible = false;
+                if (label_RoleNameDel != null) label_RoleNameDel.Visible = false;
+                if (label_infoRole != null) label_infoRole.Visible = false;
+
+                if (pictureBox_Logo != null) pictureBox_Logo.Left = (100 - pictureBox_Logo.Width) / 2;
+                if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = (100 - pictureBox_PanelMakeReq.Width) / 2;
+                if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = (100 - pictureBox_PanelMySchedule.Width) / 2;
+                if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = (100 - pictureBox_PanelSchedule.Width) / 2;
+                if (pictureBox1 != null) pictureBox1.Left = (100 - pictureBox1.Width) / 2;
+            }
+            else
+            {
+                panel_Menu.Width = 382;
+
+                if (button_PanelMain != null) button_PanelMain.Visible = true;
+                if (button_MakeReq != null) button_MakeReq.Visible = true;
+                if (button_PanelMySchedule != null) button_PanelMySchedule.Visible = true;
+                if (button_PanelSchedule != null) button_PanelSchedule.Visible = true;
+                if (button1 != null) button1.Visible = true;
+                if (label_RoleNameDel != null) label_RoleNameDel.Visible = true;
+                if (label_infoRole != null) label_infoRole.Visible = true;
+
+                string roleText = label_infoRole.Text;
+                bool isStudent = roleText.Contains("Студент");
+                bool isAssistant = roleText.Contains("Аспірант");
+                bool isProfessor = roleText.Contains("Викладач");
+
+                if (pictureBox_AvatarStudent != null) pictureBox_AvatarStudent.Visible = isStudent;
+                if (pictureBox_AvatarAssistant != null) pictureBox_AvatarAssistant.Visible = isAssistant;
+                if (pictureBox_AvatarProfesor != null) pictureBox_AvatarProfesor.Visible = isProfessor;
+
+                if (pictureBox_Logo != null) pictureBox_Logo.Left = 43;
+                if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = 44;
+                if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = 47;
+                if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = 47;
+                if (pictureBox1 != null) pictureBox1.Left = 44;
+            }
+
+            if (panel_AllElements != null)
+            {
+                if (isCompactMode)
+                {
+                    panel_AllElements.Left = 115;
+                    panel_AllElements.Width = this.ClientSize.Width - panel_AllElements.Left - 15;
+                    panel_AllElements.Height = this.ClientSize.Height - 40;
+                }
+                else
+                {
+                    panel_AllElements.Left = 560;
+                    panel_AllElements.Width = 1243;
+                    panel_AllElements.Height = 954;
+                }
+
+                int innerWidth = panel_AllElements.Width - 40;
+                int spacing = 20;
+
+                int leftPanelWidth = (int)((innerWidth - spacing) * 0.52);
+                int rightPanelWidth = (innerWidth - spacing) - leftPanelWidth;
+
+                if (roundedPanel_RequestsForDel != null)
+                {
+                    roundedPanel_RequestsForDel.Width = leftPanelWidth;
+                    roundedPanel_RequestsForDel.Top = 161;
+
+                    roundedPanel_RequestsForDel.Height = panel_AllElements.Height - roundedPanel_RequestsForDel.Top - 20;
+
+                    if (dateTimePicker_DeleteReq != null)
+                    {
+                        dateTimePicker_DeleteReq.Width = roundedPanel_RequestsForDel.Width - 120;
+                    }
+
+                    if (flowLayout_Requests != null)
+                    {
+                        flowLayout_Requests.Width = roundedPanel_RequestsForDel.Width - 50;
+                        flowLayout_Requests.Height = roundedPanel_RequestsForDel.Height - dateTimePicker_DeleteReq.Bottom - 30;
+
+                        int newBtnWidth = flowLayout_Requests.ClientSize.Width - SystemInformation.VerticalScrollBarWidth - 6;
+
+                        foreach (Control ctrl in flowLayout_Requests.Controls)
+                        {
+                            if (ctrl is RoundedButton btn)
+                            {
+                                btn.Width = newBtnWidth > 0 ? newBtnWidth : 100;
+                            }
+                        }
+                    }
+                }
+
+                if (roundedPanel_ShowRequest != null)
+                {
+                    roundedPanel_ShowRequest.Width = rightPanelWidth;
+                    roundedPanel_ShowRequest.Left = roundedPanel_RequestsForDel.Right + spacing;
+
+
+                    roundedPanel_ShowRequest.Top = 161;
+                    roundedPanel_ShowRequest.Height = panel_AllElements.Height - roundedPanel_ShowRequest.Top - 20;
+
+                    if (richTextBox_YourRequest != null)
+                    {
+                        richTextBox_YourRequest.Width = roundedPanel_ShowRequest.Width - 100;
+                    }
+
+                    if (button_DeleteReq != null)
+                    {
+                        button_DeleteReq.Width = 350;
+                        button_DeleteReq.Left = (roundedPanel_ShowRequest.Width - button_DeleteReq.Width) / 2;
+
+                        button_DeleteReq.Top = roundedPanel_ShowRequest.Height - button_DeleteReq.Height - 30;
+                    }
+                }
+            }
         }
 
         private void DeleteRequestForm_Load(object sender, EventArgs e)
@@ -55,6 +187,8 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             LoadRequestsForDate(dateTimePicker_DeleteReq.Value.Date);
             UpdateRequestPreview();
+
+            this.MinimumSize = new Size(1244, 795);
         }
 
         private void ParseUserInfo(string userInfo)
@@ -176,7 +310,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     Tag = req.IdRequest,
                     IsSelected = (selectedRequestID == req.IdRequest)
                 };
-                
+
                 btnReq.Click += (s, e) =>
                 {
                     selectedRequestID = req.IdRequest;
@@ -314,6 +448,26 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             new Schedule_Form(currentUserInfo).Show();
             this.Hide();
+        }
+
+        private void pictureBox_Logo_Click(object sender, EventArgs e)
+        {
+            button_PanelMain_Click(sender, e);
+        }
+
+        private void pictureBox_PanelMakeReq_Click(object sender, EventArgs e)
+        {
+            button_MakeReq_Click(sender, e);
+        }
+
+        private void pictureBox_PanelMySchedule_Click(object sender, EventArgs e)
+        {
+            button_PanelMySchedule_Click(sender, e);
+        }
+
+        private void pictureBox_PanelSchedule_Click(object sender, EventArgs e)
+        {
+            button_PanelSchedule_Click(sender, e);
         }
     }
 }

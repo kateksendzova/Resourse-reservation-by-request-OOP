@@ -55,6 +55,7 @@
             roundedPanel_ShowRequest = new RoundedPanel();
             richTextBox_YourRequest = new RichTextBox();
             label_infoForDeleting = new Label();
+            panel_AllElements = new Panel();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             roundedPanel_RequestsForDel.SuspendLayout();
             roundedPanel_ShowRequest.SuspendLayout();
+            panel_AllElements.SuspendLayout();
             SuspendLayout();
             // 
             // button_DeleteRequest
@@ -85,7 +87,7 @@
             // 
             label_infoSystemName.AutoSize = true;
             label_infoSystemName.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(610, 34);
+            label_infoSystemName.Location = new Point(59, 34);
             label_infoSystemName.Name = "label_infoSystemName";
             label_infoSystemName.Size = new Size(193, 27);
             label_infoSystemName.TabIndex = 34;
@@ -161,6 +163,7 @@
             pictureBox_PanelSchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelSchedule.TabIndex = 39;
             pictureBox_PanelSchedule.TabStop = false;
+            pictureBox_PanelSchedule.Click += pictureBox_PanelSchedule_Click;
             // 
             // button_PanelSchedule
             // 
@@ -220,6 +223,7 @@
             pictureBox_PanelMySchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMySchedule.TabIndex = 34;
             pictureBox_PanelMySchedule.TabStop = false;
+            pictureBox_PanelMySchedule.Click += pictureBox_PanelMySchedule_Click;
             // 
             // pictureBox_PanelMakeReq
             // 
@@ -231,6 +235,7 @@
             pictureBox_PanelMakeReq.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMakeReq.TabIndex = 33;
             pictureBox_PanelMakeReq.TabStop = false;
+            pictureBox_PanelMakeReq.Click += pictureBox_PanelMakeReq_Click;
             // 
             // pictureBox_Logo
             // 
@@ -242,6 +247,7 @@
             pictureBox_Logo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_Logo.TabIndex = 32;
             pictureBox_Logo.TabStop = false;
+            pictureBox_Logo.Click += pictureBox_Logo_Click;
             // 
             // label_RoleNameDel
             // 
@@ -303,7 +309,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(612, 67);
+            label1.Location = new Point(59, 67);
             label1.Name = "label1";
             label1.Size = new Size(422, 20);
             label1.TabIndex = 49;
@@ -336,7 +342,7 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(558, 23);
+            pictureBox2.Location = new Point(4, 23);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(57, 49);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -350,7 +356,7 @@
             roundedPanel_RequestsForDel.BorderColor = Color.LightGray;
             roundedPanel_RequestsForDel.Controls.Add(dateTimePicker_DeleteReq);
             roundedPanel_RequestsForDel.CornerRadius = 12;
-            roundedPanel_RequestsForDel.Location = new Point(558, 126);
+            roundedPanel_RequestsForDel.Location = new Point(3, 161);
             roundedPanel_RequestsForDel.Name = "roundedPanel_RequestsForDel";
             roundedPanel_RequestsForDel.Size = new Size(610, 752);
             roundedPanel_RequestsForDel.TabIndex = 59;
@@ -359,11 +365,11 @@
             // 
             roundedPanel_ShowRequest.BackColor = Color.White;
             roundedPanel_ShowRequest.BorderColor = Color.LightGray;
+            roundedPanel_ShowRequest.Controls.Add(button_DeleteReq);
             roundedPanel_ShowRequest.Controls.Add(richTextBox_YourRequest);
             roundedPanel_ShowRequest.Controls.Add(label_infoForDeleting);
-            roundedPanel_ShowRequest.Controls.Add(button_DeleteReq);
             roundedPanel_ShowRequest.CornerRadius = 12;
-            roundedPanel_ShowRequest.Location = new Point(1235, 131);
+            roundedPanel_ShowRequest.Location = new Point(674, 161);
             roundedPanel_ShowRequest.Name = "roundedPanel_ShowRequest";
             roundedPanel_ShowRequest.Size = new Size(566, 752);
             roundedPanel_ShowRequest.TabIndex = 60;
@@ -387,18 +393,27 @@
             label_infoForDeleting.TabIndex = 61;
             label_infoForDeleting.Text = "Підтвердіть видалення";
             // 
+            // panel_AllElements
+            // 
+            panel_AllElements.BackColor = Color.Transparent;
+            panel_AllElements.Controls.Add(roundedPanel_ShowRequest);
+            panel_AllElements.Controls.Add(pictureBox2);
+            panel_AllElements.Controls.Add(label1);
+            panel_AllElements.Controls.Add(label_infoSystemName);
+            panel_AllElements.Controls.Add(roundedPanel_RequestsForDel);
+            panel_AllElements.Location = new Point(560, 0);
+            panel_AllElements.Name = "panel_AllElements";
+            panel_AllElements.Size = new Size(1243, 954);
+            panel_AllElements.TabIndex = 61;
+            // 
             // DeleteRequestForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
-            Controls.Add(roundedPanel_ShowRequest);
-            Controls.Add(roundedPanel_RequestsForDel);
-            Controls.Add(pictureBox2);
-            Controls.Add(label1);
+            Controls.Add(panel_AllElements);
             Controls.Add(button_DeleteRequest);
-            Controls.Add(label_infoSystemName);
             Controls.Add(panel_Menu);
             Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "DeleteRequestForm";
@@ -419,8 +434,9 @@
             roundedPanel_RequestsForDel.ResumeLayout(false);
             roundedPanel_ShowRequest.ResumeLayout(false);
             roundedPanel_ShowRequest.PerformLayout();
+            panel_AllElements.ResumeLayout(false);
+            panel_AllElements.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -463,5 +479,6 @@
         private Label label_infoForDeleting;
         private RichTextBox richTextBox_YourRequest;
         private Label label_infoRole;
+        private Panel panel_AllElements;
     }
 }
