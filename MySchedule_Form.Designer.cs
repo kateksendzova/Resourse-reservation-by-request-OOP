@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MySchedule_Form));
-            pictureBox1 = new PictureBox();
+            pictureBox_PanelDelete = new PictureBox();
             button_DelReq = new Button();
             pictureBox_PanelSchedule = new PictureBox();
             button_PanelSchedule = new Button();
@@ -56,7 +56,7 @@
             roundedPanel_NextBooking = new RoundedPanel();
             roundedPanel_CountOfMineRequest = new RoundedPanel();
             panel_AllElements = new Panel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelDelete).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMakeReq).BeginInit();
@@ -71,17 +71,17 @@
             panel_AllElements.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // pictureBox_PanelDelete
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(44, 317);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(63, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 41;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            pictureBox_PanelDelete.Image = (Image)resources.GetObject("pictureBox_PanelDelete.Image");
+            pictureBox_PanelDelete.InitialImage = (Image)resources.GetObject("pictureBox_PanelDelete.InitialImage");
+            pictureBox_PanelDelete.Location = new Point(44, 317);
+            pictureBox_PanelDelete.Name = "pictureBox_PanelDelete";
+            pictureBox_PanelDelete.Size = new Size(63, 41);
+            pictureBox_PanelDelete.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_PanelDelete.TabIndex = 41;
+            pictureBox_PanelDelete.TabStop = false;
+            pictureBox_PanelDelete.Click += pictureBox1_Click;
             // 
             // button_DelReq
             // 
@@ -210,7 +210,7 @@
             panel_Menu.BackColor = Color.DarkCyan;
             panel_Menu.Controls.Add(label_infoRole);
             panel_Menu.Controls.Add(button_DelReq);
-            panel_Menu.Controls.Add(pictureBox1);
+            panel_Menu.Controls.Add(pictureBox_PanelDelete);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
             panel_Menu.Controls.Add(button_PanelSchedule);
             panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
@@ -417,7 +417,7 @@
             Text = "Мій розклад";
             WindowState = FormWindowState.Maximized;
             Load += MySchedule_Form_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelDelete).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMySchedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelMakeReq).EndInit();
@@ -438,7 +438,7 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox_PanelDelete;
         private Button button_DelReq;
         private PictureBox pictureBox_PanelSchedule;
         private Button button_PanelSchedule;

@@ -126,7 +126,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             foreach (char c in text)
             {
-                if (!char.IsLetter(c) && c != '-' && c != '\'' && c != '’') return false;
+                if (!char.IsLetter(c) && c != '-' && c != '\'') return false;
             }
             return true;
         }
@@ -137,7 +137,19 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             bool isNameOk = IsFieldValid(textBox_Name.Text);
             bool isFatherOk = IsFieldValid(textBox_FatherName.Text);
 
-            button_LogIn.Enabled = isSurnameOk && isNameOk && isFatherOk;
+            bool isValid = isSurnameOk && isNameOk && isFatherOk;
+            button_LogIn.Enabled = isValid;
+
+            if (isValid)
+            {
+                button_LogIn.BackColor = Color.AliceBlue;
+                button_LogIn.ForeColor = Color.DarkCyan;
+            }
+            else
+            {
+                button_LogIn.BackColor = Color.FromArgb(200, 200, 200);
+                button_LogIn.ForeColor = Color.DarkGray; 
+            }
         }
     }
 }

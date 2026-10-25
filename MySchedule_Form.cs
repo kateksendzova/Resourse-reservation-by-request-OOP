@@ -98,7 +98,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = (100 - pictureBox_PanelMakeReq.Width) / 2;
                 if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = (100 - pictureBox_PanelMySchedule.Width) / 2;
                 if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = (100 - pictureBox_PanelSchedule.Width) / 2;
-                if (pictureBox1 != null) pictureBox1.Left = (100 - pictureBox1.Width) / 2;
+                if (pictureBox_PanelDelete != null) pictureBox_PanelDelete.Left = (100 - pictureBox_PanelDelete.Width) / 2;
             }
             else
             {
@@ -120,32 +120,27 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = 44;
                 if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = 47;
                 if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = 47;
-                if (pictureBox1 != null) pictureBox1.Left = 44;
+                if (pictureBox_PanelDelete != null) pictureBox_PanelDelete.Left = 44;
             }
 
             if (panel_AllElements != null)
             {
                 if (isCompactMode)
                 {
-                    // У компактному режимі панель йде одразу за вузьким меню (100 + 15 = 115) 
-                    // і динамічно звужується за розміром вікна
                     panel_AllElements.Left = 115;
                     panel_AllElements.Width = this.ClientSize.Width - panel_AllElements.Left - 15;
                     panel_AllElements.Height = this.ClientSize.Height - 40;
                 }
                 else
                 {
-                    // На великому екрані стає чітко на твою координату 560
                     panel_AllElements.Left = 560;
-                    panel_AllElements.Width = 1273; // Твій бажаний розмір для великого екрана
+                    panel_AllElements.Width = 1273;
                     panel_AllElements.Height = 963;
                 }
 
-                // Пропорційне зменшення/масштабування внутрішніх елементів під поточну ширину panel_AllElements
                 int innerWidth = panel_AllElements.Width - 40;
                 int spacing = 20;
 
-                // --- 1. ВЕРХНІ ПЛАШКИ ---
                 int topPanelWidth = (innerWidth - spacing) / 2;
 
                 if (roundedPanel_NextBooking != null)
@@ -158,7 +153,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     roundedPanel_CountOfMineRequest.Left = roundedPanel_NextBooking.Right + spacing;
                 }
 
-                // --- 2. НИЖНІ ПАНЕЛІ ---
                 int leftPanelWidth = (int)((innerWidth - spacing) * 0.52);
                 int rightPanelWidth = (innerWidth - spacing) - leftPanelWidth;
 

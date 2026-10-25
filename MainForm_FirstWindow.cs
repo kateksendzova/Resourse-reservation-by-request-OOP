@@ -27,6 +27,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             ParseUserInfo(userInfo);
 
             this.FormClosed += (s, e) => Application.Exit();
+            this.Resize += MainForm_FirstWindow_Resize;
         }
 
         private void MainForm_FirstWindow_Load(object sender, EventArgs e)
@@ -41,7 +42,111 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             SetupSearchBox();
 
             LoadResources("All", "");
+
+            this.MinimumSize = new Size(1050, 795);
         }
+
+        private void MainForm_FirstWindow_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized) return;
+
+            bool isCompactMode = this.ClientSize.Width < 1900;
+
+            if (isCompactMode)
+            {
+                panel_Menu.Width = 100;
+
+                if (button_PanelMane != null) button_PanelMane.Visible = false;
+                if (button_MakeRequest != null) button_MakeRequest.Visible = false;
+                if (button_PanelMySchedule != null) button_PanelMySchedule.Visible = false;
+                if (button_PanelSchedule != null) button_PanelSchedule.Visible = false;
+                if (button_DelReq != null) button_DelReq.Visible = false;
+
+                if (pictureBox_AvatarAssistant != null) pictureBox_AvatarAssistant.Visible = false;
+                if (pictureBox_AvatarProfesor != null) pictureBox_AvatarProfesor.Visible = false;
+                if (pictureBox_AvatarStudent != null) pictureBox_AvatarStudent.Visible = false;
+                if (label_PanelRoleName != null) label_PanelRoleName.Visible = false;
+                if (label_infoRole != null) label_infoRole.Visible = false;
+
+                if (pictureBox_Logo != null) pictureBox_Logo.Left = (100 - pictureBox_Logo.Width) / 2;
+                if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = (100 - pictureBox_PanelMakeReq.Width) / 2;
+                if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = (100 - pictureBox_PanelMySchedule.Width) / 2;
+                if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = (100 - pictureBox_PanelSchedule.Width) / 2;
+                if (pictureBox_PanelDelete != null) pictureBox_PanelDelete.Left = (100 - pictureBox_PanelDelete.Width) / 2;
+            }
+            else
+            {
+                panel_Menu.Width = 382;
+
+                if (button_PanelMane != null) button_PanelMane.Visible = true;
+                if (button_MakeRequest != null) button_MakeRequest.Visible = true;
+                if (button_PanelMySchedule != null) button_PanelMySchedule.Visible = true;
+                if (button_PanelSchedule != null) button_PanelSchedule.Visible = true;
+                if (button_DelReq != null) button_DelReq.Visible = true;
+                if (label_PanelRoleName != null) label_PanelRoleName.Visible = true;
+                if (label_infoRole != null) label_infoRole.Visible = true;
+
+                string roleText = label_infoRole.Text;
+                bool isStudent = roleText.Contains("Студент");
+                bool isAssistant = roleText.Contains("Аспірант");
+                bool isProfessor = roleText.Contains("Викладач");
+
+                if (pictureBox_AvatarStudent != null) pictureBox_AvatarStudent.Visible = isStudent;
+                if (pictureBox_AvatarAssistant != null) pictureBox_AvatarAssistant.Visible = isAssistant;
+                if (pictureBox_AvatarProfesor != null) pictureBox_AvatarProfesor.Visible = isProfessor;
+
+                if (pictureBox_Logo != null) pictureBox_Logo.Left = 43;
+                if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = 44;
+                if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = 47;
+                if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = 47;
+                if (pictureBox_PanelDelete != null) pictureBox_PanelDelete.Left = 44;
+            }
+
+            if (panel_AllElements != null)
+            {
+                if (isCompactMode)
+                {
+                    panel_AllElements.Left = 115;
+                    panel_AllElements.Width = this.ClientSize.Width - panel_AllElements.Left - 15;
+                    panel_AllElements.Height = this.ClientSize.Height - 40;
+                }
+                else
+                {
+                    panel_AllElements.Left = 560;
+                    panel_AllElements.Width = 1244;
+                    panel_AllElements.Height = 944;
+                }
+
+
+                if (textBox_Search != null)
+                {
+                    textBox_Search.Left = 9;
+                    textBox_Search.Top = 139;
+                    textBox_Search.Width = 467;
+                }
+
+                if (roundedButton_All != null)
+                {
+                    roundedButton_All.Left = 515;
+                    roundedButton_All.Top = 135;
+                }
+
+                if (roundedButton_Available != null)
+                {
+                    roundedButton_Available.Left = 626;
+                    roundedButton_Available.Top = 135;
+                }
+
+                if (flowLayoutPanel_Resources != null)
+                {
+                    flowLayoutPanel_Resources.Left = 0;
+                    flowLayoutPanel_Resources.Top = 191;
+                    flowLayoutPanel_Resources.Width = panel_AllElements.Width;
+                    flowLayoutPanel_Resources.Height = Math.Max(400, panel_AllElements.Height - flowLayoutPanel_Resources.Top - 20);
+                }
+            }
+        }
+
 
         private void SetupSearchBox()
         {
@@ -195,7 +300,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 Location = new Point(20, 80),
                 BorderRadius = 15,
                 BorderSize = 1,
-                
+
                 BorderColor = isAvailable ? Color.DarkCyan : Color.Gray,
                 BackColor = isAvailable ? Color.AliceBlue : Color.WhiteSmoke,
                 ForeColor = isAvailable ? Color.DarkCyan : Color.Gray,
@@ -273,5 +378,25 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             this.Hide();
         }
 
+
+        private void pictureBox_PanelMakeReq_Click(object sender, EventArgs e)
+        {
+            button_MakeRequest_Click(sender, e);
+        }
+
+        private void pictureBox_PanelMySchedule_Click(object sender, EventArgs e)
+        {
+            button_PanelMySchedule_Click(sender, e);
+        }
+
+        private void pictureBox_PanelSchedule_Click(object sender, EventArgs e)
+        {
+            button_PanelSchedule_Click(sender, e);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
     }
 }

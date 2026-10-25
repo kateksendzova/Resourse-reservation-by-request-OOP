@@ -30,8 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm_FirstWindow));
             panel_Menu = new Panel();
+            label_infoRole = new Label();
             button_DelReq = new Button();
-            pictureBox1 = new PictureBox();
+            pictureBox_PanelDelete = new PictureBox();
             pictureBox_PanelSchedule = new PictureBox();
             button_PanelSchedule = new Button();
             pictureBox_AvatarAssistant = new PictureBox();
@@ -52,9 +53,9 @@
             flowLayoutPanel_Resources = new FlowLayoutPanel();
             label3 = new Label();
             pictureBox2 = new PictureBox();
-            label_infoRole = new Label();
+            panel_AllElements = new Panel();
             panel_Menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelDelete).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarAssistant).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarProfesor).BeginInit();
@@ -64,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).BeginInit();
             flowLayoutPanel_Resources.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel_AllElements.SuspendLayout();
             SuspendLayout();
             // 
             // panel_Menu
@@ -71,7 +73,7 @@
             panel_Menu.BackColor = Color.DarkCyan;
             panel_Menu.Controls.Add(label_infoRole);
             panel_Menu.Controls.Add(button_DelReq);
-            panel_Menu.Controls.Add(pictureBox1);
+            panel_Menu.Controls.Add(pictureBox_PanelDelete);
             panel_Menu.Controls.Add(pictureBox_PanelSchedule);
             panel_Menu.Controls.Add(button_PanelSchedule);
             panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
@@ -90,6 +92,17 @@
             panel_Menu.Size = new Size(382, 1033);
             panel_Menu.TabIndex = 32;
             // 
+            // label_infoRole
+            // 
+            label_infoRole.AutoSize = true;
+            label_infoRole.Font = new Font("Century Gothic", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label_infoRole.ForeColor = Color.AliceBlue;
+            label_infoRole.Location = new Point(78, 909);
+            label_infoRole.Name = "label_infoRole";
+            label_infoRole.Size = new Size(38, 17);
+            label_infoRole.TabIndex = 43;
+            label_infoRole.Text = "Роль";
+            // 
             // button_DelReq
             // 
             button_DelReq.FlatAppearance.BorderSize = 0;
@@ -105,16 +118,17 @@
             button_DelReq.UseVisualStyleBackColor = true;
             button_DelReq.Click += button1_Click;
             // 
-            // pictureBox1
+            // pictureBox_PanelDelete
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(44, 317);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(63, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 41;
-            pictureBox1.TabStop = false;
+            pictureBox_PanelDelete.Image = (Image)resources.GetObject("pictureBox_PanelDelete.Image");
+            pictureBox_PanelDelete.InitialImage = (Image)resources.GetObject("pictureBox_PanelDelete.InitialImage");
+            pictureBox_PanelDelete.Location = new Point(44, 317);
+            pictureBox_PanelDelete.Name = "pictureBox_PanelDelete";
+            pictureBox_PanelDelete.Size = new Size(63, 41);
+            pictureBox_PanelDelete.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_PanelDelete.TabIndex = 41;
+            pictureBox_PanelDelete.TabStop = false;
+            pictureBox_PanelDelete.Click += pictureBox1_Click;
             // 
             // pictureBox_PanelSchedule
             // 
@@ -126,6 +140,7 @@
             pictureBox_PanelSchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelSchedule.TabIndex = 39;
             pictureBox_PanelSchedule.TabStop = false;
+            pictureBox_PanelSchedule.Click += pictureBox_PanelSchedule_Click;
             // 
             // button_PanelSchedule
             // 
@@ -185,6 +200,7 @@
             pictureBox_PanelMySchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMySchedule.TabIndex = 34;
             pictureBox_PanelMySchedule.TabStop = false;
+            pictureBox_PanelMySchedule.Click += pictureBox_PanelMySchedule_Click;
             // 
             // pictureBox_PanelMakeReq
             // 
@@ -196,6 +212,7 @@
             pictureBox_PanelMakeReq.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMakeReq.TabIndex = 33;
             pictureBox_PanelMakeReq.TabStop = false;
+            pictureBox_PanelMakeReq.Click += pictureBox_PanelMakeReq_Click;
             // 
             // pictureBox_Logo
             // 
@@ -267,7 +284,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(610, 34);
+            label1.Location = new Point(59, 34);
             label1.Name = "label1";
             label1.Size = new Size(304, 27);
             label1.TabIndex = 42;
@@ -285,7 +302,7 @@
             // textBox_Search
             // 
             textBox_Search.ForeColor = SystemColors.ControlDark;
-            textBox_Search.Location = new Point(558, 139);
+            textBox_Search.Location = new Point(4, 139);
             textBox_Search.Name = "textBox_Search";
             textBox_Search.Size = new Size(467, 26);
             textBox_Search.TabIndex = 47;
@@ -302,7 +319,7 @@
             roundedButton_All.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
             roundedButton_All.ForeColor = Color.DarkCyan;
             roundedButton_All.IsSelected = false;
-            roundedButton_All.Location = new Point(1069, 135);
+            roundedButton_All.Location = new Point(515, 135);
             roundedButton_All.Name = "roundedButton_All";
             roundedButton_All.Size = new Size(83, 33);
             roundedButton_All.TabIndex = 52;
@@ -321,7 +338,7 @@
             roundedButton_Available.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
             roundedButton_Available.ForeColor = Color.DarkCyan;
             roundedButton_Available.IsSelected = false;
-            roundedButton_Available.Location = new Point(1174, 135);
+            roundedButton_Available.Location = new Point(626, 135);
             roundedButton_Available.Name = "roundedButton_Available";
             roundedButton_Available.Size = new Size(106, 33);
             roundedButton_Available.TabIndex = 53;
@@ -333,7 +350,7 @@
             // 
             flowLayoutPanel_Resources.AutoScroll = true;
             flowLayoutPanel_Resources.Controls.Add(label2);
-            flowLayoutPanel_Resources.Location = new Point(549, 191);
+            flowLayoutPanel_Resources.Location = new Point(0, 191);
             flowLayoutPanel_Resources.Name = "flowLayoutPanel_Resources";
             flowLayoutPanel_Resources.Size = new Size(1244, 745);
             flowLayoutPanel_Resources.TabIndex = 54;
@@ -341,7 +358,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(612, 67);
+            label3.Location = new Point(59, 67);
             label3.Name = "label3";
             label3.Size = new Size(607, 20);
             label3.TabIndex = 55;
@@ -351,23 +368,27 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(558, 23);
+            pictureBox2.Location = new Point(4, 23);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(57, 49);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 42;
             pictureBox2.TabStop = false;
             // 
-            // label_infoRole
+            // panel_AllElements
             // 
-            label_infoRole.AutoSize = true;
-            label_infoRole.Font = new Font("Century Gothic", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoRole.ForeColor = Color.AliceBlue;
-            label_infoRole.Location = new Point(78, 909);
-            label_infoRole.Name = "label_infoRole";
-            label_infoRole.Size = new Size(38, 17);
-            label_infoRole.TabIndex = 43;
-            label_infoRole.Text = "Роль";
+            panel_AllElements.BackColor = Color.Transparent;
+            panel_AllElements.Controls.Add(label3);
+            panel_AllElements.Controls.Add(pictureBox2);
+            panel_AllElements.Controls.Add(label1);
+            panel_AllElements.Controls.Add(textBox_Search);
+            panel_AllElements.Controls.Add(roundedButton_All);
+            panel_AllElements.Controls.Add(flowLayoutPanel_Resources);
+            panel_AllElements.Controls.Add(roundedButton_Available);
+            panel_AllElements.Location = new Point(560, 0);
+            panel_AllElements.Name = "panel_AllElements";
+            panel_AllElements.Size = new Size(1260, 950);
+            panel_AllElements.TabIndex = 56;
             // 
             // MainForm_FirstWindow
             // 
@@ -375,14 +396,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
-            Controls.Add(pictureBox2);
-            Controls.Add(label3);
-            Controls.Add(flowLayoutPanel_Resources);
-            Controls.Add(roundedButton_Available);
-            Controls.Add(roundedButton_All);
-            Controls.Add(textBox_Search);
-            Controls.Add(label1);
             Controls.Add(panel_Menu);
+            Controls.Add(panel_AllElements);
             Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "MainForm_FirstWindow";
             Text = "Головна";
@@ -390,7 +405,7 @@
             Load += MainForm_FirstWindow_Load;
             panel_Menu.ResumeLayout(false);
             panel_Menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_PanelDelete).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarAssistant).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_AvatarProfesor).EndInit();
@@ -401,14 +416,15 @@
             flowLayoutPanel_Resources.ResumeLayout(false);
             flowLayoutPanel_Resources.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel_AllElements.ResumeLayout(false);
+            panel_AllElements.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Panel panel_Menu;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox_PanelDelete;
         private Button button_DelReq;
         private PictureBox pictureBox_PanelSchedule;
         private Button button_PanelSchedule;
@@ -431,5 +447,6 @@
         private Label label3;
         private PictureBox pictureBox2;
         private Label label_infoRole;
+        private Panel panel_AllElements;
     }
 }
