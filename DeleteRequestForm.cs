@@ -10,12 +10,8 @@ using System.Windows.Forms;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
-    public partial class DeleteRequestForm : Form
+    public partial class DeleteRequestForm : BaseForm
     {
-        private readonly string currentUserInfo;
-        private string currentName;
-        private UserRole currentRole;
-
         private FlowLayoutPanel flowLayout_Requests;
         private int? selectedRequestID = null;
         private Request selectedRequestObject = null;
@@ -23,15 +19,15 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private Font summaryCaptionFont;
         private Font summaryValueFont;
 
-        public DeleteRequestForm(string userInfo)
+        public DeleteRequestForm(UserContext user) : base(user)
         {
             InitializeComponent();
-            currentUserInfo = userInfo;
-            ParseUserInfo(userInfo);
 
             this.FormClosed += (s, e) => Application.Exit();
             this.Resize += DeleteRequestForm_Resize;
         }
+
+        public DeleteRequestForm(string userInfo) : this(new UserContext(userInfo)) { }
 
         private void DeleteRequestForm_Resize(object sender, EventArgs e)
         {
@@ -73,14 +69,12 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 if (label_RoleNameDel != null) label_RoleNameDel.Visible = true;
                 if (label_infoRole != null) label_infoRole.Visible = true;
 
-                string roleText = label_infoRole.Text;
-                bool isStudent = roleText.Contains("Студент");
-                bool isAssistant = roleText.Contains("Аспірант");
-                bool isProfessor = roleText.Contains("Викладач");
-
-                if (pictureBox_AvatarStudent != null) pictureBox_AvatarStudent.Visible = isStudent;
-                if (pictureBox_AvatarAssistant != null) pictureBox_AvatarAssistant.Visible = isAssistant;
-                if (pictureBox_AvatarProfesor != null) pictureBox_AvatarProfesor.Visible = isProfessor;
+                if (currentUser != null)
+                {
+                    pictureBox_AvatarStudent.Visible = (currentUser.Role == UserRole.Student);
+                    pictureBox_AvatarAssistant.Visible = (currentUser.Role == UserRole.Assistant);
+                    pictureBox_AvatarProfesor.Visible = (currentUser.Role == UserRole.Professor);
+                }
 
                 if (pictureBox_Logo != null) pictureBox_Logo.Left = 43;
                 if (pictureBox_PanelMakeReq != null) pictureBox_PanelMakeReq.Left = 44;
@@ -144,7 +138,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     roundedPanel_ShowRequest.Width = rightPanelWidth;
                     roundedPanel_ShowRequest.Left = roundedPanel_RequestsForDel.Right + spacing;
 
-
                     roundedPanel_ShowRequest.Top = 161;
                     roundedPanel_ShowRequest.Height = panel_AllElements.Height - roundedPanel_ShowRequest.Top - 20;
 
@@ -166,7 +159,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void DeleteRequestForm_Load(object sender, EventArgs e)
         {
-            LoadNameAndRole();
+            ShowUserInfo(label_RoleNameDel, label_infoRole, pictureBox_AvatarStudent, pictureBox_AvatarAssistant, pictureBox_AvatarProfesor);
 
             summaryCaptionFont = new Font("Century Gothic", 9F, FontStyle.Regular);
             summaryValueFont = new Font("Century Gothic", 10.5F, FontStyle.Bold);
@@ -190,65 +183,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             this.MinimumSize = new Size(1244, 795);
         }
 
-        private void ParseUserInfo(string userInfo)
-        {
-            int open = userInfo.LastIndexOf('(');
-            int close = userInfo.LastIndexOf(')');
-
-            string namePart = open >= 0 ? userInfo.Substring(0, open) : userInfo;
-            string rolePart = (open >= 0 && close > open)
-                ? userInfo.Substring(open + 1, close - open - 1).Trim()
-                : "Студент";
-
-            currentName = string.Join(" ", namePart.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
-
-            currentRole = rolePart switch
-            {
-                "Викладач" => UserRole.Professor,
-                "Аспірант" => UserRole.Assistant,
-                _ => UserRole.Student
-            };
-        }
-
-        private void LoadNameAndRole()
-        {
-            label_RoleNameDel.Text = currentName;
-            label_infoRole.Text = currentRole switch
-            {
-                UserRole.Professor => "Викладач",
-                UserRole.Assistant => "Аспірант",
-                _ => "Студент"
-            };
-
-
-            if (currentRole == UserRole.Student)
-            {
-                pictureBox_AvatarStudent.Visible = true;
-                pictureBox_AvatarAssistant.Visible = false;
-                pictureBox_AvatarProfesor.Visible = false;
-            }
-            else if (currentRole == UserRole.Assistant)
-            {
-                pictureBox_AvatarStudent.Visible = false;
-                pictureBox_AvatarAssistant.Visible = true;
-                pictureBox_AvatarProfesor.Visible = false;
-            }
-            else if (currentRole == UserRole.Professor)
-            {
-                pictureBox_AvatarStudent.Visible = false;
-                pictureBox_AvatarAssistant.Visible = false;
-                pictureBox_AvatarProfesor.Visible = true;
-            }
-        }
-
-        private static string GetWorkTypeName(TypeOfWork type) => type switch
-        {
-            TypeOfWork.LaboratoryWork => "Лабораторна",
-            TypeOfWork.DiplomaThesis => "Дипломна",
-            TypeOfWork.ScientificExperiment => "Експеримент",
-            _ => "Самостійна робота"
-        };
-
         private void SetupRequestsPanel()
         {
             flowLayout_Requests = new FlowLayoutPanel
@@ -268,7 +202,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             flowLayout_Requests.SuspendLayout();
             flowLayout_Requests.Controls.Clear();
 
-            var userRequests = AppServices.Scheduler.GetRequestsByPerson(currentName, currentRole)
+            var userRequests = AppServices.Scheduler.GetRequestsByPerson(currentUser.Name, currentUser.Role)
                 .Where(r => r.DayOfReservation.Date == date.Date)
                 .ToList();
 
@@ -333,7 +267,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
             else if (selectedRequestID.HasValue)
             {
-
                 var existing = userRequests.FirstOrDefault(r => r.IdRequest == selectedRequestID.Value);
                 if (existing == null)
                 {
@@ -386,7 +319,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             AppendField("Обладнання", r.Resourse.NAME);
             AppendField("Дата", r.DayOfReservation.ToString("dd.MM.yyyy"));
             AppendField("Час", $"{r.Interval.Start:hh\\:mm} – {r.Interval.End:hh\\:mm}");
-            AppendField("Тип роботи", GetWorkTypeName(r.TypeOfWork));
+            AppendField("Тип роботи", r.TypeOfWork.ToDisplayName());
         }
 
         private void button_DeleteReq_Click(object sender, EventArgs e)
@@ -424,49 +357,14 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
         }
 
+        private void button_PanelMain_Click(object sender, EventArgs e) => NavigateTo(AppPage.Main);
+        private void button_MakeReq_Click(object sender, EventArgs e) => NavigateTo(AppPage.AddRequest);
+        private void button_PanelMySchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.MySchedule);
+        private void button_PanelSchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.Schedule);
 
-        private void button_PanelMain_Click(object sender, EventArgs e)
-        {
-            new MainForm_FirstWindow(currentUserInfo).Show();
-            this.Hide();
-        }
-
-        private void button_MakeReq_Click(object sender, EventArgs e)
-        {
-            new AddRequestForm(currentUserInfo).Show();
-            this.Hide();
-        }
-
-        private void button_PanelMySchedule_Click(object sender, EventArgs e)
-        {
-            new MySchedule_Form(currentUserInfo).Show();
-            this.Hide();
-        }
-
-        private void button_PanelSchedule_Click(object sender, EventArgs e)
-        {
-            new Schedule_Form(currentUserInfo).Show();
-            this.Hide();
-        }
-
-        private void pictureBox_Logo_Click(object sender, EventArgs e)
-        {
-            button_PanelMain_Click(sender, e);
-        }
-
-        private void pictureBox_PanelMakeReq_Click(object sender, EventArgs e)
-        {
-            button_MakeReq_Click(sender, e);
-        }
-
-        private void pictureBox_PanelMySchedule_Click(object sender, EventArgs e)
-        {
-            button_PanelMySchedule_Click(sender, e);
-        }
-
-        private void pictureBox_PanelSchedule_Click(object sender, EventArgs e)
-        {
-            button_PanelSchedule_Click(sender, e);
-        }
+        private void pictureBox_Logo_Click(object sender, EventArgs e) => NavigateTo(AppPage.Main);
+        private void pictureBox_PanelMakeReq_Click(object sender, EventArgs e) => NavigateTo(AppPage.AddRequest);
+        private void pictureBox_PanelMySchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.MySchedule);
+        private void pictureBox_PanelSchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.Schedule);
     }
 }

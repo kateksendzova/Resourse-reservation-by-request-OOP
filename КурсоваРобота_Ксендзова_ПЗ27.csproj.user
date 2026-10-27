@@ -4,6 +4,9 @@
     <Compile Update="AddRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DeleteRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>

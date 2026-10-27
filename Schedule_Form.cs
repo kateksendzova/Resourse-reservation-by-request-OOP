@@ -1,44 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
-    public partial class Schedule_Form : Form
+    public partial class Schedule_Form : BaseForm
     {
-        private readonly string currentUserInfo;
-        private string currentName;
-        private UserRole currentRole;
-
         private bool showingByBookingTime = true;
         private Label emptyHintBooking;
         private Label emptyHintComing;
         private Font ownRowFont;
 
-        public Schedule_Form(string userInfo)
+        public Schedule_Form(UserContext user) : base(user)
         {
             InitializeComponent();
-            currentUserInfo = userInfo;
-            ParseUserInfo(userInfo);
 
             this.FormClosed += (s, e) => Application.Exit();
         }
 
+        public Schedule_Form(string userInfo) : this(new UserContext(userInfo)) { }
 
         private void Schedule_Form_Load(object sender, EventArgs e)
         {
-            LoadNameAndRole();
+            ShowUserInfo(label_RoleNameSch, label_infoRole, pictureBox_AvatarStudent, pictureBox_AvatarAssistant, pictureBox_AvatarProfesor);
 
             ownRowFont = new Font("Century Gothic", 9.5F, FontStyle.Bold);
+            GridStyle.Apply(dataGridView_ScheduleTimeOfBooking);
+            GridStyle.Apply(dataGridView_ScheduleByComing);
 
-            StyleGrid(dataGridView_ScheduleTimeOfBooking);
-            StyleGrid(dataGridView_ScheduleByComing);
-
-            emptyHintBooking = CreateEmptyHint(roundedPanel_ScheduleTimeOfBooking, dataGridView_ScheduleTimeOfBooking,
+            emptyHintBooking = GridStyle.CreateEmptyHint(roundedPanel_ScheduleTimeOfBooking, dataGridView_ScheduleTimeOfBooking,
                 "На цю дату бронювань немає");
-            emptyHintComing = CreateEmptyHint(roundedPanel_ByComing, dataGridView_ScheduleByComing,
+            emptyHintComing = GridStyle.CreateEmptyHint(roundedPanel_ByComing, dataGridView_ScheduleByComing,
                 "Для обраного обладнання на цю дату бронювань немає");
 
             foreach (var picker in new[] { dateTimePicker_ScheduleTimeOfBooking, dateTimePicker_ScheduleByComing })
@@ -58,8 +56,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             this.VisibleChanged += (s, ev) => { if (this.Visible) LoadActiveSchedule(); };
         }
 
-
-
         private void LoadResourceComboBox()
         {
             comboBox_Resource.Items.Clear();
@@ -72,7 +68,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             if (comboBox_Resource.Items.Count > 0)
                 comboBox_Resource.SelectedIndex = 0;
         }
-
 
         private void ShowView(bool byBookingTime)
         {
@@ -93,7 +88,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             else FillByResource();
         }
 
-
         private void FillByBookingTime()
         {
             var grid = dataGridView_ScheduleTimeOfBooking;
@@ -107,8 +101,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     FormatInterval(r.Interval),
                     r.Person.Name,
                     r.Resourse.NAME,
-                    GetWorkTypeName(r.TypeOfWork));
-
+                    r.TypeOfWork.ToDisplayName());
             }
 
             emptyHintBooking.Visible = grid.Rows.Count == 0;
@@ -136,7 +129,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 int i = grid.Rows.Add(
                     FormatInterval(r.Interval),
                     r.Person.Name,
-                    GetWorkTypeName(r.TypeOfWork));
+                    r.TypeOfWork.ToDisplayName());
             }
 
             emptyHintComing.Visible = grid.Rows.Count == 0;
@@ -147,143 +140,15 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             return $"{interval.Start:hh\\:mm} – {interval.End:hh\\:mm}";
         }
 
-        private static string GetWorkTypeName(TypeOfWork type) => type switch
-        {
-            TypeOfWork.LaboratoryWork => "Лабораторна",
-            TypeOfWork.DiplomaThesis => "Дипломна",
-            TypeOfWork.ScientificExperiment => "Експеримент",
-            _ => "Самостійна робота"
-        };
+        private void button_PanelMainForm_Click(object sender, EventArgs e) => NavigateTo(AppPage.Main);
+        private void button_PanelAddReq_Click(object sender, EventArgs e) => NavigateTo(AppPage.AddRequest);
+        private void button_PanelMySchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.MySchedule);
+        private void button_PanelDelReq_Click(object sender, EventArgs e) => NavigateTo(AppPage.DeleteRequest);
 
-
-
-        private void StyleGrid(DataGridView grid)
-        {
-            grid.ReadOnly = true;
-            grid.AllowUserToAddRows = false;
-            grid.AllowUserToDeleteRows = false;
-            grid.AllowUserToResizeRows = false;
-            grid.RowHeadersVisible = false;
-            grid.MultiSelect = false;
-            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-            grid.BackgroundColor = Color.White;
-            grid.BorderStyle = BorderStyle.None;
-            grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            grid.GridColor = Color.Gainsboro;
-
-            grid.EnableHeadersVisualStyles = false;
-            grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            grid.ColumnHeadersHeight = 42;
-            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkCyan;
-            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            grid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.DarkCyan;
-            grid.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
-            grid.ColumnHeadersDefaultCellStyle.Padding = new Padding(8, 0, 0, 0);
-
-            grid.RowTemplate.Height = 38;
-            grid.DefaultCellStyle.Font = new Font("Century Gothic", 9.5F);
-            grid.DefaultCellStyle.Padding = new Padding(8, 0, 0, 0);
-            grid.DefaultCellStyle.SelectionBackColor = Color.PaleTurquoise;
-            grid.DefaultCellStyle.SelectionForeColor = Color.Black;
-            grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(246, 251, 251);
-
-            foreach (DataGridViewColumn col in grid.Columns)
-                col.SortMode = DataGridViewColumnSortMode.NotSortable;
-        }
-
-        private Label CreateEmptyHint(Control panel, DataGridView grid, string text)
-        {
-            var hint = new Label
-            {
-                Text = text,
-                Font = new Font("Century Gothic", 10.5F),
-                ForeColor = Color.Gray,
-                BackColor = Color.White,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Bounds = new Rectangle(grid.Left, grid.Top + grid.ColumnHeadersHeight + 20, grid.Width, 40),
-                Visible = false
-            };
-            panel.Controls.Add(hint);
-            hint.BringToFront();
-            return hint;
-        }
-
-
-        private void ParseUserInfo(string userInfo)
-        {
-            int open = userInfo.LastIndexOf('(');
-            int close = userInfo.LastIndexOf(')');
-
-            string namePart = open >= 0 ? userInfo.Substring(0, open) : userInfo;
-            string rolePart = (open >= 0 && close > open)
-                ? userInfo.Substring(open + 1, close - open - 1).Trim()
-                : "Студент";
-
-            currentName = string.Join(" ", namePart.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
-
-            currentRole = rolePart switch
-            {
-                "Викладач" => UserRole.Professor,
-                "Аспірант" => UserRole.Assistant,
-                _ => UserRole.Student
-            };
-        }
-
-        private void LoadNameAndRole()
-        {
-            label_RoleNameSch.Text = currentName;
-            label_infoRole.Text = currentRole switch
-            {
-                UserRole.Professor => "Викладач",
-                UserRole.Assistant => "Аспірант",
-                _ => "Студент"
-            };
-
-
-            if (currentRole == UserRole.Student)
-            {
-                pictureBox_AvatarStudent.Visible = true;
-                pictureBox_AvatarAssistant.Visible = false;
-                pictureBox_AvatarProfesor.Visible = false;
-            }
-            else if (currentRole == UserRole.Assistant)
-            {
-                pictureBox_AvatarStudent.Visible = false;
-                pictureBox_AvatarAssistant.Visible = true;
-                pictureBox_AvatarProfesor.Visible = false;
-            }
-            else if (currentRole == UserRole.Professor)
-            {
-                pictureBox_AvatarStudent.Visible = false;
-                pictureBox_AvatarAssistant.Visible = false;
-                pictureBox_AvatarProfesor.Visible = true;
-            }
-        }
-
-        private void button_PanelMainForm_Click(object sender, EventArgs e)
-        {
-            new MainForm_FirstWindow(currentUserInfo).Show();
-            this.Hide();
-        }
-
-        private void button_PanelAddReq_Click(object sender, EventArgs e)
-        {
-            new AddRequestForm(currentUserInfo).Show();
-            this.Hide();
-        }
-
-        private void button_PanelMySchedule_Click(object sender, EventArgs e)
-        {
-            new MySchedule_Form(currentUserInfo).Show();
-            this.Hide();
-        }
-
-        private void button_PanelDelReq_Click(object sender, EventArgs e)
-        {
-            new DeleteRequestForm(currentUserInfo).Show();
-            this.Hide();
-        }
+        private void pictureBox_Logo_Click(object sender, EventArgs e) => NavigateTo(AppPage.Main);
+        private void pictureBox_PanelMakeReq_Click(object sender, EventArgs e) => NavigateTo(AppPage.AddRequest);
+        private void pictureBox_PanelMySchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.MySchedule);
+        private void pictureBox_PanelSchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.Schedule);
+        private void pictureBox1_Click(object sender, EventArgs e) => NavigateTo(AppPage.DeleteRequest);
     }
 }
