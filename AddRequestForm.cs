@@ -24,7 +24,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             InitializeComponent();
             this.FormClosed += (s, e) => Application.Exit();
-            this.Resize += AddRequestForm_Resize; // Додаємо обробник зміни розміру
+            this.Resize += AddRequestForm_Resize;
         }
 
         public AddRequestForm(UserContext user, int resourceID) : this(user)
@@ -69,7 +69,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             this.MinimumSize = new Size(1050, 795);
         }
 
-        // Логіка адаптивності (Resize) для AddRequestForm (панель меню та адаптація елементів)
+
         private void AddRequestForm_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized) return;

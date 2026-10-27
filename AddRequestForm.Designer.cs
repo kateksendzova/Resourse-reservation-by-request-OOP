@@ -65,6 +65,7 @@
             roundedPanel_YourRequest = new RoundedPanel();
             richTextBox_YourRequest = new RichTextBox();
             label_infoYourRequest = new Label();
+            panel1 = new Panel();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
@@ -79,13 +80,14 @@
             roundedPanel_Calendar.SuspendLayout();
             roundedPanel_TypeOfWork.SuspendLayout();
             roundedPanel_YourRequest.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label_infoSystemName
             // 
             label_infoSystemName.AutoSize = true;
             label_infoSystemName.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(610, 34);
+            label_infoSystemName.Location = new Point(123, 34);
             label_infoSystemName.Name = "label_infoSystemName";
             label_infoSystemName.Size = new Size(337, 27);
             label_infoSystemName.TabIndex = 0;
@@ -95,7 +97,7 @@
             // 
             label_infoChooseResource.AutoSize = true;
             label_infoChooseResource.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoChooseResource.Location = new Point(610, 63);
+            label_infoChooseResource.Location = new Point(123, 63);
             label_infoChooseResource.Name = "label_infoChooseResource";
             label_infoChooseResource.Size = new Size(292, 20);
             label_infoChooseResource.TabIndex = 1;
@@ -401,7 +403,7 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(558, 23);
+            pictureBox2.Location = new Point(71, 23);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(57, 49);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -415,7 +417,7 @@
             roundedPanel_Resources.Controls.Add(textBox_SearchRes);
             roundedPanel_Resources.Controls.Add(label_infoRes);
             roundedPanel_Resources.CornerRadius = 12;
-            roundedPanel_Resources.Location = new Point(486, 126);
+            roundedPanel_Resources.Location = new Point(18, 124);
             roundedPanel_Resources.Name = "roundedPanel_Resources";
             roundedPanel_Resources.Size = new Size(427, 752);
             roundedPanel_Resources.TabIndex = 44;
@@ -438,7 +440,7 @@
             roundedPanel_Calendar.Controls.Add(dateTimePicker_Interval);
             roundedPanel_Calendar.Controls.Add(label_infoInterval);
             roundedPanel_Calendar.CornerRadius = 12;
-            roundedPanel_Calendar.Location = new Point(953, 126);
+            roundedPanel_Calendar.Location = new Point(479, 124);
             roundedPanel_Calendar.Name = "roundedPanel_Calendar";
             roundedPanel_Calendar.Size = new Size(344, 474);
             roundedPanel_Calendar.TabIndex = 45;
@@ -459,7 +461,7 @@
             roundedPanel_TypeOfWork.BorderColor = Color.LightGray;
             roundedPanel_TypeOfWork.Controls.Add(label1);
             roundedPanel_TypeOfWork.CornerRadius = 12;
-            roundedPanel_TypeOfWork.Location = new Point(953, 640);
+            roundedPanel_TypeOfWork.Location = new Point(479, 638);
             roundedPanel_TypeOfWork.Name = "roundedPanel_TypeOfWork";
             roundedPanel_TypeOfWork.Size = new Size(344, 238);
             roundedPanel_TypeOfWork.TabIndex = 45;
@@ -478,12 +480,12 @@
             // 
             roundedPanel_YourRequest.BackColor = Color.White;
             roundedPanel_YourRequest.BorderColor = Color.LightGray;
+            roundedPanel_YourRequest.Controls.Add(button_ClearAll);
+            roundedPanel_YourRequest.Controls.Add(button_AddRequest);
             roundedPanel_YourRequest.Controls.Add(richTextBox_YourRequest);
             roundedPanel_YourRequest.Controls.Add(label_infoYourRequest);
-            roundedPanel_YourRequest.Controls.Add(button_AddRequest);
-            roundedPanel_YourRequest.Controls.Add(button_ClearAll);
             roundedPanel_YourRequest.CornerRadius = 12;
-            roundedPanel_YourRequest.Location = new Point(1334, 126);
+            roundedPanel_YourRequest.Location = new Point(857, 124);
             roundedPanel_YourRequest.Name = "roundedPanel_YourRequest";
             roundedPanel_YourRequest.Size = new Size(474, 752);
             roundedPanel_YourRequest.TabIndex = 45;
@@ -507,20 +509,28 @@
             label_infoYourRequest.TabIndex = 3;
             label_infoYourRequest.Text = "Ваш запит";
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(roundedPanel_YourRequest);
+            panel1.Controls.Add(label_infoSystemName);
+            panel1.Controls.Add(roundedPanel_Calendar);
+            panel1.Controls.Add(roundedPanel_TypeOfWork);
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(label_infoChooseResource);
+            panel1.Controls.Add(roundedPanel_Resources);
+            panel1.Location = new Point(474, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1344, 897);
+            panel1.TabIndex = 46;
+            // 
             // AddRequestForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
-            Controls.Add(label_infoSystemName);
-            Controls.Add(roundedPanel_YourRequest);
-            Controls.Add(roundedPanel_TypeOfWork);
-            Controls.Add(roundedPanel_Calendar);
-            Controls.Add(roundedPanel_Resources);
-            Controls.Add(pictureBox2);
-            Controls.Add(label_infoChooseResource);
             Controls.Add(panel_Menu);
+            Controls.Add(panel1);
             Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "AddRequestForm";
             Text = "Створити запит";
@@ -545,8 +555,9 @@
             roundedPanel_TypeOfWork.PerformLayout();
             roundedPanel_YourRequest.ResumeLayout(false);
             roundedPanel_YourRequest.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -587,5 +598,6 @@
         private RichTextBox richTextBox_YourRequest;
         private Label label_infoYourRequest;
         private Label label_infoRole;
+        private Panel panel1;
     }
 }
