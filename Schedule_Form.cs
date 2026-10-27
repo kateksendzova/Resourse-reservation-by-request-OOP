@@ -53,6 +53,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             ShowView(true);
 
+            dateTimePicker_ScheduleByComing.MinDate = DateTime.Today;
+            dateTimePicker_ScheduleTimeOfBooking.MinDate = DateTime.Today;
+
             this.VisibleChanged += (s, ev) => { if (this.Visible) LoadActiveSchedule(); };
         }
 

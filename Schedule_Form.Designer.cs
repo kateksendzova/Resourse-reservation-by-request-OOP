@@ -435,7 +435,7 @@
             dateTimePicker_ScheduleByComing.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_ScheduleByComing.Format = DateTimePickerFormat.Short;
             dateTimePicker_ScheduleByComing.Location = new Point(22, 45);
-            dateTimePicker_ScheduleByComing.MinDate = new DateTime(2026, 10, 21, 0, 0, 0, 0);
+            dateTimePicker_ScheduleByComing.MinDate = new DateTime(2026, 10, 27, 0, 0, 0, 0);
             dateTimePicker_ScheduleByComing.Name = "dateTimePicker_ScheduleByComing";
             dateTimePicker_ScheduleByComing.Size = new Size(439, 28);
             dateTimePicker_ScheduleByComing.TabIndex = 50;

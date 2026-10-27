@@ -172,6 +172,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             SetupRequestsPanel();
 
             dateTimePicker_DeleteReq.Format = DateTimePickerFormat.Short;
+            dateTimePicker_DeleteReq.MinDate = DateTime.Today;
             dateTimePicker_DeleteReq.Value = DateTime.Today;
             dateTimePicker_DeleteReq.ValueChanged += (s, e) => LoadRequestsForDate(dateTimePicker_DeleteReq.Value.Date);
 
@@ -180,7 +181,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             LoadRequestsForDate(dateTimePicker_DeleteReq.Value.Date);
             UpdateRequestPreview();
 
-            this.MinimumSize = new Size(1244, 795);
+            this.MinimumSize = new Size(1244, 805);
         }
 
         private void SetupRequestsPanel()

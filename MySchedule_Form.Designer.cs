@@ -332,10 +332,10 @@
             dateTimePicker_MySchedule.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_MySchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dateTimePicker_MySchedule.Format = DateTimePickerFormat.Short;
-            dateTimePicker_MySchedule.Location = new Point(91, 19);
+            dateTimePicker_MySchedule.Location = new Point(156, 12);
             dateTimePicker_MySchedule.MinDate = new DateTime(2026, 10, 21, 0, 0, 0, 0);
             dateTimePicker_MySchedule.Name = "dateTimePicker_MySchedule";
-            dateTimePicker_MySchedule.Size = new Size(439, 28);
+            dateTimePicker_MySchedule.Size = new Size(304, 28);
             dateTimePicker_MySchedule.TabIndex = 51;
             // 
             // roundedPanel_ShowRequest
@@ -353,7 +353,7 @@
             // richTextBox_YourRequest
             // 
             richTextBox_YourRequest.BorderStyle = BorderStyle.None;
-            richTextBox_YourRequest.Location = new Point(54, 95);
+            richTextBox_YourRequest.Location = new Point(54, 72);
             richTextBox_YourRequest.Name = "richTextBox_YourRequest";
             richTextBox_YourRequest.Size = new Size(464, 434);
             richTextBox_YourRequest.TabIndex = 62;
@@ -363,7 +363,7 @@
             // 
             label_infoMoreInfo.AutoSize = true;
             label_infoMoreInfo.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoMoreInfo.Location = new Point(54, 56);
+            label_infoMoreInfo.Location = new Point(54, 33);
             label_infoMoreInfo.Name = "label_infoMoreInfo";
             label_infoMoreInfo.Size = new Size(66, 19);
             label_infoMoreInfo.TabIndex = 61;

@@ -33,7 +33,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         {
             isNavigating = true;
             next.Show();
-            Close();
+            this.Hide();
         }
 
         protected void ShowUserInfo(Label nameLabel, Label roleLabel, PictureBox student, PictureBox assistant, PictureBox professor)
