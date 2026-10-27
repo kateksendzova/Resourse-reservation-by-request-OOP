@@ -12,7 +12,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 {
     public partial class MySchedule_Form : Form
     {
-        private Scheduler scheduler = new Scheduler();
         private string currentUserInfo;
         private string currentName;
         private UserRole currentRole;
@@ -163,6 +162,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     if (flowLayout_MyRequests != null)
                     {
                         flowLayout_MyRequests.Width = roundedPanel_MySchedule.Width - 50;
+
+                        int newItemWidth = flowLayout_MyRequests.ClientSize.Width - SystemInformation.VerticalScrollBarWidth - 6;
+
+                        foreach (Control ctrl in flowLayout_MyRequests.Controls)
+                        {
+                            ctrl.Width = newItemWidth > 0 ? newItemWidth : 100;
+                        }
                     }
                 }
 
@@ -236,7 +242,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             roundedPanel_NextBooking.Controls.Clear();
             roundedPanel_CountOfMineRequest.Controls.Clear();
 
-            var allUserRequests = scheduler.GetRequestsByPerson(currentName, currentRole);
+            var allUserRequests = AppServices.Scheduler.GetRequestsByPerson(currentName, currentRole);
 
             var lblTitle1 = new Label
             {
@@ -308,7 +314,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             flowLayout_MyRequests.SuspendLayout();
             flowLayout_MyRequests.Controls.Clear();
 
-            var myRequests = scheduler.GetRequestsByPerson(currentName, currentRole)
+            var myRequests = AppServices.Scheduler.GetRequestsByPerson(currentName, currentRole)
                 .Where(r => r.DayOfReservation.Date == date.Date)
                 .ToList();
 
@@ -336,7 +342,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             foreach (var req in myRequests)
             {
                 string timeStr = $"{req.Interval.Start:hh\\:mm} - {req.Interval.End:hh\\:mm}";
-                string btnText = $"{req.Resourse.NAME} ({timeStr})";
+                string btnText = $"{timeStr}   {req.Resourse.NAME}";
 
                 var btnReq = new RoundedButton
                 {

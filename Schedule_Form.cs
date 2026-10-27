@@ -8,7 +8,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 {
     public partial class Schedule_Form : Form
     {
-        private readonly Scheduler scheduler = new Scheduler();
         private readonly string currentUserInfo;
         private string currentName;
         private UserRole currentRole;
@@ -64,7 +63,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void LoadResourceComboBox()
         {
             comboBox_Resource.Items.Clear();
-            List<Resourse> resources = scheduler.GetResourses();
+            List<Resourse> resources = AppServices.Scheduler.GetResourses();
 
             comboBox_Resource.DisplayMember = "NAME";
             comboBox_Resource.ValueMember = "ID";
@@ -102,7 +101,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             DateTime date = dateTimePicker_ScheduleTimeOfBooking.Value.Date;
 
-            foreach (Request r in scheduler.GetRequestsByDate(date))
+            foreach (Request r in AppServices.Scheduler.GetRequestsByDate(date))
             {
                 int i = grid.Rows.Add(
                     FormatInterval(r.Interval),
@@ -128,7 +127,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             DateTime date = dateTimePicker_ScheduleByComing.Value.Date;
 
-            var requests = scheduler.GetRequestsByDate(date)
+            var requests = AppServices.Scheduler.GetRequestsByDate(date)
                 .Where(r => r.Resourse.ID == selectedResource.ID)
                 .ToList();
 

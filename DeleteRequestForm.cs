@@ -12,7 +12,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 {
     public partial class DeleteRequestForm : Form
     {
-        private readonly Scheduler scheduler = new Scheduler();
         private readonly string currentUserInfo;
         private string currentName;
         private UserRole currentRole;
@@ -269,7 +268,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             flowLayout_Requests.SuspendLayout();
             flowLayout_Requests.Controls.Clear();
 
-            var userRequests = scheduler.GetRequestsByPerson(currentName, currentRole)
+            var userRequests = AppServices.Scheduler.GetRequestsByPerson(currentName, currentRole)
                 .Where(r => r.DayOfReservation.Date == date.Date)
                 .ToList();
 
@@ -408,7 +407,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             {
                 try
                 {
-                    scheduler.DeleteRequest(selectedRequestID.Value);
+                    AppServices.Scheduler.DeleteRequest(selectedRequestID.Value);
 
                     MessageBox.Show("Запит успішно видалено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

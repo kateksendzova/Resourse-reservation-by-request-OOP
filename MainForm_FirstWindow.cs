@@ -16,7 +16,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private string currentName;
         private UserRole currentRole;
 
-        private Scheduler scheduler = new Scheduler();
         private const string PlaceholderText = "Пошук обладнання на сьогодні";
 
 
@@ -325,13 +324,13 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void LoadResources(string filterType, string searchQuery = "")
         {
             flowLayoutPanel_Resources.Controls.Clear();
-            List<Resourse> allResources = scheduler.GetResourses();
+            List<Resourse> allResources = AppServices.Scheduler.GetResourses();
 
             IEnumerable<Resourse> filteredList = allResources;
 
             if (filterType == "Available")
             {
-                filteredList = filteredList.Where(r => scheduler.IsResourceAvailableForAtLeastOneHour(r.ID, DateTime.Today));
+                filteredList = filteredList.Where(r => AppServices.Scheduler.IsResourceAvailableForAtLeastOneHour(r.ID, DateTime.Today));
             }
 
             if (!string.IsNullOrWhiteSpace(searchQuery))
@@ -341,7 +340,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             foreach (var res in filteredList)
             {
-                bool isAvail = scheduler.IsResourceAvailableForAtLeastOneHour(res.ID, DateTime.Today);
+                bool isAvail = AppServices.Scheduler.IsResourceAvailableForAtLeastOneHour(res.ID, DateTime.Today);
                 string statusText = isAvail ? "Вільно" : "Зайнято";
 
                 var card = CreateEquipmentCard(res.ID, res.NAME, statusText, isAvail);

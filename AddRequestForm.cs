@@ -15,7 +15,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private string currentName;
         private UserRole currentRole;
 
-        private readonly Scheduler scheduler = new Scheduler();
         private readonly ToolTip toolTip = new ToolTip();
 
         private FlowLayoutPanel flowLayout_SelectResources;
@@ -65,7 +64,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             if (selectedResID.HasValue)
             {
-                var res = scheduler.GetResourses().FirstOrDefault(r => r.ID == selectedResID.Value);
+                var res = AppServices.Scheduler.GetResourses().FirstOrDefault(r => r.ID == selectedResID.Value);
                 if (res != null) selectedResName = res.NAME;
             }
 
@@ -114,7 +113,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             flowLayout_SelectResources.SuspendLayout();
             flowLayout_SelectResources.Controls.Clear();
 
-            IEnumerable<Resourse> filtered = scheduler.GetResourses();
+            IEnumerable<Resourse> filtered = AppServices.Scheduler.GetResourses();
             if (!string.IsNullOrWhiteSpace(searchQuery))
             {
                 filtered = filtered.Where(r => r.NAME.IndexOf(searchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
@@ -331,9 +330,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             try
             {
-                Person person = scheduler.GetOrCreatePerson(currentName, currentRole);
+                Person person = AppServices.Scheduler.GetOrCreatePerson(currentName, currentRole);
 
-                if(scheduler.CheckForPersonConflict(person, reservDate, startTime, interval) != null)
+                if(AppServices.Scheduler.CheckForPersonConflict(person, reservDate, startTime, interval) != null)
                 {
                     var information = MessageBox.Show(
                         "У вас уже є активна бронь у цей час! Бажаєте все одно додати новий запит?",
@@ -347,14 +346,16 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                     }
                 }
 
-                Resourse resource = scheduler.GetResourses().FirstOrDefault(r => r.ID == selectedResID.Value);
+
+                Resourse resource = AppServices.Scheduler.GetResourses().FirstOrDefault(r => r.ID == selectedResID.Value);
+
                 if (resource == null)
                 {
                     MessageBox.Show("Помилка: обране обладнання не знайдено в базі!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                var result = scheduler.TryAddRequest(resource, person, reservDate, startTime, interval, selectedTypeOfWork);
+                var result = AppServices.Scheduler.TryAddRequest(resource, person, reservDate, startTime, interval, selectedTypeOfWork);
 
                 if (result.IsAvailable)
                 {
