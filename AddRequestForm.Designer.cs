@@ -65,7 +65,7 @@
             roundedPanel_YourRequest = new RoundedPanel();
             richTextBox_YourRequest = new RichTextBox();
             label_infoYourRequest = new Label();
-            panel1 = new Panel();
+            panel_AllElements = new Panel();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_PanelSchedule).BeginInit();
@@ -80,14 +80,14 @@
             roundedPanel_Calendar.SuspendLayout();
             roundedPanel_TypeOfWork.SuspendLayout();
             roundedPanel_YourRequest.SuspendLayout();
-            panel1.SuspendLayout();
+            panel_AllElements.SuspendLayout();
             SuspendLayout();
             // 
             // label_infoSystemName
             // 
             label_infoSystemName.AutoSize = true;
             label_infoSystemName.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label_infoSystemName.Location = new Point(123, 34);
+            label_infoSystemName.Location = new Point(145, 34);
             label_infoSystemName.Name = "label_infoSystemName";
             label_infoSystemName.Size = new Size(337, 27);
             label_infoSystemName.TabIndex = 0;
@@ -97,7 +97,7 @@
             // 
             label_infoChooseResource.AutoSize = true;
             label_infoChooseResource.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_infoChooseResource.Location = new Point(123, 63);
+            label_infoChooseResource.Location = new Point(145, 63);
             label_infoChooseResource.Name = "label_infoChooseResource";
             label_infoChooseResource.Size = new Size(292, 20);
             label_infoChooseResource.TabIndex = 1;
@@ -403,7 +403,7 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(71, 23);
+            pictureBox2.Location = new Point(90, 23);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(57, 49);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -509,19 +509,20 @@
             label_infoYourRequest.TabIndex = 3;
             label_infoYourRequest.Text = "Ваш запит";
             // 
-            // panel1
+            // panel_AllElements
             // 
-            panel1.Controls.Add(roundedPanel_YourRequest);
-            panel1.Controls.Add(label_infoSystemName);
-            panel1.Controls.Add(roundedPanel_Calendar);
-            panel1.Controls.Add(roundedPanel_TypeOfWork);
-            panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(label_infoChooseResource);
-            panel1.Controls.Add(roundedPanel_Resources);
-            panel1.Location = new Point(474, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1344, 897);
-            panel1.TabIndex = 46;
+            panel_AllElements.BackColor = Color.Transparent;
+            panel_AllElements.Controls.Add(roundedPanel_YourRequest);
+            panel_AllElements.Controls.Add(label_infoSystemName);
+            panel_AllElements.Controls.Add(roundedPanel_Calendar);
+            panel_AllElements.Controls.Add(roundedPanel_TypeOfWork);
+            panel_AllElements.Controls.Add(pictureBox2);
+            panel_AllElements.Controls.Add(label_infoChooseResource);
+            panel_AllElements.Controls.Add(roundedPanel_Resources);
+            panel_AllElements.Location = new Point(474, 0);
+            panel_AllElements.Name = "panel_AllElements";
+            panel_AllElements.Size = new Size(1344, 897);
+            panel_AllElements.TabIndex = 46;
             // 
             // AddRequestForm
             // 
@@ -530,7 +531,7 @@
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
             Controls.Add(panel_Menu);
-            Controls.Add(panel1);
+            Controls.Add(panel_AllElements);
             Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "AddRequestForm";
             Text = "Створити запит";
@@ -555,8 +556,8 @@
             roundedPanel_TypeOfWork.PerformLayout();
             roundedPanel_YourRequest.ResumeLayout(false);
             roundedPanel_YourRequest.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panel_AllElements.ResumeLayout(false);
+            panel_AllElements.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -598,6 +599,6 @@
         private RichTextBox richTextBox_YourRequest;
         private Label label_infoYourRequest;
         private Label label_infoRole;
-        private Panel panel1;
+        private Panel panel_AllElements;
     }
 }

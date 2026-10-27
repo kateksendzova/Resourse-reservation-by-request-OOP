@@ -66,9 +66,8 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             UpdateSummaryText();
 
-            this.MinimumSize = new Size(1050, 795);
+            this.MinimumSize = new Size(1244, 825);
         }
-
 
         private void AddRequestForm_Resize(object sender, EventArgs e)
         {
@@ -122,6 +121,86 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 if (pictureBox_PanelMySchedule != null) pictureBox_PanelMySchedule.Left = 47;
                 if (pictureBox_PanelSchedule != null) pictureBox_PanelSchedule.Left = 47;
                 if (pictureBox1 != null) pictureBox1.Left = 44;
+            }
+            if (panel_AllElements == null || roundedPanel_Resources == null || roundedPanel_Calendar == null ||
+                roundedPanel_TypeOfWork == null || roundedPanel_YourRequest == null) return;
+
+            int top = isCompactMode ? 110 : 124;
+            int calendarHeight = isCompactMode ? 440 : 494;
+            int gap = isCompactMode ? 10 : 20;
+
+            int panelHeight = Math.Min(752, Math.Max(590, this.ClientSize.Height - top - 30));
+
+            int resLeft, resWidth, midLeft, midWidth, reqLeft, reqWidth;
+
+            if (isCompactMode)
+            {
+                panel_AllElements.Left = 105;
+                panel_AllElements.Width = this.ClientSize.Width - 115;
+
+                int available = panel_AllElements.Width;
+                int spacing = 15;
+                int colWidth = Math.Max(280, (available - spacing * 3) / 3);
+
+                resLeft = 10; resWidth = colWidth;
+                midLeft = resLeft + resWidth + spacing; midWidth = colWidth;
+                reqLeft = midLeft + midWidth + spacing; reqWidth = Math.Max(300, available - reqLeft - 15);
+            }
+            else
+            {
+                panel_AllElements.Left = 474;
+                panel_AllElements.Width = 1344;
+
+                resLeft = 18; resWidth = 427;
+                midLeft = 479; midWidth = 344;
+                reqLeft = 857; reqWidth = 474;
+            }
+
+            roundedPanel_Resources.SetBounds(resLeft, top, resWidth, panelHeight);
+            if (textBox_SearchRes != null) textBox_SearchRes.Width = resWidth - 64;
+
+            roundedPanel_Calendar.SetBounds(midLeft, top, midWidth, calendarHeight);
+            roundedPanel_TypeOfWork.SetBounds(midLeft, top + calendarHeight + gap, midWidth, Math.Max(140, panelHeight - calendarHeight - gap));
+
+            roundedPanel_YourRequest.SetBounds(reqLeft, top, reqWidth, panelHeight);
+
+            void FitFlow(FlowLayoutPanel flow, Control parent, int flowTop)
+            {
+                if (flow == null) return;
+
+                flow.AutoScroll = true;
+                flow.SetBounds(25, flowTop, parent.Width - 50, parent.Height - flowTop - 24);
+
+                int content = flow.Controls.Cast<Control>().Sum(c => c.Height + c.Margin.Vertical);
+                int width = flow.Width - (content > flow.Height ? SystemInformation.VerticalScrollBarWidth : 0);
+
+                foreach (Control c in flow.Controls)
+                    c.Width = Math.Max(50, width - c.Margin.Horizontal);
+            }
+
+            if (textBox_SearchRes != null) FitFlow(flowLayout_SelectResources, roundedPanel_Resources, textBox_SearchRes.Bottom + 12);
+            if (label1 != null) FitFlow(flowLayout_TypeOfWork, roundedPanel_TypeOfWork, label1.Bottom + 12);
+
+            if (button_AddRequest != null && button_ClearAll != null)
+            {
+                var p = roundedPanel_YourRequest;
+
+                int btnWidth = Math.Min(361, p.Width - 40);
+                int btnLeft = (p.Width - btnWidth) / 2;
+
+                int clearTop = Math.Min(660, p.Height - 43 - button_ClearAll.Height);
+                int addTop = Math.Min(583, clearTop - 19 - button_AddRequest.Height);
+
+                button_ClearAll.SetBounds(btnLeft, clearTop, btnWidth, button_ClearAll.Height);
+                button_AddRequest.SetBounds(btnLeft, addTop, btnWidth, button_AddRequest.Height);
+                button_ClearAll.Visible = true;
+                button_AddRequest.Visible = true;
+
+                if (richTextBox_YourRequest != null)
+                {
+                    int boxTop = richTextBox_YourRequest.Top;
+                    richTextBox_YourRequest.SetBounds(18, boxTop, p.Width - 40, Math.Max(100, addTop - 19 - boxTop));
+                }
             }
         }
 
