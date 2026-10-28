@@ -32,6 +32,7 @@
             label_infoReservSystemLogIn = new Label();
             pictureBox2 = new PictureBox();
             panel_Content = new Panel();
+            button_LogIn = new RoundedButton();
             label_infoRightAfterFather = new Label();
             label_infoRightName = new Label();
             label_infoRightSurname = new Label();
@@ -43,7 +44,6 @@
             label_infoFatherName = new Label();
             label_infoRole = new Label();
             label_infoSurname = new Label();
-            button_LogIn = new RoundedButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel_Content.SuspendLayout();
             SuspendLayout();
@@ -90,6 +90,24 @@
             panel_Content.Name = "panel_Content";
             panel_Content.Size = new Size(364, 420);
             panel_Content.TabIndex = 47;
+            // 
+            // button_LogIn
+            // 
+            button_LogIn.BackColor = Color.AliceBlue;
+            button_LogIn.BorderColor = Color.DarkCyan;
+            button_LogIn.BorderRadius = 30;
+            button_LogIn.BorderSize = 1;
+            button_LogIn.FlatAppearance.BorderSize = 0;
+            button_LogIn.FlatStyle = FlatStyle.Flat;
+            button_LogIn.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
+            button_LogIn.ForeColor = Color.DarkCyan;
+            button_LogIn.IsSelected = false;
+            button_LogIn.Location = new Point(101, 351);
+            button_LogIn.Name = "button_LogIn";
+            button_LogIn.Size = new Size(162, 50);
+            button_LogIn.TabIndex = 59;
+            button_LogIn.Text = "Увійти";
+            button_LogIn.UseVisualStyleBackColor = false;
             // 
             // label_infoRightAfterFather
             // 
@@ -150,6 +168,7 @@
             // 
             // comboBox_Role
             // 
+            comboBox_Role.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Role.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             comboBox_Role.FormattingEnabled = true;
             comboBox_Role.Location = new Point(114, 84);
@@ -196,24 +215,6 @@
             label_infoSurname.Size = new Size(79, 20);
             label_infoSurname.TabIndex = 47;
             label_infoSurname.Text = "Прізвище";
-            // 
-            // button_LogIn
-            // 
-            button_LogIn.BackColor = Color.AliceBlue;
-            button_LogIn.BorderColor = Color.DarkCyan;
-            button_LogIn.BorderRadius = 30;
-            button_LogIn.BorderSize = 1;
-            button_LogIn.FlatAppearance.BorderSize = 0;
-            button_LogIn.FlatStyle = FlatStyle.Flat;
-            button_LogIn.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
-            button_LogIn.ForeColor = Color.DarkCyan;
-            button_LogIn.IsSelected = false;
-            button_LogIn.Location = new Point(101, 351);
-            button_LogIn.Name = "button_LogIn";
-            button_LogIn.Size = new Size(162, 50);
-            button_LogIn.TabIndex = 59;
-            button_LogIn.Text = "Увійти";
-            button_LogIn.UseVisualStyleBackColor = false;
             // 
             // LogInForm
             // 

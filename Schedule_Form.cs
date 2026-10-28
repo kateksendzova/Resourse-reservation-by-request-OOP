@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,8 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             InitializeComponent();
 
             this.FormClosed += (s, e) => Application.Exit();
+
+            this.Resize += Schedule_Form_Resize;
         }
 
         public Schedule_Form(string userInfo) : this(new UserContext(userInfo)) { }
@@ -57,6 +60,105 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             dateTimePicker_ScheduleTimeOfBooking.MinDate = DateTime.Today;
 
             this.VisibleChanged += (s, ev) => { if (this.Visible) LoadActiveSchedule(); };
+
+            this.MinimumSize = new Size(1050, 795);
+        }
+
+        private void Schedule_Form_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized) return;
+
+            bool isCompactMode = this.ClientSize.Width < 1700;
+
+            if (isCompactMode)
+            {
+                panel_Menu.Width = 100;
+
+                if (button_PanelMainForm != null) button_PanelMainForm.Visible = false;
+                if (button_PanelAddReq != null) button_PanelAddReq.Visible = false;
+                if (button_PanelMySchedule != null) button_PanelMySchedule.Visible = false;
+                if (button_PanelSchedule != null) button_PanelSchedule.Visible = false;
+                if (button_PanelDelReq != null) button_PanelDelReq.Visible = false;
+
+                if (pictureBox_AvatarAssistant != null) pictureBox_AvatarAssistant.Visible = false;
+                if (pictureBox_AvatarProfesor != null) pictureBox_AvatarProfesor.Visible = false;
+                if (pictureBox_AvatarStudent != null) pictureBox_AvatarStudent.Visible = false;
+                if (label_RoleNameSch != null) label_RoleNameSch.Visible = false;
+                if (label_infoRole != null) label_infoRole.Visible = false;
+
+                if (pictureBox_Logo != null) pictureBox_Logo.Left = (100 - pictureBox_Logo.Width) / 2;
+                if (pictureBox_LogoMakeReq != null) pictureBox_LogoMakeReq.Left = (100 - pictureBox_LogoMakeReq.Width) / 2;
+                if (pictureBox_LogoMySchedule != null) pictureBox_LogoMySchedule.Left = (100 - pictureBox_LogoMySchedule.Width) / 2;
+                if (pictureBox_LogoSchedule != null) pictureBox_LogoSchedule.Left = (100 - pictureBox_LogoSchedule.Width) / 2;
+                if (pictureBox_LogoDel != null) pictureBox_LogoDel.Left = (100 - pictureBox_LogoDel.Width) / 2;
+            }
+            else
+            {
+                panel_Menu.Width = 382;
+
+                if (button_PanelMainForm != null) button_PanelMainForm.Visible = true;
+                if (button_PanelAddReq != null) button_PanelAddReq.Visible = true;
+                if (button_PanelMySchedule != null) button_PanelMySchedule.Visible = true;
+                if (button_PanelSchedule != null) button_PanelSchedule.Visible = true;
+                if (button_PanelDelReq != null) button_PanelDelReq.Visible = true;
+                if (label_RoleNameSch != null) label_RoleNameSch.Visible = true;
+                if (label_infoRole != null) label_infoRole.Visible = true;
+
+                if (currentUser != null)
+                {
+                    pictureBox_AvatarStudent.Visible = (currentUser.Role == UserRole.Student);
+                    pictureBox_AvatarAssistant.Visible = (currentUser.Role == UserRole.Assistant);
+                    pictureBox_AvatarProfesor.Visible = (currentUser.Role == UserRole.Professor);
+                }
+
+                if (pictureBox_Logo != null) pictureBox_Logo.Left = 43;
+                if (pictureBox_LogoMakeReq != null) pictureBox_LogoMakeReq.Left = 44;
+                if (pictureBox_LogoMySchedule != null) pictureBox_LogoMySchedule.Left = 47;
+                if (pictureBox_LogoSchedule != null) pictureBox_LogoSchedule.Left = 47;
+                if (pictureBox_LogoDel != null) pictureBox_LogoDel.Left = 44;
+            }
+
+            if (panel_AllElements != null)
+            {
+                if (isCompactMode)
+                {
+                    panel_AllElements.Left = 115;
+                    panel_AllElements.Width = Math.Max(800, this.ClientSize.Width - panel_AllElements.Left - 15);
+                    panel_AllElements.Height = Math.Max(600, this.ClientSize.Height - 40);
+                }
+                else
+                {
+                    panel_AllElements.Left = 560;
+                    panel_AllElements.Width = Math.Max(1000, this.ClientSize.Width - panel_AllElements.Left - 40);
+                    panel_AllElements.Height = Math.Max(700, this.ClientSize.Height - 40);
+                }
+
+                int innerWidth = panel_AllElements.Width - 40;
+
+                if (roundedPanel_ScheduleTimeOfBooking != null)
+                {
+                    roundedPanel_ScheduleTimeOfBooking.Width = innerWidth;
+                    roundedPanel_ScheduleTimeOfBooking.Height = panel_AllElements.Height - roundedPanel_ScheduleTimeOfBooking.Top - 30;
+                }
+
+                if (roundedPanel_ByComing != null)
+                {
+                    roundedPanel_ByComing.Width = innerWidth;
+                    roundedPanel_ByComing.Height = panel_AllElements.Height - roundedPanel_ByComing.Top - 30;
+                }
+
+                if (dataGridView_ScheduleTimeOfBooking != null)
+                {
+                    dataGridView_ScheduleTimeOfBooking.Width = roundedPanel_ScheduleTimeOfBooking.Width - 50;
+                    dataGridView_ScheduleTimeOfBooking.Height = roundedPanel_ScheduleTimeOfBooking.Height - dataGridView_ScheduleTimeOfBooking.Top - 30;
+                }
+
+                if (dataGridView_ScheduleByComing != null)
+                {
+                    dataGridView_ScheduleByComing.Width = roundedPanel_ByComing.Width - 50;
+                    dataGridView_ScheduleByComing.Height = roundedPanel_ByComing.Height - dataGridView_ScheduleByComing.Top - 30;
+                }
+            }
         }
 
         private void LoadResourceComboBox()

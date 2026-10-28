@@ -34,7 +34,7 @@
             button_PanelDelReq = new Button();
             pictureBox_LogoDel = new PictureBox();
             pictureBox_LogoSchedule = new PictureBox();
-            button2 = new Button();
+            button_PanelSchedule = new Button();
             pictureBox_AvatarAssistant = new PictureBox();
             pictureBox_AvatarProfesor = new PictureBox();
             pictureBox_AvatarStudent = new PictureBox();
@@ -64,6 +64,7 @@
             dateTimePicker_ScheduleByComing = new DateTimePicker();
             roundedButton_TimeOfBooking = new RoundedButton();
             roundedButton_Resource = new RoundedButton();
+            panel_AllElements = new Panel();
             panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoDel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_LogoSchedule).BeginInit();
@@ -78,6 +79,7 @@
             roundedPanel_ScheduleTimeOfBooking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             roundedPanel_ByComing.SuspendLayout();
+            panel_AllElements.SuspendLayout();
             SuspendLayout();
             // 
             // panel_Menu
@@ -87,7 +89,7 @@
             panel_Menu.Controls.Add(button_PanelDelReq);
             panel_Menu.Controls.Add(pictureBox_LogoDel);
             panel_Menu.Controls.Add(pictureBox_LogoSchedule);
-            panel_Menu.Controls.Add(button2);
+            panel_Menu.Controls.Add(button_PanelSchedule);
             panel_Menu.Controls.Add(pictureBox_AvatarAssistant);
             panel_Menu.Controls.Add(pictureBox_AvatarProfesor);
             panel_Menu.Controls.Add(pictureBox_AvatarStudent);
@@ -152,19 +154,19 @@
             pictureBox_LogoSchedule.TabIndex = 39;
             pictureBox_LogoSchedule.TabStop = false;
             // 
-            // button2
+            // button_PanelSchedule
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            button2.ForeColor = Color.AliceBlue;
-            button2.Location = new Point(96, 258);
-            button2.Name = "button2";
-            button2.Size = new Size(178, 33);
-            button2.TabIndex = 38;
-            button2.Text = "Загальний розклад";
-            button2.TextAlign = ContentAlignment.MiddleRight;
-            button2.UseVisualStyleBackColor = true;
+            button_PanelSchedule.FlatAppearance.BorderSize = 0;
+            button_PanelSchedule.FlatStyle = FlatStyle.Flat;
+            button_PanelSchedule.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button_PanelSchedule.ForeColor = Color.AliceBlue;
+            button_PanelSchedule.Location = new Point(96, 258);
+            button_PanelSchedule.Name = "button_PanelSchedule";
+            button_PanelSchedule.Size = new Size(178, 33);
+            button_PanelSchedule.TabIndex = 38;
+            button_PanelSchedule.Text = "Загальний розклад";
+            button_PanelSchedule.TextAlign = ContentAlignment.MiddleRight;
+            button_PanelSchedule.UseVisualStyleBackColor = true;
             // 
             // pictureBox_AvatarAssistant
             // 
@@ -360,7 +362,7 @@
             roundedPanel_ScheduleTimeOfBooking.Controls.Add(dateTimePicker_ScheduleTimeOfBooking);
             roundedPanel_ScheduleTimeOfBooking.Controls.Add(dataGridView_ScheduleTimeOfBooking);
             roundedPanel_ScheduleTimeOfBooking.CornerRadius = 12;
-            roundedPanel_ScheduleTimeOfBooking.Location = new Point(558, 207);
+            roundedPanel_ScheduleTimeOfBooking.Location = new Point(3, 197);
             roundedPanel_ScheduleTimeOfBooking.Name = "roundedPanel_ScheduleTimeOfBooking";
             roundedPanel_ScheduleTimeOfBooking.Size = new Size(1176, 752);
             roundedPanel_ScheduleTimeOfBooking.TabIndex = 63;
@@ -380,7 +382,7 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(558, 23);
+            pictureBox2.Location = new Point(4, 23);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(57, 49);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -391,7 +393,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label3.Location = new Point(612, 67);
+            label3.Location = new Point(59, 67);
             label3.Name = "label3";
             label3.Size = new Size(345, 20);
             label3.TabIndex = 65;
@@ -401,7 +403,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label4.Location = new Point(610, 34);
+            label4.Location = new Point(59, 34);
             label4.Name = "label4";
             label4.Size = new Size(231, 27);
             label4.TabIndex = 64;
@@ -416,7 +418,7 @@
             roundedPanel_ByComing.Controls.Add(dateTimePicker_ScheduleByComing);
             roundedPanel_ByComing.Controls.Add(dataGridView_ScheduleByComing);
             roundedPanel_ByComing.CornerRadius = 12;
-            roundedPanel_ByComing.Location = new Point(558, 207);
+            roundedPanel_ByComing.Location = new Point(3, 197);
             roundedPanel_ByComing.Name = "roundedPanel_ByComing";
             roundedPanel_ByComing.Size = new Size(1176, 752);
             roundedPanel_ByComing.TabIndex = 64;
@@ -451,7 +453,7 @@
             roundedButton_TimeOfBooking.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
             roundedButton_TimeOfBooking.ForeColor = Color.DarkCyan;
             roundedButton_TimeOfBooking.IsSelected = false;
-            roundedButton_TimeOfBooking.Location = new Point(558, 125);
+            roundedButton_TimeOfBooking.Location = new Point(35, 127);
             roundedButton_TimeOfBooking.Name = "roundedButton_TimeOfBooking";
             roundedButton_TimeOfBooking.Size = new Size(243, 39);
             roundedButton_TimeOfBooking.TabIndex = 67;
@@ -469,12 +471,27 @@
             roundedButton_Resource.Font = new Font("Century Gothic", 9.5F, FontStyle.Bold);
             roundedButton_Resource.ForeColor = Color.DarkCyan;
             roundedButton_Resource.IsSelected = false;
-            roundedButton_Resource.Location = new Point(842, 126);
+            roundedButton_Resource.Location = new Point(297, 127);
             roundedButton_Resource.Name = "roundedButton_Resource";
             roundedButton_Resource.Size = new Size(243, 39);
             roundedButton_Resource.TabIndex = 68;
             roundedButton_Resource.Text = "Для обладнання";
             roundedButton_Resource.UseVisualStyleBackColor = false;
+            // 
+            // panel_AllElements
+            // 
+            panel_AllElements.BackColor = Color.Transparent;
+            panel_AllElements.Controls.Add(roundedButton_Resource);
+            panel_AllElements.Controls.Add(roundedPanel_ByComing);
+            panel_AllElements.Controls.Add(roundedPanel_ScheduleTimeOfBooking);
+            panel_AllElements.Controls.Add(pictureBox2);
+            panel_AllElements.Controls.Add(roundedButton_TimeOfBooking);
+            panel_AllElements.Controls.Add(label4);
+            panel_AllElements.Controls.Add(label3);
+            panel_AllElements.Location = new Point(560, 0);
+            panel_AllElements.Name = "panel_AllElements";
+            panel_AllElements.Size = new Size(1183, 959);
+            panel_AllElements.TabIndex = 69;
             // 
             // Schedule_Form
             // 
@@ -482,14 +499,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(1924, 1033);
-            Controls.Add(roundedButton_Resource);
-            Controls.Add(roundedButton_TimeOfBooking);
-            Controls.Add(pictureBox2);
-            Controls.Add(label3);
-            Controls.Add(label4);
             Controls.Add(panel_Menu);
-            Controls.Add(roundedPanel_ByComing);
-            Controls.Add(roundedPanel_ScheduleTimeOfBooking);
+            Controls.Add(panel_AllElements);
             Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "Schedule_Form";
             Text = "Загальний розклад";
@@ -510,8 +521,9 @@
             roundedPanel_ScheduleTimeOfBooking.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             roundedPanel_ByComing.ResumeLayout(false);
+            panel_AllElements.ResumeLayout(false);
+            panel_AllElements.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -520,7 +532,7 @@
         private PictureBox pictureBox_LogoDel;
         private Button button_PanelDelReq;
         private PictureBox pictureBox_LogoSchedule;
-        private Button button2;
+        private Button button_PanelSchedule;
         private PictureBox pictureBox_AvatarAssistant;
         private PictureBox pictureBox_AvatarProfesor;
         private PictureBox pictureBox_AvatarStudent;
@@ -552,5 +564,6 @@
         private DataGridViewTextBoxColumn ColumnTypeOfWork;
         private ComboBox comboBox_Resource;
         private Label label_infoRole;
+        private Panel panel_AllElements;
     }
 }
