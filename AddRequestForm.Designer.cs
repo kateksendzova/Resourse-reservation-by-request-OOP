@@ -251,6 +251,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 41;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox_PanelDelete_Click;
             // 
             // pictureBox_PanelSchedule
             // 
@@ -262,6 +263,7 @@
             pictureBox_PanelSchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelSchedule.TabIndex = 39;
             pictureBox_PanelSchedule.TabStop = false;
+            pictureBox_PanelSchedule.Click += pictureBox_PanelSchedule_Click;
             // 
             // button_PanelSchedule
             // 
@@ -321,6 +323,7 @@
             pictureBox_PanelMySchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_PanelMySchedule.TabIndex = 34;
             pictureBox_PanelMySchedule.TabStop = false;
+            pictureBox_PanelMySchedule.Click += pictureBox_PanelMySchedule_Click;
             // 
             // pictureBox_PanelMakeReq
             // 
@@ -343,6 +346,7 @@
             pictureBox_Logo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_Logo.TabIndex = 32;
             pictureBox_Logo.TabStop = false;
+            pictureBox_Logo.Click += pictureBox_Logo_Click;
             // 
             // label_RoleName
             // 

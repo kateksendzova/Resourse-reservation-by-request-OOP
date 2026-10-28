@@ -142,6 +142,7 @@
             pictureBox_LogoDel.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_LogoDel.TabIndex = 41;
             pictureBox_LogoDel.TabStop = false;
+            pictureBox_LogoDel.Click += pictureBox1_Click;
             // 
             // pictureBox_LogoSchedule
             // 
@@ -211,6 +212,7 @@
             pictureBox_LogoMySchedule.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_LogoMySchedule.TabIndex = 34;
             pictureBox_LogoMySchedule.TabStop = false;
+            pictureBox_LogoMySchedule.Click += pictureBox_PanelMySchedule_Click;
             // 
             // pictureBox_LogoMakeReq
             // 
@@ -222,6 +224,7 @@
             pictureBox_LogoMakeReq.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_LogoMakeReq.TabIndex = 33;
             pictureBox_LogoMakeReq.TabStop = false;
+            pictureBox_LogoMakeReq.Click += pictureBox_PanelMakeReq_Click;
             // 
             // pictureBox_Logo
             // 
@@ -233,6 +236,7 @@
             pictureBox_Logo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_Logo.TabIndex = 32;
             pictureBox_Logo.TabStop = false;
+            pictureBox_Logo.Click += pictureBox_Logo_Click;
             // 
             // label_RoleNameSch
             // 

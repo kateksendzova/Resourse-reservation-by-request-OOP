@@ -448,9 +448,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void button_PanelSchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.Schedule);
         private void button1_Click(object sender, EventArgs e) => NavigateTo(AppPage.DeleteRequest);
 
-        private void pictureBox_PanelMakeReq_Click(object sender, EventArgs e) => NavigateTo(AppPage.AddRequest);
         private void pictureBox_PanelMySchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.MySchedule);
         private void pictureBox_PanelSchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.Schedule);
         private void pictureBox_PanelDelete_Click(object sender, EventArgs e) => NavigateTo(AppPage.DeleteRequest);
+        private void pictureBox_Logo_Click(object sender, EventArgs e) => NavigateTo(AppPage.Main);
     }
 }
