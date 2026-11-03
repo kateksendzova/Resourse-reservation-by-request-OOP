@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\scheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:scheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\batchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:batchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\addrequestform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:addrequestform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\schedulingstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:schedulingstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\schedule_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:schedule_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -17,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\addrequestform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:addrequestform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\addrequestform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:addrequestform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\schedule_form.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,10 +71,6 @@
       "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\scheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:scheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|d:\\useful_files\\university\\2_curs\\1_term\\oop_\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u0440\u043E\u0431\u043E\u0442\u0430_\u043A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u043F\u043727\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E082CFA-85B8-43EC-9895-4EBD71ABB192}|\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727.csproj|solutionrelative:schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -82,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,56 +102,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Schedule_Form.cs [Design]",
-              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.cs",
-              "RelativeDocumentMoniker": "Schedule_Form.cs",
-              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.cs [Design]*",
-              "RelativeToolTip": "Schedule_Form.cs [Design]*",
+              "DocumentIndex": 3,
+              "Title": "Request.cs",
+              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Request.cs",
+              "RelativeDocumentMoniker": "Request.cs",
+              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Request.cs",
+              "RelativeToolTip": "Request.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T11:48:00.46Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-10-29T12:17:54.192Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Schedule_Form.cs",
-              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.cs",
-              "RelativeDocumentMoniker": "Schedule_Form.cs",
-              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.cs*",
-              "RelativeToolTip": "Schedule_Form.cs*",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAqwAIBAAABAAAAAAAAAA==",
+              "Title": "BatchResult.cs",
+              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\BatchResult.cs",
+              "RelativeDocumentMoniker": "BatchResult.cs",
+              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\BatchResult.cs",
+              "RelativeToolTip": "BatchResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T10:49:03.296Z",
+              "WhenOpened": "2026-10-29T12:10:46.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SchedulingStrategy.cs",
+              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\SchedulingStrategy.cs",
+              "RelativeDocumentMoniker": "SchedulingStrategy.cs",
+              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\SchedulingStrategy.cs",
+              "RelativeToolTip": "SchedulingStrategy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-29T12:05:46.829Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "LogInForm.cs [Design]",
-              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\LogInForm.cs",
-              "RelativeDocumentMoniker": "LogInForm.cs",
-              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\LogInForm.cs [Design]",
-              "RelativeToolTip": "LogInForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T10:35:30.199Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "AddRequestForm.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\AddRequestForm.cs",
               "RelativeDocumentMoniker": "AddRequestForm.cs",
               "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\AddRequestForm.cs",
               "RelativeToolTip": "AddRequestForm.cs",
-              "ViewState": "AgIAALQBAAAAAAAAAAASwLcBAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALcBAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-21T20:21:18.92Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "AddRequestForm.cs [Design]",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\AddRequestForm.cs",
               "RelativeDocumentMoniker": "AddRequestForm.cs",
@@ -150,7 +165,55 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Scheduler.cs",
+              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Scheduler.cs",
+              "RelativeDocumentMoniker": "Scheduler.cs",
+              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Scheduler.cs*",
+              "RelativeToolTip": "Scheduler.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAN0AAACUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-21T20:33:15.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LogInForm.cs [Design]",
+              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\LogInForm.cs",
+              "RelativeDocumentMoniker": "LogInForm.cs",
+              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\LogInForm.cs [Design]",
+              "RelativeToolTip": "LogInForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T10:35:30.199Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Schedule_Form.cs [Design]",
+              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.cs",
+              "RelativeDocumentMoniker": "Schedule_Form.cs",
+              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.cs [Design]",
+              "RelativeToolTip": "Schedule_Form.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:48:00.46Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Schedule_Form.cs",
+              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.cs",
+              "RelativeDocumentMoniker": "Schedule_Form.cs",
+              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.cs",
+              "RelativeToolTip": "Schedule_Form.cs",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAqwAEBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T10:49:03.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "MySchedule_Form.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\MySchedule_Form.cs",
               "RelativeDocumentMoniker": "MySchedule_Form.cs",
@@ -163,12 +226,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Schedule_Form.Designer.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.Designer.cs",
               "RelativeDocumentMoniker": "Schedule_Form.Designer.cs",
-              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.Designer.cs*",
-              "RelativeToolTip": "Schedule_Form.Designer.cs*",
+              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule_Form.Designer.cs",
+              "RelativeToolTip": "Schedule_Form.Designer.cs",
               "ViewState": "AgIAAAECAAAAAAAAAADwvzgCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-28T11:22:13.76Z",
@@ -176,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "MySchedule_Form.cs [Design]",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\MySchedule_Form.cs",
               "RelativeDocumentMoniker": "MySchedule_Form.cs",
@@ -187,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "MySchedule_Form.Designer.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\MySchedule_Form.Designer.cs",
               "RelativeDocumentMoniker": "MySchedule_Form.Designer.cs",
@@ -199,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "AddRequestForm.Designer.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\AddRequestForm.Designer.cs",
               "RelativeDocumentMoniker": "AddRequestForm.Designer.cs",
@@ -211,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "LogInForm.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\LogInForm.cs",
               "RelativeDocumentMoniker": "LogInForm.cs",
@@ -223,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "DeleteRequestForm.cs [Design]",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\DeleteRequestForm.cs",
               "RelativeDocumentMoniker": "DeleteRequestForm.cs",
@@ -234,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "Schedule.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Schedule.cs",
               "RelativeDocumentMoniker": "Schedule.cs",
@@ -246,7 +309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\AppDbContext.cs",
               "RelativeDocumentMoniker": "AppDbContext.cs",
@@ -258,19 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Scheduler.cs",
-              "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Scheduler.cs",
-              "RelativeDocumentMoniker": "Scheduler.cs",
-              "ToolTip": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\Scheduler.cs",
-              "RelativeToolTip": "Scheduler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-21T20:33:15.779Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "DeleteRequestForm.Designer.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\DeleteRequestForm.Designer.cs",
               "RelativeDocumentMoniker": "DeleteRequestForm.Designer.cs",
@@ -282,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "MainForm_FirstWindow.cs [Design]",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\MainForm_FirstWindow.cs",
               "RelativeDocumentMoniker": "MainForm_FirstWindow.cs",
@@ -293,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "LogInForm.Designer.cs",
               "DocumentMoniker": "D:\\useful_files\\university\\2_curs\\1_term\\OOP_\u041A\u0443\u0440\u0441\u043E\u0432\u0430\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u0420\u043E\u0431\u043E\u0442\u0430_\u041A\u0441\u0435\u043D\u0434\u0437\u043E\u0432\u0430_\u041F\u041727\\LogInForm.Designer.cs",
               "RelativeDocumentMoniker": "LogInForm.Designer.cs",

@@ -1,12 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using КурсоваРобота_Ксендзова_ПЗ27.Properties;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.IO;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
@@ -63,13 +60,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
 
             return sortedRequest;
-        }
-
-        public List<Request> GetRequestsByArrival()
-        {
-            return schedule.GetAllRequest()
-                .OrderBy(r => r.CreationTime)
-                .ToList();
         }
 
         public List<Request> GetRequestsByPerson(string name, UserRole role)
@@ -156,45 +146,23 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             return freeSlot != null;
         }
 
-        public List<Request> GetListOfRequestSortedByPriority()
-        {
-            var requests = schedule.GetAllRequest();
-
-            return requests
-                .OrderByDescending(r => (int)r.Person.Role)
-                .ThenBy(r=>(int)r.TypeOfWork)
-                .ThenBy(r=>r.CreationTime)
-                .ToList();
-        }
-
         public (bool IsAvailable, string Message) TryAddRequest(Resourse resourse, Person person, DateTime reservDate, TimeSpan startTime, TimeSpan interval, TypeOfWork typeOfWork)
         {
             TimeSpan endTime = startTime + interval;
             TimeInterval newInterval = new TimeInterval(startTime, endTime);
-
             Request newRequest = new Request(0, resourse, person, newInterval, typeOfWork, reservDate);
 
-            Conflictcs conflicts = CheckForConflictcs(newRequest);
+            BatchResult batchResult = PlanBatch(new List<Request> { newRequest }, new PriorityStrategy());
 
-            if(conflicts != null)
+            if (batchResult.Accepted.Any())
             {
-                var alternativeTime = GetNextTimeInterval(resourse.ID, reservDate, interval);
-
-                if (alternativeTime != null) 
-                {
-                    string altTimeStr = $"{alternativeTime.Value.interval.Start:hh\\:mm} - {alternativeTime.Value.interval.End:hh\\:mm}";
-                    string altDateStr = alternativeTime.Value.date.ToShortDateString();
-
-                    return (false, $"Цей час зайнятий! Найближчий вільний час для обладнання '{resourse.NAME}': {altDateStr} з {altTimeStr}");
-                }
-                else
-                {
-                    return (false, "Цей час зайнятий, і на найближчі дні вільних вікон немає");
-                }
+                return (true, "Запит успішно додано до розкладу!");
             }
-
-            schedule.AddRequestToBD(newRequest);
-            return (true, "Запит успішно додано до розкладу!");
+            else
+            {
+                string rejectionReason = batchResult.Rejected.FirstOrDefault() ?? "Цей час зайнятий.";
+                return (false, rejectionReason);
+            }
         }
 
         public Request CheckForPersonConflict(Person person, DateTime reservDate, TimeSpan startTime, TimeSpan interval)
@@ -216,6 +184,72 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             }
 
             return null;
+        }
+
+        public BatchResult PlanBatch(IEnumerable<Request> candidates, SchedulingStrategy strategy)
+        {
+            var result = new BatchResult();
+
+            List<string> acceptedLines = new List<string>();
+            List<string> rejectedLines = new List<string>();
+
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            foreach (Request r in strategy.Order(candidates))
+            {
+                Conflictcs conflict = CheckForConflictcs(r);
+
+                if (conflict == null)
+                {
+                    schedule.AddRequestToBD(r);
+                    result.Accepted.Add(r);
+
+                    string acceptedInfo = $"[{timestamp}] [Стратегія: {strategy.Name}] " +
+                                         $"Користувач: {r.Person.Name} ({r.Person.Role}) | " +
+                                         $"Обладнання: {r.Resourse.NAME} | " +
+                                         $"Дата: {r.DayOfReservation:dd.MM.yyyy} | " +
+                                         $"Час: {r.Interval.StartString}-{r.Interval.EndString}";
+
+                    acceptedLines.Add(acceptedInfo);
+                }
+                else
+                {
+                    var alt = GetNextTimeInterval(r.Resourse.ID, r.DayOfReservation, r.Interval.End - r.Interval.Start);
+                    string hint = alt == null
+                        ? "Вільних вікон на найближчі дні немає"
+                        : $"Найближчий вільний час: {alt.Value.date:dd.MM.yyyy} {alt.Value.interval.StartString}-{alt.Value.interval.EndString}";
+
+                    string rejectionMsg = $"Для обладнання {r.Resourse.NAME} вікно {r.Interval.StartString}-{r.Interval.EndString} зайнято! {hint}";
+                    result.Rejected.Add(rejectionMsg);
+
+                    string rejectedInfo = $"[{timestamp}] [Стратегія: {strategy.Name}] " +
+                                         $"Користувач: {r.Person.Name} | " +
+                                         $"Обладнання: {r.Resourse.NAME} | " +
+                                         $"Запитуваний час: {r.DayOfReservation:dd.MM.yyyy} {r.Interval.StartString}-{r.Interval.EndString} | " +
+                                         $"Причина: {hint}";
+
+                    rejectedLines.Add(rejectedInfo);
+                }
+            }
+
+            try
+            {
+                if (acceptedLines.Count > 0)
+                {
+                    System.IO.File.AppendAllLines("accepted_requests.txt", acceptedLines);
+                }
+
+                if (rejectedLines.Count > 0)
+                {
+                    System.IO.File.AppendAllLines("rejected_requests.txt", rejectedLines);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Помилка запису у файли: {ex.Message}");
+            }
+
+            return result;
         }
 
         public void DeleteRequest(int reqId)
