@@ -105,7 +105,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             foreach (char c in text)
             {
-                if (!char.IsLetter(c) && c != '-' && c != '\'' && c != '’')
+                if (!char.IsLetter(c) && c != '-' && c != '\'')
                 {
                     errorLabel.Text = "Можна вводити лише букви";
                     errorLabel.ForeColor = Color.Red;
