@@ -17,7 +17,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         public MainForm_FirstWindow(UserContext user) : base(user)
         {
             InitializeComponent();
-
             this.FormClosed += (s, e) => Application.Exit();
             this.Resize += MainForm_FirstWindow_Resize;
         }

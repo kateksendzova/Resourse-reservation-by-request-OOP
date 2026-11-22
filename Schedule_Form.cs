@@ -21,9 +21,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         public Schedule_Form(UserContext user) : base(user)
         {
             InitializeComponent();
-
             this.FormClosed += (s, e) => Application.Exit();
-
             this.Resize += Schedule_Form_Resize;
         }
 

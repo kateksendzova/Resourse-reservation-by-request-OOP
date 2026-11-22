@@ -26,7 +26,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             this.FormClosed += (s, e) => Application.Exit();
             this.Resize += AddRequestForm_Resize;
         }
-
+        
         public AddRequestForm(UserContext user, int resourceID) : this(user)
         {
             selectedResID = resourceID;

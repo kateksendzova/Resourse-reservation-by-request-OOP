@@ -32,7 +32,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 currentName = currentUser.Name;
                 currentRole = currentUser.Role;
             }
-
             this.FormClosed += (s, e) => Application.Exit();
             this.Resize += MySchedule_Form_Resize;
         }

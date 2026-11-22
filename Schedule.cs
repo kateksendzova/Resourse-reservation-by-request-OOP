@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using КурсоваРобота_Ксендзова_ПЗ27;
 
 namespace КурсоваРобота_Ксендзова_ПЗ27
 {
