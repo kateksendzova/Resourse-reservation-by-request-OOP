@@ -152,7 +152,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             TimeInterval newInterval = new TimeInterval(startTime, endTime);
             Request newRequest = new Request(0, resourse, person, newInterval, typeOfWork, reservDate);
 
-            BatchResult batchResult = PlanBatch(new List<Request> { newRequest }, new PriorityStrategy());
+            BatchResult batchResult = PlanBatch(new List<Request> { newRequest }, new ArrivalStrategy());
 
             if (batchResult.Accepted.Any())
             {
