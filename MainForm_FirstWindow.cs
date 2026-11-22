@@ -253,19 +253,41 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             IEnumerable<Resourse> filteredList = allResources;
 
-            if (filterType == "Available")
-            {
-                filteredList = filteredList.Where(r => AppServices.Scheduler.IsResourceAvailableForAtLeastOneHour(r.ID, DateTime.Today));
-            }
-
             if (!string.IsNullOrWhiteSpace(searchQuery))
             {
-                filteredList = filteredList.Where(r => r.NAME.IndexOf(searchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
+                filteredList = filteredList.Where(r =>
+                    r.NAME.IndexOf(searchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
             }
+
+            TimeSpan nowTime = DateTime.Now.TimeOfDay;
+            TimeSpan workEnd = new TimeSpan(19, 0, 0);
 
             foreach (var res in filteredList)
             {
                 bool isAvail = AppServices.Scheduler.IsResourceAvailableForAtLeastOneHour(res.ID, DateTime.Today);
+
+                if (isAvail)
+                {
+                    var busyAfterNow = AppServices.Scheduler.GetRequestsByDate(DateTime.Today)
+                        .Where(r => r.Resourse.ID == res.ID && r.Interval.End > nowTime)
+                        .ToList();
+
+                    TimeSpan lastBusyEnd = busyAfterNow.Any() ? busyAfterNow.Max(r => r.Interval.End) : TimeSpan.FromHours(Math.Max(8, nowTime.Hours + 1));
+
+                    TimeSpan startCheck = nowTime > TimeSpan.FromHours(8) ? TimeSpan.FromHours(nowTime.Hours + 1) : TimeSpan.FromHours(8);
+
+                    TimeSpan maxTime = startCheck > lastBusyEnd ? startCheck : lastBusyEnd;
+                    if (workEnd - maxTime < TimeSpan.FromHours(1) && busyAfterNow.Any())
+                    {
+                        isAvail = false;
+                    }
+                }
+
+                if (filterType == "Available" && !isAvail)
+                {
+                    continue;
+                }
+
                 string statusText = isAvail ? "Вільно" : "Зайнято";
 
                 var card = CreateEquipmentCard(res.ID, res.NAME, statusText, isAvail);

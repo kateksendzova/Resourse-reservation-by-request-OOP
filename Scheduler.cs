@@ -40,7 +40,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             foreach (Request request in allRequest)
             {
-                if(request.DayOfReservation.Date == date)
+                if(request.DayOfReservation.Date == date.Date)
                 {
                     sortedRequest.Add(request);
                 }
@@ -95,7 +95,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             TimeSpan workDayEnd = new TimeSpan(19, 0, 0);
 
             List<Request> allRequest = schedule.GetAllRequest()
-                .Where(r => r.Resourse.ID == resId && r.DayOfReservation == date.Date)
+                .Where(r => r.Resourse.ID == resId && r.DayOfReservation.Date == date.Date)
                 .OrderBy(r => r.Interval.Start)
                 .ToList();
 
@@ -215,9 +215,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
                 else
                 {
                     var alt = GetNextTimeInterval(r.Resourse.ID, r.DayOfReservation, r.Interval.End - r.Interval.Start);
-                    string hint = alt == null
-                        ? "Вільних вікон на найближчі дні немає"
-                        : $"Найближчий вільний час: {alt.Value.date:dd.MM.yyyy} {alt.Value.interval.StartString}-{alt.Value.interval.EndString}";
+                    string hint = alt == null ? "Вільних вікон на найближчі дні немає" : $"Найближчий вільний час: {alt.Value.date:dd.MM.yyyy} {alt.Value.interval.StartString}-{alt.Value.interval.EndString}";
 
                     string rejectionMsg = $"Для обладнання {r.Resourse.NAME} вікно {r.Interval.StartString}-{r.Interval.EndString} зайнято! {hint}";
                     result.Rejected.Add(rejectionMsg);

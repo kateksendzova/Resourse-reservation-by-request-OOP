@@ -53,7 +53,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         public List<Request> GetAllRequest()
         {
-            using (var context = new AppDbContext())
+            using (AppDbContext context = new AppDbContext())
             {
                 return context.Requests
                     .Include(r => r.Person)
