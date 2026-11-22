@@ -206,7 +206,9 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void SetDefaultTime()
         {
-            TimePicker_StartOfWork.Value = DateTime.Today.AddHours(8);
+            DateTime now = DateTime.Now;
+            bool isWithinWorkingHours = now.Hour >= 8 && now.Hour <= 19;
+            TimePicker_StartOfWork.Value = isWithinWorkingHours ? DateTime.Today.AddHours(now.Hour).AddMinutes(now.Minute) : DateTime.Today.AddHours(8);
             dateTimePicker_Interval.Value = DateTime.Today.AddHours(1);
         }
 
