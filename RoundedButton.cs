@@ -41,7 +41,6 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void UpdateColors()
         {
-            // Якщо кнопка обрана АБО під курсором миші -> темний фон, світлий текст
             if (IsSelected || isHovered)
             {
                 this.BackColor = Color.DarkCyan;
@@ -83,24 +82,16 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             using (Pen penBorder = new Pen(BorderColor, BorderSize))
             {
                 this.Region = new Region(pathSurface);
-
-                // 1. Малюємо фон
                 using (SolidBrush brush = new SolidBrush(this.BackColor))
                 {
                     pevent.Graphics.FillPath(brush, pathSurface);
                 }
-
-                // 2. Згладжуємо краї
                 pevent.Graphics.DrawPath(penSurface, pathSurface);
-
-                // 3. Малюємо рамку
                 if (BorderSize >= 1)
                 {
                     pevent.Graphics.DrawPath(penBorder, pathBorder);
                 }
             }
-
-            // 4. МАКСИМАЛЬНО ВАЖЛИВО: Малюємо текст по центру вручну, щоб його було чітко видно
             TextRenderer.DrawText(
                 pevent.Graphics,
                 this.Text,
