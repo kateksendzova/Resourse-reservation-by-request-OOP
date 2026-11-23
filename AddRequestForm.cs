@@ -25,6 +25,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             InitializeComponent();
             this.FormClosed += (s, e) => Application.Exit();
             this.Resize += AddRequestForm_Resize;
+            monthCalendar.DateChanged += monthCalendar_DateChanged;
         }
         
         public AddRequestForm(UserContext user, int resourceID) : this(user)
@@ -206,9 +207,25 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
         private void SetDefaultTime()
         {
-            DateTime now = DateTime.Now;
-            bool isWithinWorkingHours = now.Hour >= 8 && now.Hour <= 19;
-            TimePicker_StartOfWork.Value = isWithinWorkingHours ? DateTime.Today.AddHours(now.Hour).AddMinutes(now.Minute) : DateTime.Today.AddHours(8);
+            DateTime selectedDate = monthCalendar.SelectionStart.Date;
+            bool isToday = selectedDate == DateTime.Today;
+
+            TimeSpan startTime = TimeSpan.FromHours(8);
+
+            if (isToday)
+            {
+                DateTime now = DateTime.Now;
+                TimeSpan nowTime = now.TimeOfDay;
+                TimeSpan workStart = new TimeSpan(8, 0, 0);
+                TimeSpan workEnd = new TimeSpan(19, 0, 0);
+
+                if (nowTime >= workStart && nowTime <= workEnd)
+                {
+                    startTime = new TimeSpan(now.Hour, now.Minute, 0);
+                }
+            }
+
+            TimePicker_StartOfWork.Value = DateTime.Today.Add(startTime);
             dateTimePicker_Interval.Value = DateTime.Today.AddHours(1);
         }
 
@@ -444,7 +461,10 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
             UpdateSummaryText();
         }
 
-
+        private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            SetDefaultTime();
+        }
         private void button_PanelMane_Click(object sender, EventArgs e) => NavigateTo(AppPage.Main);
         private void button_PanelMySchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.MySchedule);
         private void button_PanelSchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.Schedule);

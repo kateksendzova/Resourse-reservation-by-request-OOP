@@ -260,10 +260,25 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             TimeSpan nowTime = DateTime.Now.TimeOfDay;
             TimeSpan workEnd = new TimeSpan(19, 0, 0);
+            bool isLabClose = DateTime.Now.TimeOfDay >= TimeSpan.FromHours(19);
+
+            if (isLabClose)
+            {
+                var labelClose = new Label
+                {
+                    Text = "На сьогодні лабораторія вже зачинена",
+                    Font = new Font("Century Gothic", 10F, FontStyle.Italic),
+                    ForeColor = Color.DimGray,
+                    AutoSize = true,
+                    Margin = new Padding(10)
+                };
+                flowLayoutPanel_Resources.Controls.Add(labelClose);
+            }
 
             foreach (var res in filteredList)
             {
-                bool isAvail = AppServices.Scheduler.IsResourceAvailableForAtLeastOneHour(res.ID, DateTime.Today);
+               
+                bool isAvail = !isLabClose && AppServices.Scheduler.IsResourceAvailableForAtLeastOneHour(res.ID, DateTime.Today);
 
                 if (isAvail)
                 {
