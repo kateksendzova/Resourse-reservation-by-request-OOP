@@ -1,0 +1,7 @@
+Іван Коваленко|Student|1|2026-11-26|10:00|12:00|LaboratoryWork
+Олена Мельник|Professor|1|2026-11-26|10:30|11:30|DiplomaThesis
+Марія Бондар|Assistant|1|2026-11-26|10:00|11:00|ScientificExperiment
+Петро Шевченко|Student|1|2026-11-26|12:00|13:30|IndependentWork
+Андрій Ткаченко|Student|2|2026-11-26|14:00|15:30|LaboratoryWork
+Софія Кравченко|Professor|2|2026-11-26|14:30|16:00|ScientificExperiment
+Олександр Литвин|Assistant|1|2026-11-26|11:00|12:30|LaboratoryWork

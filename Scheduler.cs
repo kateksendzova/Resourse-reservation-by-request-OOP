@@ -77,7 +77,7 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             foreach (Request request in allRequest)
             {
-                if (newRequest.Resourse.ID == request.Resourse.ID && newRequest.DayOfReservation == request.DayOfReservation)
+                if (newRequest.Resourse.ID == request.Resourse.ID && newRequest.DayOfReservation.Date == request.DayOfReservation.Date)
                 {
                     if (request.Interval.Start < newRequest.Interval.End && newRequest.Interval.Start < request.Interval.End)
                     {
@@ -249,6 +249,58 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
 
             return result;
         }
+
+        
+        public BatchResult PlanBatch(SchedulingStrategy strategy, string filePath = "demo_requests.txt")
+        {
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException($"Не знайдено файл із демо-заявками: {filePath}");
+            }
+
+            List<string> lines = File.ReadAllLines(filePath)
+                .Select(l => l.Trim())
+                .Where(l => !string.IsNullOrWhiteSpace(l) && !l.StartsWith("#"))
+                .Take(10)
+                .ToList();
+
+            if (lines.Count < 5)
+            {
+                throw new InvalidOperationException("У демо-файлі має бути щонайменше 5 коректних рядків заявок.");
+            }
+
+            List<Resourse> resources = GetResourses();
+            List<Request> candidates = new List<Request>();
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split('|');
+                if (parts.Length < 7)
+                {
+                    continue;
+                }
+
+                string personName = parts[0].Trim();
+                UserRole role = Enum.Parse<UserRole>(parts[1].Trim(), ignoreCase: true);
+                int resourceId = int.Parse(parts[2].Trim());
+                DateTime date = DateTime.ParseExact(parts[3].Trim(), "yyyy-MM-dd", null).Date;
+                TimeSpan startTime = TimeSpan.ParseExact(parts[4].Trim(), "hh\\:mm", null);
+                TimeSpan endTime = TimeSpan.ParseExact(parts[5].Trim(), "hh\\:mm", null);
+                TypeOfWork workType = Enum.Parse<TypeOfWork>(parts[6].Trim(), ignoreCase: true);
+
+                Resourse resourse = resources.FirstOrDefault(r => r.ID == resourceId)
+                    ?? throw new InvalidOperationException($"Обладнання з ID={resourceId} не знайдено в БД.");
+
+                Person person = GetOrCreatePerson(personName, role);
+                TimeInterval interval = new TimeInterval(startTime, endTime);
+
+                Request candidate = new Request(0, resourse, person, interval, workType, date);
+                candidates.Add(candidate);
+            }
+
+            return PlanBatch(candidates, strategy);
+        }
+        
 
         public void DeleteRequest(int reqId)
         {

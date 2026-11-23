@@ -474,5 +474,24 @@ namespace КурсоваРобота_Ксендзова_ПЗ27
         private void pictureBox_PanelSchedule_Click(object sender, EventArgs e) => NavigateTo(AppPage.Schedule);
         private void pictureBox_PanelDelete_Click(object sender, EventArgs e) => NavigateTo(AppPage.DeleteRequest);
         private void pictureBox_Logo_Click(object sender, EventArgs e) => NavigateTo(AppPage.Main);
+
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.D))
+            {
+                var resPriority = AppServices.Scheduler.PlanBatch(new PriorityStrategy(), "demo_requests.txt");
+
+                string info = $"Стратегія: {new PriorityStrategy().Name}\n" +
+                              $"Прийнято в розклад: {resPriority.Accepted.Count}\n" +
+                              $"Відхилено (конфлікти): {resPriority.Rejected.Count}\n\n" +
+                              string.Join("\n", resPriority.Rejected);
+
+                MessageBox.Show(info, "Демо пакетного планування", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
     }
 }
